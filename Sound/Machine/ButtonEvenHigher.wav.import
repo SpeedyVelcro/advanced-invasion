@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ButtonEvenHigher.wav-1791f91ac9c6b8489ef3e50cdef6935f.sample"
+
+[deps]
+
+source_file="res://Sound/Machine/ButtonEvenHigher.wav"
+dest_files=[ "res://.import/ButtonEvenHigher.wav-1791f91ac9c6b8489ef3e50cdef6935f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

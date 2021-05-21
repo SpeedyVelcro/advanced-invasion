@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GrenadeBounce1.wav-012d7820d9da2c37574eb380c6ff47a0.sample"
+
+[deps]
+
+source_file="res://Sound/Weapon/GrenadeBounce1.wav"
+dest_files=[ "res://.import/GrenadeBounce1.wav-012d7820d9da2c37574eb380c6ff47a0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://GUI/MainMenu/Extras.gd" type="Script" id=1]
+[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Font/Hack/HackHeader.tres" type="DynamicFont" id=3]
+
+[node name="Extras" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+margin_left = 490.0
+margin_top = 280.0
+margin_right = 790.0
+margin_bottom = 440.0
+rect_min_size = Vector2( 300, 160 )
+theme = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+margin_right = 260.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 3 )
+text = "Extras"
+align = 1
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 37.0
+margin_right = 260.0
+margin_bottom = 40.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 44.0
+margin_right = 260.0
+margin_bottom = 76.0
+columns = 2
+
+[node name="JukeboxButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer"]
+margin_right = 128.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+text = "Jukebox"
+
+[node name="AchievementsButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer"]
+margin_left = 132.0
+margin_right = 260.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+text = "Achievements"
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
+margin_top = 80.0
+margin_right = 260.0
+margin_bottom = 84.0
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+margin_left = 82.0
+margin_top = 88.0
+margin_right = 178.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 96, 32 )
+size_flags_horizontal = 4
+text = "Back"
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/GridContainer/JukeboxButton" to="." method="_on_JukeboxButton_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/GridContainer/AchievementsButton" to="." method="_on_AchievementsButton_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

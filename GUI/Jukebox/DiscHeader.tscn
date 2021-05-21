@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/Jukebox/DiscHeader.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+border_width_top = 1
+border_width_bottom = 1
+
+[node name="DiscHeader" type="HBoxContainer"]
+margin_right = 234.0
+margin_bottom = 24.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+margin_right = 4.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 4, 0 )
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_left = 8.0
+margin_right = 77.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 81.0
+margin_right = 153.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "Disc 1"
+
+[node name="HSeparator2" type="HSeparator" parent="."]
+margin_left = 157.0
+margin_right = 226.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 1 )
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="."]
+margin_left = 230.0
+margin_right = 234.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 4, 0 )

@@ -1,0 +1,9 @@
+Modified sounds are distributed under the same license.
+Files in this folder with .import extension are distributed under the main
+repository license, see LICENSE.md at the root of the repository.
+
+./RingingEars.wav
+"tinnitus.wav"
+By tnturner (https://freesound.org/people/tnturner/)
+Source: https://freesound.org/people/tnturner/sounds/377205/
+CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)

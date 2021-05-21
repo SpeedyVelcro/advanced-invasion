@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Sanctuary.ogg-4911c4a4dde420455037b3741b24b238.oggstr"
+
+[deps]
+
+source_file="res://Music/Sanctuary.ogg"
+dest_files=[ "res://.import/Sanctuary.ogg-4911c4a4dde420455037b3741b24b238.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=72.626

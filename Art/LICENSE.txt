@@ -1,0 +1,7 @@
+Files in this directory with the .import extension are licensed under the main
+repository license, see LICENSE.md at the root of the repository.
+
+All other files in this directory:
+By SwiftVector, All Rights Reserved
+Lieutenant Scareye is a character by Blublub, used here for non-commercial
+purposes based on an established history of allowing fangames.

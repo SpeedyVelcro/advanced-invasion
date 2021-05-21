@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Entity/Obstacle/Barrier/Barrier.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Obstacle/Barrier/BlueBarrier.png" type="Texture" id=2]
+
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.794118, 1 )
+colors = PoolColorArray( 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 2, 16 )
+
+[node name="BlueBarrier" instance=ExtResource( 1 )]
+condition = 4
+
+[node name="CPUParticles2D" parent="StartAnimatedSprite" index="0"]
+color_ramp = SubResource( 1 )
+
+[node name="CPUParticles2D2" parent="EndAnimatedSprite" index="0"]
+color_ramp = SubResource( 1 )
+
+[node name="BeamSprite" parent="BeamFadeNode" index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+shape = SubResource( 2 )

@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Level/01Invasion/10CutsceneChaperone.gd" type="Script" id=1]
+[ext_resource path="res://Level/Level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Tile/NormalTile/NormalDecor.tres" type="TileSet" id=3]
+[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture" id=4]
+[ext_resource path="res://Art/Effect/FallLine.png" type="Texture" id=5]
+[ext_resource path="res://Game/CameraPlayer/CameraPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://AutoLoad/DialogueManager/Dialogue.gd" type="Script" id=7]
+[ext_resource path="res://Level/01Invasion/10Cutscene.gd" type="Script" id=8]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 7 )
+character_name = "NAME_YELLOW"
+character_color_id = "yellow"
+bbcode = "DG_ZONE1_LV10_1"
+ignore_input = true
+auto_advance = true
+pause_sec = 0.1
+broadcast_enabled = false
+broadcast_message = ""
+
+[sub_resource type="Animation" id=2]
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CanvasLayer/ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4, 6.1, 8.1, 10.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Yellow:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4, 9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 320, -704 ), Vector2( 320, 376 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 4.1, 10.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "scream"
+}, {
+"args": [  ],
+"method": "end"
+} ]
+}
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.0284091, 0.159091, 0.897727, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="Level" instance=ExtResource( 2 )]
+script = ExtResource( 8 )
+cutscene_active = true
+play_music_on_start = true
+
+[node name="DecorTileMap" type="TileMap" parent="." index="2"]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 32, 32 )
+format = 1
+
+[node name="CameraPlayer" parent="." index="3" instance=ExtResource( 6 )]
+position = Vector2( 320, -176 )
+limit_left = -3000
+limit_top = -3000
+limit_right = 3000
+limit_bottom = 3000
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="Yellow" type="Sprite" parent="." index="4"]
+position = Vector2( 320, -704 )
+rotation = -3.14159
+texture = ExtResource( 4 )
+
+[node name="CutsceneChaperone" type="Node" parent="." index="5"]
+script = ExtResource( 1 )
+dialogue_1 = [ SubResource( 1 ) ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneChaperone" index="0"]
+anims/cutscene = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="6"]
+z_index = -100
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -944, -728, 1392, -728, 1392, 560, -944, 560 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="8"]
+position = Vector2( 328, 440 )
+amount = 80
+lifetime = 6.0
+preprocess = 6.0
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1280, 1 )
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 800.0
+initial_velocity_random = 0.53
+color_ramp = SubResource( 3 )

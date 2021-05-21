@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://GUI/Options/Audio/VolumeSetting.gd" type="Script" id=1]
+
+[node name="VolumeSetting" type="HBoxContainer"]
+margin_right = 410.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+slider_path = NodePath("HBoxContainer/HSlider")
+mute_button_path = NodePath("HBoxContainer/VBoxContainer/MuteButton")
+title_label_path = NodePath("HBoxContainer2/Label")
+percent_label_path = NodePath("PercentLabel")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_right = 80.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 80, 0 )
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_top = 8.0
+margin_right = 44.0
+margin_bottom = 22.0
+text = "Master"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer2"]
+margin_left = 48.0
+margin_right = 80.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 84.0
+margin_right = 284.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 60.0
+margin_bottom = 30.0
+
+[node name="MuteButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 60, 0 )
+size_flags_vertical = 3
+toggle_mode = true
+text = "Mute"
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+margin_left = 64.0
+margin_right = 200.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 1.0
+step = 0.05
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+margin_left = 288.0
+margin_right = 293.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="PercentLabel" type="Label" parent="."]
+margin_left = 297.0
+margin_right = 323.0
+margin_bottom = 30.0
+size_flags_vertical = 1
+text = "xx%"
+valign = 1
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/MuteButton" to="." method="_on_MuteButton_toggled"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_HSlider_value_changed"]

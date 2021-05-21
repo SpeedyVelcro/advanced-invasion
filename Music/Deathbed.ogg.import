@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Deathbed.ogg-eeb1d23b2ca300d024cbd97c67079d5d.oggstr"
+
+[deps]
+
+source_file="res://Music/Deathbed.ogg"
+dest_files=[ "res://.import/Deathbed.ogg-eeb1d23b2ca300d024cbd97c67079d5d.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

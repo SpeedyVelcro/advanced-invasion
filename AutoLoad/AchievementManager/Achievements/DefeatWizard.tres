@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://AutoLoad/AchievementManager/Achievement.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+icon_path = "res://Art/Achievement/Wizard.png"
+id = "defeat_wizard"
+title = "Powerful Virus"
+description = "Defeat a powerful virus."
+target_enabled = false
+target = 0.0
+secret = false
+target_decimal_places = 0

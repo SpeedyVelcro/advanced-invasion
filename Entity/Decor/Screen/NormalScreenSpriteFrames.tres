@@ -1,0 +1,40 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=2]
+
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreen.png" type="Texture" id=1]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenBars1.png" type="Texture" id=2]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenBars4.png" type="Texture" id=3]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenText.png" type="Texture" id=4]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenAlertWarning.png" type="Texture" id=5]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenAlertText.png" type="Texture" id=6]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenBars3.png" type="Texture" id=7]
+[ext_resource path="res://Art/Decor/Screen/NormalScreen/NormalScreenBars2.png" type="Texture" id=8]
+
+
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "text",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "bars",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "alert_text",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "alert_warning",
+"speed": 5.0
+} ]

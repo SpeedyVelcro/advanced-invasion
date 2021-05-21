@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entity/Creep/Guardian/Guardian.tscn" type="PackedScene" id=1]
+
+
+[node name="Guardian" instance=ExtResource( 1 )]
+back_shield_active_on_ready = true
+front_shield_active_on_ready = true
+
+[node name="CPUParticles2D" parent="ShieldBack" index="0"]
+emitting = true
+
+[node name="CPUParticles2D" parent="ShieldFront" index="0"]
+emitting = true

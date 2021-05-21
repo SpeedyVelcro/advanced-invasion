@@ -1,0 +1,165 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Art/Achievement/Secret.png" type="Texture" id=2]
+[ext_resource path="res://Font/NotoSans/NotoSansBold.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Font/NotoSans/NotoSansAchievement.tres" type="DynamicFont" id=4]
+[ext_resource path="res://AutoLoad/AchievementManager/AchievementManager.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0117647, 0, 0.145098, 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TransformControl/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TransformControl:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.48, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -140 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("TransformControl/Panel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TransformControl:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.48, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -140 ), Vector2( 0, 0 ) ]
+}
+
+[node name="AchievementManager" type="CanvasLayer"]
+layer = 128
+script = ExtResource( 5 )
+popup_node_path = NodePath("TransformControl/Panel")
+icon_texture_rect_path = NodePath("TransformControl/Panel/HBoxContainer/TextureRect")
+title_label_path = NodePath("TransformControl/Panel/HBoxContainer/VBoxContainer/Title")
+description_label_path = NodePath("TransformControl/Panel/HBoxContainer/VBoxContainer/Description")
+
+[node name="TransformControl" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="TransformControl"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -410.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 130.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TransformControl/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TransformControl/Panel/HBoxContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Panel" type="Panel" parent="TransformControl/Panel/HBoxContainer/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="TransformControl/Panel/HBoxContainer"]
+margin_left = 104.0
+margin_right = 114.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TransformControl/Panel/HBoxContainer"]
+margin_left = 118.0
+margin_right = 380.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="TransformControl/Panel/HBoxContainer/VBoxContainer"]
+margin_right = 262.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 3 )
+text = "Test Achievement"
+autowrap = true
+
+[node name="Description" type="Label" parent="TransformControl/Panel/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 262.0
+margin_bottom = 98.0
+rect_min_size = Vector2( 0, 74 )
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Please ignore. If you can see this text then I forgot to fix achievements. Please send all hate mail to SwiftVector."
+autowrap = true
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hide = SubResource( 2 )
+anims/show = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

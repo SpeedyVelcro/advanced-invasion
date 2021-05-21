@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://Locale/Dialogue.en.translation" ]
+
+source_file="res://Locale/Dialogue.csv"
+dest_files=[ "res://Locale/Dialogue.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

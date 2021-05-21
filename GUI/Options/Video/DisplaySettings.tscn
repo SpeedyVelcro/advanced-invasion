@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://GUI/Options/Video/DisplaySettings.gd" type="Script" id=1]
+[ext_resource path="res://GUI/ConfirmPrompt/ConfirmPrompt.tscn" type="PackedScene" id=2]
+
+[node name="DisplaySettings" type="Control"]
+margin_top = 37.0
+margin_right = 410.0
+margin_bottom = 137.0
+rect_min_size = Vector2( 0, 100 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+resolution_option_path = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/ResolutionOptionButton")
+fullscreen_checkbox_path = NodePath("HBoxContainer/VBoxContainer/FullscreenCheckBox")
+vsync_checkbox_path = NodePath("HBoxContainer/VBoxContainer/VSyncCheckBox")
+confirm_prompt_path = NodePath("CanvasLayer/ConfirmPrompt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 203.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 203.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 0, 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_right = 110.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 110, 32 )
+
+[node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 114.0
+margin_right = 118.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 4, 0 )
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 122.0
+margin_top = 9.0
+margin_right = 190.0
+margin_bottom = 23.0
+text = "Resolution"
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 110.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 110, 32 )
+size_flags_horizontal = 0
+text = "Fullscreen"
+
+[node name="VSyncCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 110.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 110, 32 )
+size_flags_horizontal = 0
+text = "VSync"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 207.0
+margin_right = 410.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ApplyButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
+margin_top = 36.0
+margin_right = 203.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 32 )
+text = "Apply Changes"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="ConfirmPrompt" parent="CanvasLayer" instance=ExtResource( 2 )]
+visible = false
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/HBoxContainer/ResolutionOptionButton" to="." method="_on_ResolutionOptionButton_item_selected"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer2/ApplyButton" to="." method="_on_ApplyButton_pressed"]
+[connection signal="no" from="CanvasLayer/ConfirmPrompt" to="." method="_on_ConfirmPrompt_no"]
+[connection signal="yes" from="CanvasLayer/ConfirmPrompt" to="." method="_on_ConfirmPrompt_yes"]

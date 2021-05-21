@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entity/Bullet/Bullet.gd" type="Script" id=1]
+
+[node name="Bullet" type="RigidBody2D" groups=[
+"bullet",
+]]
+collision_layer = 16
+collision_mask = 73
+gravity_scale = 0.0
+continuous_cd = 1
+contacts_reported = 1
+contact_monitor = true
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 1 )

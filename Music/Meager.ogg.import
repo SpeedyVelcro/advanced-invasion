@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Meager.ogg-f0466965c4df1fd0c0d3613cc38e6dd1.oggstr"
+
+[deps]
+
+source_file="res://Music/Meager.ogg"
+dest_files=[ "res://.import/Meager.ogg-f0466965c4df1fd0c0d3613cc38e6dd1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=10.856

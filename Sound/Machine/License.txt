@@ -1,0 +1,51 @@
+Modified sounds are distributed under the same license.
+Files in this folder with .import extension are distributed under the main
+repository license, see LICENSE.md at the root of the repository.
+
+./BreakerSwitch.wav
+"Kill Switch (Large Breaker Switch).WAV"
+By EchoCinematics (echocinematics.com)
+Source: https://freesound.org/people/EchoCinematics/sounds/131599/
+CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+Modified by SwiftVector (cropped)
+
+./ButtonEvenHigher.wav
+./ButtonHigher.wav
+"btn121.wav"
+By junggle (jazzy.junggle.net)
+Source: https://freesound.org/people/junggle/sounds/29301/
+CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
+Modified by SwiftVector (Pitch changed and EQ applied)
+
+./LowVoltSpark1.wav
+./LowVoltSpark2.wav
+"lowvolt sparks.wav"
+By Richard Frohlich (https://freesound.org/people/FreqMan/)
+Source: https://freesound.org/people/FreqMan/sounds/32682/
+CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
+Modified by SwiftVector (cropped)
+
+./MachinePowerOff.wav
+"MachinePowerOff.flac"
+By Skylar1146 (https://freesound.org/people/Skylar1146/)
+Source: https://freesound.org/people/Skylar1146/sounds/395378/
+CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
+Modified by SwiftVector (sped up, pitched down, fade out)
+
+./Shutter.wav
+"Camera Shutter"
+By roachpowder (https://freesound.org/people/roachpowder/)
+Source: https://freesound.org/people/roachpowder/sounds/170229/
+CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
+
+./SystemLoad.wav
+"SystemLoad.wav"
+by Zabuhailo (https://freesound.org/people/Zabuhailo/)
+Source: https://freesound.org/people/Zabuhailo/sounds/146957/
+CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+./TVOffShort.wav
+"TV Off (short)"
+By snakebarney (https://freesound.org/people/snakebarney/)
+Source: https://freesound.org/people/snakebarney/sounds/138115/
+CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)

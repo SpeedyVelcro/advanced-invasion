@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" type="PackedScene" id=1]
+
+
+[node name="VirusPawn" instance=ExtResource( 1 )]
+top_shield_active_on_ready = true
+
+[node name="CPUParticles2D" parent="ShieldTop" index="0"]
+emitting = true

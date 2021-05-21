@@ -1,0 +1,7 @@
+Files in this directory with the .import extension are licensed under the main
+repository license, see LICENSE.md at the root of the repository.
+
+All other files in this directory:
+By SwiftVector (swiftvector.net)
+Source: swiftvector.net/advanced-invasion-ost
+Licensed under CC BY 4.0. (creativecommons.org/licenses/by/4.0)

@@ -1,0 +1,31 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=2]
+
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreen.png" type="Texture" id=1]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenNormal3.png" type="Texture" id=2]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenNormal2.png" type="Texture" id=3]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenNormal1.png" type="Texture" id=4]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed1.png" type="Texture" id=5]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed4.png" type="Texture" id=6]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed3.png" type="Texture" id=7]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed5.png" type="Texture" id=8]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed6.png" type="Texture" id=9]
+[ext_resource path="res://Art/Decor/Screen/BigScreen/BigScreenAlertFeed2.png" type="Texture" id=10]
+
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "normal",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "alert-feed",
+"speed": 25.0
+} ]

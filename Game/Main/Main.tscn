@@ -1,0 +1,118 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Game/Main/Main.gd" type="Script" id=4]
+[ext_resource path="res://GUI/MainMenu/MainMenu.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "new_game"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlobalEffects/ScreenFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.991419 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_new_game_blackout"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlobalEffects/ScreenFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.596322 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_level_change_blackout"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "restart_level"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("GlobalEffects/ScreenFade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.594967 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_on_restart_level_blackout"
+} ]
+}
+
+[node name="Main" type="Node"]
+pause_mode = 2
+script = ExtResource( 4 )
+
+[node name="MainMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="GlobalEffects" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ScreenFade" type="ColorRect" parent="GlobalEffects"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelChangeAnimation" type="AnimationPlayer" parent="."]
+anims/new_game = SubResource( 1 )
+anims/next_level = SubResource( 2 )
+anims/restart_level = SubResource( 3 )
+[connection signal="load_game" from="MainMenu" to="." method="_on_MainMenu_load_game"]
+[connection signal="new_game" from="MainMenu" to="." method="_on_MainMenu_new_game"]

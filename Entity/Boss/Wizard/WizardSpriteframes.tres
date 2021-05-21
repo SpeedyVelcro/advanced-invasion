@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=2]
+
+[ext_resource path="res://Art/Boss/Wizard/Wizard.png" type="Texture" id=1]
+[ext_resource path="res://Art/Boss/Wizard/WizardLeft.png" type="Texture" id=2]
+[ext_resource path="res://Art/Boss/Wizard/WizardRight.png" type="Texture" id=3]
+[ext_resource path="res://Art/Boss/Wizard/WizardConcentrate.png" type="Texture" id=4]
+[ext_resource path="res://Art/Boss/Wizard/WizardHurtRight.png" type="Texture" id=5]
+[ext_resource path="res://Art/Boss/Wizard/WizardHurtLeft.png" type="Texture" id=6]
+
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "concentrate",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "hurt_left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "hurt_right",
+"speed": 5.0
+} ]

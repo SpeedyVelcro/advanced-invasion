@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample"
+
+[deps]
+
+source_file="res://Sound/Weapon/GrenadePin2.wav"
+dest_files=[ "res://.import/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

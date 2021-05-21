@@ -1,0 +1,31 @@
+.DS_Store
+*~
+.import/
+logs/
+export.cfg
+#export_presets.cfg
+
+# Imported translations (automatically generated from CSV files)
+*.translation
+
+# Mono-specific.
+.mono/
+data_*/
+
+# SwiftVector's bizarre and convoluted way of organising exports
+# We don't exclude the folder structure itself because Godot's exporter
+# can't make directories - they need to already be there.
+compiled/distribute/*
+compiled/newgrounds/*
+compiled/global/html5/*
+compiled/global/linux32/*
+compiled/global/linux64/*
+compiled/global/macos/*
+compiled/global/win32/*
+compiled/global/win64/*
+compiled/gamejolt/html5/*
+compiled/gamejolt/linux32/*
+compiled/gamejolt/linux64/*
+compiled/gamejolt/macos/*
+compiled/gamejolt/win32/*
+compiled/gamejolt/win64/*

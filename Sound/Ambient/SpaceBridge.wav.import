@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SpaceBridge.wav-b4c9b2a1b2a25b52dfd22d63978d615e.sample"
+
+[deps]
+
+source_file="res://Sound/Ambient/SpaceBridge.wav"
+dest_files=[ "res://.import/SpaceBridge.wav-b4c9b2a1b2a25b52dfd22d63978d615e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

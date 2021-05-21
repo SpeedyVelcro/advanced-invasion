@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Brash.ogg-92d6d5770a8428b777753dbcde86f132.oggstr"
+
+[deps]
+
+source_file="res://Music/Brash.ogg"
+dest_files=[ "res://.import/Brash.ogg-92d6d5770a8428b777753dbcde86f132.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=22.393

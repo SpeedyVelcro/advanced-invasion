@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUI/PauseMenu/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=3]
+[ext_resource path="res://GUI/Options/Options.tscn" type="PackedScene" id=4]
+
+[node name="PauseMenu" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+gui_path = NodePath("CanvasLayer/PauseMenuGUI")
+color_rect_path = NodePath("CanvasLayer/ColorRect")
+restart_button_path = NodePath("CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart")
+skip_cutscene_button_path = NodePath("CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene")
+options_path = NodePath("CanvasLayer/Options")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 96
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.219608 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenuGUI" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenuGUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainPanel" type="Panel" parent="CanvasLayer/PauseMenuGUI/CenterContainer"]
+margin_left = 560.0
+margin_top = 240.0
+margin_right = 720.0
+margin_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 160, 240 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+margin_right = 120.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 2 )
+text = "Paused"
+align = 1
+clip_text = true
+
+[node name="Resume" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+margin_top = 32.0
+margin_right = 120.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 7
+size_flags_vertical = 6
+text = "Resume"
+
+[node name="Restart" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+margin_top = 76.0
+margin_right = 120.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Restart Level"
+
+[node name="SkipCutscene" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+visible = false
+margin_top = 88.0
+margin_right = 120.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Skip Cutscene"
+
+[node name="Options" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+margin_top = 120.0
+margin_right = 120.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Options"
+
+[node name="Quit" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+margin_top = 164.0
+margin_right = 120.0
+margin_bottom = 196.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Main Menu"
+
+[node name="Options" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
+[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene" to="." method="_on_SkipCutscene_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="back" from="CanvasLayer/Options" to="." method="_on_Options_back"]

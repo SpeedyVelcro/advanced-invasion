@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample"
+
+[deps]
+
+source_file="res://Sound/Machine/TVOffShort.wav"
+dest_files=[ "res://.import/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,183 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Art/Boss/Square/SquareSleep.png" type="Texture" id=1]
+[ext_resource path="res://Art/Boss/Square/SquareLeft.png" type="Texture" id=2]
+[ext_resource path="res://Art/Boss/Square/SquareRight.png" type="Texture" id=3]
+[ext_resource path="res://Art/Boss/Square/SquareDrop.png" type="Texture" id=4]
+[ext_resource path="res://Art/Boss/Square/SquareLand.png" type="Texture" id=5]
+[ext_resource path="res://Art/Boss/Square/SquareFront.png" type="Texture" id=6]
+[ext_resource path="res://Art/Boss/Square/SquareSideShield.png" type="Texture" id=7]
+[ext_resource path="res://Entity/Boss/Square/SquareVirus.gd" type="Script" id=8]
+[ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sound/Destruction/LowThump.wav" type="AudioStream" id=10]
+
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "front",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "sleep",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "drop",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "land",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48, 64 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.15894, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 48, 60 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 48, 64 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimatedSprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "front", false ],
+"method": "play"
+} ]
+}
+
+[node name="SquareVirus" type="KinematicBody2D" groups=[
+"boss",
+]]
+collision_layer = 524288
+script = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="ShieldParticlesRight" type="CPUParticles2D" parent="."]
+position = Vector2( 52, 0 )
+emitting = false
+amount = 5
+lifetime = 0.4
+texture = ExtResource( 7 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+color_ramp = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="ShieldParticlesLeft" type="CPUParticles2D" parent="."]
+position = Vector2( -52, 0 )
+emitting = false
+amount = 5
+lifetime = 0.4
+texture = ExtResource( 7 )
+direction = Vector2( -1, 0 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+color_ramp = SubResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 524288
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource( 4 )
+
+[node name="SeekMinTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="SeekMaxTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VulnerableStartTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VulnerableEndTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HeightTween" type="Tween" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource( 9 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death = SubResource( 6 )
+
+[node name="ImpactAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 0, 64 )
+stream = ExtResource( 10 )
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="timeout" from="SeekMinTimer" to="." method="_on_SeekMinTimer_timeout"]
+[connection signal="timeout" from="SeekMaxTimer" to="." method="_on_SeekMaxTimer_timeout"]
+[connection signal="timeout" from="VulnerableStartTimer" to="." method="_on_VulnerableStartTimer_timeout"]
+[connection signal="timeout" from="VulnerableEndTimer" to="." method="_on_VulnerableEndTimer_timeout"]
+[connection signal="tween_completed" from="HeightTween" to="." method="_on_HeightTween_tween_completed"]
+[connection signal="attacked" from="Hitbox" to="." method="_on_Hitbox_attacked"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

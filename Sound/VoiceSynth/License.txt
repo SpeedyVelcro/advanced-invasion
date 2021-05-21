@@ -1,0 +1,8 @@
+Modified sounds are distributed under the same license.
+Files in this folder with .import extension are distributed under the main
+repository license, see LICENSE.md at the root of the repository.
+
+./VoiceSynth.wav
+"Voice Synth"
+By SwiftVector (swiftvector.net), made using jsfxr
+CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)

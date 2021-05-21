@@ -1,0 +1,222 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Entity/Obstacle/Barrier/Barrier.gd" type="Script" id=1]
+[ext_resource path="res://Art/Obstacle/Barrier/Barrier.png" type="Texture" id=2]
+[ext_resource path="res://Entity/Obstacle/Barrier/EndSpriteFrames.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Sound/Machine/MachinePowerOff.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sound/Machine/Shutter.wav" type="AudioStream" id=5]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.794118, 1 )
+colors = PoolColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
+extents = Vector2( 2, 16 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "disable"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("BeamFadeNode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StartAnimatedSprite/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EndAnimatedSprite/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("StartAnimatedSprite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "disable", false ],
+"method": "play"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("EndAnimatedSprite")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "disable", false ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "enable"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BeamFadeNode:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StartAnimatedSprite/CPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("EndAnimatedSprite/CPUParticles2D2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("StartAnimatedSprite")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "enable", false ],
+"method": "play"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("EndAnimatedSprite")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "enable", false ],
+"method": "play"
+} ]
+}
+
+[node name="Barrier" type="Node2D"]
+script = ExtResource( 1 )
+condition = 1
+
+[node name="StartAnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StartAnimatedSprite"]
+position = Vector2( 0.140312, -3 )
+emitting = false
+amount = 5
+emission_shape = 2
+emission_rect_extents = Vector2( 3, 1 )
+direction = Vector2( 0, -1 )
+spread = 5.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+color_ramp = SubResource( 1 )
+
+[node name="EndAnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -32 )
+rotation = 3.14159
+frames = ExtResource( 3 )
+offset = Vector2( 0, -4 )
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="EndAnimatedSprite"]
+position = Vector2( 0, -3 )
+emitting = false
+amount = 5
+emission_shape = 2
+emission_rect_extents = Vector2( 3, 1 )
+direction = Vector2( 0, -1 )
+spread = 5.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 30.0
+color_ramp = SubResource( 1 )
+
+[node name="BeamFadeNode" type="Node2D" parent="."]
+
+[node name="BeamSprite" type="Sprite" parent="BeamFadeNode"]
+position = Vector2( 0, -16 )
+z_index = -1
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 4, 26 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
+position = Vector2( 0, -1 )
+enabled = true
+cast_to = Vector2( 0, -400 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 0, -16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/disable = SubResource( 3 )
+anims/enable = SubResource( 4 )
+
+[node name="MechanicalAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="DisengageAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

@@ -1,0 +1,136 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Entity/Creep/VirusPawn/VirusPawnFrames.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Entity/Creep/VirusPawn/VirusPawn.gd" type="Script" id=2]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldLeft.png" type="Texture" id=3]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldRight.png" type="Texture" id=4]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldTop.png" type="Texture" id=5]
+[ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sound/Death/VirusDeathScream.wav" type="AudioStream" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.5
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 16.0
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.15894, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=4]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1.68, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="VirusPawn" type="KinematicBody2D" groups=[
+"creep",
+"player_collider",
+]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 2 )
+start_direction = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "right"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 1 )
+
+[node name="FrontRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 17, 0 )
+collision_mask = 129
+
+[node name="BackRayCast" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -17, 0 )
+collision_mask = 129
+
+[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 2 )
+
+[node name="ShieldBack" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldBack"]
+position = Vector2( -14, 0 )
+emitting = false
+amount = 5
+lifetime = 0.4
+texture = ExtResource( 3 )
+direction = Vector2( -1, 0 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+color_ramp = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ShieldBack"]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/StaticBody2D"]
+polygon = PoolVector2Array( -13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16 )
+
+[node name="ShieldFront" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldFront"]
+position = Vector2( 14, 0 )
+emitting = false
+amount = 5
+lifetime = 0.4
+texture = ExtResource( 4 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+color_ramp = SubResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ShieldFront"]
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/StaticBody2D"]
+polygon = PoolVector2Array( 13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16 )
+
+[node name="ShieldTop" type="Node2D" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldTop"]
+position = Vector2( 0, -15 )
+emitting = false
+amount = 5
+lifetime = 0.4
+texture = ExtResource( 5 )
+direction = Vector2( 0, -1 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 12.0
+color_ramp = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death = SubResource( 4 )
+
+[node name="IgnorePlayerTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DeathScreamAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+volume_db = -8.667
+bus = "Effects"
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+[connection signal="attacked" from="Hitbox" to="." method="_on_Hitbox_attacked"]
+[connection signal="timeout" from="IgnorePlayerTimer" to="." method="_on_IgnorePlayerTimer_timeout"]

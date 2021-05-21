@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggstr"
+
+[deps]
+
+source_file="res://Music/BrashNoIntro.ogg"
+dest_files=[ "res://.import/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=20.703

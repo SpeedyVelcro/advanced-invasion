@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="AchievementSeperator" type="HSeparator"]
+margin_top = 124.0
+margin_right = 468.0
+margin_bottom = 128.0

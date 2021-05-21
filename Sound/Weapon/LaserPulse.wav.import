@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample"
+
+[deps]
+
+source_file="res://Sound/Weapon/LaserPulse.wav"
+dest_files=[ "res://.import/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

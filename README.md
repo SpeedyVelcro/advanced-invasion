@@ -26,7 +26,9 @@ established history of allowing fangames.
 
 Regardless, I've licensed as much fully original content as I can under free
 licenses. And as for the rest, in general I am personally fine with people
-redistributing or modifying it for non-commercial purposes.
+redistributing or modifying it for non-commercial purposes, and I know Blublub
+was generally fine with people making fangames before he disappeared. So use your
+own discretion.
 
 ## API keys
 This information is really only provided for myself in-case I forget

@@ -1,6 +1,6 @@
 # License
 
-Except for the listed directories, the rest of this repository is licensed under
+Except for the listed directories, the rest of the files in this repository are licensed under
 the main repository license.
 
 The listed directories each have a LICENSE file stating their license.

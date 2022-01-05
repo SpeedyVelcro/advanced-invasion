@@ -5,6 +5,7 @@ it on [Newgrounds](https://www.newgrounds.com/portal/view/project/1626557),
 [itch](https://swiftvector.itch.io/advanced-invasion) or
 [Game Jolt](https://swiftvector.itch.io/advanced-invasion).
 
+![Advanced Invasion screenshot](readme-screenshot.png)
 ## Compiling
 **NOTE** This is for building the game from source code. If you just want to
 play it, I recommend downloading/playing it on Newgrounds, Game Jolt or itch.

@@ -8,7 +8,7 @@ repository license, see LICENSE.md at the root of the repository.
 By Patrick C. (https://freesound.org/people/-Patrick-/)
 Source: https://freesound.org/people/-Patrick-/sounds/466453/
 CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 ./GrenadePin1.wav
 ./GrenadePin2.wav
@@ -16,14 +16,14 @@ Modified by SwiftVector (cropped)
 By CGEffex (https://freesound.org/people/CGEffex/)
 Source: https://freesound.org/people/CGEffex/sounds/93837/
 CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 ./LaserBeam.wav
 "laser"
 By SamsterBirdies (https://freesound.org/people/SamsterBirdies/)
 Source: https://freesound.org/people/SamsterBirdies/sounds/470903/
 CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (looped, EQ)
+Modified by SpeedyVelcro (looped, EQ)
 
 ./LaserPulse.wav
 "laser3"
@@ -33,5 +33,5 @@ CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
 
 ./LightRetroGun.wav
 "Light Retro Gun"
-By SwiftVector (swiftvector.net), made using jsfxr
+By SpeedyVelcro (speedyvelcro.com), made using jsfxr
 CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)

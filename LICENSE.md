@@ -29,7 +29,7 @@ Sound/Weapon
 ```
 
 ## Main Respository License
-Copyright (c) SwiftVector 2021
+Copyright (c) SpeedyVelcro 2021
 
 Licensed under Apache License, Version 2.0
 

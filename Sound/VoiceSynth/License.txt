@@ -4,5 +4,5 @@ repository license, see LICENSE.md at the root of the repository.
 
 ./VoiceSynth.wav
 "Voice Synth"
-By SwiftVector (swiftvector.net), made using jsfxr
+By SpeedyVelcro (speedyvelcro.com), made using jsfxr
 CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)

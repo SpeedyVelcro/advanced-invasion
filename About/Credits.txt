@@ -1,17 +1,17 @@
 [b]Advanced Invasion Credits[/b]
 
-Advanced Invasion Source Code by SwiftVector
+Advanced Invasion Source Code by SpeedyVelcro
 Licensed under Apache 2.0.
 
 Advanced Invasion is a fangame of Blublub's Virus Invasion series.
 
 The Virus King and Lieutenant Scareye are characters by Blublub.
 
-Music by SwiftVector
+Music by SpeedyVelcro
 CC BY 4.0. (creativecommons.org/licenses/by/4.0)
-Get the music from swiftvector.net/advanced-invasion-ost
+Get the music from speedyvelcro.com/advanced-invasion-ost
 
-Graphics & Dialogue by SwiftVector, All Rights Reserved
+Graphics & Dialogue by SpeedyVelcro, All Rights Reserved
 
 [b]BETA TESTERS[/b]
 Bryan
@@ -25,7 +25,7 @@ CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 "lowvolt sparks.wav" (freesound.org/people/FreqMan/sounds/32682)
 By Richard Frohlich (freesound.org/people/FreqMan)
 CC BY 3.0. (creativecommons.org/licenses/by/3.0)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 "TV Off (short)" (freesound.org/people/snakebarney/sounds/138115)
 By snakebarney (freesound.org/people/snakebarney)
@@ -34,7 +34,7 @@ CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 "btn121.wav" (freesound.org/people/junggle/sounds/29301)
 By junggle (jazzy.junggle.net)
 CC BY 3.0. (creativecommons.org/licenses/by/3.0)
-Modified by SwiftVector (Pitch changed and EQ applied)
+Modified by SpeedyVelcro (Pitch changed and EQ applied)
 
 "SystemLoad.wav" (freesound.org/people/Zabuhailo/sounds/146957)
 by Zabuhailo (freesound.org/people/Zabuhailo)
@@ -56,30 +56,30 @@ CC BY 3.0. (creativecommons.org/licenses/by/3.0)
 "Grenade bouncing" (freesound.org/people/-Patrick-/sounds/466453)
 By Patrick C. (freesound.org/people/-Patrick-)
 CC BY 3.0. (creativecommons.org/licenses/by/3.0)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 "Grenade pin pull.flac" (freesound.org/people/CGEffex/sounds/93837)
 By CGEffex (freesound.org/people/CGEffex)
 CC BY 3.0. (creativecommons.org/licenses/by/3.0)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 "oddworld_bomb.wav" (freesound.org/people/Oddworld/sounds/75330)
 By Oddworld (freesound.org/people/Oddworld)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (cropped and sped up)
+Modified by SpeedyVelcro (cropped and sped up)
 
 "tinnitus.wav" (freesound.org/people/tnturner/sounds/377205)
 By tnturner (freesound.org/people/tnturner)
 CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 
 "Voice Synth"
-By SwiftVector, made using jsfxr
+By SpeedyVelcro, made using jsfxr
 CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 
 "laser" (freesound.org/people/SamsterBirdies/sounds/470903)
 By SamsterBirdies (freesound.org/people/SamsterBirdies)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (looped, EQ)
+Modified by SpeedyVelcro (looped, EQ)
 
 "laser3" (freesound.org/people/nsstudios/sounds/344276)
 By NS Studios (www.nsstudiosweb.com)
@@ -88,40 +88,40 @@ CC BY 3.0. (creativecommons.org/licenses/by/3.0)
 "traditional stamp.wav" (https://freesound.org/people/I.fekry/sounds/470710)
 By I.fekry (freesound.org/people/I.fekry)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (cropped, reverb and EQ)
+Modified by SpeedyVelcro (cropped, reverb and EQ)
 
 "Stick-Swoosh Whoosh" (freesound.org/people/Hitrison/sounds/216675)
 By Hitrison (freesound.org/people/Hitrison)
 CC BY 3.0 (creativecommons.org/licenses/by/3.0)
-Modified by SwiftVector (EQ)
+Modified by SpeedyVelcro (EQ)
 
 "Light Retro Gun"
-By SwiftVector, made using jsfxr
+By SpeedyVelcro, made using jsfxr
 CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 
 "Anvil Hit 1" (freesound.org/people/michorvath/sounds/270589)
 By michorvath (freesound.org/people/michorvath)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (Removed silence at beginning)
+Modified by SpeedyVelcro (Removed silence at beginning)
 Pitched down in-engine
 
 "MachinePowerOff.flac" (freesound.org/people/Skylar1146/sounds/395378)
 By Skylar1146 (freesound.org/people/Skylar1146)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (sped up, pitched down, fade out)
+Modified by SpeedyVelcro (sped up, pitched down, fade out)
 
 "Camera Shutter" (freesound.org/people/roachpowder/sounds/170229)
 By roachpowder (freesound.org/people/roachpowder)
 CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
 
 "Virus Death Scream", "Guardian Death Scream" and "Player Death Scream"
-By SwiftVector (swiftvector.net), made using Helm and Audacity
+By SpeedyVelcro (speedyvelcro.com), made using Helm and Audacity
 CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
 
 "Poof (3, varying degrees of intensity)" (freesound.org/people/mendihola/sounds/440269)
 By mendihola (freesound.org/people/mendihola)
 CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 [b]FONTS[/b]
 Schoon Square

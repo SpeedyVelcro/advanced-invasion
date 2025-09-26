@@ -12,7 +12,7 @@ export.cfg
 .mono/
 data_*/
 
-# SwiftVector's bizarre and convoluted way of organising exports
+# SpeedyVelcro's bizarre and convoluted way of organising exports
 # We don't exclude the folder structure itself because Godot's exporter
 # can't make directories - they need to already be there.
 compiled/distribute/*

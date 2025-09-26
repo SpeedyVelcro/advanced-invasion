@@ -116,12 +116,12 @@ custom_fonts/bold_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[b]#. song[/b]
 
-by SwiftVector
+by SpeedyVelcro
 
 Lorem ipsum dolor sit amet"
 text = "#. song
 
-by SwiftVector
+by SpeedyVelcro
 
 Lorem ipsum dolor sit amet"
 

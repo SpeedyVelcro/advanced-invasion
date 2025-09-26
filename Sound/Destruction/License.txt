@@ -13,28 +13,28 @@ CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
 By michorvath (https://freesound.org/people/michorvath/)
 Source: https://freesound.org/people/michorvath/sounds/270589/
 CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (Removed silence at beginning)
+Modified by SpeedyVelcro (Removed silence at beginning)
 
 ./LowThump.wav
 "traditional stamp.wav"
 By I.fekry (https://freesound.org/people/I.fekry/)
 Source: https://freesound.org/people/I.fekry/sounds/470710/
 CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (cropped, reverb and EQ)
+Modified by SpeedyVelcro (cropped, reverb and EQ)
 
 ./Poof.wav
 "Poof (3, varying degrees of intensity)"
 By mendihola (https://freesound.org/people/mendihola/)
 Source: https://freesound.org/people/mendihola/sounds/440269/
 CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector from original (cropped)
+Modified by SpeedyVelcro from original (cropped)
 
 ./Pop.wav
 "oddworld_bomb.wav"
 By Oddworld (https://freesound.org/people/Oddworld/)
 Source: https://freesound.org/people/Oddworld/sounds/75330/
 CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (cropped and sped up)
+Modified by SpeedyVelcro (cropped and sped up)
 
 ./RubbleFall.wav
 "building_collapse05_loud.wav"

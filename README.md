@@ -2,8 +2,8 @@
 
 Advanced Invasion is a fangame of Blublub's Virus Invasion series. You can play
 it on [Newgrounds](https://www.newgrounds.com/portal/view/project/1626557),
-[itch](https://swiftvector.itch.io/advanced-invasion) or
-[Game Jolt](https://swiftvector.itch.io/advanced-invasion).
+[itch](https://speedyvelcro.itch.io/advanced-invasion) or
+[Game Jolt](https://speedyvelcro.itch.io/advanced-invasion).
 
 ![Advanced Invasion screenshot](readme-screenshot.png)
 ## Compiling

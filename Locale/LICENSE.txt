@@ -1,5 +1,5 @@
 ./Dialogue.csv
-By SwiftVector, All Rights Reserved
+By SpeedyVelcro, All Rights Reserved
 The Virus King and Lieutenant Scareye are characters by Blublub, used here for
 non-commercial purposes based on an established history of allowing fangames.
 

@@ -7,4 +7,4 @@ repository license, see LICENSE.md at the root of the repository.
 By Hitrison (https://freesound.org/people/Hitrison/)
 Source: https://freesound.org/people/Hitrison/sounds/216675/
 CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
-Modified by SwiftVector (EQ)
+Modified by SpeedyVelcro (EQ)

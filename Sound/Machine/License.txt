@@ -7,7 +7,7 @@ repository license, see LICENSE.md at the root of the repository.
 By EchoCinematics (echocinematics.com)
 Source: https://freesound.org/people/EchoCinematics/sounds/131599/
 CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 ./ButtonEvenHigher.wav
 ./ButtonHigher.wav
@@ -15,7 +15,7 @@ Modified by SwiftVector (cropped)
 By junggle (jazzy.junggle.net)
 Source: https://freesound.org/people/junggle/sounds/29301/
 CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
-Modified by SwiftVector (Pitch changed and EQ applied)
+Modified by SpeedyVelcro (Pitch changed and EQ applied)
 
 ./LowVoltSpark1.wav
 ./LowVoltSpark2.wav
@@ -23,14 +23,14 @@ Modified by SwiftVector (Pitch changed and EQ applied)
 By Richard Frohlich (https://freesound.org/people/FreqMan/)
 Source: https://freesound.org/people/FreqMan/sounds/32682/
 CC BY 3.0. (https://creativecommons.org/licenses/by/3.0/)
-Modified by SwiftVector (cropped)
+Modified by SpeedyVelcro (cropped)
 
 ./MachinePowerOff.wav
 "MachinePowerOff.flac"
 By Skylar1146 (https://freesound.org/people/Skylar1146/)
 Source: https://freesound.org/people/Skylar1146/sounds/395378/
 CC0 1.0. (https://creativecommons.org/publicdomain/zero/1.0/)
-Modified by SwiftVector (sped up, pitched down, fade out)
+Modified by SpeedyVelcro (sped up, pitched down, fade out)
 
 ./Shutter.wav
 "Camera Shutter"

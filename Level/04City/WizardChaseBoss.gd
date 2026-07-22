@@ -15,7 +15,7 @@ const BOSS_START_DELAY = 2.0
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 
 func _on_BossStartArea_body_entered(_body):
 	# Guaranteed this is player due to collision mask

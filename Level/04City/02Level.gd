@@ -11,7 +11,7 @@ extends Level
 @export var dialogue_1 = [] # (Array, Resource)
 
 func _ready():
-	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	first_guardian.set_process(false)
 	first_guardian.set_physics_process(false)
 	first_guardian.set_visible(false)

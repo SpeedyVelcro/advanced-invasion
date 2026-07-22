@@ -12,7 +12,7 @@ const FLASHBANG_VELOCITY = Vector2(-140, -50)
 const NEXT_SCENE = "res://GUI/EndCredits/EndCredits.tscn"
 
 func _ready():
-	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 	flashbang.set_visible(false)

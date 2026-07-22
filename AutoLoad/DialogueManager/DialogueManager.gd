@@ -32,7 +32,7 @@ const VOICE_SYNTH_PITCH_VARY = 0.2
 signal finished
 signal hidden
 signal broadcast(message)
-signal end_broadcast(message)
+signal end_broadcast_signal(message) # TODO: better name (this was just a quick change to avoid name collision during Godot 4 upgrade)
 
 func _ready():
 	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
@@ -169,7 +169,7 @@ func advance_dialogue() -> bool:
 			$AnimationPlayer.play("hide")
 			emit_signal("finished")
 			for message in end_broadcast:
-				emit_signal("end_broadcast", message)
+				end_broadcast_signal.emit(message)
 			end_broadcast = []
 			return false
 	else:
@@ -191,7 +191,7 @@ func update_dialogue():
 	var txt = "[center]" + tr(dialogue_queue[0].bbcode) + "[/center]"
 	dialogue_label.set_bbcode(txt)
 
-func hide():
+func hide_dialogue():
 	# Not sure that this function is even necessary but leaving it in for now just in case
 	$AnimationPlayer.play("hide")
 

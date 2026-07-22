@@ -8,7 +8,7 @@ const VIRUS_RESOURCE = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
 @onready var portal_right = $PortalRight
 
 func _ready():
-	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 

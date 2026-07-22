@@ -1,16 +1,16 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(NodePath) var player_path
-onready var player = get_node(player_path)
-onready var animated_sprite = $AnimatedSprite
-onready var shield_particles = $ShieldParticles
-onready var shield_timer = $ShieldTimer
-onready var left_wall_raycast = $LeftWallRayCast
-onready var right_wall_raycast = $RightWallRayCast
-onready var animation_player = $AnimationPlayer
-onready var exclamation_sprite = $ExclamationSprite
-onready var ignore_player_timer = $IgnorePlayerTimer
-onready var hurt_timer = $HurtTimer
+@export var player_path: NodePath
+@onready var player = get_node(player_path)
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var shield_particles = $ShieldParticles
+@onready var shield_timer = $ShieldTimer
+@onready var left_wall_raycast = $LeftWallRayCast
+@onready var right_wall_raycast = $RightWallRayCast
+@onready var animation_player = $AnimationPlayer
+@onready var exclamation_sprite = $ExclamationSprite
+@onready var ignore_player_timer = $IgnorePlayerTimer
+@onready var hurt_timer = $HurtTimer
 
 enum {
 	STATE_SLEEP,
@@ -30,11 +30,11 @@ const MIN_WEAK_HEIGHT = -28.0 # Player must be higher than this relative y-posit
 const MELEE_KNOCKBACK = Vector2(200, -150)
 const MELEE_DAMAGE = 1
 const STARTING_HEALTH = 4
-var shield_active = false setget set_shield_active, is_shield_active
+var shield_active = false: get = is_shield_active, set = set_shield_active
 var walk_direction = -1 # Corresponds to x-direction
 var ignore_player_contact = false
 var first_hit_done = false
-var health = STARTING_HEALTH setget set_health, get_health
+var health = STARTING_HEALTH: get = get_health, set = set_health
 
 signal awake
 signal first_hit
@@ -88,7 +88,8 @@ func _on_state_enter(p_state = state):
 func _physics_process(_delta):
 	if state == STATE_PATROL or state == STATE_HURT:
 		var walk_vector = Vector2(WALK_SPEED * walk_direction, 0)
-		move_and_slide(walk_vector)
+		set_velocity(walk_vector)
+		move_and_slide()
 		left_wall_raycast.force_raycast_update()
 		right_wall_raycast.force_raycast_update()
 	match(state):
@@ -108,7 +109,7 @@ func _physics_process(_delta):
 				animated_sprite.play("hurt_left")
 	
 	# Detect collisions following move and slide
-	for i in range(get_slide_count()):
+	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider.is_in_group("player"):

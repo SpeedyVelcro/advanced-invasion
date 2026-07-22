@@ -1,15 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture" id=2]
+[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture2D" id=2]
 
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
+colors = PackedColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
 
 [node name="Breach" type="Node2D"]
 z_index = 10
 
-[node name="SpriteBack" type="Sprite" parent="."]
+[node name="SpriteBack" type="Sprite2D" parent="."]
 modulate = Color( 0, 0, 0, 1 )
 texture = ExtResource( 2 )
 

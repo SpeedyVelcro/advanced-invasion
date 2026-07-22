@@ -9,7 +9,7 @@ func _ready():
 	install_effect(effect)
 
 func set_visible_characters(value):
-	.set_visible_characters(value)
+	super.set_visible_characters(value)
 	# This ensures custom fx will re-run every time a new character is drawn,
 	# so that the speed multiplier is always up-to-date for the last character.
 	speed_multiplier = 1.0

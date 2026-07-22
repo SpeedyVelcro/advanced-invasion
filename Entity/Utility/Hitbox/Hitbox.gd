@@ -3,8 +3,8 @@
 class_name Hitbox
 extends Area2D
 
-export var direction_by_velocity = true
-export var vulnerable_to_teams = [0]
+@export var direction_by_velocity = true
+@export var vulnerable_to_teams = [0]
 
 signal attacked(damage, from_direction)
 

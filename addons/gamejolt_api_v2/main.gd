@@ -5,9 +5,9 @@ extends HTTPRequest
 
 const BASE_GAMEJOLT_API_URL = 'https://api.gamejolt.com/api/game/v1_2'
 
-export(String) var private_key
-export(String) var game_id
-export(bool) var verbose=true
+@export var private_key: String
+@export var game_id: String
+@export var verbose: bool=true
 
 signal gamejolt_request_completed(type,message,finished)
 
@@ -27,7 +27,7 @@ func init(pk,gi):
 	private_key=pk
 	game_id=gi
 func _ready():
-	connect("request_completed", self, '_on_HTTPRequest_request_completed')
+	connect("request_completed", Callable(self, '_on_HTTPRequest_request_completed'))
 	pass
 func auto_auth():
 	#get username and token form url on gamejolt (only work with html5)
@@ -224,9 +224,9 @@ func _compose_url(urlpath, parameters={}):
 		if parameter == null:
 			continue
 		parameter = str(parameter)
-		if parameter.empty():
+		if parameter.is_empty():
 			continue;
-		final_url += '&' + key + '=' + parameter.percent_encode()
+		final_url += '&' + key + '=' + parameter.uri_encode()
 
 	var signature = final_url + private_key
 	signature = signature.md5_text()
@@ -251,7 +251,9 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	responseBody = body.get_string_from_utf8()
 	if verbose:
 		_verbose(responseBody)
-	responseBody = JSON.parse(responseBody)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(responseBody)
+	responseBody = test_json_conv.get_data()
 	jsonParseError = responseBody.error
 	if jsonParseError == OK:
 		responseBody = responseBody.result['response']

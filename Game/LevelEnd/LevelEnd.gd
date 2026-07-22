@@ -1,6 +1,6 @@
 extends Area2D
 
-export var level_path = ""
+@export var level_path = ""
 
 func _on_LevelEnd_body_entered(body):
 	if body.get_name() == "Player":

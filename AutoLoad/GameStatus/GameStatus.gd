@@ -3,9 +3,9 @@ extends Node
 var soundtrack_unlocked = {
 	"militia" : true
 }
-var story_completion = false setget set_story_completion, is_story_complete
-var story_normal_completion = false setget set_story_normal_completion, is_story_normal_complete
-var main_menu_visited = false setget set_main_menu_visited, is_main_menu_visited
+var story_completion = false: get = is_story_complete, set = set_story_completion
+var story_normal_completion = false: get = is_story_normal_complete, set = set_story_normal_completion
+var main_menu_visited = false: get = is_main_menu_visited, set = set_main_menu_visited
 const SAVE_FILE_PATH = "user://game-status.json"
 
 signal story_complete
@@ -27,11 +27,13 @@ func make_save_string():
 		"story_normal_completion" : story_normal_completion,
 		"soundtrack_unlocked" : soundtrack_unlocked
 	}
-	return to_json(dict)
+	return JSON.new().stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
-	var dict = parse_json(value)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(value)
+	var dict = test_json_conv.get_data()
 	if typeof(dict) != TYPE_DICTIONARY:
 		push_error("Corrupt save data: not recognised as dictionary")
 		return false
@@ -65,7 +67,7 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 		var value = dictionary[key]
 		# Cast real to int if that's the type given
 		# (because parsing json seems to always gives reals not ints)
-		if type == TYPE_INT and typeof(value) == TYPE_REAL:
+		if type == TYPE_INT and typeof(value) == TYPE_FLOAT:
 			value = int(value)
 		if typeof(value) == type:
 			set(property, dictionary[key])

@@ -1,15 +1,15 @@
 extends Node
 
-export(NodePath) var gui_path
-onready var gui = get_node(gui_path)
-export(NodePath) var color_rect_path
-onready var color_rect = get_node(color_rect_path)
-export(NodePath) var restart_button_path
-onready var restart_button = get_node(restart_button_path)
-export(NodePath) var skip_cutscene_button_path
-onready var skip_cutscene_button = get_node(skip_cutscene_button_path)
-export(NodePath) var options_path
-onready var options = get_node(options_path)
+@export var gui_path: NodePath
+@onready var gui = get_node(gui_path)
+@export var color_rect_path: NodePath
+@onready var color_rect = get_node(color_rect_path)
+@export var restart_button_path: NodePath
+@onready var restart_button = get_node(restart_button_path)
+@export var skip_cutscene_button_path: NodePath
+@onready var skip_cutscene_button = get_node(skip_cutscene_button_path)
+@export var options_path: NodePath
+@onready var options = get_node(options_path)
 
 var in_a_deeper_menu = false
 var pause_enabled = true

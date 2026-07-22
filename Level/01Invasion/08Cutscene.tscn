@@ -3,13 +3,13 @@
 [ext_resource path="res://Tile/NormalTile/NormalWall.tres" type="TileSet" id=1]
 [ext_resource path="res://Level/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tile/NormalTile/NormalDecor.tres" type="TileSet" id=3]
-[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture" id=4]
+[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture2D" id=4]
 [ext_resource path="res://Level/01Invasion/08CutsceneChaperone.gd" type="Script" id=5]
 [ext_resource path="res://Game/CameraPlayer/CameraPlayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture" id=8]
+[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture2D" id=8]
 [ext_resource path="res://AutoLoad/DialogueManager/Dialogue.gd" type="Script" id=9]
-[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture" id=10]
+[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture2D" id=10]
 [ext_resource path="res://Level/01Invasion/08Cutscene.gd" type="Script" id=11]
 
 [sub_resource type="Resource" id=1]
@@ -32,8 +32,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 16, -112 ), Vector2( 688, -112 ) ]
 }
@@ -44,8 +44,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 800, -112 ) ]
 }
@@ -56,8 +56,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ) ]
 }
@@ -72,8 +72,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 5.9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 5.9 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 688, -112 ), Vector2( 1616, -112 ) ]
 }
@@ -84,8 +84,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 6.9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 6.9 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 800, -112 ), Vector2( 1728, -112 ) ]
 }
@@ -96,8 +96,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 10 ) ]
 }
@@ -108,8 +108,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "end"
@@ -142,7 +142,7 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
 
-[node name="Yellow" type="Sprite" parent="." index="5"]
+[node name="Yellow" type="Sprite2D" parent="." index="5"]
 position = Vector2( 16, -112 )
 texture = ExtResource( 4 )
 
@@ -162,7 +162,7 @@ dialogue_1 = [ SubResource( 1 ) ]
 anims/cutscene_1 = SubResource( 2 )
 anims/cutscene_2 = SubResource( 3 )
 
-[node name="Militia" type="Sprite" parent="." index="7"]
+[node name="Militia" type="Sprite2D" parent="." index="7"]
 position = Vector2( 800, -112 )
 texture = ExtResource( 8 )
 [connection signal="animation_finished" from="CutsceneChaperone/AnimationPlayer" to="CutsceneChaperone" method="_on_AnimationPlayer_animation_finished"]

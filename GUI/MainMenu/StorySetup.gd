@@ -1,15 +1,15 @@
 extends Control
 
-export(NodePath) var casual_button_path
-onready var casual_button = get_node(casual_button_path)
-export(NodePath) var normal_button_path
-onready var normal_button = get_node(normal_button_path)
-export(NodePath) var description_label_path
-onready var description_label = get_node(description_label_path)
-export(NodePath) var back_button_path
-onready var back_button = get_node(back_button_path)
-export(NodePath) var play_button_path
-onready var play_button = get_node(play_button_path)
+@export var casual_button_path: NodePath
+@onready var casual_button = get_node(casual_button_path)
+@export var normal_button_path: NodePath
+@onready var normal_button = get_node(normal_button_path)
+@export var description_label_path: NodePath
+@onready var description_label = get_node(description_label_path)
+@export var back_button_path: NodePath
+@onready var back_button = get_node(back_button_path)
+@export var play_button_path: NodePath
+@onready var play_button = get_node(play_button_path)
 
 var locked = false
 

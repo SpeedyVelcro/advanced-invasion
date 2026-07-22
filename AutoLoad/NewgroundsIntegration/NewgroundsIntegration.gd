@@ -1,7 +1,7 @@
 extends Node
 
-onready var newgrounds_api = $NewGroundsAPI
-onready var newgrounds_secret = $NewgroundsSecret
+@onready var newgrounds_api = $NewGroundsAPI
+@onready var newgrounds_secret = $NewgroundsSecret
 const YIELD_ENABLED = true
 const NEWGROUNDS_MEDAL_ID = {
 	"defeat_giant" : 62836,
@@ -11,20 +11,20 @@ const NEWGROUNDS_MEDAL_ID = {
 	"complete_normal" : 62840
 }
 
-var integration_enabled = false setget set_integration_enabled, is_integration_enabled
+var integration_enabled = false: get = is_integration_enabled, set = set_integration_enabled
 
 signal enabled
 signal disabled
 
 func _ready():
 	newgrounds_api.applicationId = newgrounds_secret.APP_ID
-	AchievementManager.connect("achievement_synced", self, "_on_AchievementManager_achievement_synced")
+	AchievementManager.connect("achievement_synced", Callable(self, "_on_AchievementManager_achievement_synced"))
 
 func _on_AchievementManager_achievement_synced(achievement_id):
 	if integration_enabled:
 		newgrounds_api.Medal.unlock(NEWGROUNDS_MEDAL_ID[achievement_id])
 		if YIELD_ENABLED:
-			var result = yield(newgrounds_api, 'ng_request_complete')
+			var result = await newgrounds_api.ng_request_complete
 			if not newgrounds_api.is_ok(result):
 				push_error("Unlocking newgrounds achievement went wrong. Achievement id: " + achievement_id)
 				push_error(result.error)

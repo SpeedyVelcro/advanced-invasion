@@ -5,13 +5,13 @@
 # actually finish the game so this hacky solution shall work for now.
 # I think I'll definitely refactor for Advanced Invasion 2
 
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(int, "Left", "Right") var start_direction
-onready var ignore_player_timer = $IgnorePlayerTimer
-onready var gun_audio_player = $GunAudioStreamPlayer2D
-onready var death_audio_player = $DeathAudioStreamPlayer2D
-onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D2
+@export var start_direction # (int, "Left", "Right")
+@onready var ignore_player_timer = $IgnorePlayerTimer
+@onready var gun_audio_player = $GunAudioStreamPlayer2D
+@onready var death_audio_player = $DeathAudioStreamPlayer2D
+@onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D2
 var gravity = 850
 var walk_speed = 80
 var direction = Vector2(1, 0)
@@ -23,39 +23,39 @@ var melee_damage = 1
 var ignore_player_contact = false
 const MIN_WEAK_HEIGHT = -16 # Player must be higher than this relative y-position to damage
 		# Remember player origin is in middle and so is the virus'
-onready var corpse_bottom_resource = preload("res://Entity/Creep/Guardian/Corpse/GuardianCorpseBottom.tscn")
-onready var corpse_top_resource = preload("res://Entity/Creep/Guardian/Corpse/GuardianCorpseTop.tscn")
+@onready var corpse_bottom_resource = preload("res://Entity/Creep/Guardian/Corpse/GuardianCorpseBottom.tscn")
+@onready var corpse_top_resource = preload("res://Entity/Creep/Guardian/Corpse/GuardianCorpseTop.tscn")
 var rng = RandomNumberGenerator.new()
 const ENABLE_GUN = true # If true guardian will fire bullets
 var gun_ready = true
 const GUN_TIME_SEC = 2.0
 var dead = false
-onready var bullet_resource = preload("res://Entity/Creep/Guardian/GuardianBullet.tscn")
+@onready var bullet_resource = preload("res://Entity/Creep/Guardian/GuardianBullet.tscn")
 const BULLET_SPAWN_POSITION = Vector2(18, 0)
 const BULLET_VELOCITY = Vector2(160.0, 0.0)
 
 signal death
 
 enum {SHIELD_BACK, SHIELD_FRONT, SHIELD_TOP}
-onready var shield_node = {
+@onready var shield_node = {
 	SHIELD_BACK : get_node("ShieldBack"),
 	SHIELD_FRONT : get_node("ShieldFront"),
 	SHIELD_TOP : get_node("ShieldTop")
 }
-onready var shield_particles = {
+@onready var shield_particles = {
 	SHIELD_BACK : get_node("ShieldBack/CPUParticles2D"),
 	SHIELD_FRONT : get_node("ShieldFront/CPUParticles2D"),
 	SHIELD_TOP : get_node("ShieldTop/CPUParticles2D")
 }
-onready var shield_static_body = {
+@onready var shield_static_body = {
 	SHIELD_BACK : get_node("ShieldBack/StaticBody2D"),
 	SHIELD_FRONT : get_node("ShieldFront/StaticBody2D"),
 	SHIELD_TOP : null
 }
-export var back_shield_active_on_ready = false
-export var front_shield_active_on_ready = false
-export var top_shield_active_on_ready = false
-onready var shield_active = {
+@export var back_shield_active_on_ready = false
+@export var front_shield_active_on_ready = false
+@export var top_shield_active_on_ready = false
+@onready var shield_active = {
 	SHIELD_BACK : back_shield_active_on_ready,
 	SHIELD_FRONT : front_shield_active_on_ready,
 	SHIELD_TOP : top_shield_active_on_ready
@@ -80,9 +80,9 @@ func _process(delta):
 	else:
 		# Choose facing
 		if direction.x > 0:
-			$AnimatedSprite.set_animation("right")
+			$AnimatedSprite2D.set_animation("right")
 		elif direction.x < 0:
-			$AnimatedSprite.set_animation("left")
+			$AnimatedSprite2D.set_animation("left")
 
 func _physics_process(delta):
 	if dead:
@@ -116,10 +116,14 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		velocity.x = 0
 		velocity += direction * walk_speed
-		velocity = move_and_slide_with_snap(velocity, snap_vector, up_direction)
+		set_velocity(velocity)
+		# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 		
 		# Detect collisions following move and slide
-		for i in range(get_slide_count()):
+		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
 			if collider.is_in_group("player"):
@@ -181,13 +185,13 @@ func spawn_corpse():
 	var torque_range = 5.0
 	var velocity_range = 50.0
 	# Top corpse
-	var corpse_top = corpse_top_resource.instance()
+	var corpse_top = corpse_top_resource.instantiate()
 	get_parent().add_child(corpse_top)
 	corpse_top.global_position = global_position
 	corpse_top.set_angular_velocity(rng.randf_range(-torque_range, torque_range))
 	corpse_top.linear_velocity.x = rng.randf_range(-velocity_range, velocity_range)
 	# Bottom corpse
-	var corpse_bottom = corpse_bottom_resource.instance()
+	var corpse_bottom = corpse_bottom_resource.instantiate()
 	get_parent().add_child(corpse_bottom)
 	corpse_bottom.global_position = global_position
 	corpse_bottom.set_angular_velocity(rng.randf_range(-torque_range, torque_range))
@@ -214,8 +218,8 @@ func reverse_direction():
 func update_shield(shield):
 	shield_particles[shield].set_emitting(is_shield_active(shield))
 	if shield_static_body[shield] != null:
-		shield_static_body[shield].set_collision_layer_bit(6, is_shield_active(shield)) # bullet stopper
-		shield_static_body[shield].set_collision_mask_bit(4, is_shield_active(shield)) # bullet
+		shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
+		shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
 
 func _on_GunTimer_timeout():
 	gun_ready = true
@@ -232,7 +236,7 @@ func fire_gun(bullet_x_dir = 0):
 		bullet_x_dir = sign(bullet_x_dir)
 	
 	# Fire the actual bullet
-	var bullet = bullet_resource.instance()
+	var bullet = bullet_resource.instantiate()
 	get_parent().add_child(bullet)
 	# Set bullet position
 	var relative_position = BULLET_SPAWN_POSITION
@@ -251,15 +255,15 @@ func set_direction(dir : Vector2):
 	dir.x = sign(dir.x)
 	direction = dir
 	# Update raycasts
-	var front_vec = $FrontRayCast.get_cast_to()
-	var back_vec = $BackRayCast.get_cast_to()
+	var front_vec = $FrontRayCast.get_target_position()
+	var back_vec = $BackRayCast.get_target_position()
 	front_vec.x = abs(front_vec.x) * direction.x
 	back_vec.x = abs(back_vec.x) * direction.x * -1
-	$FrontRayCast.set_cast_to(front_vec)
-	$BackRayCast.set_cast_to(back_vec)
-	var player_detect_vec = $PlayerDetectionRaycast.get_cast_to()
+	$FrontRayCast.set_target_position(front_vec)
+	$BackRayCast.set_target_position(back_vec)
+	var player_detect_vec = $PlayerDetectionRaycast.get_target_position()
 	player_detect_vec.x = abs(player_detect_vec.x) * direction.x
-	$PlayerDetectionRaycast.set_cast_to(player_detect_vec)
+	$PlayerDetectionRaycast.set_target_position(player_detect_vec)
 	# Update shields (flipping visuals)
 	var new_scale = Vector2()
 	for node in shield_node.values():

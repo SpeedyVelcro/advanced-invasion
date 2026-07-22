@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-onready var bounce_audio_player = $BounceAudioStreamPlayer
+@onready var bounce_audio_player = $BounceAudioStreamPlayer
 
 func _physics_process(_delta):
 	pass

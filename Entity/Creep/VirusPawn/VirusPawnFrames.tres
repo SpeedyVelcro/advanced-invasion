@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=15 format=2]
 
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnDeath.png" type="Texture" id=1]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnRight.png" type="Texture" id=2]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" type="Texture" id=3]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnDeath.png" type="Texture2D" id=1]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnRight.png" type="Texture2D" id=2]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" type="Texture2D" id=3]
 
 
 

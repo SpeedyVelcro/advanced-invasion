@@ -9,7 +9,7 @@ var coyote_time_active = false
 const COYOTE_TIME_SEC = 0.1
 
 func _on_state_enter():
-	._on_state_enter()
+	super._on_state_enter()
 	halt_x_velocity()
 	#if kinematic_body.is_on_floor():
 	#	enable_snap()

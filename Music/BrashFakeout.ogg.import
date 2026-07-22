@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/BrashFakeout.ogg-12cb5d88d169469a01eab65fa79c6086.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bfqfbvhbxb2ht"
+path="res://.godot/imported/BrashFakeout.ogg-12cb5d88d169469a01eab65fa79c6086.oggvorbisstr"
 
 [deps]
 
 source_file="res://Music/BrashFakeout.ogg"
-dest_files=[ "res://.import/BrashFakeout.ogg-12cb5d88d169469a01eab65fa79c6086.oggstr" ]
+dest_files=["res://.godot/imported/BrashFakeout.ogg-12cb5d88d169469a01eab65fa79c6086.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

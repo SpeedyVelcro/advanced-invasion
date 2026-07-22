@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var label = $Label
-onready var animation_player = $AnimationPlayer
+@onready var label = $Label
+@onready var animation_player = $AnimationPlayer
 const TEXT_POSTFIX = " Viruses Remaining"
 
 func _ready():

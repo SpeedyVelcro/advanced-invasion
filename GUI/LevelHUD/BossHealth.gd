@@ -1,7 +1,7 @@
 extends Control
 
-onready var animation_player = $AnimationPlayer
-onready var progress_bar = $ProgressBar
+@onready var animation_player = $AnimationPlayer
+@onready var progress_bar = $ProgressBar
 var currently_showing = false
 
 func _ready():

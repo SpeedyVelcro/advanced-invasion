@@ -1,10 +1,10 @@
 # VirusPawn.gd
 
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(int, "Left", "Right") var start_direction
-onready var ignore_player_timer = $IgnorePlayerTimer
-onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D
+@export var start_direction # (int, "Left", "Right")
+@onready var ignore_player_timer = $IgnorePlayerTimer
+@onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D
 var gravity = 850
 var walk_speed = 80
 var direction = Vector2(1, 0)
@@ -20,25 +20,25 @@ const MIN_WEAK_HEIGHT = -16 # Player must be higher than this relative y-positio
 signal death
 
 enum {SHIELD_BACK, SHIELD_FRONT, SHIELD_TOP}
-onready var shield_node = {
+@onready var shield_node = {
 	SHIELD_BACK : get_node("ShieldBack"),
 	SHIELD_FRONT : get_node("ShieldFront"),
 	SHIELD_TOP : get_node("ShieldTop")
 }
-onready var shield_particles = {
+@onready var shield_particles = {
 	SHIELD_BACK : get_node("ShieldBack/CPUParticles2D"),
 	SHIELD_FRONT : get_node("ShieldFront/CPUParticles2D"),
 	SHIELD_TOP : get_node("ShieldTop/CPUParticles2D")
 }
-onready var shield_static_body = {
+@onready var shield_static_body = {
 	SHIELD_BACK : get_node("ShieldBack/StaticBody2D"),
 	SHIELD_FRONT : get_node("ShieldFront/StaticBody2D"),
 	SHIELD_TOP : null
 }
-export var back_shield_active_on_ready = false
-export var front_shield_active_on_ready = false
-export var top_shield_active_on_ready = false
-onready var shield_active = {
+@export var back_shield_active_on_ready = false
+@export var front_shield_active_on_ready = false
+@export var top_shield_active_on_ready = false
+@onready var shield_active = {
 	SHIELD_BACK : back_shield_active_on_ready,
 	SHIELD_FRONT : front_shield_active_on_ready,
 	SHIELD_TOP : top_shield_active_on_ready
@@ -57,17 +57,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if $AnimatedSprite.get_animation() == "death":
+	if $AnimatedSprite2D.get_animation() == "death":
 		pass
 	else:
 		# Choose facing
 		if direction.x > 0:
-			$AnimatedSprite.set_animation("right")
+			$AnimatedSprite2D.set_animation("right")
 		elif direction.x < 0:
-			$AnimatedSprite.set_animation("left")
+			$AnimatedSprite2D.set_animation("left")
 
 func _physics_process(delta):
-	if $AnimatedSprite.get_animation() == "death":
+	if $AnimatedSprite2D.get_animation() == "death":
 		pass
 	else:
 		# Walking into another body
@@ -90,10 +90,14 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		velocity.x = 0
 		velocity += direction * walk_speed
-		velocity = move_and_slide_with_snap(velocity, snap_vector, up_direction)
+		set_velocity(velocity)
+		# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 		
 		# Detect collisions following move and slide
-		for i in range(get_slide_count()):
+		for i in range(get_slide_collision_count()):
 			var collision = get_slide_collision(i)
 			var collider = collision.get_collider()
 			if collider.is_in_group("player"):
@@ -133,7 +137,7 @@ func _on_IgnorePlayerTimer_timeout():
 func die():
 	death_scream_audio_player.play()
 	emit_signal("death")
-	$AnimatedSprite.set_animation("death")
+	$AnimatedSprite2D.set_animation("death")
 	$AnimationPlayer.play("death")
 	$CollisionShape2D.call_deferred("set_disabled", true)
 	$Hitbox/CollisionShape2D.call_deferred("set_disabled", true)
@@ -142,7 +146,7 @@ func die():
 	set_shield_active(SHIELD_TOP, false)
 
 func _on_AnimatedSprite_animation_finished():
-	if $AnimatedSprite.get_animation() == "death":
+	if $AnimatedSprite2D.get_animation() == "death":
 		queue_free()
 
 func _on_Hitbox_attacked(damage, from_direction):
@@ -166,8 +170,8 @@ func reverse_direction():
 func update_shield(shield):
 	shield_particles[shield].set_emitting(is_shield_active(shield))
 	if shield_static_body[shield] != null:
-		shield_static_body[shield].set_collision_layer_bit(6, is_shield_active(shield)) # bullet stopper
-		shield_static_body[shield].set_collision_mask_bit(4, is_shield_active(shield)) # bullet
+		shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
+		shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
 
 # Getters and setters
 func set_direction(dir : Vector2):
@@ -177,12 +181,12 @@ func set_direction(dir : Vector2):
 	dir.x = sign(dir.x)
 	direction = dir
 	# Update raycasts
-	var front_vec = $FrontRayCast.get_cast_to()
-	var back_vec = $BackRayCast.get_cast_to()
+	var front_vec = $FrontRayCast.get_target_position()
+	var back_vec = $BackRayCast.get_target_position()
 	front_vec.x = abs(front_vec.x) * direction.x
 	back_vec.x = abs(back_vec.x) * direction.x * -1
-	$FrontRayCast.set_cast_to(front_vec)
-	$BackRayCast.set_cast_to(back_vec)
+	$FrontRayCast.set_target_position(front_vec)
+	$BackRayCast.set_target_position(back_vec)
 	# Update shields (flipping visuals)
 	var new_scale = Vector2()
 	for node in shield_node.values():

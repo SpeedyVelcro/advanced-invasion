@@ -1,18 +1,18 @@
 extends Node
 
-export(Array, Resource) var dialogue_1 = []
-export(NodePath) var portal_left_path
-onready var portal_left = get_node(portal_left_path)
-export(NodePath) var portal_right_path
-onready var portal_right = get_node(portal_right_path)
-onready var creep_resource = preload("res://Entity/Creeps/VirusPawn/VirusPawn.tscn")
+@export var dialogue_1 = [] # (Array, Resource)
+@export var portal_left_path: NodePath
+@onready var portal_left = get_node(portal_left_path)
+@export var portal_right_path: NodePath
+@onready var portal_right = get_node(portal_right_path)
+@onready var creep_resource = preload("res://Entity/Creeps/VirusPawn/VirusPawn.tscn")
 
 const NEXT_SCENE = "res://Level/01Invasion/10Cutscene.tscn"
 
 func _ready():
 	$AnimationPlayer.play("cutscene_1")
-	DialogueManager.connect("finished", self, "_on_DialogueManager_finished")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
@@ -37,11 +37,11 @@ func end():
 
 func spawn_virus():
 	var creep
-	creep = creep_resource.instance()
+	creep = creep_resource.instantiate()
 	creep.set_global_position(portal_left.get_global_position())
 	get_owner().add_child(creep)
 	creep.set_direction(Vector2.LEFT)
-	creep = creep_resource.instance()
+	creep = creep_resource.instantiate()
 	creep.set_global_position(portal_right.get_global_position())
 	get_owner().add_child(creep)
 	creep.set_direction(Vector2.RIGHT)

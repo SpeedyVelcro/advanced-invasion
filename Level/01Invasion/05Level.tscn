@@ -77,7 +77,7 @@ position = Vector2( 896, 672 )
 pause_time_sec = 1.5
 speed = 50.0
 
-[node name="Position2D" type="Position2D" parent="MovingPlatform" index="4"]
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform" index="4"]
 position = Vector2( 0, -224 )
 
 [node name="MovingPlatform2" parent="." index="9" instance=ExtResource( 8 )]
@@ -85,7 +85,7 @@ position = Vector2( 320, 448 )
 pause_time_sec = 1.5
 speed = 50.0
 
-[node name="Position2D" type="Position2D" parent="MovingPlatform2" index="4"]
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform2" index="4"]
 position = Vector2( 0, -352 )
 
 [node name="Barrier" parent="." index="10" instance=ExtResource( 10 )]

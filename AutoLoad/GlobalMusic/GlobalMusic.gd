@@ -64,9 +64,9 @@ func stop(fadeout_sec = 1.0):
 
 func adjust_volume_linear(volume, time_sec):
 	if time_sec == 0:
-		$AudioStreamPlayer.set_volume_db(linear2db(volume))
+		$AudioStreamPlayer.set_volume_db(linear_to_db(volume))
 	else:
-		$VolumeTween.interpolate_property($AudioStreamPlayer, "volume_db", null, linear2db(volume), time_sec, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		$VolumeTween.interpolate_property($AudioStreamPlayer, "volume_db", null, linear_to_db(volume), time_sec, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		$VolumeTween.start()
 
 func _on_VolumeTween_tween_completed(object, key):

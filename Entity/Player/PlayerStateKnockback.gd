@@ -7,7 +7,7 @@ var drag_x = 10
 var dead = false
 
 func _on_state_enter():
-	._on_state_enter()
+	super._on_state_enter()
 	disable_snap(false)
 	#print("entered knockback")
 

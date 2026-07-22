@@ -3,8 +3,8 @@
 class_name Bullet
 extends RigidBody2D
 
-export var team = -1
-export var damage = 1.0
+@export var team = -1
+@export var damage = 1.0
 
 func _on_Bullet_body_entered(_body):
 	# Hit a wall so delete

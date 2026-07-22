@@ -9,23 +9,23 @@ enum ConditionType {
 	BUTTON_ALL_RED,
 	BUTTON_ALL_BLUE
 }
-export(ConditionType) var condition
-export(Array, NodePath) var creep_paths
-export var start_enabled = true
-onready var enabled = start_enabled
+@export var condition: ConditionType
+@export var creep_paths # (Array, NodePath)
+@export var start_enabled = true
+@onready var enabled = start_enabled
 var creep_count = 0
 var button_count = 0
-onready var start_sprite = $StartAnimatedSprite
-onready var end_sprite = $EndAnimatedSprite
-onready var beam_fade_node = $BeamFadeNode
-onready var beam_sprite = $BeamFadeNode/BeamSprite
-onready var raycast = $RayCast2D
-onready var static_body = $StaticBody2D
-onready var collision_shape = $StaticBody2D/CollisionShape2D
-onready var start_particles = $StartAnimatedSprite/CPUParticles2D
-onready var end_particles = $EndAnimatedSprite/CPUParticles2D2
-onready var disengage_audio_player = $DisengageAudioStreamPlayer
-onready var mechanical_audio_player = $MechanicalAudioStreamPlayer
+@onready var start_sprite = $StartAnimatedSprite
+@onready var end_sprite = $EndAnimatedSprite
+@onready var beam_fade_node = $BeamFadeNode
+@onready var beam_sprite = $BeamFadeNode/BeamSprite
+@onready var raycast = $RayCast2D
+@onready var static_body = $StaticBody2D
+@onready var collision_shape = $StaticBody2D/CollisionShape2D
+@onready var start_particles = $StartAnimatedSprite/CPUParticles2D
+@onready var end_particles = $EndAnimatedSprite/CPUParticles2D2
+@onready var disengage_audio_player = $DisengageAudioStreamPlayer
+@onready var mechanical_audio_player = $MechanicalAudioStreamPlayer
 
 func _ready():
 	raycast.force_raycast_update()
@@ -47,21 +47,21 @@ func _ready():
 		ConditionType.CREEP_ALL:
 			var creeps = get_tree().get_nodes_in_group("creep")
 			for creep in creeps:
-				creep.connect("death", self, "_on_creep_death")
+				creep.connect("death", Callable(self, "_on_creep_death"))
 				creep_count += 1
 		ConditionType.CREEP_SELECT:
 			for creep_path in creep_paths:
-				get_node(creep_path).connect("death", self, "_on_creep_death")
+				get_node(creep_path).connect("death", Callable(self, "_on_creep_death"))
 				creep_count += 1
 		ConditionType.BUTTON_ALL_BLUE:
 			var buttons = get_tree().get_nodes_in_group("push_button_blue")
 			for button in buttons:
-				button.connect("pressed", self, "_on_button_pressed")
+				button.connect("pressed", Callable(self, "_on_button_pressed"))
 				button_count += 1
 		ConditionType.BUTTON_ALL_RED:
 			var buttons = get_tree().get_nodes_in_group("push_button_red")
 			for button in buttons:
-				button.connect("pressed", self, "_on_button_pressed")
+				button.connect("pressed", Callable(self, "_on_button_pressed"))
 				button_count += 1
 
 func _on_creep_death():

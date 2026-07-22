@@ -2,15 +2,18 @@
 
 importer="csv_translation"
 type="Translation"
+uid="uid://buhxb145ixamt"
 
 [deps]
 
-files=[ "res://Locale/Dialogue.en.translation" ]
+files=["res://Locale/Dialogue.en.translation"]
 
 source_file="res://Locale/Dialogue.csv"
-dest_files=[ "res://Locale/Dialogue.en.translation" ]
+dest_files=["res://Locale/Dialogue.en.translation"]
 
 [params]
 
 compress=true
 delimiter=0
+unescape_keys=false
+unescape_translations=true

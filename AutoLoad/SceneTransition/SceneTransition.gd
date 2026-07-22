@@ -9,7 +9,7 @@ func _ready():
 	$AnimationPlayer/CanvasLayer/ColorRect.set_visible(false)
 
 func instant(scene: String):
-	get_tree().change_scene(scene)
+	get_tree().change_scene_to_file(scene)
 	get_tree().set_pause(false)
 	DialogueManager.cancel_dialogue(true)
 
@@ -23,7 +23,7 @@ func fade(scene : String, out_time_sec : float = 0.5, in_time_sec : float = 0.5)
 		_fade_in(next_scene, next_in_time_sec)
 
 func _fade_in(scene : String, time_sec : float = 0.5):
-	get_tree().change_scene(next_scene)
+	get_tree().change_scene_to_file(next_scene)
 	DialogueManager.cancel_dialogue(true)
 	$AnimationPlayer.play("fade_in")
 	if time_sec > 0:

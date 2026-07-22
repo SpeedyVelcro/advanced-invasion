@@ -1,8 +1,8 @@
 extends Control
 
-onready var animation_player = $AnimationPlayer
-onready var newgrounds_menu = $NewgroundsMenu
-onready var game_jolt_menu = $GameJoltMenu
+@onready var animation_player = $AnimationPlayer
+@onready var newgrounds_menu = $NewgroundsMenu
+@onready var game_jolt_menu = $GameJoltMenu
 
 signal back
 

@@ -11,11 +11,11 @@
 [ext_resource path="res://Entity/Obstacle/Barrier/Barrier.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Entity/Decor/Screen/NormalScreenSpriteFrames.tres" type="SpriteFrames" id=10]
 [ext_resource path="res://Level/01Invasion/02Level.gd" type="Script" id=11]
-[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture" id=12]
-[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture" id=13]
+[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture2D" id=12]
+[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture2D" id=13]
 [ext_resource path="res://AutoLoad/DialogueManager/Dialogue.gd" type="Script" id=14]
 [ext_resource path="res://Sound/Machine/TVOffShort.wav" type="AudioStream" id=15]
-[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture" id=16]
+[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture2D" id=16]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 14 )
@@ -86,8 +86,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.4 ),
-"transitions": PoolRealArray( 0.840896, 1 ),
+"times": PackedFloat32Array( 0, 2.4 ),
+"transitions": PackedFloat32Array( 0.840896, 1 ),
 "update": 0,
 "values": [ Vector2( -912, 624 ), Vector2( -488, 624 ) ]
 }
@@ -98,8 +98,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.4 ),
-"transitions": PoolRealArray( 0.84, 1 ),
+"times": PackedFloat32Array( 0, 2.4 ),
+"transitions": PackedFloat32Array( 0.84, 1 ),
 "update": 0,
 "values": [ Vector2( -720, 624 ), Vector2( -296, 624 ) ]
 }
@@ -110,8 +110,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 3.7, 3.8, 3.9 ),
-"transitions": PoolRealArray( 1, 0.5, 2, 1 ),
+"times": PackedFloat32Array( 0, 3.7, 3.8, 3.9 ),
+"transitions": PackedFloat32Array( 1, 0.5, 2, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
 }
@@ -122,8 +122,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2.8 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 13 ) ]
 }
@@ -134,8 +134,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 3.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ "bars", "alert_text" ]
 }
@@ -146,8 +146,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 3.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ "text", "alert_warning" ]
 }
@@ -163,7 +163,7 @@ tracks/6/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 15 )
 } ],
-"times": PoolRealArray( 3.5 )
+"times": PackedFloat32Array( 3.5 )
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Squad:visible")
@@ -172,8 +172,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -184,8 +184,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -196,8 +196,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( -976, 624 ) ]
 }
@@ -211,8 +211,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -223,8 +223,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 0.5, 2, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 0.5, 2, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
 }
@@ -235,8 +235,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6, 5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -296, 624 ), Vector2( -296, 624 ), Vector2( 376, 624 ) ]
 }
@@ -247,8 +247,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.6, 5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6, 5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( -488, 624 ), Vector2( -488, 624 ), Vector2( 184, 624 ) ]
 }
@@ -259,8 +259,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -271,8 +271,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -283,8 +283,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 5 ),
-"transitions": PoolRealArray( 0.870551, 1 ),
+"times": PackedFloat32Array( 0, 5 ),
+"transitions": PackedFloat32Array( 0.870551, 1 ),
 "update": 0,
 "values": [ Vector2( -976, 624 ), Vector2( -384, 624 ) ]
 }
@@ -316,7 +316,7 @@ tile_data = PoolIntArray( -2293753, 0, 0, -2293752, 0, 0, -2293749, 0, 0, -22937
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 851950, 4, 131074, 851952, 4, 131074, 851956, 4, 131074, 917486, 4, 131074, 917488, 4, 131074, 917492, 4, 131074, 983022, 4, 65536, 983023, 4, 131073, 983024, 4, 65538, 983025, 4, 131073, 983026, 4, 131073, 983027, 4, 131073, 983028, 4, 65537 )
+tile_data = PackedInt32Array( 851950, 4, 131074, 851952, 4, 131074, 851956, 4, 131074, 917486, 4, 131074, 917488, 4, 131074, 917492, 4, 131074, 983022, 4, 65536, 983023, 4, 131073, 983024, 4, 65538, 983025, 4, 131073, 983026, 4, 131073, 983027, 4, 131073, 983028, 4, 65537 )
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 position = Vector2( -384, 624 )
@@ -381,12 +381,12 @@ creep_paths = [ NodePath("../VirusPawn") ]
 [node name="Barrier2" parent="." index="16" instance=ExtResource( 9 )]
 position = Vector2( 2608, 608 )
 
-[node name="NormalScreen" type="AnimatedSprite" parent="." index="17"]
+[node name="NormalScreen" type="AnimatedSprite2D" parent="." index="17"]
 position = Vector2( -512, 464 )
 frames = ExtResource( 10 )
 animation = "bars"
 
-[node name="NormalScreen2" type="AnimatedSprite" parent="." index="18"]
+[node name="NormalScreen2" type="AnimatedSprite2D" parent="." index="18"]
 position = Vector2( -384, 464 )
 frames = ExtResource( 10 )
 animation = "text"
@@ -399,23 +399,23 @@ anims/cutscene_2 = SubResource( 9 )
 visible = false
 position = Vector2( 184, 624 )
 
-[node name="MilitiaRight" type="Sprite" parent="Squad" index="0"]
+[node name="MilitiaRight" type="Sprite2D" parent="Squad" index="0"]
 position = Vector2( 16, 0 )
 texture = ExtResource( 12 )
 
-[node name="MilitiaRight2" type="Sprite" parent="Squad" index="1"]
+[node name="MilitiaRight2" type="Sprite2D" parent="Squad" index="1"]
 position = Vector2( 48, 0 )
 texture = ExtResource( 12 )
 
-[node name="MilitiaRight3" type="Sprite" parent="Squad" index="2"]
+[node name="MilitiaRight3" type="Sprite2D" parent="Squad" index="2"]
 position = Vector2( 80, 0 )
 texture = ExtResource( 12 )
 
-[node name="MilitiaRight4" type="Sprite" parent="Squad" index="3"]
+[node name="MilitiaRight4" type="Sprite2D" parent="Squad" index="3"]
 position = Vector2( 112, 0 )
 texture = ExtResource( 12 )
 
-[node name="SquadLeader" type="Sprite" parent="." index="21"]
+[node name="SquadLeader" type="Sprite2D" parent="." index="21"]
 visible = false
 position = Vector2( 376, 624 )
 texture = ExtResource( 12 )
@@ -424,7 +424,7 @@ texture = ExtResource( 12 )
 position = Vector2( -448, 464 )
 stream = ExtResource( 15 )
 
-[node name="YellowCutscene" type="Sprite" parent="." index="23"]
+[node name="YellowCutscene" type="Sprite2D" parent="." index="23"]
 position = Vector2( -384, 624 )
 texture = ExtResource( 16 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

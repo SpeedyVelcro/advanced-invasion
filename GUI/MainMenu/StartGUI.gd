@@ -1,7 +1,7 @@
 extends Control
 
-export(NodePath) var load_button_path
-onready var load_button = get_node(load_button_path)
+@export var load_button_path: NodePath
+@onready var load_button = get_node(load_button_path)
 
 var locked = false
 

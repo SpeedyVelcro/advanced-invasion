@@ -1,7 +1,7 @@
 extends Node
 
-onready var viewport = get_tree().get_root()
-var previously_fullscreen = OS.is_window_fullscreen()
+@onready var viewport = get_tree().get_root()
+var previously_fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
 
 const SAVE_FILE_PATH = "user://options.json"
 
@@ -21,14 +21,14 @@ func set_display(resolution : Vector2, fullscreen : bool, vsync : bool):
 	if OS.get_name() != "HTML5":
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_DISABLED, get_tree().STRETCH_ASPECT_KEEP, resolution)
 		viewport.set_size(resolution)
-		OS.set_window_size(resolution)
+		get_window().set_size(resolution)
 		OS.center_window()
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_VIEWPORT, get_tree().STRETCH_ASPECT_KEEP, resolution)
-		OS.set_window_fullscreen(fullscreen)
-		OS.set_use_vsync(vsync)
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (fullscreen) else Window.MODE_WINDOWED
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (vsync) else DisplayServer.VSYNC_DISABLED)
 	else:
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_DISABLED, get_tree().STRETCH_ASPECT_KEEP, resolution)
-		OS.set_window_fullscreen(fullscreen)
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (fullscreen) else Window.MODE_WINDOWED
 		viewport.set_size(resolution)
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_VIEWPORT, get_tree().STRETCH_ASPECT_KEEP, resolution)
 
@@ -37,9 +37,9 @@ func _process(_delta):
 	# If there's a signal to check this, that would be better
 	if OS.get_name() == "HTML5":
 		if previously_fullscreen:
-			if not OS.is_window_fullscreen():
-				set_display(Vector2(1280, 720), false, OS.is_vsync_enabled())
-		previously_fullscreen = OS.is_window_fullscreen()
+			if not ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)):
+				set_display(Vector2(1280, 720), false, (DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED))
+		previously_fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
 
 # Save and load
 func save_file_exists():
@@ -57,17 +57,17 @@ func make_save_string():
 				# Display
 				"resolution_x" : viewport.get_size().x,
 				"resolution_y" : viewport.get_size().y,
-				"fullscreen" : OS.is_window_fullscreen(),
-				"vsync" : OS.is_vsync_enabled()
+				"fullscreen" : ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)),
+				"vsync" : (DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED)
 			},
 		"audio" :
 			{
 				# Volume
 				# Must be linear, as db can be -infinity, which can cause errors with JSON file
-				"volume_db_master" : db2linear(AudioServer.get_bus_volume_db(bus_master_index)),
-				"volume_db_music" : db2linear(AudioServer.get_bus_volume_db(bus_music_index)),
-				"volume_db_effects" : db2linear(AudioServer.get_bus_volume_db(bus_effects_index)),
-				"volume_db_ui" : db2linear(AudioServer.get_bus_volume_db(bus_ui_index)),
+				"volume_db_master" : db_to_linear(AudioServer.get_bus_volume_db(bus_master_index)),
+				"volume_db_music" : db_to_linear(AudioServer.get_bus_volume_db(bus_music_index)),
+				"volume_db_effects" : db_to_linear(AudioServer.get_bus_volume_db(bus_effects_index)),
+				"volume_db_ui" : db_to_linear(AudioServer.get_bus_volume_db(bus_ui_index)),
 				# Mute
 				"mute_master" : AudioServer.is_bus_mute(bus_master_index),
 				"mute_music" : AudioServer.is_bus_mute(bus_music_index),
@@ -75,11 +75,13 @@ func make_save_string():
 				"mute_ui" : AudioServer.is_bus_mute(bus_ui_index)
 			}
 	}
-	return JSON.print(dict, "\t")
+	return JSON.stringify(dict, "\t")
 
 func load_save_string(value):
 	# Returns true if successful
-	var json_result = JSON.parse(value)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(value)
+	var json_result = test_json_conv.get_data()
 	if json_result.error != OK:
 		push_error("Options file: failed to parse JSON with error " + json_result.error_string + " on line " + String(json_result.error_line))
 		return false
@@ -94,8 +96,8 @@ func load_save_string(value):
 		# Display settings
 		if OS.get_name() != "HTML5":
 			var res = viewport.get_size()
-			var fullscreen = OS.is_window_fullscreen()
-			var vsync = OS.is_vsync_enabled()
+			var fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
+			var vsync = (DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED)
 			if dict_check(dict_video, "resolution_x", TYPE_INT) and dict_check(dict_video, "resolution_y", TYPE_INT):
 				res = Vector2(dict_video["resolution_x"], dict_video["resolution_y"])
 			if dict_check(dict_video, "fullscreen", TYPE_BOOL):
@@ -112,14 +114,14 @@ func load_save_string(value):
 	if dict_check(dict, "audio", TYPE_DICTIONARY):
 		var dict_audio = dict["audio"]
 		# Volume
-		if dict_check(dict_audio, "volume_db_master", TYPE_REAL):
-			AudioServer.set_bus_volume_db(bus_master_index, linear2db(dict_audio["volume_db_master"]))
-		if dict_check(dict_audio, "volume_db_music", TYPE_REAL):
-			AudioServer.set_bus_volume_db(bus_music_index, linear2db(dict_audio["volume_db_music"]))
-		if dict_check(dict_audio, "volume_db_effects", TYPE_REAL):
-			AudioServer.set_bus_volume_db(bus_effects_index, linear2db(dict_audio["volume_db_effects"]))
-		if dict_check(dict_audio, "volume_db_ui", TYPE_REAL):
-			AudioServer.set_bus_volume_db(bus_ui_index, linear2db(dict_audio["volume_db_ui"]))
+		if dict_check(dict_audio, "volume_db_master", TYPE_FLOAT):
+			AudioServer.set_bus_volume_db(bus_master_index, linear_to_db(dict_audio["volume_db_master"]))
+		if dict_check(dict_audio, "volume_db_music", TYPE_FLOAT):
+			AudioServer.set_bus_volume_db(bus_music_index, linear_to_db(dict_audio["volume_db_music"]))
+		if dict_check(dict_audio, "volume_db_effects", TYPE_FLOAT):
+			AudioServer.set_bus_volume_db(bus_effects_index, linear_to_db(dict_audio["volume_db_effects"]))
+		if dict_check(dict_audio, "volume_db_ui", TYPE_FLOAT):
+			AudioServer.set_bus_volume_db(bus_ui_index, linear_to_db(dict_audio["volume_db_ui"]))
 		# Mute
 		if dict_check(dict_audio, "mute_master", TYPE_BOOL):
 			AudioServer.set_bus_mute(bus_master_index, dict_audio["mute_master"])
@@ -152,8 +154,8 @@ func load_options():
 func dict_check(dict : Dictionary, key : String, type : int, exact_type = false)->bool:
 	if dict.has(key):
 		var value_type = typeof(dict[key])
-		if (not exact_type) and (type == TYPE_INT or type == TYPE_REAL):
-			return value_type == TYPE_INT or value_type == TYPE_REAL
+		if (not exact_type) and (type == TYPE_INT or type == TYPE_FLOAT):
+			return value_type == TYPE_INT or value_type == TYPE_FLOAT
 		else:
 			return value_type == type
 	else:

@@ -1,6 +1,6 @@
 extends Control
 
-export var hidden = false
+@export var hidden = false
 
 func _ready():
 	if hidden:

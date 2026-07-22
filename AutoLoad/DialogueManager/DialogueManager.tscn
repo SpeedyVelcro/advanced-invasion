@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Font/SchoonSquare/SchoonSquareDialogue.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Font/SchoonSquare/SchoonSquareDialogue.tres" type="FontFile" id=1]
 [ext_resource path="res://Sound/VoiceSynth/VoiceSynth.wav" type="AudioStream" id=2]
 [ext_resource path="res://AutoLoad/DialogueManager/DialogueManager.gd" type="Script" id=5]
 [ext_resource path="res://AutoLoad/DialogueManager/DialogueLabel.gd" type="Script" id=6]
@@ -15,8 +15,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -27,8 +27,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -39,8 +39,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -51,8 +51,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -63,8 +63,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -75,8 +75,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
 }
@@ -90,8 +90,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -102,8 +102,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -114,8 +114,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -126,8 +126,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -138,8 +138,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -150,8 +150,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
 }
@@ -163,8 +163,8 @@ gradient_visibility = 1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( 0, 256, 1024, 256, 1024, 600, 0, 600 )
-vertex_colors = PoolColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 )
+polygon = PackedVector2Array( 0, 256, 1024, 256, 1024, 600, 0, 600 )
+vertex_colors = PackedColorArray( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -183,18 +183,18 @@ __meta__ = {
 }
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer"]
-margin_right = 1280.0
-margin_bottom = 616.0
+offset_right = 1280.0
+offset_bottom = 616.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
-margin_top = 620.0
-margin_right = 1280.0
-margin_bottom = 720.0
+offset_top = 620.0
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_vertical = 0
-rect_min_size = Vector2( 0, 100 )
+custom_minimum_size = Vector2( 0, 100 )
 mouse_filter = 2
 size_flags_horizontal = 3
 __meta__ = {
@@ -203,52 +203,52 @@ __meta__ = {
 
 [node name="NameLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 123.0
-margin_bottom = 100.0
+offset_right = 123.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "Cyan:"
 align = 2
 clip_text = true
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 127.0
-margin_right = 143.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 16, 0 )
+offset_left = 127.0
+offset_right = 143.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 16, 0 )
 mouse_filter = 2
 
 [node name="DialogueLabel" type="RichTextLabel" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 147.0
-margin_right = 1132.0
-margin_bottom = 100.0
+offset_left = 147.0
+offset_right = 1132.0
+offset_bottom = 100.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-custom_fonts/bold_italics_font = ExtResource( 1 )
-custom_fonts/italics_font = ExtResource( 1 )
-custom_fonts/bold_font = ExtResource( 1 )
-custom_fonts/normal_font = ExtResource( 1 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
+theme_override_fonts/bold_italics_font = ExtResource( 1 )
+theme_override_fonts/italics_font = ExtResource( 1 )
+theme_override_fonts/bold_font = ExtResource( 1 )
+theme_override_fonts/normal_font = ExtResource( 1 )
+theme_override_colors/default_color = Color( 1, 1, 1, 1 )
 bbcode_enabled = true
-bbcode_text = "[center]This looks promising. [i]Follow me![/i][/center]"
+text = "[center]This looks promising. [i]Follow me![/i][/center]"
 text = "This looks promising. Follow me!"
 fit_content_height = true
 script = ExtResource( 6 )
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 1136.0
-margin_right = 1152.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 16, 0 )
+offset_left = 1136.0
+offset_right = 1152.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 16, 0 )
 mouse_filter = 2
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer"]
-margin_left = 1156.0
-margin_right = 1280.0
-margin_bottom = 100.0
+offset_left = 1156.0
+offset_right = 1280.0
+offset_bottom = 100.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

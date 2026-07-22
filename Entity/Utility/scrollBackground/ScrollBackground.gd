@@ -1,8 +1,8 @@
 # ScrollBackground.gd
 
-extends Sprite
+extends Sprite2D
 
-export var scroll_speed = Vector2(0, 0)
+@export var scroll_speed = Vector2(0, 0)
 
 func _process(delta):
 	var sprite_size = texture.get_size()

@@ -1,6 +1,6 @@
 extends Control
 
-onready var textures = [
+@onready var textures = [
 	get_node("Panel/HBoxContainer/TextureRect"),
 	get_node("Panel/HBoxContainer/TextureRect2"),
 	get_node("Panel/HBoxContainer/TextureRect3")

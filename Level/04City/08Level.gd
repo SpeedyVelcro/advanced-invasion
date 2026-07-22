@@ -1,14 +1,14 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
+@export var dialogue_1 = [] # (Array, Resource)
 
-onready var explosion_area = $ExplosionArea
-onready var animation_player = $AnimationPlayer
-onready var player = $Player
+@onready var explosion_area = $ExplosionArea
+@onready var animation_player = $AnimationPlayer
+@onready var player = $Player
 const QUAKE_KNOCKBACK = Vector2(300, -250)
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
+	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
 
 func _on_ExplosionArea_body_entered(_body):
 	# Known player due to mask

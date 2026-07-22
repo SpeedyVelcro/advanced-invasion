@@ -2,8 +2,8 @@ extends HTTPRequest
 
 const NEW_GROUNDS_API_URL = 'https://www.newgrounds.io/gateway_v3.php'
 
-export(bool) var verbose
-export(String) var applicationId
+@export var verbose: bool
+@export var applicationId: String
 
 signal ng_request_complete
 
@@ -22,7 +22,7 @@ func is_ok(ngResult):
 func _ready():
 	use_threads = OS.get_name() != "HTML5"
 	
-	connect("request_completed", self, "_request_completed")
+	connect("request_completed", Callable(self, "_request_completed"))
 	
 	Gateway = ComponentGateway.new(self)
 	ScoreBoard = ComponentScoreBoard.new(self)
@@ -53,9 +53,9 @@ func _call_ng_api(component, function, _session_id=null, parameters=null, debug=
 	requestData.call.component = component + '.' + function
 	requestData.call.parameters = parameters
 	
-	var requestJson = JSON.print(requestData)
+	var requestJson = JSON.stringify(requestData)
 	_verbose(requestJson)
-	var requestResult = request(NEW_GROUNDS_API_URL, headers, true, HTTPClient.METHOD_POST, 'input=' + requestJson.percent_encode())
+	var requestResult = request(NEW_GROUNDS_API_URL, headers, true, HTTPClient.METHOD_POST, 'input=' + requestJson.uri_encode())
 	if requestResult != OK:
 		emit_signal('ng_request_complete', {'error': 'Request result = ' + str(requestResult)})
 	pass
@@ -70,7 +70,9 @@ func _request_completed(result, response_code, headers, body):
 		emit_signal('ng_request_complete', {'error': 'Response status code = ' + str(response_code)})
 		return
 		
-	var jsonBody = JSON.parse(responseBody)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(responseBody)
+	var jsonBody = test_json_conv.get_data()
 	if jsonBody.error != OK:
 		emit_signal('ng_request_complete', {'error': 'Response has wrong JSON body'})
 		return

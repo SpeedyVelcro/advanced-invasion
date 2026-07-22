@@ -1,8 +1,8 @@
 extends Control
 
-export(NodePath) var time_label_path
-onready var time_label = get_node(time_label_path)
-export var time_limit = 10.0
+@export var time_label_path: NodePath
+@onready var time_label = get_node(time_label_path)
+@export var time_limit = 10.0
 
 signal yes
 signal no

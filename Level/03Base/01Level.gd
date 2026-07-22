@@ -1,12 +1,12 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-onready var player = $Player
-onready var dialogue_area = $DialogueArea
+@export var dialogue_1 = [] # (Array, Resource)
+@onready var player = $Player
+@onready var dialogue_area = $DialogueArea
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 
 func _on_DialogueManager_end_broadcast(message):
 	match message:

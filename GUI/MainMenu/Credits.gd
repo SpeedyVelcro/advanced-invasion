@@ -1,7 +1,7 @@
 extends Control
 
-export(NodePath) var rich_label_path
-onready var rich_label = get_node(rich_label_path)
+@export var rich_label_path: NodePath
+@onready var rich_label = get_node(rich_label_path)
 var credits_file = "res://About/Credits.txt"
 var ofl11_file = "res://About/OFL11.txt"
 var hack_file = "res://About/Hack.txt"

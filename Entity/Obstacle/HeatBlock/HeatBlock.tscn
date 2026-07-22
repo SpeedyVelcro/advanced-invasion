@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockLine.png" type="Texture" id=1]
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture" id=2]
+[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockLine.png" type="Texture2D" id=1]
+[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture2D" id=2]
 [ext_resource path="res://Entity/Obstacle/HeatBlock/HeatBlock.gd" type="Script" id=3]
 
 
@@ -19,14 +19,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5, 1, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0.407843, 0.407843, 0.407843, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.407843, 0.407843, 0.407843, 1 ) ]
 }
 
 [sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 0.67451, 0.113725, 1, 1, 0.67451, 0.113725, 0 )
+colors = PackedColorArray( 1, 0.67451, 0.113725, 1, 1, 0.67451, 0.113725, 0 )
 
 [node name="HeatBlock" type="StaticBody2D" groups=[
 "heat_block",
@@ -42,12 +42,12 @@ shape = SubResource( 3 )
 visible = false
 z_index = -10
 color = Color( 1, 0.67451, 0.113725, 1 )
-polygon = PoolVector2Array( -17, -17, 17, -17, 17, 17, -17, 17 )
+polygon = PackedVector2Array( -17, -17, 17, -17, 17, 17, -17, 17 )
 
-[node name="SpriteBack" type="Sprite" parent="."]
+[node name="SpriteBack" type="Sprite2D" parent="."]
 texture = ExtResource( 2 )
 
-[node name="SpriteLine" type="Sprite" parent="."]
+[node name="SpriteLine" type="Sprite2D" parent="."]
 modulate = Color( 0.611392, 0.611392, 0.611392, 1 )
 texture = ExtResource( 1 )
 

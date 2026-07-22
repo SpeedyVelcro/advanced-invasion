@@ -1,9 +1,9 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal death
 signal health_changed(new_value)
 
-export(int, "Left", "Right") var start_direction
+@export var start_direction # (int, "Left", "Right")
 var gravity_enabled = true
 var gravity = 750
 var creep_bounce_speed = 340
@@ -13,15 +13,15 @@ var previous_velocity = Vector2(0, 0) # Velocity at the start of each frame, bef
 var velocity = Vector2(0, 0) # Carried over between frames
 var up_direction = Vector2(0, -1)
 var snap_vector = Vector2(0, 2)
-onready var snap_enabled = true
+@onready var snap_enabled = true
 var snap_auto_enable = true # Whether snap auto-enables after one frame
-export var hit_invincibility = false
+@export var hit_invincibility = false
 var max_health = 3
 var health = max_health
 var lives_enabled = true
 var dead = false
-onready var knockback_state = get_node("StateMachine2D/Knockback")
-onready var idle_state = get_node("StateMachine2D/Idle")
+@onready var knockback_state = get_node("StateMachine2D/Knockback")
+@onready var idle_state = get_node("StateMachine2D/Idle")
 var bullet_resource = preload("res://Entity/Player/PlayerBullet/PlayerBullet.tscn")
 var facing = Vector2.LEFT
 const BULLET_ORIGIN_RIGHT = Vector2(9, 0)
@@ -30,10 +30,10 @@ var harm_block_bounce_up = Vector2(0, -300)
 var harm_block_bounce_right = Vector2(200, 0)
 var harm_block_bounce_down = Vector2(0, 100)
 var hit_by_bullet_knockback = Vector2(200, -150)
-export var input_locked = false setget set_input_locked, is_input_locked
-export var gun_enabled = true setget set_gun_enabled, is_gun_enabled
-onready var gun_audio_player = $GunAudioStreamPlayer2D
-onready var burn_audio_player = $BurnAudioStreamPlayer2D
+@export var input_locked = false: get = is_input_locked, set = set_input_locked
+@export var gun_enabled = true: get = is_gun_enabled, set = set_gun_enabled
+@onready var gun_audio_player = $GunAudioStreamPlayer2D
+@onready var burn_audio_player = $BurnAudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,24 +43,24 @@ func _ready():
 	for state in states:
 		if state is PlayerState:
 			state.set_kinematic_body(self)
-			state.connect("player_state_entered", self, "_on_PlayerState_player_state_entered")
-			state.connect("snap_enable", self, "_on_PlayerState_snap_enable")
-			state.connect("snap_disable", self, "_on_PlayerState_snap_disable")
+			state.connect("player_state_entered", Callable(self, "_on_PlayerState_player_state_entered"))
+			state.connect("snap_enable", Callable(self, "_on_PlayerState_snap_enable"))
+			state.connect("snap_disable", Callable(self, "_on_PlayerState_snap_disable"))
 			state.set_velocity = funcref(self, "set_velocity")
 			state.get_velocity = funcref(self, "get_velocity")
 	$StateMachine2D.start()
 	# Ensure hit invincibility starts off
 	hit_invincibility = false
-	$AnimatedSprite.set_visible(true)
+	$AnimatedSprite2D.set_visible(true)
 	# Ensure input locks of states match initial value
 	set_input_locked(input_locked)
 	# Set facing
 	match start_direction:
 		0:
-			$AnimatedSprite.play("left")
+			$AnimatedSprite2D.play("left")
 			facing = Vector2.LEFT
 		1:
-			$AnimatedSprite.play("right")
+			$AnimatedSprite2D.play("right")
 			facing = Vector2.RIGHT
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,16 +69,16 @@ func _process(delta):
 	# TODO: this should check facing variable and facing variable should be set
 			# by states
 	if Input.is_action_pressed("move_right") and not input_locked:
-		$AnimatedSprite.set_animation("right")
+		$AnimatedSprite2D.set_animation("right")
 		facing = Vector2.RIGHT
 	elif Input.is_action_pressed("move_left") and not input_locked:
-		$AnimatedSprite.set_animation("left")
+		$AnimatedSprite2D.set_animation("left")
 		facing = Vector2.LEFT
 	
 	# Fire bullet
 	if Input.is_action_just_pressed("attack") and (not input_locked) and gun_enabled:
 		gun_audio_player.play()
-		var bul = bullet_resource.instance()
+		var bul = bullet_resource.instantiate()
 		get_parent().add_child(bul)
 		# TODO: set bullet position
 		bul.set_global_position(get_global_position())
@@ -104,7 +104,11 @@ func _physics_process(delta):
 	
 	# Movement
 	if snap_enabled:
-		velocity = move_and_slide_with_snap(velocity, snap_vector, up_direction)
+		set_velocity(velocity)
+		# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 		# Get rid of extra up velocity from going up slopes
 		if is_on_floor():
 			velocity.y = max(0, velocity.y) # Make sure y velocity isn't negative
@@ -114,12 +118,15 @@ func _physics_process(delta):
 			# afterwards (jumping in this implementation ADDS y velocity), the jump
 			# would be higher if we didn't get rid of it.
 	else:
-		velocity = move_and_slide(velocity, up_direction)
+		set_velocity(velocity)
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 		if snap_auto_enable:
 			snap_enabled = true
 	
 	# Detect collisions following move and slide
-	for i in range(get_slide_count()):
+	for i in range(get_slide_collision_count()):
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		if collider.is_in_group("player_collider"):
@@ -224,9 +231,9 @@ func get_health():
 func set_facing(value: Vector2):
 	facing = value
 	if facing.x > 0:
-		$AnimatedSprite.set_animation("right")
+		$AnimatedSprite2D.set_animation("right")
 	if facing.x < 0:
-		$AnimatedSprite.set_animation("left")
+		$AnimatedSprite2D.set_animation("left")
 
 func set_velocity(value):
 	velocity = value

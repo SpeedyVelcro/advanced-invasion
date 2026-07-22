@@ -1,12 +1,12 @@
 extends Node
 
-export(Array, Resource) var dialogue_1 = []
+@export var dialogue_1 = [] # (Array, Resource)
 
 const NEXT_SCENE = "res://Level/01Invasion/09Cutscene.tscn"
 
 func _ready():
 	$AnimationPlayer.play("cutscene_1")
-	DialogueManager.connect("finished", self, "_on_DialogueManager_finished")
+	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:

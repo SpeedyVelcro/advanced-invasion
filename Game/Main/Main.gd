@@ -23,9 +23,9 @@ func _process(delta):
 		if has_node("World"):
 			if $World.is_pause_allowed():
 				var pause_menu_resource = load("res://GUI/PauseMenu/PauseMenu.tscn")
-				var pause_menu = pause_menu_resource.instance()
+				var pause_menu = pause_menu_resource.instantiate()
 				add_child(pause_menu)
-				pause_menu.connect("restart", self, "_on_PauseMenu_restart")
+				pause_menu.connect("restart", Callable(self, "_on_PauseMenu_restart"))
 				get_tree().set_pause(true)
 
 func change_level(resource_string):
@@ -47,24 +47,24 @@ func _on_level_change_blackout():
 	current_level.queue_free()
 	current_level_path = next_level_path
 	var level_resource = load(current_level_path)
-	var level = level_resource.instance()
+	var level = level_resource.instantiate()
 	current_level = level
 	$World.add_child(level)
 
 func _on_new_game_blackout():
 	# Create game world
 	var world_resource = load("res://Game/World/World.tscn")
-	world = world_resource.instance()
+	world = world_resource.instantiate()
 	self.add_child(world)
 	# Create player
 	var player_resource = load(PLAYER_PATH)
-	var player = player_resource.instance()
+	var player = player_resource.instantiate()
 	world.add_child(player)
-	player.connect("death", self, "_on_Player_death")
+	player.connect("death", Callable(self, "_on_Player_death"))
 	# Create first level
 	current_level_path = "res://Level/Test/Test.tscn"
 	var first_level_resource = load(current_level_path)
-	var first_level = first_level_resource.instance()
+	var first_level = first_level_resource.instantiate()
 	current_level = first_level
 	world.add_child(first_level)
 	# Get rid of main menu
@@ -78,14 +78,14 @@ func _deferred_on_restart_level_blackout():
 	# Swap player
 	get_node("/root/Main/World/Player").free()
 	var player_resource = load(PLAYER_PATH)
-	var player = player_resource.instance()
+	var player = player_resource.instantiate()
 	$World.add_child(player)
-	player.connect("death", self, "_on_Player_death")
+	player.connect("death", Callable(self, "_on_Player_death"))
 	# TODO: Update lives if life-saving is on?
 	# Swap level
 	current_level.free()
 	var level_resource = load(current_level_path)
-	current_level = level_resource.instance()
+	current_level = level_resource.instantiate()
 	$World.add_child(current_level)
 	# Get rid of pause menu
 	if has_node("PauseMenu"):

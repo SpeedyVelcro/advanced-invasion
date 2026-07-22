@@ -3,21 +3,21 @@
 [ext_resource path="res://Tile/City/CityWall.tres" type="TileSet" id=1]
 [ext_resource path="res://Level/Level.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Tile/NormalTile/NormalDecor.tres" type="TileSet" id=3]
-[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture" id=4]
-[ext_resource path="res://Art/Tile/City/CityBackLayer1.png" type="Texture" id=5]
+[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture2D" id=4]
+[ext_resource path="res://Art/Tile/City/CityBackLayer1.png" type="Texture2D" id=5]
 [ext_resource path="res://Game/CameraPlayer/CameraPlayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" type="Script" id=7]
-[ext_resource path="res://Art/Tile/City/CityBackLayer2.png" type="Texture" id=8]
+[ext_resource path="res://Art/Tile/City/CityBackLayer2.png" type="Texture2D" id=8]
 [ext_resource path="res://Tile/City/CityColumn.tres" type="TileSet" id=9]
 [ext_resource path="res://Level/04City/10Cutscene.gd" type="Script" id=10]
 [ext_resource path="res://Entity/Boss/LastStand/Flashbang/Flashbang.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Art/Character/Teal/TealLeft.png" type="Texture" id=12]
+[ext_resource path="res://Art/Character/Teal/TealLeft.png" type="Texture2D" id=12]
 [ext_resource path="res://AutoLoad/DialogueManager/Dialogue.gd" type="Script" id=13]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnRight.png" type="Texture" id=14]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" type="Texture" id=15]
-[ext_resource path="res://Art/Tile/City/CityBackRed1.png" type="Texture" id=16]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnRight.png" type="Texture2D" id=14]
+[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" type="Texture2D" id=15]
+[ext_resource path="res://Art/Tile/City/CityBackRed1.png" type="Texture2D" id=16]
 [ext_resource path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" type="Script" id=17]
-[ext_resource path="res://Art/Tile/City/CityBackRed2.png" type="Texture" id=18]
+[ext_resource path="res://Art/Tile/City/CityBackRed2.png" type="Texture2D" id=18]
 [ext_resource path="res://Sound/Machine/BreakerSwitch.wav" type="AudioStream" id=19]
 [ext_resource path="res://Sound/Destruction/DistantExplosion.wav" type="AudioStream" id=20]
 [ext_resource path="res://Sound/Machine/LowVoltSpark1.wav" type="AudioStream" id=21]
@@ -27,12 +27,12 @@
 [ext_resource path="res://Sound/Destruction/Pop.wav" type="AudioStream" id=25]
 [ext_resource path="res://Sound/Ambient/RingingEars.wav" type="AudioStream" id=26]
 [ext_resource path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Art/Character/Teal/TealRight.png" type="Texture" id=28]
-[ext_resource path="res://Art/Player/PlayerLeft.png" type="Texture" id=29]
-[ext_resource path="res://Art/Character/AntiVirusSoldier/AntiVirusSoldierRight.png" type="Texture" id=30]
-[ext_resource path="res://Art/Character/AntiVirusSoldier/AntiVirusSoldierLeft.png" type="Texture" id=31]
-[ext_resource path="res://Art/Character/AntiVirusRed/AntiVirusRedLeft.png" type="Texture" id=32]
-[ext_resource path="res://Art/Character/AntiVirusRed/AntiVirusRedRight.png" type="Texture" id=33]
+[ext_resource path="res://Art/Character/Teal/TealRight.png" type="Texture2D" id=28]
+[ext_resource path="res://Art/Player/PlayerLeft.png" type="Texture2D" id=29]
+[ext_resource path="res://Art/Character/AntiVirusSoldier/AntiVirusSoldierRight.png" type="Texture2D" id=30]
+[ext_resource path="res://Art/Character/AntiVirusSoldier/AntiVirusSoldierLeft.png" type="Texture2D" id=31]
+[ext_resource path="res://Art/Character/AntiVirusRed/AntiVirusRedLeft.png" type="Texture2D" id=32]
+[ext_resource path="res://Art/Character/AntiVirusRed/AntiVirusRedRight.png" type="Texture2D" id=33]
 [ext_resource path="res://Sound/Weapon/LightRetroGun.wav" type="AudioStream" id=34]
 [ext_resource path="res://Sound/Death/VirusDeathScream.wav" type="AudioStream" id=35]
 
@@ -340,8 +340,8 @@ extents = Vector2( 16, 10 )
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.988095, 0.545455 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="Gradient" id=30]
-offsets = PoolRealArray( 0, 0.117904, 1 )
-colors = PoolColorArray( 0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0.454902, 0.682353, 0.666667, 0.556863, 0.454902, 0 )
+offsets = PackedFloat32Array( 0, 0.117904, 1 )
+colors = PackedColorArray( 0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0.454902, 0.682353, 0.666667, 0.556863, 0.454902, 0 )
 
 [sub_resource type="Animation" id=31]
 length = 0.5
@@ -352,8 +352,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1936, -16 ) ]
 }
@@ -364,8 +364,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 2024, -16 ) ]
 }
@@ -376,8 +376,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -388,8 +388,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 2496, -16 ) ]
 }
@@ -400,8 +400,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -412,8 +412,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1472, -16 ) ]
 }
@@ -424,8 +424,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1984, -16 ) ]
 }
@@ -436,8 +436,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -448,8 +448,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ) ]
 }
@@ -460,8 +460,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -472,8 +472,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 2496, -16 ) ]
 }
@@ -484,8 +484,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 1472, -16 ) ]
 }
@@ -496,8 +496,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 2512, -16 ) ]
 }
@@ -508,8 +508,8 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 32 ) ]
 }
@@ -520,8 +520,8 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -532,8 +532,8 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
@@ -547,8 +547,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 0.933033, 1 ),
+"times": PackedFloat32Array( 0, 3.5 ),
+"transitions": PackedFloat32Array( 0.933033, 1 ),
 "update": 0,
 "values": [ Vector2( 2496, -16 ), Vector2( 2024, -16 ) ]
 }
@@ -559,8 +559,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 3.5 ),
-"transitions": PoolRealArray( 0.933033, 1 ),
+"times": PackedFloat32Array( 0, 3.5 ),
+"transitions": PackedFloat32Array( 0.933033, 1 ),
 "update": 0,
 "values": [ Vector2( 1472, -16 ), Vector2( 1944, -16 ) ]
 }
@@ -571,8 +571,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 1.2 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_dynamite"
@@ -585,8 +585,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2.4, 2.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.4, 2.7 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2024, -16 ), Vector2( 2024, -16 ), Vector2( 2000, -16 ) ]
 }
@@ -597,8 +597,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.6, 3.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.6, 3.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1936, -16 ), Vector2( 1936, -16 ), Vector2( 1968, -16 ) ]
 }
@@ -609,8 +609,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2.8 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 2.8 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "zoom_in"
@@ -626,8 +626,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 4 ),
-"transitions": PoolRealArray( 2.2974, 1 ),
+"times": PackedFloat32Array( 0, 4 ),
+"transitions": PackedFloat32Array( 2.2974, 1 ),
 "update": 0,
 "values": [ Vector2( 2176, -16 ), Vector2( 1984, -16 ) ]
 }
@@ -638,8 +638,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 6.1, 6.3, 19.9, 20.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 6.1, 6.3, 19.9, 20.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2000, -16 ), Vector2( 2000, -16 ), Vector2( 2008, -16 ), Vector2( 2008, -16 ), Vector2( 1984, -16 ) ]
 }
@@ -650,8 +650,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 6.1, 19.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 6.1, 19.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ), ExtResource( 29 ), ExtResource( 4 ) ]
 }
@@ -662,8 +662,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 6, 6.2, 20.8, 21.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 6, 6.2, 20.8, 21.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1968, -16 ), Vector2( 1968, -16 ), Vector2( 1960, -16 ), Vector2( 1960, -16 ), Vector2( 1944, -16 ) ]
 }
@@ -674,8 +674,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 6 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ), ExtResource( 28 ) ]
 }
@@ -691,7 +691,7 @@ tracks/5/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 25 )
 } ],
-"times": PoolRealArray( 8 )
+"times": PackedFloat32Array( 8 )
 }
 tracks/6/type = "audio"
 tracks/6/path = NodePath("RingingEarsAudioStreamPlayer")
@@ -705,7 +705,7 @@ tracks/6/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 26 )
 } ],
-"times": PoolRealArray( 8 )
+"times": PackedFloat32Array( 8 )
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("RingingEarsAudioStreamPlayer:volume_db")
@@ -714,8 +714,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 1.2, 8, 8.1, 8.2, 10.7, 19.8 ),
-"transitions": PoolRealArray( 1, 1, 1.46, 1.46409, 1.93187, 1 ),
+"times": PackedFloat32Array( 1.2, 8, 8.1, 8.2, 10.7, 19.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1.46, 1.46409, 1.93187, 1 ),
 "update": 0,
 "values": [ -80.0, -80.0, -30.368, 0.0, 0.0, -80.0 ]
 }
@@ -726,8 +726,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 5.9, 8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 5.9, 8 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -738,8 +738,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 8, 8.1, 16, 19.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 8, 8.1, 16, 19.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -750,8 +750,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 8.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 8.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -762,8 +762,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 8.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 8.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -774,8 +774,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 8.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 8.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -786,8 +786,8 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 16.4, 22.5 ),
-"transitions": PoolRealArray( 1, 0.87, 1 ),
+"times": PackedFloat32Array( 0, 16.4, 22.5 ),
+"transitions": PackedFloat32Array( 1, 0.87, 1 ),
 "update": 0,
 "values": [ Vector2( 2496, -16 ), Vector2( 2496, -16 ), Vector2( 2112, -16 ) ]
 }
@@ -798,8 +798,8 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 16.4, 22.8 ),
-"transitions": PoolRealArray( 1, 0.87, 1 ),
+"times": PackedFloat32Array( 0, 16.4, 22.8 ),
+"transitions": PackedFloat32Array( 1, 0.87, 1 ),
 "update": 0,
 "values": [ Vector2( 1472, -16 ), Vector2( 1472, -16 ), Vector2( 1856, -16 ) ]
 }
@@ -810,8 +810,8 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 20, 27.3 ),
-"transitions": PoolRealArray( 1, 0.9, 1 ),
+"times": PackedFloat32Array( 0, 20, 27.3 ),
+"transitions": PackedFloat32Array( 1, 0.9, 1 ),
 "update": 0,
 "values": [ Vector2( 2512, -16 ), Vector2( 2512, -16 ), Vector2( 2080, -16 ) ]
 }
@@ -822,8 +822,8 @@ tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 16.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 16.2 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "play_favour"
@@ -909,7 +909,7 @@ tracks/17/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 34 )
 } ],
-"times": PoolRealArray( 9.4, 9.9, 10.3, 10.5, 10.9, 11.5, 11.7, 12, 12.2, 12.4, 12.6, 12.8, 13.2, 13.9, 14.3, 14.4, 14.6, 15.5 )
+"times": PackedFloat32Array( 9.4, 9.9, 10.3, 10.5, 10.9, 11.5, 11.7, 12, 12.2, 12.4, 12.6, 12.8, 13.2, 13.9, 14.3, 14.4, 14.6, 15.5 )
 }
 tracks/18/type = "audio"
 tracks/18/path = NodePath("GunAudioStreamPlayer2D2")
@@ -959,7 +959,7 @@ tracks/18/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 34 )
 } ],
-"times": PoolRealArray( 9.3, 12.3, 12.5, 12.7, 12.9, 13.1737, 13.5, 13.6, 14.0429, 14.9 )
+"times": PackedFloat32Array( 9.3, 12.3, 12.5, 12.7, 12.9, 13.1737, 13.5, 13.6, 14.0429, 14.9 )
 }
 tracks/19/type = "audio"
 tracks/19/path = NodePath("ScreamAudioStreamPlayer2D")
@@ -997,7 +997,7 @@ tracks/19/keys = {
 "start_offset": 0.03,
 "stream": ExtResource( 35 )
 } ],
-"times": PoolRealArray( 9.3, 10.3, 11.5, 12.3, 13.5, 14.2, 14.7 )
+"times": PackedFloat32Array( 9.3, 10.3, 11.5, 12.3, 13.5, 14.2, 14.7 )
 }
 tracks/20/type = "audio"
 tracks/20/path = NodePath("ScreamAudioStreamPlayer2D2")
@@ -1039,7 +1039,7 @@ tracks/20/keys = {
 "start_offset": 0.03,
 "stream": ExtResource( 35 )
 } ],
-"times": PoolRealArray( 9.3, 10.9, 11.7, 12, 12.9, 13.1, 14.1, 15.9 )
+"times": PackedFloat32Array( 9.3, 10.9, 11.7, 12, 12.9, 13.1, 14.1, 15.9 )
 }
 tracks/21/type = "value"
 tracks/21/path = NodePath("GunAudioStreamPlayer2D:volume_db")
@@ -1048,8 +1048,8 @@ tracks/21/loop_wrap = true
 tracks/21/imported = false
 tracks/21/enabled = true
 tracks/21/keys = {
-"times": PoolRealArray( 0, 9.3, 12.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9.3, 12.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -80.0, -80.0, 2.0 ]
 }
@@ -1060,8 +1060,8 @@ tracks/22/loop_wrap = true
 tracks/22/imported = false
 tracks/22/enabled = true
 tracks/22/keys = {
-"times": PoolRealArray( 0, 9.3, 12.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9.3, 12.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -80.0, -80.0, 2.0 ]
 }
@@ -1072,8 +1072,8 @@ tracks/23/loop_wrap = true
 tracks/23/imported = false
 tracks/23/enabled = true
 tracks/23/keys = {
-"times": PoolRealArray( 0, 9.3, 12.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9.3, 12.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -80.0, -80.0, -8.667 ]
 }
@@ -1084,8 +1084,8 @@ tracks/24/loop_wrap = true
 tracks/24/imported = false
 tracks/24/enabled = true
 tracks/24/keys = {
-"times": PoolRealArray( 0, 9.3, 12.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 9.3, 12.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ -80.0, -80.0, -8.667 ]
 }
@@ -1096,8 +1096,8 @@ tracks/25/loop_wrap = true
 tracks/25/imported = false
 tracks/25/enabled = true
 tracks/25/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -1108,8 +1108,8 @@ tracks/26/loop_wrap = true
 tracks/26/imported = false
 tracks/26/enabled = true
 tracks/26/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -1124,8 +1124,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2.6, 9.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.6, 9.7 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2016, -16 ), Vector2( 2016, -16 ), Vector2( 2528, -16 ) ]
 }
@@ -1136,8 +1136,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.2, 7.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.2, 7.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2080, -16 ), Vector2( 2080, -16 ), Vector2( 2520, -16 ) ]
 }
@@ -1148,8 +1148,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 0.450625, 1.7411, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 0.450625, 1.7411, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -8 ), Vector2( 0, 0 ) ]
 }
@@ -1160,8 +1160,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 33 ) ]
 }
@@ -1172,8 +1172,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
@@ -1184,8 +1184,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
 }
@@ -1196,8 +1196,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 1.8, 7.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.8, 7.1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2112, -16 ), Vector2( 2112, -16 ), Vector2( 2504, -16 ) ]
 }
@@ -1208,8 +1208,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1.8, 13.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1.8, 13.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1856, -16 ), Vector2( 1856, -16 ), Vector2( 2936, -16 ) ]
 }
@@ -1220,8 +1220,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 2.9, 7.2, 12, 12.3, 14.1, 18 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2.9, 7.2, 12, 12.3, 14.1, 18 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1984, -16 ), Vector2( 1984, -16 ), Vector2( 2224, -16 ), Vector2( 2224, -16 ), Vector2( 2200, -16 ), Vector2( 2200, -16 ), Vector2( 2512, -16 ) ]
 }
@@ -1232,8 +1232,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 12, 14.1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 12, 14.1 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ ExtResource( 4 ), ExtResource( 29 ), ExtResource( 4 ) ]
 }
@@ -1244,8 +1244,8 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PackedFloat32Array(  ),
+"transitions": PackedFloat32Array(  ),
 "update": 0,
 "values": [  ]
 }
@@ -1256,8 +1256,8 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 19 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 19 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "end"
@@ -1270,8 +1270,8 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 15.1, 15.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 15.1, 15.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -1285,8 +1285,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2080, -16 ), Vector2( 2096, -16 ) ]
 }
@@ -1297,8 +1297,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 33 ) ]
 }
@@ -1312,8 +1312,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2096, -16 ), Vector2( 2080, -16 ) ]
 }
@@ -1324,8 +1324,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 32 ) ]
 }
@@ -1338,8 +1338,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1944, -16 ), Vector2( 2016, -16 ) ]
 }
@@ -1352,8 +1352,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -1366,8 +1366,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 28 ) ]
 }
@@ -1437,14 +1437,14 @@ motion_mirroring = Vector2( 4096, 4096 )
 script = ExtResource( 7 )
 scroll_speed = Vector2( 32, 0 )
 
-[node name="ScrollBackground" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="0"]
+[node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0"]
 visible = false
 z_index = -2048
 texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 4096, 4096 )
 
-[node name="ScrollBackgroundRed" type="Sprite" parent="ParallaxBackground/ParallaxLayer" index="1"]
+[node name="ScrollBackgroundRed" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="1"]
 z_index = -2048
 texture = ExtResource( 16 )
 region_enabled = true
@@ -1455,14 +1455,14 @@ motion_mirroring = Vector2( 4096, 4096 )
 script = ExtResource( 7 )
 scroll_speed = Vector2( -32, -32 )
 
-[node name="ScrollBackground2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="0"]
+[node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
 visible = false
 z_index = -2048
 texture = ExtResource( 8 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 4096, 4096 )
 
-[node name="ScrollBackground2Red" type="Sprite" parent="ParallaxBackground/ParallaxLayer2" index="1"]
+[node name="ScrollBackground2Red" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1"]
 z_index = -2048
 texture = ExtResource( 18 )
 region_enabled = true
@@ -1490,7 +1490,7 @@ modulate = Color( 0.843137, 0.717647, 0.717647, 1 )
 tile_set = ExtResource( 9 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -655360, 0, 8, -655359, 0, 10, -655358, 0, 11, -655349, 0, 8, -655348, 0, 10, -655347, 0, 11, -655338, 0, 8, -655337, 0, 10, -655336, 0, 11, -655327, 0, 8, -655326, 0, 10, -655325, 0, 11, -655316, 0, 8, -655315, 0, 10, -655314, 0, 11, -655305, 0, 8, -655304, 0, 10, -655303, 0, 11, -655294, 0, 8, -655293, 0, 10, -655292, 0, 11, -655283, 0, 8, -655282, 0, 10, -655281, 0, 11, -655272, 0, 8, -655271, 0, 10, -655270, 0, 11, -655261, 0, 8, -655260, 0, 10, -655259, 0, 11, -655250, 0, 8, -655249, 0, 10, -655248, 0, 11, -655239, 0, 8, -655238, 0, 10, -655237, 0, 11, -589824, 0, 196616, -589823, 0, 196618, -589822, 0, 196619, -589813, 0, 196616, -589812, 0, 196618, -589811, 0, 196619, -589802, 0, 196616, -589801, 0, 196618, -589800, 0, 196619, -589791, 0, 196616, -589790, 0, 196618, -589789, 0, 196619, -589780, 0, 196616, -589779, 0, 196618, -589778, 0, 196619, -589769, 0, 196616, -589768, 0, 196618, -589767, 0, 196619, -589758, 0, 196616, -589757, 0, 196618, -589756, 0, 196619, -589747, 0, 196616, -589746, 0, 196618, -589745, 0, 196619, -589736, 0, 196616, -589735, 0, 196618, -589734, 0, 196619, -589725, 0, 196616, -589724, 0, 196618, -589723, 0, 196619, -589714, 0, 196616, -589713, 0, 196618, -589712, 0, 196619, -589703, 0, 196616, -589702, 0, 196618, -589701, 0, 196619, -524287, 0, 65536, -524276, 0, 65536, -524265, 0, 65536, -524254, 0, 65536, -524243, 0, 65536, -524232, 0, 65536, -524221, 0, 65536, -524210, 0, 65536, -524199, 0, 65536, -524188, 0, 65536, -524177, 0, 65536, -524166, 0, 65536, -458751, 0, 65536, -458740, 0, 65536, -458729, 0, 65536, -458718, 0, 65536, -458707, 0, 65536, -458696, 0, 65536, -458685, 0, 65536, -458674, 0, 65536, -458663, 0, 65536, -458652, 0, 65536, -458641, 0, 65536, -458630, 0, 65536, -393215, 0, 65536, -393204, 0, 65536, -393193, 0, 65536, -393182, 0, 65536, -393171, 0, 65536, -393160, 0, 65536, -393149, 0, 65536, -393138, 0, 65536, -393127, 0, 65536, -393116, 0, 65536, -393105, 0, 65536, -393094, 0, 65536, -327679, 0, 65536, -327668, 0, 65536, -327657, 0, 65536, -327646, 0, 65536, -327635, 0, 65536, -327624, 0, 65536, -327613, 0, 65536, -327602, 0, 65536, -327591, 0, 65536, -327580, 0, 65536, -327569, 0, 65536, -327558, 0, 65536, -262143, 0, 65536, -262132, 0, 65536, -262121, 0, 65536, -262110, 0, 65536, -262099, 0, 65536, -262088, 0, 65536, -262077, 0, 65536, -262066, 0, 65536, -262055, 0, 65536, -262044, 0, 65536, -262033, 0, 65536, -262022, 0, 65536, -196607, 0, 65536, -196596, 0, 65536, -196585, 0, 65536, -196574, 0, 65536, -196563, 0, 65536, -196552, 0, 65536, -196541, 0, 65536, -196530, 0, 65536, -196519, 0, 65536, -196508, 0, 65536, -196497, 0, 65536, -196486, 0, 65536, -131071, 0, 65536, -131060, 0, 65536, -131049, 0, 65536, -131038, 0, 65536, -131027, 0, 65536, -131016, 0, 65536, -131005, 0, 65536, -130994, 0, 65536, -130983, 0, 65536, -130972, 0, 65536, -130961, 0, 65536, -130950, 0, 65536, -65536, 0, 8, -65535, 0, 9, -65534, 0, 11, -65525, 0, 8, -65524, 0, 9, -65523, 0, 11, -65514, 0, 8, -65513, 0, 9, -65512, 0, 11, -65503, 0, 8, -65502, 0, 9, -65501, 0, 11, -65492, 0, 8, -65491, 0, 9, -65490, 0, 11, -65481, 0, 8, -65480, 0, 9, -65479, 0, 11, -65470, 0, 8, -65469, 0, 9, -65468, 0, 11, -65459, 0, 8, -65458, 0, 9, -65457, 0, 11, -65448, 0, 8, -65447, 0, 9, -65446, 0, 11, -65437, 0, 8, -65436, 0, 9, -65435, 0, 11, -65426, 0, 8, -65425, 0, 9, -65424, 0, 11, -65415, 0, 8, -65414, 0, 9, -65413, 0, 11, 0, 0, 196616, 1, 0, 196617, 2, 0, 196619, 11, 0, 196616, 12, 0, 196617, 13, 0, 196619, 22, 0, 196616, 23, 0, 196617, 24, 0, 196619, 33, 0, 196616, 34, 0, 196617, 35, 0, 196619, 44, 0, 196616, 45, 0, 196617, 46, 0, 196619, 55, 0, 196616, 56, 0, 196617, 57, 0, 196619, 66, 0, 196616, 67, 0, 196617, 68, 0, 196619, 77, 0, 196616, 78, 0, 196617, 79, 0, 196619, 88, 0, 196616, 89, 0, 196617, 90, 0, 196619, 99, 0, 196616, 100, 0, 196617, 101, 0, 196619, 110, 0, 196616, 111, 0, 196617, 112, 0, 196619, 121, 0, 196616, 122, 0, 196617, 123, 0, 196619 )
+tile_data = PackedInt32Array( -655360, 0, 8, -655359, 0, 10, -655358, 0, 11, -655349, 0, 8, -655348, 0, 10, -655347, 0, 11, -655338, 0, 8, -655337, 0, 10, -655336, 0, 11, -655327, 0, 8, -655326, 0, 10, -655325, 0, 11, -655316, 0, 8, -655315, 0, 10, -655314, 0, 11, -655305, 0, 8, -655304, 0, 10, -655303, 0, 11, -655294, 0, 8, -655293, 0, 10, -655292, 0, 11, -655283, 0, 8, -655282, 0, 10, -655281, 0, 11, -655272, 0, 8, -655271, 0, 10, -655270, 0, 11, -655261, 0, 8, -655260, 0, 10, -655259, 0, 11, -655250, 0, 8, -655249, 0, 10, -655248, 0, 11, -655239, 0, 8, -655238, 0, 10, -655237, 0, 11, -589824, 0, 196616, -589823, 0, 196618, -589822, 0, 196619, -589813, 0, 196616, -589812, 0, 196618, -589811, 0, 196619, -589802, 0, 196616, -589801, 0, 196618, -589800, 0, 196619, -589791, 0, 196616, -589790, 0, 196618, -589789, 0, 196619, -589780, 0, 196616, -589779, 0, 196618, -589778, 0, 196619, -589769, 0, 196616, -589768, 0, 196618, -589767, 0, 196619, -589758, 0, 196616, -589757, 0, 196618, -589756, 0, 196619, -589747, 0, 196616, -589746, 0, 196618, -589745, 0, 196619, -589736, 0, 196616, -589735, 0, 196618, -589734, 0, 196619, -589725, 0, 196616, -589724, 0, 196618, -589723, 0, 196619, -589714, 0, 196616, -589713, 0, 196618, -589712, 0, 196619, -589703, 0, 196616, -589702, 0, 196618, -589701, 0, 196619, -524287, 0, 65536, -524276, 0, 65536, -524265, 0, 65536, -524254, 0, 65536, -524243, 0, 65536, -524232, 0, 65536, -524221, 0, 65536, -524210, 0, 65536, -524199, 0, 65536, -524188, 0, 65536, -524177, 0, 65536, -524166, 0, 65536, -458751, 0, 65536, -458740, 0, 65536, -458729, 0, 65536, -458718, 0, 65536, -458707, 0, 65536, -458696, 0, 65536, -458685, 0, 65536, -458674, 0, 65536, -458663, 0, 65536, -458652, 0, 65536, -458641, 0, 65536, -458630, 0, 65536, -393215, 0, 65536, -393204, 0, 65536, -393193, 0, 65536, -393182, 0, 65536, -393171, 0, 65536, -393160, 0, 65536, -393149, 0, 65536, -393138, 0, 65536, -393127, 0, 65536, -393116, 0, 65536, -393105, 0, 65536, -393094, 0, 65536, -327679, 0, 65536, -327668, 0, 65536, -327657, 0, 65536, -327646, 0, 65536, -327635, 0, 65536, -327624, 0, 65536, -327613, 0, 65536, -327602, 0, 65536, -327591, 0, 65536, -327580, 0, 65536, -327569, 0, 65536, -327558, 0, 65536, -262143, 0, 65536, -262132, 0, 65536, -262121, 0, 65536, -262110, 0, 65536, -262099, 0, 65536, -262088, 0, 65536, -262077, 0, 65536, -262066, 0, 65536, -262055, 0, 65536, -262044, 0, 65536, -262033, 0, 65536, -262022, 0, 65536, -196607, 0, 65536, -196596, 0, 65536, -196585, 0, 65536, -196574, 0, 65536, -196563, 0, 65536, -196552, 0, 65536, -196541, 0, 65536, -196530, 0, 65536, -196519, 0, 65536, -196508, 0, 65536, -196497, 0, 65536, -196486, 0, 65536, -131071, 0, 65536, -131060, 0, 65536, -131049, 0, 65536, -131038, 0, 65536, -131027, 0, 65536, -131016, 0, 65536, -131005, 0, 65536, -130994, 0, 65536, -130983, 0, 65536, -130972, 0, 65536, -130961, 0, 65536, -130950, 0, 65536, -65536, 0, 8, -65535, 0, 9, -65534, 0, 11, -65525, 0, 8, -65524, 0, 9, -65523, 0, 11, -65514, 0, 8, -65513, 0, 9, -65512, 0, 11, -65503, 0, 8, -65502, 0, 9, -65501, 0, 11, -65492, 0, 8, -65491, 0, 9, -65490, 0, 11, -65481, 0, 8, -65480, 0, 9, -65479, 0, 11, -65470, 0, 8, -65469, 0, 9, -65468, 0, 11, -65459, 0, 8, -65458, 0, 9, -65457, 0, 11, -65448, 0, 8, -65447, 0, 9, -65446, 0, 11, -65437, 0, 8, -65436, 0, 9, -65435, 0, 11, -65426, 0, 8, -65425, 0, 9, -65424, 0, 11, -65415, 0, 8, -65414, 0, 9, -65413, 0, 11, 0, 0, 196616, 1, 0, 196617, 2, 0, 196619, 11, 0, 196616, 12, 0, 196617, 13, 0, 196619, 22, 0, 196616, 23, 0, 196617, 24, 0, 196619, 33, 0, 196616, 34, 0, 196617, 35, 0, 196619, 44, 0, 196616, 45, 0, 196617, 46, 0, 196619, 55, 0, 196616, 56, 0, 196617, 57, 0, 196619, 66, 0, 196616, 67, 0, 196617, 68, 0, 196619, 77, 0, 196616, 78, 0, 196617, 79, 0, 196619, 88, 0, 196616, 89, 0, 196617, 90, 0, 196619, 99, 0, 196616, 100, 0, 196617, 101, 0, 196619, 110, 0, 196616, 111, 0, 196617, 112, 0, 196619, 121, 0, 196616, 122, 0, 196617, 123, 0, 196619 )
 
 [node name="DecorTileMap" type="TileMap" parent="." index="10"]
 tile_set = ExtResource( 3 )
@@ -1513,7 +1513,7 @@ collision_layer = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirusBlocker" index="0"]
 shape = SubResource( 28 )
 
-[node name="TealSprite" type="Sprite" parent="." index="13"]
+[node name="TealSprite" type="Sprite2D" parent="." index="13"]
 position = Vector2( 1968, -16 )
 texture = ExtResource( 12 )
 
@@ -1562,7 +1562,7 @@ stream = ExtResource( 23 )
 volume_db = -13.127
 bus = "Effects"
 
-[node name="Yellow" type="Sprite" parent="." index="20"]
+[node name="Yellow" type="Sprite2D" parent="." index="20"]
 position = Vector2( 2000, -16 )
 texture = ExtResource( 4 )
 
@@ -1586,142 +1586,142 @@ anims/teal_unturn = SubResource( 39 )
 [node name="VirusesRight" type="Node2D" parent="." index="23"]
 position = Vector2( 2496, -16 )
 
-[node name="VirusPawnLeft" type="Sprite" parent="VirusesRight" index="0"]
+[node name="VirusPawnLeft" type="Sprite2D" parent="VirusesRight" index="0"]
 position = Vector2( 16, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft2" type="Sprite" parent="VirusesRight" index="1"]
+[node name="VirusPawnLeft2" type="Sprite2D" parent="VirusesRight" index="1"]
 position = Vector2( 48, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft3" type="Sprite" parent="VirusesRight" index="2"]
+[node name="VirusPawnLeft3" type="Sprite2D" parent="VirusesRight" index="2"]
 position = Vector2( 80, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft4" type="Sprite" parent="VirusesRight" index="3"]
+[node name="VirusPawnLeft4" type="Sprite2D" parent="VirusesRight" index="3"]
 position = Vector2( 112, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft5" type="Sprite" parent="VirusesRight" index="4"]
+[node name="VirusPawnLeft5" type="Sprite2D" parent="VirusesRight" index="4"]
 position = Vector2( 144, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft6" type="Sprite" parent="VirusesRight" index="5"]
+[node name="VirusPawnLeft6" type="Sprite2D" parent="VirusesRight" index="5"]
 position = Vector2( 176, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft7" type="Sprite" parent="VirusesRight" index="6"]
+[node name="VirusPawnLeft7" type="Sprite2D" parent="VirusesRight" index="6"]
 position = Vector2( 208, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft8" type="Sprite" parent="VirusesRight" index="7"]
+[node name="VirusPawnLeft8" type="Sprite2D" parent="VirusesRight" index="7"]
 position = Vector2( 240, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft9" type="Sprite" parent="VirusesRight" index="8"]
+[node name="VirusPawnLeft9" type="Sprite2D" parent="VirusesRight" index="8"]
 position = Vector2( 272, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft10" type="Sprite" parent="VirusesRight" index="9"]
+[node name="VirusPawnLeft10" type="Sprite2D" parent="VirusesRight" index="9"]
 position = Vector2( 304, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft11" type="Sprite" parent="VirusesRight" index="10"]
+[node name="VirusPawnLeft11" type="Sprite2D" parent="VirusesRight" index="10"]
 position = Vector2( 336, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft12" type="Sprite" parent="VirusesRight" index="11"]
+[node name="VirusPawnLeft12" type="Sprite2D" parent="VirusesRight" index="11"]
 position = Vector2( 368, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft13" type="Sprite" parent="VirusesRight" index="12"]
+[node name="VirusPawnLeft13" type="Sprite2D" parent="VirusesRight" index="12"]
 position = Vector2( 400, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft14" type="Sprite" parent="VirusesRight" index="13"]
+[node name="VirusPawnLeft14" type="Sprite2D" parent="VirusesRight" index="13"]
 position = Vector2( 432, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft15" type="Sprite" parent="VirusesRight" index="14"]
+[node name="VirusPawnLeft15" type="Sprite2D" parent="VirusesRight" index="14"]
 position = Vector2( 464, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft16" type="Sprite" parent="VirusesRight" index="15"]
+[node name="VirusPawnLeft16" type="Sprite2D" parent="VirusesRight" index="15"]
 position = Vector2( 496, 0 )
 texture = ExtResource( 15 )
 
-[node name="VirusPawnLeft17" type="Sprite" parent="VirusesRight" index="16"]
+[node name="VirusPawnLeft17" type="Sprite2D" parent="VirusesRight" index="16"]
 position = Vector2( 528, 0 )
 texture = ExtResource( 15 )
 
 [node name="VirusesLeft" type="Node2D" parent="." index="24"]
 position = Vector2( 1472, -16 )
 
-[node name="VirusPawnRight" type="Sprite" parent="VirusesLeft" index="0"]
+[node name="VirusPawnRight" type="Sprite2D" parent="VirusesLeft" index="0"]
 position = Vector2( -16, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight2" type="Sprite" parent="VirusesLeft" index="1"]
+[node name="VirusPawnRight2" type="Sprite2D" parent="VirusesLeft" index="1"]
 position = Vector2( -48, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight3" type="Sprite" parent="VirusesLeft" index="2"]
+[node name="VirusPawnRight3" type="Sprite2D" parent="VirusesLeft" index="2"]
 position = Vector2( -80, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight4" type="Sprite" parent="VirusesLeft" index="3"]
+[node name="VirusPawnRight4" type="Sprite2D" parent="VirusesLeft" index="3"]
 position = Vector2( -112, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight5" type="Sprite" parent="VirusesLeft" index="4"]
+[node name="VirusPawnRight5" type="Sprite2D" parent="VirusesLeft" index="4"]
 position = Vector2( -144, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight6" type="Sprite" parent="VirusesLeft" index="5"]
+[node name="VirusPawnRight6" type="Sprite2D" parent="VirusesLeft" index="5"]
 position = Vector2( -176, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight7" type="Sprite" parent="VirusesLeft" index="6"]
+[node name="VirusPawnRight7" type="Sprite2D" parent="VirusesLeft" index="6"]
 position = Vector2( -208, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight8" type="Sprite" parent="VirusesLeft" index="7"]
+[node name="VirusPawnRight8" type="Sprite2D" parent="VirusesLeft" index="7"]
 position = Vector2( -240, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight9" type="Sprite" parent="VirusesLeft" index="8"]
+[node name="VirusPawnRight9" type="Sprite2D" parent="VirusesLeft" index="8"]
 position = Vector2( -272, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight10" type="Sprite" parent="VirusesLeft" index="9"]
+[node name="VirusPawnRight10" type="Sprite2D" parent="VirusesLeft" index="9"]
 position = Vector2( -304, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight11" type="Sprite" parent="VirusesLeft" index="10"]
+[node name="VirusPawnRight11" type="Sprite2D" parent="VirusesLeft" index="10"]
 position = Vector2( -336, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight12" type="Sprite" parent="VirusesLeft" index="11"]
+[node name="VirusPawnRight12" type="Sprite2D" parent="VirusesLeft" index="11"]
 position = Vector2( -368, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight13" type="Sprite" parent="VirusesLeft" index="12"]
+[node name="VirusPawnRight13" type="Sprite2D" parent="VirusesLeft" index="12"]
 position = Vector2( -400, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight14" type="Sprite" parent="VirusesLeft" index="13"]
+[node name="VirusPawnRight14" type="Sprite2D" parent="VirusesLeft" index="13"]
 position = Vector2( -432, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight15" type="Sprite" parent="VirusesLeft" index="14"]
+[node name="VirusPawnRight15" type="Sprite2D" parent="VirusesLeft" index="14"]
 position = Vector2( -464, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight16" type="Sprite" parent="VirusesLeft" index="15"]
+[node name="VirusPawnRight16" type="Sprite2D" parent="VirusesLeft" index="15"]
 position = Vector2( -496, 0 )
 texture = ExtResource( 14 )
 
-[node name="VirusPawnRight17" type="Sprite" parent="VirusesLeft" index="16"]
+[node name="VirusPawnRight17" type="Sprite2D" parent="VirusesLeft" index="16"]
 position = Vector2( -528, 0 )
 texture = ExtResource( 14 )
 
@@ -1743,75 +1743,75 @@ bus = "Effects"
 [node name="AntiVirusRight" type="Node2D" parent="." index="28"]
 position = Vector2( 2496, -16 )
 
-[node name="AntiVirusSoldierLeft" type="Sprite" parent="AntiVirusRight" index="0"]
+[node name="AntiVirusSoldierLeft" type="Sprite2D" parent="AntiVirusRight" index="0"]
 position = Vector2( 16, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft2" type="Sprite" parent="AntiVirusRight" index="1"]
+[node name="AntiVirusSoldierLeft2" type="Sprite2D" parent="AntiVirusRight" index="1"]
 position = Vector2( 40, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft3" type="Sprite" parent="AntiVirusRight" index="2"]
+[node name="AntiVirusSoldierLeft3" type="Sprite2D" parent="AntiVirusRight" index="2"]
 position = Vector2( 64, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft4" type="Sprite" parent="AntiVirusRight" index="3"]
+[node name="AntiVirusSoldierLeft4" type="Sprite2D" parent="AntiVirusRight" index="3"]
 position = Vector2( 88, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft5" type="Sprite" parent="AntiVirusRight" index="4"]
+[node name="AntiVirusSoldierLeft5" type="Sprite2D" parent="AntiVirusRight" index="4"]
 position = Vector2( 112, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft6" type="Sprite" parent="AntiVirusRight" index="5"]
+[node name="AntiVirusSoldierLeft6" type="Sprite2D" parent="AntiVirusRight" index="5"]
 position = Vector2( 136, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft7" type="Sprite" parent="AntiVirusRight" index="6"]
+[node name="AntiVirusSoldierLeft7" type="Sprite2D" parent="AntiVirusRight" index="6"]
 position = Vector2( 160, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft8" type="Sprite" parent="AntiVirusRight" index="7"]
+[node name="AntiVirusSoldierLeft8" type="Sprite2D" parent="AntiVirusRight" index="7"]
 position = Vector2( 184, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft9" type="Sprite" parent="AntiVirusRight" index="8"]
+[node name="AntiVirusSoldierLeft9" type="Sprite2D" parent="AntiVirusRight" index="8"]
 position = Vector2( 208, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft10" type="Sprite" parent="AntiVirusRight" index="9"]
+[node name="AntiVirusSoldierLeft10" type="Sprite2D" parent="AntiVirusRight" index="9"]
 position = Vector2( 232, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft11" type="Sprite" parent="AntiVirusRight" index="10"]
+[node name="AntiVirusSoldierLeft11" type="Sprite2D" parent="AntiVirusRight" index="10"]
 position = Vector2( 256, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft12" type="Sprite" parent="AntiVirusRight" index="11"]
+[node name="AntiVirusSoldierLeft12" type="Sprite2D" parent="AntiVirusRight" index="11"]
 position = Vector2( 280, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft13" type="Sprite" parent="AntiVirusRight" index="12"]
+[node name="AntiVirusSoldierLeft13" type="Sprite2D" parent="AntiVirusRight" index="12"]
 position = Vector2( 304, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft14" type="Sprite" parent="AntiVirusRight" index="13"]
+[node name="AntiVirusSoldierLeft14" type="Sprite2D" parent="AntiVirusRight" index="13"]
 position = Vector2( 328, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft15" type="Sprite" parent="AntiVirusRight" index="14"]
+[node name="AntiVirusSoldierLeft15" type="Sprite2D" parent="AntiVirusRight" index="14"]
 position = Vector2( 352, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft16" type="Sprite" parent="AntiVirusRight" index="15"]
+[node name="AntiVirusSoldierLeft16" type="Sprite2D" parent="AntiVirusRight" index="15"]
 position = Vector2( 376, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft17" type="Sprite" parent="AntiVirusRight" index="16"]
+[node name="AntiVirusSoldierLeft17" type="Sprite2D" parent="AntiVirusRight" index="16"]
 position = Vector2( 400, 0 )
 texture = ExtResource( 31 )
 
-[node name="AntiVirusSoldierLeft18" type="Sprite" parent="AntiVirusRight" index="17"]
+[node name="AntiVirusSoldierLeft18" type="Sprite2D" parent="AntiVirusRight" index="17"]
 position = Vector2( 424, 0 )
 texture = ExtResource( 31 )
 
@@ -1819,154 +1819,154 @@ texture = ExtResource( 31 )
 visible = false
 position = Vector2( 2112, -16 )
 
-[node name="AntiVirusSoldierRight" type="Sprite" parent="AntiVirusRightReverse" index="0"]
+[node name="AntiVirusSoldierRight" type="Sprite2D" parent="AntiVirusRightReverse" index="0"]
 position = Vector2( 16, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight2" type="Sprite" parent="AntiVirusRightReverse" index="1"]
+[node name="AntiVirusSoldierRight2" type="Sprite2D" parent="AntiVirusRightReverse" index="1"]
 position = Vector2( 40, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight3" type="Sprite" parent="AntiVirusRightReverse" index="2"]
+[node name="AntiVirusSoldierRight3" type="Sprite2D" parent="AntiVirusRightReverse" index="2"]
 position = Vector2( 64, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight4" type="Sprite" parent="AntiVirusRightReverse" index="3"]
+[node name="AntiVirusSoldierRight4" type="Sprite2D" parent="AntiVirusRightReverse" index="3"]
 position = Vector2( 88, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight5" type="Sprite" parent="AntiVirusRightReverse" index="4"]
+[node name="AntiVirusSoldierRight5" type="Sprite2D" parent="AntiVirusRightReverse" index="4"]
 position = Vector2( 112, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight6" type="Sprite" parent="AntiVirusRightReverse" index="5"]
+[node name="AntiVirusSoldierRight6" type="Sprite2D" parent="AntiVirusRightReverse" index="5"]
 position = Vector2( 136, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight7" type="Sprite" parent="AntiVirusRightReverse" index="6"]
+[node name="AntiVirusSoldierRight7" type="Sprite2D" parent="AntiVirusRightReverse" index="6"]
 position = Vector2( 160, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight8" type="Sprite" parent="AntiVirusRightReverse" index="7"]
+[node name="AntiVirusSoldierRight8" type="Sprite2D" parent="AntiVirusRightReverse" index="7"]
 position = Vector2( 184, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight9" type="Sprite" parent="AntiVirusRightReverse" index="8"]
+[node name="AntiVirusSoldierRight9" type="Sprite2D" parent="AntiVirusRightReverse" index="8"]
 position = Vector2( 208, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight10" type="Sprite" parent="AntiVirusRightReverse" index="9"]
+[node name="AntiVirusSoldierRight10" type="Sprite2D" parent="AntiVirusRightReverse" index="9"]
 position = Vector2( 232, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight11" type="Sprite" parent="AntiVirusRightReverse" index="10"]
+[node name="AntiVirusSoldierRight11" type="Sprite2D" parent="AntiVirusRightReverse" index="10"]
 position = Vector2( 256, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight12" type="Sprite" parent="AntiVirusRightReverse" index="11"]
+[node name="AntiVirusSoldierRight12" type="Sprite2D" parent="AntiVirusRightReverse" index="11"]
 position = Vector2( 280, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight13" type="Sprite" parent="AntiVirusRightReverse" index="12"]
+[node name="AntiVirusSoldierRight13" type="Sprite2D" parent="AntiVirusRightReverse" index="12"]
 position = Vector2( 304, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight14" type="Sprite" parent="AntiVirusRightReverse" index="13"]
+[node name="AntiVirusSoldierRight14" type="Sprite2D" parent="AntiVirusRightReverse" index="13"]
 position = Vector2( 328, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight15" type="Sprite" parent="AntiVirusRightReverse" index="14"]
+[node name="AntiVirusSoldierRight15" type="Sprite2D" parent="AntiVirusRightReverse" index="14"]
 position = Vector2( 352, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight16" type="Sprite" parent="AntiVirusRightReverse" index="15"]
+[node name="AntiVirusSoldierRight16" type="Sprite2D" parent="AntiVirusRightReverse" index="15"]
 position = Vector2( 376, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight17" type="Sprite" parent="AntiVirusRightReverse" index="16"]
+[node name="AntiVirusSoldierRight17" type="Sprite2D" parent="AntiVirusRightReverse" index="16"]
 position = Vector2( 400, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight18" type="Sprite" parent="AntiVirusRightReverse" index="17"]
+[node name="AntiVirusSoldierRight18" type="Sprite2D" parent="AntiVirusRightReverse" index="17"]
 position = Vector2( 424, 0 )
 texture = ExtResource( 30 )
 
 [node name="AntiVirusLeft" type="Node2D" parent="." index="30"]
 position = Vector2( 1472, -16 )
 
-[node name="AntiVirusSoldierRight" type="Sprite" parent="AntiVirusLeft" index="0"]
+[node name="AntiVirusSoldierRight" type="Sprite2D" parent="AntiVirusLeft" index="0"]
 position = Vector2( -16, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight2" type="Sprite" parent="AntiVirusLeft" index="1"]
+[node name="AntiVirusSoldierRight2" type="Sprite2D" parent="AntiVirusLeft" index="1"]
 position = Vector2( -40, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight3" type="Sprite" parent="AntiVirusLeft" index="2"]
+[node name="AntiVirusSoldierRight3" type="Sprite2D" parent="AntiVirusLeft" index="2"]
 position = Vector2( -64, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight4" type="Sprite" parent="AntiVirusLeft" index="3"]
+[node name="AntiVirusSoldierRight4" type="Sprite2D" parent="AntiVirusLeft" index="3"]
 position = Vector2( -88, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight5" type="Sprite" parent="AntiVirusLeft" index="4"]
+[node name="AntiVirusSoldierRight5" type="Sprite2D" parent="AntiVirusLeft" index="4"]
 position = Vector2( -112, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight6" type="Sprite" parent="AntiVirusLeft" index="5"]
+[node name="AntiVirusSoldierRight6" type="Sprite2D" parent="AntiVirusLeft" index="5"]
 position = Vector2( -136, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight7" type="Sprite" parent="AntiVirusLeft" index="6"]
+[node name="AntiVirusSoldierRight7" type="Sprite2D" parent="AntiVirusLeft" index="6"]
 position = Vector2( -160, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight8" type="Sprite" parent="AntiVirusLeft" index="7"]
+[node name="AntiVirusSoldierRight8" type="Sprite2D" parent="AntiVirusLeft" index="7"]
 position = Vector2( -184, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight9" type="Sprite" parent="AntiVirusLeft" index="8"]
+[node name="AntiVirusSoldierRight9" type="Sprite2D" parent="AntiVirusLeft" index="8"]
 position = Vector2( -208, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight10" type="Sprite" parent="AntiVirusLeft" index="9"]
+[node name="AntiVirusSoldierRight10" type="Sprite2D" parent="AntiVirusLeft" index="9"]
 position = Vector2( -232, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight11" type="Sprite" parent="AntiVirusLeft" index="10"]
+[node name="AntiVirusSoldierRight11" type="Sprite2D" parent="AntiVirusLeft" index="10"]
 position = Vector2( -256, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight12" type="Sprite" parent="AntiVirusLeft" index="11"]
+[node name="AntiVirusSoldierRight12" type="Sprite2D" parent="AntiVirusLeft" index="11"]
 position = Vector2( -280, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight13" type="Sprite" parent="AntiVirusLeft" index="12"]
+[node name="AntiVirusSoldierRight13" type="Sprite2D" parent="AntiVirusLeft" index="12"]
 position = Vector2( -304, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight14" type="Sprite" parent="AntiVirusLeft" index="13"]
+[node name="AntiVirusSoldierRight14" type="Sprite2D" parent="AntiVirusLeft" index="13"]
 position = Vector2( -328, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight15" type="Sprite" parent="AntiVirusLeft" index="14"]
+[node name="AntiVirusSoldierRight15" type="Sprite2D" parent="AntiVirusLeft" index="14"]
 position = Vector2( -352, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight16" type="Sprite" parent="AntiVirusLeft" index="15"]
+[node name="AntiVirusSoldierRight16" type="Sprite2D" parent="AntiVirusLeft" index="15"]
 position = Vector2( -376, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight17" type="Sprite" parent="AntiVirusLeft" index="16"]
+[node name="AntiVirusSoldierRight17" type="Sprite2D" parent="AntiVirusLeft" index="16"]
 position = Vector2( -400, 0 )
 texture = ExtResource( 30 )
 
-[node name="AntiVirusSoldierRight18" type="Sprite" parent="AntiVirusLeft" index="17"]
+[node name="AntiVirusSoldierRight18" type="Sprite2D" parent="AntiVirusLeft" index="17"]
 position = Vector2( -424, 0 )
 texture = ExtResource( 30 )
 
-[node name="Scareye" type="Sprite" parent="." index="31"]
+[node name="Scareye" type="Sprite2D" parent="." index="31"]
 position = Vector2( 2512, -16 )
 z_index = -5
 texture = ExtResource( 33 )

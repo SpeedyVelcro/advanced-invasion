@@ -1,18 +1,18 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var animated_sprite = $AnimatedSprite
-onready var shield_particles_left = $ShieldParticlesLeft
-onready var shield_particles_right = $ShieldParticlesRight
-onready var seek_min_timer = $SeekMinTimer
-onready var seek_max_timer = $SeekMaxTimer
-onready var vulnerable_start_timer = $VulnerableStartTimer
-onready var vulnerable_end_timer = $VulnerableEndTimer
-onready var height_tween = $HeightTween
-onready var animation_player = $AnimationPlayer
-onready var attack_area = $AttackArea
-onready var hitbox = $Hitbox
-onready var impact_audio_player = $ImpactAudioStreamPlayer2D
-var shield_active = false setget set_shield_active, is_shield_active
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var shield_particles_left = $ShieldParticlesLeft
+@onready var shield_particles_right = $ShieldParticlesRight
+@onready var seek_min_timer = $SeekMinTimer
+@onready var seek_max_timer = $SeekMaxTimer
+@onready var vulnerable_start_timer = $VulnerableStartTimer
+@onready var vulnerable_end_timer = $VulnerableEndTimer
+@onready var height_tween = $HeightTween
+@onready var animation_player = $AnimationPlayer
+@onready var attack_area = $AttackArea
+@onready var hitbox = $Hitbox
+@onready var impact_audio_player = $ImpactAudioStreamPlayer2D
+var shield_active = false: get = is_shield_active, set = set_shield_active
 enum {
 	STATE_SLEEP,
 	STATE_SEEK,
@@ -27,8 +27,8 @@ var state = STATE_SLEEP
 var next_state = state
 var velocity = Vector2(0, 0)
 var seek_height = 0.0
-export(NodePath) var player_path
-onready var player = get_node(player_path)
+@export var player_path: NodePath
+@onready var player = get_node(player_path)
 var stage = 0
 const STAGE_THRESHOLD = [66.0, 33.0]
 const MINIMUM_SKIP_DAMAGE = 10.0
@@ -154,7 +154,9 @@ func _physics_process(delta):
 				animated_sprite.play("right")
 			elif velocity.x < 0:
 				animated_sprite.play("left")
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 			# Sign of velocity flipping is a sign we crossed stopping point
 			if (velocity.x == 0) or (sign(velocity.x) != sign(last_velocity.x)):
 				# Come to stop so check if it's time to fall
@@ -167,7 +169,10 @@ func _physics_process(delta):
 			# to the upwards movement
 			velocity.y += FALL_ACCELERATION * delta # Moving down; down direction is acceleration
 			current_fall_speed = velocity.y
-			velocity = move_and_slide(velocity, UP_DIRECTION)
+			set_velocity(velocity)
+			set_up_direction(UP_DIRECTION)
+			move_and_slide()
+			velocity = velocity
 			if is_on_floor():
 				impact_audio_player.play()
 				if drop_count < MAX_DROP[stage]:
@@ -181,7 +186,9 @@ func _physics_process(delta):
 				# Set our height just to avoid small errors accumulating
 				position.y = seek_height
 				change_state(STATE_SEEK)
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 		STATE_VULNERABLE:
 			var stage_condition = false
 			if stage < STAGE_THRESHOLD.size():

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample"
+type="AudioStreamWAV"
+uid="uid://cbs1k2ce24mhu"
+path="res://.godot/imported/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample"
 
 [deps]
 
 source_file="res://Sound/Machine/TVOffShort.wav"
-dest_files=[ "res://.import/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample" ]
+dest_files=["res://.godot/imported/TVOffShort.wav-011db225fe09d4142bfcd5ec9c0aef1b.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

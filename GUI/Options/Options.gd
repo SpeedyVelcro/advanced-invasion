@@ -1,9 +1,9 @@
 extends Control
 
-onready var integration_menu = $IntegrationMenu
-onready var integration_settings = $CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer/IntegrationSettings
-onready var tab_container = $CenterContainer/Panel/VBoxContainer/TabContainer
-onready var options_menu_container = $CenterContainer/Panel
+@onready var integration_menu = $IntegrationMenu
+@onready var integration_settings = $CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer/IntegrationSettings
+@onready var tab_container = $CenterContainer/Panel/VBoxContainer/TabContainer
+@onready var options_menu_container = $CenterContainer/Panel
 var showing = false
 
 signal back

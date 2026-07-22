@@ -1,16 +1,16 @@
 extends Level
 
-onready var animation_player = $AnimationPlayer
-onready var camera_player = $Player/CameraPlayer
-onready var player = $Player
-onready var button_blocker = $ButtonBlocker
+@onready var animation_player = $AnimationPlayer
+@onready var camera_player = $Player/CameraPlayer
+@onready var player = $Player
+@onready var button_blocker = $ButtonBlocker
 var button_freed = false
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
+@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_2 = [] # (Array, Resource)
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	DialogueManager.queue_dialogue(dialogue_1, "dialogue_1")
 	animation_player.play("cutscene_reset")
 

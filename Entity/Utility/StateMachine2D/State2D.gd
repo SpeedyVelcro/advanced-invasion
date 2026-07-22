@@ -8,7 +8,7 @@ var func_revert_state : FuncRef
 var func_set_state_history : FuncRef
 var func_get_state_history : FuncRef
 var state_active = false 
-export var invisible_when_inactive = true
+@export var invisible_when_inactive = true
 
 signal state_entered
 signal state_exited

@@ -1,17 +1,17 @@
 extends Level
 
-onready var first_guardian = $FirstGuardian
-onready var guardian_off_sprite = $GuardianLeftOffSprite
-onready var guardian_eyes_sprite = $GuardianLeftEyesSprite
-onready var camera_player = $Player/CameraPlayer
-onready var animation_player = $AnimationPlayer
-onready var player = $Player
-onready var robot_audio_stream = $RobotAudioStreamPlayer2D
+@onready var first_guardian = $FirstGuardian
+@onready var guardian_off_sprite = $GuardianLeftOffSprite
+@onready var guardian_eyes_sprite = $GuardianLeftEyesSprite
+@onready var camera_player = $Player/CameraPlayer
+@onready var animation_player = $AnimationPlayer
+@onready var player = $Player
+@onready var robot_audio_stream = $RobotAudioStreamPlayer2D
 
-export(Array, Resource) var dialogue_1 = []
+@export var dialogue_1 = [] # (Array, Resource)
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
+	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
 	first_guardian.set_process(false)
 	first_guardian.set_physics_process(false)
 	first_guardian.set_visible(false)

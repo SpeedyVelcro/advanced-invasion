@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample"
+type="AudioStreamWAV"
+uid="uid://dhs8eyd6bucmi"
+path="res://.godot/imported/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample"
 
 [deps]
 
 source_file="res://Sound/Weapon/GrenadePin2.wav"
-dest_files=[ "res://.import/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample" ]
+dest_files=["res://.godot/imported/GrenadePin2.wav-4e3c8899c27785757628b5ba3bd477aa.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

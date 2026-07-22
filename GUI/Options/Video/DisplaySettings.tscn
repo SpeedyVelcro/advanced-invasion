@@ -4,10 +4,10 @@
 [ext_resource path="res://GUI/ConfirmPrompt/ConfirmPrompt.tscn" type="PackedScene" id=2]
 
 [node name="DisplaySettings" type="Control"]
-margin_top = 37.0
-margin_right = 410.0
-margin_bottom = 137.0
-rect_min_size = Vector2( 0, 100 )
+offset_top = 37.0
+offset_right = 410.0
+offset_bottom = 137.0
+custom_minimum_size = Vector2( 0, 100 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -25,67 +25,67 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_right = 203.0
-margin_bottom = 104.0
+offset_right = 203.0
+offset_bottom = 104.0
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_right = 203.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 0, 32 )
+offset_right = 203.0
+offset_bottom = 32.0
+custom_minimum_size = Vector2( 0, 32 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ResolutionOptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 110.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 110, 32 )
+offset_right = 110.0
+offset_bottom = 32.0
+custom_minimum_size = Vector2( 110, 32 )
 
 [node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 114.0
-margin_right = 118.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 4, 0 )
+offset_left = 114.0
+offset_right = 118.0
+offset_bottom = 32.0
+custom_minimum_size = Vector2( 4, 0 )
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 122.0
-margin_top = 9.0
-margin_right = 190.0
-margin_bottom = 23.0
+offset_left = 122.0
+offset_top = 9.0
+offset_right = 190.0
+offset_bottom = 23.0
 text = "Resolution"
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
-margin_top = 36.0
-margin_right = 110.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 110, 32 )
+offset_top = 36.0
+offset_right = 110.0
+offset_bottom = 68.0
+custom_minimum_size = Vector2( 110, 32 )
 size_flags_horizontal = 0
 text = "Fullscreen"
 
 [node name="VSyncCheckBox" type="CheckBox" parent="HBoxContainer/VBoxContainer"]
-margin_top = 72.0
-margin_right = 110.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 110, 32 )
+offset_top = 72.0
+offset_right = 110.0
+offset_bottom = 104.0
+custom_minimum_size = Vector2( 110, 32 )
 size_flags_horizontal = 0
 text = "VSync"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 207.0
-margin_right = 410.0
-margin_bottom = 104.0
+offset_left = 207.0
+offset_right = 410.0
+offset_bottom = 104.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="ApplyButton" type="Button" parent="HBoxContainer/VBoxContainer2"]
-margin_top = 36.0
-margin_right = 203.0
-margin_bottom = 68.0
-rect_min_size = Vector2( 0, 32 )
+offset_top = 36.0
+offset_right = 203.0
+offset_bottom = 68.0
+custom_minimum_size = Vector2( 0, 32 )
 text = "Apply Changes"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

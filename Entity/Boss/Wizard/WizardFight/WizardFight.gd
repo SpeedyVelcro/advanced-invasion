@@ -1,19 +1,19 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var animated_sprite = $AnimatedSprite
-onready var animation_player = $AnimationPlayer
-onready var left_raycast = $LeftRayCast
-onready var right_raycast = $RightRayCast
-onready var state_timer = $StateTimer # State timer is only ever used by the current state and should be use to control state timing/progression
-onready var middle_beam = $MiddleBeam
-onready var portal = $Portal
-onready var left_beam = $LeftBeam
-onready var right_beam = $RightBeam
-onready var portal_animation_player = $PortalAnimationPlayer
-onready var creep_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn")
-onready var bullet_resource = preload("res://Entity/Boss/Wizard/WizardBullet.tscn")
-onready var rng = RandomNumberGenerator.new()
-onready var woosh_audio_player = $WooshAudioStreamPlayer2D
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var left_raycast = $LeftRayCast
+@onready var right_raycast = $RightRayCast
+@onready var state_timer = $StateTimer # State timer is only ever used by the current state and should be use to control state timing/progression
+@onready var middle_beam = $MiddleBeam
+@onready var portal = $Portal
+@onready var left_beam = $LeftBeam
+@onready var right_beam = $RightBeam
+@onready var portal_animation_player = $PortalAnimationPlayer
+@onready var creep_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn")
+@onready var bullet_resource = preload("res://Entity/Boss/Wizard/WizardBullet.tscn")
+@onready var rng = RandomNumberGenerator.new()
+@onready var woosh_audio_player = $WooshAudioStreamPlayer2D
 
 # Basic idea: States do not control patrolling. This happens during all states
 # if the wizard is alive. Patrol left/right animations don't happen in certain states.
@@ -44,7 +44,7 @@ const ATTACK_LASER_CHARGE_TIME = 3.0
 const ATTACK_LASER_TIME = 6.0
 const ATTACK_SPAWN_TIME = 1.5
 const ATTACK_SPAWN_NUMBER = 3 # Number of viruses to spawn
-var health = MAX_HEALTH setget set_health, get_health
+var health = MAX_HEALTH: get = get_health, set = set_health
 var attack_spins_left = 0 # set on STATE_ATTACK_SPIN enter
 var attack_spawns_left = 0 # set on STATE_ATTACK_SPAWNER enter
 var attack_spin_fire_direction = 0
@@ -130,7 +130,7 @@ func _on_state_enter(p_state = state):
 		STATE_DEATH:
 			animation_player.play("death")
 			var players = get_tree().get_nodes_in_group("player")
-			if not players.empty():
+			if not players.is_empty():
 				var player_pos = players[0].get_global_position()
 				# Now patrol x direction is just used for facing of sprite
 				patrol_x_direction = sign(player_pos.x - global_position.x)
@@ -145,7 +145,8 @@ func _on_state_enter(p_state = state):
 
 func _physics_process(_delta):
 	if patrol_enabled:
-		move_and_slide(Vector2.RIGHT * patrol_x_direction * PATROL_SPEED)
+		set_velocity(Vector2.RIGHT * patrol_x_direction * PATROL_SPEED)
+		move_and_slide()
 		left_raycast.force_raycast_update()
 		right_raycast.force_raycast_update()
 		if left_raycast.is_colliding():
@@ -244,7 +245,7 @@ func _on_StateTimer_timeout():
 				change_state(STATE_IDLE)
 		STATE_ATTACK_SPAWNER:
 			if attack_spawns_left >= 1:
-				var new_creep = creep_resource.instance()
+				var new_creep = creep_resource.instantiate()
 				get_parent().add_child(new_creep)
 				new_creep.set_global_position(portal.get_global_position())
 				if rng.randf() > 0.5:
@@ -272,7 +273,7 @@ func attack_spin():
 		# We add the patrol movement so momentum looks conserved
 		spd.x += PATROL_SPEED * patrol_x_direction
 		# Create the bullet
-		var new_bullet = bullet_resource.instance()
+		var new_bullet = bullet_resource.instantiate()
 		get_parent().add_child(new_bullet)
 		new_bullet.set_global_position(start_pos)
 		new_bullet.apply_central_impulse(spd)

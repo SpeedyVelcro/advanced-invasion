@@ -1,14 +1,14 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
+@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_2 = [] # (Array, Resource)
 
-onready var animation_player = $AnimationPlayer
-onready var player = $Player
-onready var boss = $SquareVirus
-onready var barrier_right = $BarrierRight
-onready var creep_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
-onready var creep_spawn_location = [
+@onready var animation_player = $AnimationPlayer
+@onready var player = $Player
+@onready var boss = $SquareVirus
+@onready var barrier_right = $BarrierRight
+@onready var creep_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
+@onready var creep_spawn_location = [
 	$Portal.get_global_position(),
 	$Portal2.get_global_position(),
 	$Portal3.get_global_position()
@@ -21,7 +21,7 @@ func _ready():
 	$Portal.set_visible(false)
 	$Portal2.set_visible(false)
 	$Portal3.set_visible(false)
-	DialogueManager.connect("finished", self, "_on_DialogueManager_finished")
+	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
 	animation_player.play("cutscene_1")
 	rng.randomize()
 
@@ -46,7 +46,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func spawn_viruses():
 	for pos in creep_spawn_location:
-		var new_creep = creep_resource.instance()
+		var new_creep = creep_resource.instantiate()
 		add_child(new_creep)
 		new_creep.set_global_position(pos)
 		if rng.randf() > 0.5:
@@ -54,7 +54,7 @@ func spawn_viruses():
 		else:
 			new_creep.set_direction(Vector2.LEFT)
 		remaining_viruses += 1
-		new_creep.connect("death", self, "_on_creep_death")
+		new_creep.connect("death", Callable(self, "_on_creep_death"))
 
 func _on_SquareVirus_hang_back():
 	animation_player.play("spawn_virus")

@@ -1,12 +1,12 @@
 class_name Level
 extends Node2D
 
-export var checkpoint = true
-export var cutscene_active = false
+@export var checkpoint = true
+@export var cutscene_active = false
 
-export var play_music_on_start = false
-export var music_id = ""
-onready var hud = get_node("LevelHUD")
+@export var play_music_on_start = false
+@export var music_id = ""
+@onready var hud = get_node("LevelHUD")
 
 func _ready():
 	if checkpoint:
@@ -29,8 +29,8 @@ func _ready():
 			GlobalMusic.play(music_id)
 
 func connect_player(player_node):
-	player_node.connect("death", self, "_on_Player_death")
-	player_node.connect("health_changed", hud, "_on_Player_health_changed")
+	player_node.connect("death", Callable(self, "_on_Player_death"))
+	player_node.connect("health_changed", Callable(hud, "_on_Player_health_changed"))
 
 func restart():
 	StoryStatus.load_game()

@@ -13,8 +13,8 @@
 [ext_resource path="res://Game/LevelEnd/LevelEnd.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Art/Character/Corpse/CorpseLeft.png" type="Texture" id=14]
-[ext_resource path="res://Art/Character/Corpse/CorpseRight.png" type="Texture" id=15]
+[ext_resource path="res://Art/Character/Corpse/CorpseLeft.png" type="Texture2D" id=14]
+[ext_resource path="res://Art/Character/Corpse/CorpseRight.png" type="Texture2D" id=15]
 [ext_resource path="res://Entity/Obstacle/Barrier/Variants/BlueBarrier.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Entity/Obstacle/PushButton/Variants/BlueButton.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Entity/Obstacle/Barrier/Barrier.tscn" type="PackedScene" id=18]
@@ -61,7 +61,7 @@ tile_data = PoolIntArray( -2228232, 0, 0, -2228231, 0, 0, -2228230, 0, 0, -22282
 tile_set = ExtResource( 3 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 524344, 1, 0, 1769473, 1, 0 )
+tile_data = PackedInt32Array( 524344, 1, 0, 1769473, 1, 0 )
 
 [node name="Player" parent="." index="5" instance=ExtResource( 4 )]
 position = Vector2( 40, 624 )
@@ -95,73 +95,73 @@ level_path = "res://Level/03Base/06Level.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0"]
 shape = SubResource( 3 )
 
-[node name="CorpseLeft" type="Sprite" parent="." index="9"]
+[node name="CorpseLeft" type="Sprite2D" parent="." index="9"]
 position = Vector2( -950, 540 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseLeft2" type="Sprite" parent="." index="10"]
+[node name="CorpseLeft2" type="Sprite2D" parent="." index="10"]
 position = Vector2( 450, 634 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseLeft3" type="Sprite" parent="." index="11"]
+[node name="CorpseLeft3" type="Sprite2D" parent="." index="11"]
 position = Vector2( 1428, 314 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseLeft4" type="Sprite" parent="." index="12"]
+[node name="CorpseLeft4" type="Sprite2D" parent="." index="12"]
 position = Vector2( 1896, 634 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseLeft5" type="Sprite" parent="." index="13"]
+[node name="CorpseLeft5" type="Sprite2D" parent="." index="13"]
 position = Vector2( 1953, 634 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseLeft6" type="Sprite" parent="." index="14"]
+[node name="CorpseLeft6" type="Sprite2D" parent="." index="14"]
 position = Vector2( 1990, 634 )
 rotation = 1.57079
 z_index = -10
 texture = ExtResource( 14 )
 
-[node name="CorpseRight" type="Sprite" parent="." index="15"]
+[node name="CorpseRight" type="Sprite2D" parent="." index="15"]
 position = Vector2( -877, 541 )
 rotation = -1.57079
 z_index = -10
 texture = ExtResource( 15 )
 
-[node name="CorpseRight2" type="Sprite" parent="." index="16"]
+[node name="CorpseRight2" type="Sprite2D" parent="." index="16"]
 position = Vector2( 676, 666 )
 rotation = -1.57079
 z_index = -10
 texture = ExtResource( 15 )
 
-[node name="CorpseRight6" type="Sprite" parent="." index="17"]
+[node name="CorpseRight6" type="Sprite2D" parent="." index="17"]
 position = Vector2( 582, 954 )
 rotation = -1.57079
 z_index = -10
 texture = ExtResource( 15 )
 
-[node name="CorpseRight4" type="Sprite" parent="." index="18"]
+[node name="CorpseRight4" type="Sprite2D" parent="." index="18"]
 position = Vector2( 1766, 346 )
 rotation = -1.57079
 z_index = -10
 texture = ExtResource( 15 )
 
-[node name="CorpseRight5" type="Sprite" parent="." index="19"]
+[node name="CorpseRight5" type="Sprite2D" parent="." index="19"]
 position = Vector2( 2106, 634 )
 rotation = -1.57079
 z_index = -10
 texture = ExtResource( 15 )
 
-[node name="CorpseRight3" type="Sprite" parent="." index="20"]
+[node name="CorpseRight3" type="Sprite2D" parent="." index="20"]
 position = Vector2( 220, 314 )
 rotation = -1.57079
 z_index = -10

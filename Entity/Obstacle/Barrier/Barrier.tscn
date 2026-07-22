@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Entity/Obstacle/Barrier/Barrier.gd" type="Script" id=1]
-[ext_resource path="res://Art/Obstacle/Barrier/Barrier.png" type="Texture" id=2]
+[ext_resource path="res://Art/Obstacle/Barrier/Barrier.png" type="Texture2D" id=2]
 [ext_resource path="res://Entity/Obstacle/Barrier/EndSpriteFrames.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://Sound/Machine/MachinePowerOff.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sound/Machine/Shutter.wav" type="AudioStream" id=5]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.794118, 1 )
-colors = PoolColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
+offsets = PackedFloat32Array( 0, 0.794118, 1 )
+colors = PackedColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
 
 [sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
@@ -24,8 +24,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -36,8 +36,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -48,8 +48,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ false ]
 }
@@ -60,8 +60,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ "disable", false ],
 "method": "play"
@@ -74,8 +74,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.4 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ "disable", false ],
 "method": "play"
@@ -92,8 +92,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.1, 0.2, 0.4, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.337255 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -104,8 +104,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -116,8 +116,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.1 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -128,8 +128,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ "enable", false ],
 "method": "play"
@@ -142,8 +142,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ "enable", false ],
 "method": "play"
@@ -154,7 +154,7 @@ tracks/4/keys = {
 script = ExtResource( 1 )
 condition = 1
 
-[node name="StartAnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="StartAnimatedSprite" type="AnimatedSprite2D" parent="."]
 frames = ExtResource( 3 )
 offset = Vector2( 0, -4 )
 
@@ -170,7 +170,7 @@ gravity = Vector2( 0, 0 )
 initial_velocity = 30.0
 color_ramp = SubResource( 1 )
 
-[node name="EndAnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="EndAnimatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2( 0, -32 )
 rotation = 3.14159
 frames = ExtResource( 3 )
@@ -190,7 +190,7 @@ color_ramp = SubResource( 1 )
 
 [node name="BeamFadeNode" type="Node2D" parent="."]
 
-[node name="BeamSprite" type="Sprite" parent="BeamFadeNode"]
+[node name="BeamSprite" type="Sprite2D" parent="BeamFadeNode"]
 position = Vector2( 0, -16 )
 z_index = -1
 texture = ExtResource( 2 )
@@ -201,7 +201,7 @@ region_rect = Rect2( 0, 0, 4, 26 )
 visible = false
 position = Vector2( 0, -1 )
 enabled = true
-cast_to = Vector2( 0, -400 )
+target_position = Vector2( 0, -400 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )

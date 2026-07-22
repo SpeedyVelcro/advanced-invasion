@@ -1,14 +1,14 @@
 class_name Achievement
 extends Resource
 
-export(String) var icon_path
-export(String) var id
-export(String) var title
-export(String, MULTILINE) var description
-export(bool) var target_enabled
-export(float) var target
-export(bool) var secret
-export(int) var target_decimal_places
+@export var icon_path: String
+@export var id: String
+@export var title: String
+@export var description # (String, MULTILINE)
+@export var target_enabled: bool
+@export var target: float
+@export var secret: bool
+@export var target_decimal_places: int
 
 # Getters and setters
 func get_id()->String:

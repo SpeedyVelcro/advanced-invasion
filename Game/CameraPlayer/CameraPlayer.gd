@@ -1,7 +1,7 @@
 extends Camera2D
 
-export var input_enabled = true
-onready var viewport = get_tree().get_root()
+@export var input_enabled = true
+@onready var viewport = get_tree().get_root()
 # For ZOOM_LEVELS[i][a], i represents different screen sizes and [a] represents
 # valid zoom levels at that size.
 # Zoom levels must be in size order, smallest vector length to largest.
@@ -31,7 +31,7 @@ var input_zoom_enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	viewport.connect("size_changed", self, "_on_viewport_size_changed")
+	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
 	_on_viewport_size_changed() # Adapt size once
 	zoom = zoom_levels[1] # Then choose correct starting zoom
 	# TODO: move correct starting zoom into a constant or export variable
@@ -77,10 +77,10 @@ func _input(event):
 	# input map doesn't work with mouse wheel so must be polled here
 	if input_zoom_enabled:
 		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_WHEEL_UP:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom_in()
 		if event is InputEventMouseButton:
-			if event.button_index == BUTTON_WHEEL_DOWN:
+			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom_out()
 
 func _on_viewport_size_changed():

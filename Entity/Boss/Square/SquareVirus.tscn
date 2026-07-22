@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Art/Boss/Square/SquareSleep.png" type="Texture" id=1]
-[ext_resource path="res://Art/Boss/Square/SquareLeft.png" type="Texture" id=2]
-[ext_resource path="res://Art/Boss/Square/SquareRight.png" type="Texture" id=3]
-[ext_resource path="res://Art/Boss/Square/SquareDrop.png" type="Texture" id=4]
-[ext_resource path="res://Art/Boss/Square/SquareLand.png" type="Texture" id=5]
-[ext_resource path="res://Art/Boss/Square/SquareFront.png" type="Texture" id=6]
-[ext_resource path="res://Art/Boss/Square/SquareSideShield.png" type="Texture" id=7]
+[ext_resource path="res://Art/Boss/Square/SquareSleep.png" type="Texture2D" id=1]
+[ext_resource path="res://Art/Boss/Square/SquareLeft.png" type="Texture2D" id=2]
+[ext_resource path="res://Art/Boss/Square/SquareRight.png" type="Texture2D" id=3]
+[ext_resource path="res://Art/Boss/Square/SquareDrop.png" type="Texture2D" id=4]
+[ext_resource path="res://Art/Boss/Square/SquareLand.png" type="Texture2D" id=5]
+[ext_resource path="res://Art/Boss/Square/SquareFront.png" type="Texture2D" id=6]
+[ext_resource path="res://Art/Boss/Square/SquareSideShield.png" type="Texture2D" id=7]
 [ext_resource path="res://Entity/Boss/Square/SquareVirus.gd" type="Script" id=8]
 [ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Sound/Destruction/LowThump.wav" type="AudioStream" id=10]
@@ -49,8 +49,8 @@ animations = [ {
 extents = Vector2( 48, 64 )
 
 [sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.15894, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+offsets = PackedFloat32Array( 0, 0.15894, 1 )
+colors = PackedColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 48, 60 )
@@ -61,51 +61,51 @@ extents = Vector2( 48, 64 )
 [sub_resource type="Animation" id=6]
 resource_name = "death"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:offset")
+tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -32 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:modulate")
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "method"
-tracks/2/path = NodePath("AnimatedSprite")
+tracks/2/path = NodePath("AnimatedSprite2D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [ "front", false ],
 "method": "play"
 } ]
 }
 
-[node name="SquareVirus" type="KinematicBody2D" groups=[
+[node name="SquareVirus" type="CharacterBody2D" groups=[
 "boss",
 ]]
 collision_layer = 524288
 script = ExtResource( 8 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource( 1 )
 animation = "right"
 

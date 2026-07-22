@@ -48,7 +48,7 @@ tile_data = PoolIntArray( -1179689, 0, 0, -1179688, 0, 0, -1179687, 0, 0, -11796
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 851974, 4, 131074, 851979, 4, 131074, 851981, 4, 131074, 851983, 4, 131074, 917510, 4, 65536, 917511, 4, 131073, 917512, 4, 131073, 917513, 4, 131073, 917519, 4, 65537 )
+tile_data = PackedInt32Array( 851974, 4, 131074, 851979, 4, 131074, 851981, 4, 131074, 851983, 4, 131074, 917510, 4, 65536, 917511, 4, 131073, 917512, 4, 131073, 917513, 4, 131073, 917519, 4, 65537 )
 
 [node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 position = Vector2( 88, 624 )
@@ -79,7 +79,7 @@ position = Vector2( 256, 672 )
 pause_time_sec = 1.5
 speed = 45.0
 
-[node name="Position2D" type="Position2D" parent="MovingPlatform" index="4"]
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform" index="4"]
 position = Vector2( 320, 0 )
 
 [node name="MovingPlatform2" parent="." index="9" instance=ExtResource( 10 )]
@@ -87,13 +87,13 @@ position = Vector2( 1184, 672 )
 pause_time_sec = 1.5
 speed = 45.0
 
-[node name="Position2D" type="Position2D" parent="MovingPlatform2" index="4"]
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform2" index="4"]
 position = Vector2( 0, -128 )
 
 [node name="MovingPlatform3" parent="." index="10" instance=ExtResource( 10 )]
 position = Vector2( 1696, 672 )
 
-[node name="Position2D" type="Position2D" parent="MovingPlatform3" index="4"]
+[node name="Marker2D" type="Marker2D" parent="MovingPlatform3" index="4"]
 position = Vector2( 0, -256 )
 
 [node name="VirusPawn" parent="." index="11" instance=ExtResource( 7 )]
@@ -210,14 +210,14 @@ level_path = "res://Level/01Invasion/05Level.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0"]
 shape = SubResource( 4 )
 
-[node name="BigScreen" type="AnimatedSprite" parent="." index="33"]
+[node name="BigScreen" type="AnimatedSprite2D" parent="." index="33"]
 position = Vector2( 400, 464 )
 frames = ExtResource( 13 )
 animation = "alert-feed"
 frame = 2
 playing = true
 
-[node name="NormalScreen" type="AnimatedSprite" parent="." index="34"]
+[node name="NormalScreen" type="AnimatedSprite2D" parent="." index="34"]
 position = Vector2( 256, 464 )
 frames = ExtResource( 12 )
 animation = "alert_warning"

@@ -1,22 +1,22 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
-export(Array, Resource) var dialogue_4 = []
+@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_2 = [] # (Array, Resource)
+@export var dialogue_3 = [] # (Array, Resource)
+@export var dialogue_4 = [] # (Array, Resource)
 
 const NEXT_LEVEL = "res://Level/04City/10Cutscene.tscn"
-onready var player = $Player
-onready var player_camera = $Player/CameraPlayer
-onready var animation_player = $AnimationPlayer
-onready var virus_spawn_pos_left = $VirusSpawnPositionLeft.global_position
-onready var virus_spawn_pos_right = $VirusSpawnPositionRight.global_position
-onready var virus_spawn_timer_left = $VirusSpawnTimerLeft
-onready var virus_spawn_timer_right = $VirusSpawnTimerRight
-onready var shield_spawn_timer = $ShieldSpawnTimer
-onready var last_stand_hud = $LastStandHUD
-onready var virus_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
-onready var virus_shield_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
+@onready var player = $Player
+@onready var player_camera = $Player/CameraPlayer
+@onready var animation_player = $AnimationPlayer
+@onready var virus_spawn_pos_left = $VirusSpawnPositionLeft.global_position
+@onready var virus_spawn_pos_right = $VirusSpawnPositionRight.global_position
+@onready var virus_spawn_timer_left = $VirusSpawnTimerLeft
+@onready var virus_spawn_timer_right = $VirusSpawnTimerRight
+@onready var shield_spawn_timer = $ShieldSpawnTimer
+@onready var last_stand_hud = $LastStandHUD
+@onready var virus_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
+@onready var virus_shield_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
 const INITIAL_SPAWN_TIME = 0.4
 const PEAK_SPAWN_TIME = 0.27
 const END_SPAWN_TIME = 0.6
@@ -31,7 +31,7 @@ const PEAK_VIRUSES_LEFT = 400 # Number of viruses left at peak spawn rate
 var viruses_left = VIRUS_TOTAL
 var viruses_alive = VIRUS_TOTAL # Reset when battle actually starts to account for cutscene deaths
 var zoomed_in = false
-onready var cutscene_bullet = [
+@onready var cutscene_bullet = [
 	$CutsceneBullet1,
 	$CutsceneBullet2,
 	$CutsceneBullet3
@@ -41,14 +41,14 @@ const CUTSCENE_BULLET_IMPULSE = [
 	Vector2(256, 0),
 	Vector2(-256, 0)
 ]
-onready var teal = $TealLastStand
-onready var teal_cutscene_sprite = $TealSprite
-onready var initial_virus_carrier_left = $InitialVirusCarrierLeft
-onready var initial_virus_carrier_right = $InitialVirusCarrierRight
+@onready var teal = $TealLastStand
+@onready var teal_cutscene_sprite = $TealSprite
+@onready var initial_virus_carrier_left = $InitialVirusCarrierLeft
+@onready var initial_virus_carrier_right = $InitialVirusCarrierRight
 const CAMERA_BATTLE_POSITION = Vector2(-64, 0)
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
+	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
 	animation_player.play("cutscene_1")
 	for bullet in cutscene_bullet:
 		bullet.set_visible(false)
@@ -105,7 +105,7 @@ func update_spawn_time():
 
 func spawn_left():
 	viruses_left -= 1
-	var virus = virus_resource.instance()
+	var virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_left)
 	virus.set_direction(Vector2.RIGHT)
@@ -113,21 +113,21 @@ func spawn_left():
 func spawn_shield_left():
 	# NOTE: This should never be called because Teal would just die
 	viruses_left -= 1
-	var virus = virus_shield_resource.instance()
+	var virus = virus_shield_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_left)
 	virus.set_direction(Vector2.RIGHT)
 
 func spawn_right():
 	viruses_left -= 1
-	var virus = virus_resource.instance()
+	var virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_right)
 	virus.set_direction(Vector2.LEFT)
 
 func spawn_shield_right():
 	viruses_left -= 1
-	var virus = virus_shield_resource.instance()
+	var virus = virus_shield_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_right)
 	virus.set_direction(Vector2.LEFT)
@@ -162,7 +162,7 @@ func _on_TealLastStand_death():
 
 func _on_tree_node_added(node):
 	if node.is_in_group("creep"):
-		node.connect("death", self, "_on_creep_death")
+		node.connect("death", Callable(self, "_on_creep_death"))
 
 func _on_creep_death():
 	viruses_alive -= 1
@@ -178,7 +178,7 @@ func start_battle():
 	player.set_input_locked(false)
 	teal.start()
 	teal_cutscene_sprite.set_visible(false)
-	get_tree().connect("node_added", self, "_on_tree_node_added")
+	get_tree().connect("node_added", Callable(self, "_on_tree_node_added"))
 	viruses_alive = VIRUS_TOTAL
 	last_stand_hud.set_viruses_remaining(viruses_alive)
 	viruses_left -= initial_virus_carrier_left.start_viruses()

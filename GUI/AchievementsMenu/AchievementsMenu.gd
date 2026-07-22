@@ -2,8 +2,8 @@ extends Control
 
 signal back
 
-export(NodePath) var entry_parent_path # Node to which entries are added as children
-onready var entry_parent = get_node(entry_parent_path)
+@export var entry_parent_path: NodePath # Node to which entries are added as children
+@onready var entry_parent = get_node(entry_parent_path)
 var entries = []
 var separators = []
 
@@ -43,12 +43,12 @@ func populate():
 
 func insert_achievement(id : String):
 	# Create separator
-	if not entries.empty():
-		var separator = SEPARATOR.instance()
+	if not entries.is_empty():
+		var separator = SEPARATOR.instantiate()
 		separators.append(separator)
 		entry_parent.add_child(separator)
 	# Create entry
-	var entry = ACHIEVEMENT_ENTRY.instance()
+	var entry = ACHIEVEMENT_ENTRY.instantiate()
 	entries.append(entry)
 	entry_parent.add_child(entry)
 	# Set entry details
@@ -77,7 +77,7 @@ func insert_achievement(id : String):
 	var integration_check = NewgroundsIntegration.is_integration_enabled() or GameJoltIntegration.is_integration_enabled()
 	if unlocked and integration_check:
 		entry.set_sync_enabled(true)
-		entry.connect("synced", self, "_on_AchievementEntry_synced", [id])
+		entry.connect("synced", Callable(self, "_on_AchievementEntry_synced").bind(id))
 	else:
 		entry.set_sync_enabled(false)
 

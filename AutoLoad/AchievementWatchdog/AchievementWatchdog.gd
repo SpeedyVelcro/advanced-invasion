@@ -6,9 +6,9 @@ func _ready():
 	# Then when a node is added depending on the node it has signals connected
 	# to the watchdog e.g. signal for killing a virus
 	# I might not actually use this in the end though
-	get_tree().connect("node_added", self, "_on_tree_node_added")
-	GameStatus.connect("story_complete", self, "_on_GameStatus_story_complete")
-	GameStatus.connect("story_normal_complete", self, "_on_GameStatus_story_normal_complete")
+	get_tree().connect("node_added", Callable(self, "_on_tree_node_added"))
+	GameStatus.connect("story_complete", Callable(self, "_on_GameStatus_story_complete"))
+	GameStatus.connect("story_normal_complete", Callable(self, "_on_GameStatus_story_normal_complete"))
 
 func _on_tree_node_added(node : Node):
 	# BIG WARNING: node_added signal is not emitted if you start the game from this scene.
@@ -21,11 +21,11 @@ func _on_tree_node_added(node : Node):
 	if node.is_in_group("boss"):
 		match node.name:
 			"Giant":
-				node.connect("death", self, "_on_boss_giant_death")
+				node.connect("death", Callable(self, "_on_boss_giant_death"))
 			"SquareVirus":
-				node.connect("death", self, "_on_boss_square_death")
+				node.connect("death", Callable(self, "_on_boss_square_death"))
 			"WizardFight":
-				node.connect("death", self, "_on_boss_wizard_death")
+				node.connect("death", Callable(self, "_on_boss_wizard_death"))
 
 func _on_boss_giant_death():
 	AchievementManager.unlock("defeat_giant")

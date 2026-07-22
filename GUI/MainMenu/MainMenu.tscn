@@ -3,7 +3,7 @@
 [ext_resource path="res://GUI/MainMenu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://GUI/MainMenu/Credits.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/MainMenu/StartGUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Font/Hack/HackTitle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Font/Hack/HackTitle.tres" type="FontFile" id=4]
 [ext_resource path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/MainMenu/StartPrompt.gd" type="Script" id=6]
 [ext_resource path="res://GUI/MainMenu/StorySetup.tscn" type="PackedScene" id=7]
@@ -12,12 +12,12 @@
 [ext_resource path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://GUI/Options/Options.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Tile/NormalTile/NormalWall.tres" type="TileSet" id=12]
-[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture" id=13]
-[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture" id=14]
+[ext_resource path="res://Art/Character/Militia/MilitiaLeft.png" type="Texture2D" id=13]
+[ext_resource path="res://Art/Character/Militia/MilitiaRight.png" type="Texture2D" id=14]
 [ext_resource path="res://Tile/NormalTile/NormalDecor.tres" type="TileSet" id=15]
 [ext_resource path="res://Game/CameraPlayer/CameraPlayer.tscn" type="PackedScene" id=16]
 [ext_resource path="res://GUI/Integration/IntegrationMenu.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="FontFile" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hide"
@@ -29,8 +29,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -45,8 +45,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 1, 2 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
@@ -57,8 +57,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -101,78 +101,78 @@ input_enabled = false
 tile_set = ExtResource( 15 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 655420, 3, 0, 655423, 3, 0, 655425, 1, 0, 655439, 1, 0, 655442, 3, 0, 655445, 3, 0, 917572, 3, 0, 917574, 3, 0, 917576, 1, 0, 917579, 3, 0, 917581, 3, 0, 3276808, 1, 0, 3276811, 3, 0, 3539017, 3, 0, 3539020, 3, 0, 3539023, 3, 0, 3539026, 3, 0, 3735624, 3, 0, 3735627, 3, 0, 3735629, 1, 0, 3735632, 3, 0, 3735635, 3, 0, 3735678, 3, 0, 3735680, 1, 0, 3866776, 1, 0, 3932295, 1, 0, 3932298, 3, 0, 3932300, 3, 0, 4063378, 3, 0, 4063381, 1, 0, 4063385, 3, 0 )
+tile_data = PackedInt32Array( 655420, 3, 0, 655423, 3, 0, 655425, 1, 0, 655439, 1, 0, 655442, 3, 0, 655445, 3, 0, 917572, 3, 0, 917574, 3, 0, 917576, 1, 0, 917579, 3, 0, 917581, 3, 0, 3276808, 1, 0, 3276811, 3, 0, 3539017, 3, 0, 3539020, 3, 0, 3539023, 3, 0, 3539026, 3, 0, 3735624, 3, 0, 3735627, 3, 0, 3735629, 1, 0, 3735632, 3, 0, 3735635, 3, 0, 3735678, 3, 0, 3735680, 1, 0, 3866776, 1, 0, 3932295, 1, 0, 3932298, 3, 0, 3932300, 3, 0, 4063378, 3, 0, 4063381, 1, 0, 4063385, 3, 0 )
 
 [node name="Area1" type="Node2D" parent="World"]
 position = Vector2( 352, 384 )
 
-[node name="Area1Militia1" type="Sprite" parent="World/Area1"]
+[node name="Area1Militia1" type="Sprite2D" parent="World/Area1"]
 position = Vector2( 128, 112 )
 texture = ExtResource( 13 )
 
-[node name="Area1Militia2" type="Sprite" parent="World/Area1"]
+[node name="Area1Militia2" type="Sprite2D" parent="World/Area1"]
 position = Vector2( 168, 112 )
 texture = ExtResource( 13 )
 
 [node name="Area2" type="Node2D" parent="World"]
 position = Vector2( 640, 1664 )
 
-[node name="Area2Militia1" type="Sprite" parent="World/Area2"]
+[node name="Area2Militia1" type="Sprite2D" parent="World/Area2"]
 position = Vector2( -208, -48 )
 texture = ExtResource( 14 )
 
-[node name="Area2Militia2" type="Sprite" parent="World/Area2"]
+[node name="Area2Militia2" type="Sprite2D" parent="World/Area2"]
 modulate = Color( 1, 1, 1, 0.0612245 )
 position = Vector2( -352, -16 )
 texture = ExtResource( 14 )
 
-[node name="Area2Militia3" type="Sprite" parent="World/Area2"]
+[node name="Area2Militia3" type="Sprite2D" parent="World/Area2"]
 position = Vector2( 144.304, 176 )
 texture = ExtResource( 13 )
 
 [node name="Area3" type="Node2D" parent="World"]
 position = Vector2( 2496, 1824 )
 
-[node name="Area3Militia1" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia1" type="Sprite2D" parent="World/Area3"]
 position = Vector2( -64, 48 )
 texture = ExtResource( 14 )
 
-[node name="Area3Militia2" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia2" type="Sprite2D" parent="World/Area3"]
 position = Vector2( -144, 48 )
 texture = ExtResource( 14 )
 
-[node name="Area3Militia6" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia6" type="Sprite2D" parent="World/Area3"]
 position = Vector2( -360, 48 )
 texture = ExtResource( 14 )
 
-[node name="Area3Militia3" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia3" type="Sprite2D" parent="World/Area3"]
 position = Vector2( 64, 48 )
 texture = ExtResource( 13 )
 
-[node name="Area3Militia4" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia4" type="Sprite2D" parent="World/Area3"]
 position = Vector2( 144, 48 )
 texture = ExtResource( 13 )
 
-[node name="Area3Militia5" type="Sprite" parent="World/Area3"]
+[node name="Area3Militia5" type="Sprite2D" parent="World/Area3"]
 position = Vector2( 1024, 48 )
 texture = ExtResource( 13 )
 
 [node name="Area4" type="Node2D" parent="World"]
 position = Vector2( 4480, 1824 )
 
-[node name="Area4Militia1" type="Sprite" parent="World/Area4"]
+[node name="Area4Militia1" type="Sprite2D" parent="World/Area4"]
 position = Vector2( -560, 48 )
 texture = ExtResource( 14 )
 
-[node name="Area4Militia2" type="Sprite" parent="World/Area4"]
+[node name="Area4Militia2" type="Sprite2D" parent="World/Area4"]
 position = Vector2( -480, 48 )
 texture = ExtResource( 13 )
 
-[node name="Area4Militia3" type="Sprite" parent="World/Area4"]
+[node name="Area4Militia3" type="Sprite2D" parent="World/Area4"]
 position = Vector2( 80, 144 )
 texture = ExtResource( 14 )
 
-[node name="Area4Militia4" type="Sprite" parent="World/Area4"]
+[node name="Area4Militia4" type="Sprite2D" parent="World/Area4"]
 position = Vector2( 376, 112 )
 texture = ExtResource( 13 )
 
@@ -194,11 +194,11 @@ layer = 40
 
 [node name="Title" type="Label" parent="CanvasLayer"]
 anchor_right = 1.0
-margin_left = 64.0
-margin_top = 32.0
-margin_right = -64.0
-margin_bottom = 300.0
-custom_fonts/font = ExtResource( 4 )
+offset_left = 64.0
+offset_top = 32.0
+offset_right = -64.0
+offset_bottom = 300.0
+theme_override_fonts/font = ExtResource( 4 )
 text = "Advanced Invasion"
 align = 1
 autowrap = true
@@ -210,7 +210,7 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -48.0
+offset_top = -48.0
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -220,7 +220,7 @@ __meta__ = {
 modulate = Color( 1, 1, 1, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 18 )
+theme_override_fonts/font = ExtResource( 18 )
 text = "Press any button to start"
 align = 1
 __meta__ = {
@@ -259,23 +259,23 @@ visible = false
 visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 256.0
-margin_bottom = 96.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 256.0
+offset_bottom = 96.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VersionNumber" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_right = 240.0
-margin_bottom = 14.0
+offset_right = 240.0
+offset_bottom = 14.0
 text = "v1.0.0"
 
 [node name="EpilepsyWarning" type="Label" parent="CanvasLayer/VBoxContainer"]
-margin_top = 18.0
-margin_right = 240.0
-margin_bottom = 49.0
+offset_top = 18.0
+offset_right = 240.0
+offset_bottom = 49.0
 text = "This game contains fullscreen flashing effects."
 autowrap = true
 

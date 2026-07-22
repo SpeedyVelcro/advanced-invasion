@@ -1,11 +1,11 @@
 extends Area2D
 
-export(Texture) var normal_texture
-export(Texture) var depressed_texture
-onready var sprite = $Sprite
-onready var audio_stream_player = $AudioStreamPlayer2D
-var depressed = false setget set_depressed, is_depressed
-export var start_depressed = false # Must be seperate from depressed, otherwise setget tries to set texture before ready
+@export var normal_texture: Texture2D
+@export var depressed_texture: Texture2D
+@onready var sprite = $Sprite2D
+@onready var audio_stream_player = $AudioStreamPlayer2D
+var depressed = false: get = is_depressed, set = set_depressed
+@export var start_depressed = false # Must be seperate from depressed, otherwise: set = tries
 
 signal pressed
 

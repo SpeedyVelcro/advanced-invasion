@@ -3,15 +3,15 @@
 
 extends CanvasLayer
 
-onready var viewport = get_tree().get_root()
-onready var gradient_polygon = get_node("Polygon2D")
-onready var name_label = $Control/VBoxContainer/HBoxContainer/NameLabel
-onready var dialogue_label = $Control/VBoxContainer/HBoxContainer/DialogueLabel
-onready var voice_audio_player = $VoiceAudioStreamPlayer
-export var gradient_height_proportion = 0.3
+@onready var viewport = get_tree().get_root()
+@onready var gradient_polygon = get_node("Polygon2D")
+@onready var name_label = $Control/VBoxContainer/HBoxContainer/NameLabel
+@onready var dialogue_label = $Control/VBoxContainer/HBoxContainer/DialogueLabel
+@onready var voice_audio_player = $VoiceAudioStreamPlayer
+@export var gradient_height_proportion = 0.3
 var gradient_visible_y = 0.0 # Overwritten automatically
 var gradient_hidden_y = 0.0 # Overwritten automatically
-export var gradient_visibility = 0.0 setget set_gradient_visibility, get_gradient_visibility # Number between 0 and 1
+@export var gradient_visibility = 0.0: get = get_gradient_visibility, set = set_gradient_visibility # Number between 0 and 1
 var currently_displayed = false
 enum {STATE_IDLE, # Off screen or going through display/hide animation
 		STATE_TYPEWRITER, # Typing out text
@@ -27,7 +27,7 @@ var stop_characters = [".", "!", "?", ";", ",", ":", "-"]
 var end_broadcast = []
 const VOICE_SYTNH_PITCH = 1.0
 const VOICE_SYNTH_PITCH_VARY = 0.2
-onready var rng = RandomNumberGenerator.new()
+@onready var rng = RandomNumberGenerator.new()
 
 signal finished
 signal hidden
@@ -35,7 +35,7 @@ signal broadcast(message)
 signal end_broadcast(message)
 
 func _ready():
-	viewport.connect("size_changed", self, "_on_viewport_size_changed")
+	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
 	_on_viewport_size_changed() # Adapt size once
 	gradient_polygon.set_visible(false)
 	name_label.set_visible(false)
@@ -187,7 +187,7 @@ func display():
 
 func update_dialogue():
 	name_label.set_text(dialogue_queue[0].character_name + ":")
-	dialogue_label.set("custom_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
+	dialogue_label.set("theme_override_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
 	var txt = "[center]" + tr(dialogue_queue[0].bbcode) + "[/center]"
 	dialogue_label.set_bbcode(txt)
 

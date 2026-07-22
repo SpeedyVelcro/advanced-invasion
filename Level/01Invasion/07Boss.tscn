@@ -113,10 +113,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StopMusicArea" index="0"]
 shape = SubResource( 4 )
 
-[node name="CreepSpawnLeft" type="Position2D" parent="." index="14"]
+[node name="CreepSpawnLeft" type="Marker2D" parent="." index="14"]
 position = Vector2( -32, -208 )
 
-[node name="CreepSpawnRight" type="Position2D" parent="." index="15"]
+[node name="CreepSpawnRight" type="Marker2D" parent="." index="15"]
 position = Vector2( 1184, -208 )
 
 [node name="LeftSpawnTimer" type="Timer" parent="." index="16"]

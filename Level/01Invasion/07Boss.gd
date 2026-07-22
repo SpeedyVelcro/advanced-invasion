@@ -5,16 +5,16 @@ const CREEP_SPAWN_TIME_SHORT = 1.5
 const CREEP_SPAWN_TIME = 6.0
 const MAX_CREEPS = 30
 const CREEP_CULLABLE_HEIGHT = 96
-onready var landing_timer = $LandingTimer
-onready var giant = $Giant
-onready var player_camera = $Player/CameraPlayer
-onready var creep_spawn_left = $CreepSpawnLeft
-onready var creep_spawn_right = $CreepSpawnRight
-onready var left_spawn_timer = $LeftSpawnTimer
-onready var right_spawn_timer = $RightSpawnTimer
-onready var creep_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
-onready var barrier = $Barrier
-onready var player = $Player
+@onready var landing_timer = $LandingTimer
+@onready var giant = $Giant
+@onready var player_camera = $Player/CameraPlayer
+@onready var creep_spawn_left = $CreepSpawnLeft
+@onready var creep_spawn_right = $CreepSpawnRight
+@onready var left_spawn_timer = $LeftSpawnTimer
+@onready var right_spawn_timer = $RightSpawnTimer
+@onready var creep_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
+@onready var barrier = $Barrier
+@onready var player = $Player
 
 signal start
 
@@ -57,7 +57,7 @@ func _on_SpawnAreaRight_body_exited(_body):
 func spawn_left():
 	# MUST USE call_deferred()
 	cull_creeps() # Already within a deferred call
-	var creep = creep_resource.instance()
+	var creep = creep_resource.instantiate()
 	add_child(creep)
 	creep.set_global_position(creep_spawn_left.get_global_position())
 	creep.set_direction(Vector2.RIGHT)
@@ -65,7 +65,7 @@ func spawn_left():
 func spawn_right():
 	# MUST USE call_deferred()
 	cull_creeps() # Already within a deferred call
-	var creep = creep_resource.instance()
+	var creep = creep_resource.instantiate()
 	add_child(creep)
 	creep.set_global_position(creep_spawn_right.get_global_position())
 	creep.set_direction(Vector2.LEFT)

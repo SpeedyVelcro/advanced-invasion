@@ -2,16 +2,16 @@
 
 [ext_resource path="res://Level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/Tile/Underbelly/UnderbellyBack.png" type="Texture" id=3]
+[ext_resource path="res://Art/Tile/Underbelly/UnderbellyBack.png" type="Texture2D" id=3]
 [ext_resource path="res://Tile/NormalTile/NormalDecor.tres" type="TileSet" id=4]
 [ext_resource path="res://Entity/Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Game/CameraPlayer/CameraPlayer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://AutoLoad/DialogueManager/Dialogue.gd" type="Script" id=7]
-[ext_resource path="res://Art/Character/Teal/TealRight.png" type="Texture" id=8]
+[ext_resource path="res://Art/Character/Teal/TealRight.png" type="Texture2D" id=8]
 [ext_resource path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Tile/Underbelly/UnderbellyWall.tres" type="TileSet" id=10]
 [ext_resource path="res://Level/02Underbelly/01Level.gd" type="Script" id=11]
-[ext_resource path="res://Art/Character/Teal/TealLeft.png" type="Texture" id=12]
+[ext_resource path="res://Art/Character/Teal/TealLeft.png" type="Texture2D" id=12]
 [ext_resource path="res://Entity/Obstacle/Barrier/Barrier.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Game/LevelEnd/LevelEnd.tscn" type="PackedScene" id=15]
@@ -243,8 +243,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4824, 400 ), Vector2( 4688, 400 ) ]
 }
@@ -258,8 +258,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4688, 400 ), Vector2( 4712, 400 ) ]
 }
@@ -270,8 +270,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ) ]
 }
@@ -285,8 +285,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4688, 400 ), Vector2( 4712, 400 ) ]
 }
@@ -297,8 +297,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ) ]
 }
@@ -312,8 +312,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 4824, 400 ) ]
 }
@@ -324,8 +324,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -339,8 +339,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -354,8 +354,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 9 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4712, 400 ), Vector2( 7360, 400 ) ]
 }
@@ -366,8 +366,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 8 ) ]
 }
@@ -381,8 +381,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 4712, 400 ), Vector2( 4688, 400 ) ]
 }
@@ -393,8 +393,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ ExtResource( 12 ) ]
 }
@@ -451,7 +451,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VirusBlocker" index="0"]
 shape = SubResource( 20 )
 
-[node name="Teal" type="Sprite" parent="." index="7"]
+[node name="Teal" type="Sprite2D" parent="." index="7"]
 position = Vector2( 5351.52, 400 )
 texture = ExtResource( 8 )
 
@@ -513,7 +513,7 @@ position = Vector2( 4528, 432 )
 [node name="HeatBlock11" parent="." index="23" instance=ExtResource( 9 )]
 position = Vector2( 4496, 432 )
 
-[node name="UmbrellaCameraPosition" type="Position2D" parent="." index="24"]
+[node name="UmbrellaCameraPosition" type="Marker2D" parent="." index="24"]
 position = Vector2( 4608, 816 )
 
 [node name="Timer" type="Timer" parent="." index="25"]
@@ -537,7 +537,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OofArea" index="0"]
 shape = SubResource( 30 )
 
-[node name="TealPosition" type="Position2D" parent="." index="28"]
+[node name="TealPosition" type="Marker2D" parent="." index="28"]
 position = Vector2( 4664, 400 )
 [connection signal="body_entered" from="TutorialiseArea" to="." method="_on_TutorialiseArea_body_entered"]
 [connection signal="death" from="VirusPawn" to="." method="_on_VirusPawn_death"]

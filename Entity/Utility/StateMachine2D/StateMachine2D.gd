@@ -3,9 +3,9 @@
 class_name StateMachine2D
 extends Node2D
 
-export var autostart = true
-export(NodePath) var initial_state_path
-export var state_history_max_size = 5
+@export var autostart = true
+@export var initial_state_path: NodePath
+@export var state_history_max_size = 5
 var current_state
 var state_history = []
 

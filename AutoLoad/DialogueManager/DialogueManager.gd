@@ -19,7 +19,7 @@ enum {STATE_IDLE, # Off screen or going through display/hide animation
 var state = STATE_IDLE
 var cumulative_delta = 0
 var typewriter_speed = 30
-var dialogue_queue = []
+var dialogue_queue: Array[Dialogue] = []
 var color_resource = preload("res://AutoLoad/DialogueManager/DialogueColors.tres")
 var last_character_was_stop = false
 var stop_speed_multiplier = 0.3
@@ -141,14 +141,14 @@ func change_state(p_state):
 func _on_PauseTimer_timeout():
 	advance_dialogue()
 
-func queue_dialogue(dg_list = [], p_end_broadcast = "", display_immediately = true, override = false):
+func queue_dialogue(dg_list: Array[Dialogue] = [], p_end_broadcast = "", display_immediately = true, override = false):
 	# Override clears the dialogue queue and allows interrupting other dialogue
 	# rather than following on
 	if override:
-		dialogue_queue = []
+		dialogue_queue.clear()
 	if p_end_broadcast != "":
 		end_broadcast.append(p_end_broadcast)
-	dialogue_queue += dg_list
+	dialogue_queue.append_array(dg_list)
 	if display_immediately and ((state == STATE_IDLE) or override):
 		display()
 

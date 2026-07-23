@@ -1,9 +1,9 @@
 extends Level
 
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
-@export var dialogue_3 = [] # (Array, Resource)
-@export var dialogue_4 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_2: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_3: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_4: Array[Dialogue] = [] # (Array, Resource)
 @onready var animation_player = $AnimationPlayer
 const NEXT_SCENE = "res://Level/01Invasion/02Level.tscn"
 

@@ -12,7 +12,7 @@ extends Resource
 @export var broadcast_enabled: bool = false
 @export var broadcast_message: String = ""
 
-func _init(p_character_name = "", p_bbcode = "", p_character_color_id = "", p_ignore_input = true, p_auto_advance = false, p_pause_sec = -1):
+func _init(p_character_name = "", p_bbcode = "", p_character_color_id = "", p_ignore_input = false, p_auto_advance = false, p_pause_sec = 0):
 	character_name = p_character_name
 	character_color_id = p_character_color_id
 	bbcode = p_bbcode

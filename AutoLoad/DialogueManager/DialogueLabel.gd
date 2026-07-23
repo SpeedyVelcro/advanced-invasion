@@ -8,12 +8,13 @@ func _ready():
 	var effect = RichTextSpeed.new(self)
 	install_effect(effect)
 
+@warning_ignore("native_method_override") # TODO: rename method (engine calls already don't hit this override, only my gdscript calls do)
 func set_visible_characters(value):
 	super.set_visible_characters(value)
 	# This ensures custom fx will re-run every time a new character is drawn,
 	# so that the speed multiplier is always up-to-date for the last character.
 	speed_multiplier = 1.0
-	update()
+	queue_redraw()
 
 # Getters and setters
 func get_speed_multiplier():

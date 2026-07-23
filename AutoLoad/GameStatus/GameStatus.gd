@@ -18,8 +18,7 @@ func _ready():
 
 # Save and load
 func save_file_exists():
-	var file = File.new()
-	return file.file_exists(SAVE_FILE_PATH)
+	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func make_save_string():
 	var dict = {
@@ -27,7 +26,7 @@ func make_save_string():
 		"story_normal_completion" : story_normal_completion,
 		"soundtrack_unlocked" : soundtrack_unlocked
 	}
-	return JSON.new().stringify(dict)
+	return JSON.stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
@@ -43,16 +42,14 @@ func load_save_string(value):
 	return true
 
 func save():
-	var file = File.new()
-	file.open(SAVE_FILE_PATH, File.WRITE)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string(make_save_string())
 	file.close()
 
 func load_game():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_PATH):
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return false
-	file.open(SAVE_FILE_PATH, File.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var result = load_save_string(file.get_as_text())
 	if not result:
 		push_error("Failed to load game data")
@@ -78,12 +75,12 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 
 # Getters and setters:
 
-func set_soundtrack_unlocked(name : String, value : bool):
-	soundtrack_unlocked[name] = value
+func set_soundtrack_unlocked(soundtrack_name : String, value : bool):
+	soundtrack_unlocked[soundtrack_name] = value
 
-func is_soundtrack_unlocked(name : String):
-	if soundtrack_unlocked.has(name):
-		return soundtrack_unlocked[name]
+func is_soundtrack_unlocked(soundtrack_name : String):
+	if soundtrack_unlocked.has(soundtrack_name):
+		return soundtrack_unlocked[soundtrack_name]
 	else:
 		return false
 

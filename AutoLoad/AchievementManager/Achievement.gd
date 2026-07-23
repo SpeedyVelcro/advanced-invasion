@@ -4,7 +4,7 @@ extends Resource
 @export var icon_path: String
 @export var id: String
 @export var title: String
-@export var description # (String, MULTILINE)
+@export_multiline() var description: String
 @export var target_enabled: bool
 @export var target: float
 @export var secret: bool

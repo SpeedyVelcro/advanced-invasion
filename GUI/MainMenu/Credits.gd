@@ -29,8 +29,7 @@ func _on_MITButton_pressed():
 	display_text_file(mit_file)
 
 func display_text_file(file_path):
-	var file = File.new()
-	file.open(file_path, File.READ)
+	var file := FileAccess.open(file_path, FileAccess.READ)
 	var credits_text = ""
 	while true:
 		credits_text += file.get_line()
@@ -42,10 +41,12 @@ func display_text_file(file_path):
 	rich_label.set_bbcode(credits_text)
 	rich_label.get_v_scroll().set_value(0.0)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 	display_text_file(credits_file)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

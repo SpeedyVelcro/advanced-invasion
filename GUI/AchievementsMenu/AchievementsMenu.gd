@@ -38,7 +38,7 @@ func populate():
 		var index = achievements.find(id)
 		if index != -1:
 			insert_achievement(id)
-			achievements.remove(index)
+			achievements.remove_at(index)
 	# Then populate any achievements unaccounted for
 	for id in achievements:
 		insert_achievement(id)

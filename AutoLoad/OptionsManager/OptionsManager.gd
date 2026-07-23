@@ -21,15 +21,21 @@ func set_display(resolution : Vector2, fullscreen : bool, vsync : bool):
 	# was previously on the next frame if stretch mode is set to viewport
 	# (This might be a bug in Godot?)
 	if OS.get_name() != "HTML5":
-		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_DISABLED, get_tree().STRETCH_ASPECT_KEEP, resolution)
+		get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
+		get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+		get_window().content_scale_size = resolution
 		viewport.set_size(resolution)
 		get_window().set_size(resolution)
 		get_window().move_to_center()
-		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_VIEWPORT, get_tree().STRETCH_ASPECT_KEEP, resolution)
+		get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_VIEWPORT
+		get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+		get_window().content_scale_size = resolution
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (fullscreen) else Window.MODE_WINDOWED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (vsync) else DisplayServer.VSYNC_DISABLED)
 	else:
-		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_DISABLED, get_tree().STRETCH_ASPECT_KEEP, resolution)
+		get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
+		get_window().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+		get_window().content_scale_size = resolution
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (fullscreen) else Window.MODE_WINDOWED
 		viewport.set_size(resolution)
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_VIEWPORT, get_tree().STRETCH_ASPECT_KEEP, resolution)
@@ -80,13 +86,12 @@ func make_save_string():
 
 func load_save_string(value):
 	# Returns true if successful
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(value)
-	var json_result = test_json_conv.get_data()
-	if json_result.error != OK:
-		push_error("Options file: failed to parse JSON with error " + json_result.error_string + " on line " + String(json_result.error_line))
+	var json = JSON.new()
+	var error := json.parse(value)
+	if error != OK:
+		push_error("Options file: failed to parse JSON with error %s on line %d" % [json.get_error_message(), json.get_error_line()])
 		return false
-	var dict = json_result.result
+	var dict = json.data
 	if typeof(dict) != TYPE_DICTIONARY:
 		push_error("Corrupt options save data: not recognised as dictionary")
 		return false

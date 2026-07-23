@@ -16,6 +16,7 @@ func _ready():
 	GameJoltIntegration.connect("session_open", Callable(self, "_on_GameJoltIntegration_session_open"))
 	GameJoltIntegration.connect("session_open_fail", Callable(self, "_on_GameJoltIntegration_session_open_fail"))
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	set_visible(true)
 	fail_label.set_visible(false)
@@ -24,6 +25,7 @@ func show():
 	else:
 		show_login()
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	set_visible(false)
 

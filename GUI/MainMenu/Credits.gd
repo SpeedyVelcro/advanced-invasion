@@ -38,8 +38,8 @@ func display_text_file(file_path):
 		else:
 			credits_text += "\n"
 	file.close()
-	rich_label.set_bbcode(credits_text)
-	rich_label.get_v_scroll().set_value(0.0)
+	rich_label.text = credits_text
+	rich_label.scroll_to_line(0)
 
 @warning_ignore("native_method_override") # TODO: rename
 func show():

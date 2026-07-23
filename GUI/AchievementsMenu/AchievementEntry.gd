@@ -41,8 +41,8 @@ func set_target_enabled(value):
 func set_progress(progress : float, target : float, decimal : int):
 	progress_bar.set_max(target)
 	progress_bar.set_value(progress)
-	var progress_string = String(progress).pad_decimals(decimal)
-	var target_string = String(target).pad_decimals(decimal)
+	var progress_string = str(progress).pad_decimals(decimal)
+	var target_string = str(target).pad_decimals(decimal)
 	progress_label.set_text(progress_string + " / " + target_string)
 
 func set_sync_enabled(value : bool):

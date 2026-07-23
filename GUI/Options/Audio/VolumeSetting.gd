@@ -32,7 +32,7 @@ func _on_HSlider_value_changed(value):
 	percent_label.set_text(linear_to_percent_string(vol_linear))
 
 func linear_to_percent_string(value)->String:
-	return String(value * 100.0).pad_decimals(0) + "%"
+	return str(value * 100.0).pad_decimals(0) + "%"
 
 # Getters and setters
 func set_bus_name(value : String):

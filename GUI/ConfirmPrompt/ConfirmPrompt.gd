@@ -10,11 +10,13 @@ signal no
 func _ready():
 	set_process(false)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 	$Timer.start(time_limit)
 	set_process(true)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 	set_process(false)

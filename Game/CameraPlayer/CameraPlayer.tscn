@@ -1,12 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=3 uid="uid://c21ufj6ajia5g"]
 
-[ext_resource path="res://Game/CameraPlayer/CameraPlayer.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://cd7so2vx5n2bc" path="res://Game/CameraPlayer/CameraPlayer.gd" id="1"]
 
-[node name="CameraPlayer" type="Camera2D"]
-current = true
-zoom = Vector2( 0.5, 0.5 )
-drag_vertical_enabled = true
+[node name="CameraPlayer" type="Camera2D" unique_id=686600043]
+zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
-script = ExtResource( 1 )
-
-[node name="ZoomTween" type="Tween" parent="."]
+drag_vertical_enabled = true
+script = ExtResource("1")

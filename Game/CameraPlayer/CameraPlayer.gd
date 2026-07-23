@@ -29,6 +29,8 @@ var look_down_height = 160 # Variable not constant because may need to change wi
 var look_down_stored_height = 0
 var input_zoom_enabled = false
 
+var _current_tween: Tween = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
@@ -58,8 +60,12 @@ func _process(delta):
 				break
 	#Start up the tween to ease into new zoom level
 	if zoom_to != zoom:
-		$ZoomTween.interpolate_property(self, "zoom", zoom, zoom_to, ZOOM_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		$ZoomTween.start()
+		var tween := get_tree().create_tween()
+		tween.set_trans(Tween.TRANS_LINEAR)
+		tween.set_ease(Tween.EASE_IN)
+		tween.tween_property(self, "zoom", zoom_to, ZOOM_DURATION)
+		tween.play()
+		_current_tween = tween
 	# Look down
 	if Input.is_action_just_pressed("look_down") and input_enabled:
 		look_down_stored_height = position.y
@@ -86,9 +92,9 @@ func _input(event):
 func _on_viewport_size_changed():
 	var size = viewport.size
 	# End any currently running tweens
-	var tween_rt = $ZoomTween.get_runtime()
-	$ZoomTween.seek(tween_rt)
-	# TODO: Might need to also stop the tween. Test this.
+	if _current_tween != null and _current_tween.is_valid():
+		_current_tween.kill()
+		_current_tween = null
 	# Identify current zoom level:
 	var current_level = 0
 	for i in range(1, zoom_levels.size()):

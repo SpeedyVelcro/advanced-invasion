@@ -10,6 +10,7 @@ func _ready():
 	modulate = Color(1.0, 1.0, 1.0, 1.0)
 	set_visible(false)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show(instant = true):
 	# Visual stuff
 	set_visible(true)
@@ -27,6 +28,7 @@ func show(instant = true):
 	else:
 		push_error("Tried to show integration menu when OS has no integration features.")
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide(instant = true):
 	if instant:
 		set_visible(false)

@@ -46,7 +46,7 @@ func _ready():
 		for entry in entries[disc].size():
 			entry_buttons[disc].append(entry_button_resource.instantiate())
 			entry_container.add_child(entry_buttons[disc][entry])
-			text = String(entry + 1)
+			text = str(entry + 1)
 			text += ". "
 			if GameStatus.is_soundtrack_unlocked(entries[disc][entry].get_music_id()):
 				text += entries[disc][entry].get_title()
@@ -55,7 +55,7 @@ func _ready():
 				entry_buttons[disc][entry].set_disabled(true)
 			entry_buttons[disc][entry].set_text(text)
 			entry_buttons[disc][entry].connect("pressed", Callable(self, "_on_JukeboxEntryButton_pressed").bind(disc, entry))
-	commentary_label.set_bbcode(default_commentary)
+	commentary_label.set_text(default_commentary)
 
 func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	if GlobalMusic.get_current_music_id() != entries[disc][entry].get_music_id():
@@ -75,7 +75,7 @@ func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	# text += entries[disc][entry].get_artist()
 	# text += "\n\n"
 	text += entries[disc][entry].get_commentary()
-	commentary_label.set_bbcode(text)
+	commentary_label.set_text(text)
 
 @warning_ignore("native_method_override") # TODO: rename
 func show():

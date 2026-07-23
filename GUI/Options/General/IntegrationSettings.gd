@@ -10,7 +10,7 @@ const ENABLED_TEXT = "Enabled"
 const DISABLED_TEXT = "Disabled"
 const NEWGROUNDS_TEXT = "Newgrounds"
 const GAME_JOLT_TEXT = "Game Jolt"
-var integration_available = false setget, is_integration_available
+var integration_available = false
 
 signal activated
 

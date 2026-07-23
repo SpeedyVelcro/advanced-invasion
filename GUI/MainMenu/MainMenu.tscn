@@ -285,6 +285,7 @@ wait_time = 0.1
 one_shot = true
 
 [connection signal="timeout" from="CanvasLayer/StartPrompt/Timer" to="CanvasLayer/StartPrompt" method="_on_Timer_timeout"]
+[connection signal="back" from="CanvasLayer/IntegrationMenu" to="." method="_on_IntegrationMenu_back"]
 [connection signal="about" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_about"]
 [connection signal="extras" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_extras"]
 [connection signal="load_game" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_load_game"]
@@ -292,9 +293,11 @@ one_shot = true
 [connection signal="options" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_options"]
 [connection signal="quit" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_quit"]
 [connection signal="back" from="CanvasLayer/StorySetup" to="." method="_on_StorySetup_back"]
+[connection signal="back" from="CanvasLayer/Options" to="." method="_on_Options_back"]
 [connection signal="achievements" from="CanvasLayer/Extras" to="." method="_on_Extras_achievements"]
 [connection signal="back" from="CanvasLayer/Extras" to="." method="_on_Extras_back"]
 [connection signal="jukebox" from="CanvasLayer/Extras" to="." method="_on_Extras_jukebox"]
 [connection signal="back" from="CanvasLayer/Credits" to="." method="_on_Credits_back"]
 [connection signal="back" from="CanvasLayer/Jukebox" to="." method="_on_Jukebox_back"]
+[connection signal="back" from="CanvasLayer/AchievementsMenu" to="." method="_on_AchievementsMenu_back"]
 [connection signal="timeout" from="StartPromptGrace" to="." method="_on_StartPromptGrace_timeout"]

@@ -2,9 +2,11 @@ extends Control
 
 signal back
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	set_visible(true)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	set_visible(false)
 

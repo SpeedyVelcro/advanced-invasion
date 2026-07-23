@@ -20,11 +20,13 @@ const SECRET_ICON = preload("res://Art/Achievement/Secret.png")
 const SECRET_TITLE = "Secret Achevement"
 const SECRET_DESCRIPTION = "Unlock this achievement to discover what it is."
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	populate() # Do this every time menu is shown just in-case achievements were unlocked on main menu
 	# Also just in case integration settings were changed, so sync buttons get updated.
 	visible = true
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

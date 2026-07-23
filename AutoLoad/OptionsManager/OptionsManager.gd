@@ -22,7 +22,7 @@ func set_display(resolution : Vector2, fullscreen : bool, vsync : bool):
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_DISABLED, get_tree().STRETCH_ASPECT_KEEP, resolution)
 		viewport.set_size(resolution)
 		get_window().set_size(resolution)
-		OS.center_window()
+		get_window().move_to_center()
 		get_tree().set_screen_stretch(get_tree().STRETCH_MODE_VIEWPORT, get_tree().STRETCH_ASPECT_KEEP, resolution)
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (fullscreen) else Window.MODE_WINDOWED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (vsync) else DisplayServer.VSYNC_DISABLED)
@@ -43,8 +43,7 @@ func _process(_delta):
 
 # Save and load
 func save_file_exists():
-	var file = File.new()
-	return file.file_exists(SAVE_FILE_PATH)
+	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func make_save_string():
 	var bus_master_index = AudioServer.get_bus_index("Master")
@@ -135,16 +134,14 @@ func load_save_string(value):
 	return true
 
 func save():
-	var file = File.new()
-	file.open(SAVE_FILE_PATH, File.WRITE)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string(make_save_string())
 	file.close()
 
 func load_options():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_PATH):
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return false
-	file.open(SAVE_FILE_PATH, File.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var result = load_save_string(file.get_as_text())
 	if not result:
 		push_error("Failed to load options data")

@@ -24,7 +24,7 @@ func hide():
 
 func _process(_delta):
 	var time = $Timer.get_time_left()
-	var time_string = String(ceil(time)).pad_decimals(0)
+	var time_string = str(ceil(time)).pad_decimals(0)
 	time_label.set_text(time_string)
 
 func _on_YesButton_pressed():

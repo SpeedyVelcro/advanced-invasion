@@ -3,7 +3,7 @@ extends Control
 @onready var entry_container = $CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer/EntryContainer
 @onready var commentary_label = $CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/CommentaryLabel
 
-@export var default_commentary # (String, MULTILINE)
+@export_multiline var default_commentary: String
 var entries = [ [
 		# DISC 1
 		preload("res://GUI/Jukebox/Entries/Download.tres"),
@@ -63,9 +63,9 @@ func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	var text = "[b]"
 	if entries.size() > 1:
 		text += "Disc "
-		text += String(disc + 1)
+		text += str(disc + 1)
 		text += " -- "
-	text += String(entry + 1)
+	text += str(entry + 1)
 	text += ". "
 	text += entries[disc][entry].get_title()
 	text += "[/b]\n\n"
@@ -77,9 +77,11 @@ func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	text += entries[disc][entry].get_commentary()
 	commentary_label.set_bbcode(text)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

@@ -1,7 +1,9 @@
 extends Node
 
 @onready var viewport = get_tree().get_root()
-var previously_fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
+var previously_fullscreen: bool:
+	get:
+		return (get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN)
 
 const SAVE_FILE_PATH = "user://options.json"
 

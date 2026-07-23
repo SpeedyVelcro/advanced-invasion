@@ -1,6 +1,5 @@
 extends Node
 
-@onready var newgrounds_api = $NewGroundsAPI
 @onready var newgrounds_secret = $NewgroundsSecret
 const YIELD_ENABLED = true
 const NEWGROUNDS_MEDAL_ID = {
@@ -17,17 +16,19 @@ signal enabled
 signal disabled
 
 func _ready():
-	newgrounds_api.applicationId = newgrounds_secret.APP_ID
+	# TODO: outdated
+	# newgrounds_api.applicationId = newgrounds_secret.APP_ID
 	AchievementManager.connect("achievement_synced", Callable(self, "_on_AchievementManager_achievement_synced"))
 
 func _on_AchievementManager_achievement_synced(achievement_id):
-	if integration_enabled:
-		newgrounds_api.Medal.unlock(NEWGROUNDS_MEDAL_ID[achievement_id])
-		if YIELD_ENABLED:
-			var result = await newgrounds_api.ng_request_complete
-			if not newgrounds_api.is_ok(result):
-				push_error("Unlocking newgrounds achievement went wrong. Achievement id: " + achievement_id)
-				push_error(result.error)
+	pass # TODO: outdated
+	#if integration_enabled:
+		#newgrounds_api.Medal.unlock(NEWGROUNDS_MEDAL_ID[achievement_id])
+		#if YIELD_ENABLED:
+			#var result = await newgrounds_api.ng_request_complete
+			#if not newgrounds_api.is_ok(result):
+				#push_error("Unlocking newgrounds achievement went wrong. Achievement id: " + achievement_id)
+				#push_error(result.error)
 
 # Getters and setters
 func set_integration_enabled(value : bool):

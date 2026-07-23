@@ -31,13 +31,14 @@ signal achievement_synced(achievement_id)
 func _ready():
 	popup_node.set_visible(false)
 	# Load achievement data
-	var dir = DirAccess.new()
+	# TODO: This comment may be outdated as it is from Godot 3
 	# IMPORTANT NOTE:
 	# Directory.dir_exists() DOES NOT WORK ON HTML5 (I should probably make a minimal project at some point and submit this as a bug)
 	#if not dir.dir_exists(ACHIEVEMENT_FOLDER_PATH):
 	#	push_error("Achievement manager: has invalid ACHIEVEMENT_FOLDER_PATH set. No achievements loaded.")
-	if not dir.open(ACHIEVEMENT_FOLDER_PATH) == OK:
-		push_error("Achivement manager: error occured while opening folder")
+	var dir := DirAccess.open(ACHIEVEMENT_FOLDER_PATH)
+	if not dir:
+		push_error("Achivement manager: error occured while opening folder. Error ID %d" % DirAccess.get_open_error())
 	else:
 		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file = dir.get_next()
@@ -59,15 +60,14 @@ func _ready():
 
 # Save and load
 func save_file_exists():
-	var file = File.new()
-	return file.file_exists(SAVE_FILE_PATH)
+	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func make_save_string():
 	var dict = {
 		"achievement_unlocked" : achievement_unlocked,
 		"achievement_progress" : achievement_progress
 	}
-	return JSON.new().stringify(dict)
+	return JSON.stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
@@ -82,16 +82,14 @@ func load_save_string(value):
 	return true
 
 func save():
-	var file = File.new()
-	file.open(SAVE_FILE_PATH, File.WRITE)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string(make_save_string())
 	file.close()
 
 func load_achievements():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_PATH):
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return false
-	file.open(SAVE_FILE_PATH, File.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var result = load_save_string(file.get_as_text())
 	if not result:
 		push_error("Failed to load game data")
@@ -158,26 +156,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Timer_timeout():
 	$AnimationPlayer.play("hide")
 
-func load_icon(achievement_id : String)->Texture2D:
-	# THIS FUNCTION IS BROKEN
-	# DO NOT USE IT
-	# USE get_achievement_icon() INSTEAD
-	var icon_path = achievements[achievement_id].get_icon_path()
-	var load_fail = false
-	var icon
-	var dir = DirAccess.new()
-	# This is the particular part that's broken.
-	# file_exists() always returns false on exported projects
-	# MIGHT be due to not exporting *.png but I didn't test this extensively
-	# enough to confirm
-	if dir.file_exists(icon_path):
-		icon = load(icon_path)
-	else:
-		push_error("Achievement manager: Tried to load non-existent icon " + icon_path)
-	if not icon is Texture2D:
-		icon = load(DEFAULT_ICON_PATH)
-		push_error("Achievement manager: Resource is not an icon at path " + icon_path)
-	return icon
 
 # Getters and setters
 func get_achievement_title(achievement_id : String)->String:

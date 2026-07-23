@@ -20,7 +20,7 @@ func _physics_process(_delta):
 	if not falling:
 		if not kinematic_body.is_on_floor():
 			falling = true
-			if get_velocity.call_func().y >= 0:
+			if get_velocity.call().y >= 0:
 				$CoyoteTimer.start(COYOTE_TIME_SEC)
 				coyote_time_active = true
 	elif kinematic_body.is_on_floor():
@@ -28,7 +28,7 @@ func _physics_process(_delta):
 		coyote_time_active = false
 	
 	halt_x_velocity()
-	var prev_velocity = get_velocity.call_func()
+	var prev_velocity = get_velocity.call()
 	var velocity = Vector2(0, 0)
 	velocity += get_walk_unit_vector() * walk_speed
 	velocity += get_jump_unit_vector() * jump_speed
@@ -38,7 +38,7 @@ func _physics_process(_delta):
 		# Also make sure old y isn't upward, to avoid stacking up velocities from various sources
 		prev_velocity.y = max(prev_velocity.y, 0)
 	# Replace the x velocity with our new horizontal movement
-	set_velocity.call_func(velocity + prev_velocity)
+	set_velocity.call(velocity + prev_velocity)
 
 func get_walk_unit_vector():
 	var vector = Vector2(0, 0)
@@ -58,9 +58,9 @@ func get_jump_unit_vector():
 		return Vector2(0, 0)
 
 func halt_x_velocity():
-	var v = get_velocity.call_func()
+	var v = get_velocity.call()
 	v.x = 0
-	set_velocity.call_func(v)
+	set_velocity.call(v)
 
 func _on_CoyoteTimer_timeout():
 	coyote_time_active = false

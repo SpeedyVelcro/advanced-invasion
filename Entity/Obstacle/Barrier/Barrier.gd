@@ -10,7 +10,7 @@ enum ConditionType {
 	BUTTON_ALL_BLUE
 }
 @export var condition: ConditionType
-@export var creep_paths # (Array, NodePath)
+@export var creep_paths: Array[NodePath]
 @export var start_enabled = true
 @onready var enabled = start_enabled
 var creep_count = 0

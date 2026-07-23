@@ -2,14 +2,12 @@
 
 extends CharacterBody2D
 
-@export var start_direction # (int, "Left", "Right")
+@export_enum("Left", "Right") var start_direction
 @onready var ignore_player_timer = $IgnorePlayerTimer
 @onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D
 var gravity = 850
 var walk_speed = 80
 var direction = Vector2(1, 0)
-var velocity = Vector2()
-var up_direction = Vector2(0, -1)
 var snap_vector = Vector2(0, 2)
 var melee_knockback = Vector2(200, -150)
 var melee_damage = 1

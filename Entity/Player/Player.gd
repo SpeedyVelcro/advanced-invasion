@@ -3,15 +3,13 @@ extends CharacterBody2D
 signal death
 signal health_changed(new_value)
 
-@export var start_direction # (int, "Left", "Right")
+@export_enum("Left", "Right") var start_direction
 var gravity_enabled = true
 var gravity = 750
 var creep_bounce_speed = 340
 var previous_velocity = Vector2(0, 0) # Velocity at the start of each frame, before applying move_and_slide.
 # previous_velocity is useful for determining which way player was moving when they collide with a virus
 # (e.g. to determine whether they were falling onto its head or walking into it)
-var velocity = Vector2(0, 0) # Carried over between frames
-var up_direction = Vector2(0, -1)
 var snap_vector = Vector2(0, 2)
 @onready var snap_enabled = true
 var snap_auto_enable = true # Whether snap auto-enables after one frame
@@ -46,8 +44,8 @@ func _ready():
 			state.connect("player_state_entered", Callable(self, "_on_PlayerState_player_state_entered"))
 			state.connect("snap_enable", Callable(self, "_on_PlayerState_snap_enable"))
 			state.connect("snap_disable", Callable(self, "_on_PlayerState_snap_disable"))
-			state.set_velocity = funcref(self, "set_velocity")
-			state.get_velocity = funcref(self, "get_velocity")
+			state.set_velocity = set_velocity.bind()
+			state.get_velocity = get_velocity.bind()
 	$StateMachine2D.start()
 	# Ensure hit invincibility starts off
 	hit_invincibility = false
@@ -234,12 +232,6 @@ func set_facing(value: Vector2):
 		$AnimatedSprite2D.set_animation("right")
 	if facing.x < 0:
 		$AnimatedSprite2D.set_animation("left")
-
-func set_velocity(value):
-	velocity = value
-
-func get_velocity():
-	return velocity
 
 func get_previous_velocity():
 	return previous_velocity

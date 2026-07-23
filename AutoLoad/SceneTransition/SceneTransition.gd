@@ -23,7 +23,7 @@ func fade(scene : String, out_time_sec : float = 0.5, in_time_sec : float = 0.5)
 		_fade_in(next_scene, next_in_time_sec)
 
 func _fade_in(scene : String, time_sec : float = 0.5):
-	get_tree().change_scene_to_file(next_scene)
+	get_tree().change_scene_to_file.bind().call_deferred(next_scene)
 	DialogueManager.cancel_dialogue(true)
 	$AnimationPlayer.play("fade_in")
 	if time_sec > 0:

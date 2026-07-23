@@ -292,5 +292,8 @@ one_shot = true
 [connection signal="options" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_options"]
 [connection signal="quit" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_quit"]
 [connection signal="back" from="CanvasLayer/StorySetup" to="." method="_on_StorySetup_back"]
+[connection signal="achievements" from="CanvasLayer/Extras" to="." method="_on_Extras_achievements"]
+[connection signal="back" from="CanvasLayer/Extras" to="." method="_on_Extras_back"]
+[connection signal="jukebox" from="CanvasLayer/Extras" to="." method="_on_Extras_jukebox"]
 [connection signal="back" from="CanvasLayer/Credits" to="." method="_on_Credits_back"]
 [connection signal="timeout" from="StartPromptGrace" to="." method="_on_StartPromptGrace_timeout"]

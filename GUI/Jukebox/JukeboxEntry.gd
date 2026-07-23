@@ -4,7 +4,7 @@ extends Resource
 @export var music_id: String
 @export var title: String
 @export var artist: String
-@export var commentary # (String, MULTILINE)
+@export_multiline var commentary: String
 
 # Getters and setters
 func get_music_id()->String:

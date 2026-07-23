@@ -18,8 +18,8 @@ shape = SubResource( 1 )
 [node name="TileMap" type="TileMap" parent="." index="2"]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
-format = 1
-tile_data = PackedInt32Array( -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0 )
+format = 2
+layer_0/tile_data = PackedInt32Array( -2, 1, 0, -1, 1, 0, -65536, 1, 0, -65535, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource( 2 )

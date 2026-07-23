@@ -10,7 +10,7 @@ extends Node2D
 
 func _ready():
 	if checkpoint:
-		StoryStatus.set_current_level(filename)
+		StoryStatus.set_current_level(scene_file_path)
 		StoryStatus.save()
 	var players = get_tree().get_nodes_in_group("player")
 	for player in players:

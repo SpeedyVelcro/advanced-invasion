@@ -65,7 +65,7 @@ func _process(delta):
 					# TODO: I'm about 90% sure this is redundant because we skip whitespace again below.
 					while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
 						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = char(dialogue_label.get_text().ord_at(next_char_index))
+						var next_char = dialogue_label.get_text()[next_char_index]
 						if next_char == " " or next_char == "\t":
 							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
 						else:
@@ -77,7 +77,7 @@ func _process(delta):
 						var mult = get_speed_multiplier()
 						# Skip whitespace
 						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = char(dialogue_label.get_text().ord_at(next_char_index))
+						var next_char = dialogue_label.get_text()[next_char_index]
 						if next_char == " " or next_char == "\t":
 							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
 						# Type through regular characters
@@ -189,7 +189,7 @@ func update_dialogue():
 	name_label.set_text(dialogue_queue[0].character_name + ":")
 	dialogue_label.set("theme_override_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
 	var txt = "[center]" + tr(dialogue_queue[0].bbcode) + "[/center]"
-	dialogue_label.set_bbcode(txt)
+	dialogue_label.set_text(txt)
 
 func hide_dialogue():
 	# Not sure that this function is even necessary but leaving it in for now just in case

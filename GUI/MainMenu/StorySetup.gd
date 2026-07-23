@@ -23,11 +23,13 @@ func _ready():
 	normal_button.set_pressed(true)
 	description_label.set_text(TEXT_NORMAL)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 	normal_button.set_pressed(true)
 	description_label.set_text(TEXT_NORMAL)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

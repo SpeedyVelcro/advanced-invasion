@@ -40,7 +40,7 @@ signal new_game
 signal load_game
 
 func _ready():
-	start_prompt.hide()
+	start_prompt.hide_prompt()
 	start_gui.hide()
 	credits.hide()
 	if GameStatus.main_menu_visited:
@@ -75,7 +75,7 @@ func change_state(p_state):
 func _on_state_enter(p_state = state):
 	match(p_state):
 		STATE_PROMPT:
-			start_prompt.show()
+			start_prompt.show_prompt()
 			$StartPromptGrace.start(0.1)
 			any_key_grace = true
 		STATE_START:
@@ -104,7 +104,7 @@ func _on_state_enter(p_state = state):
 func _on_state_exit(p_state = state):
 	match(p_state):
 		STATE_PROMPT:
-			start_prompt.hide()
+			start_prompt.hide_prompt()
 		STATE_INTEGRATION:
 			integration_menu.hide()
 		STATE_START:

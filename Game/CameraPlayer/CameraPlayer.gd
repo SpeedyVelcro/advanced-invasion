@@ -5,15 +5,26 @@ extends Camera2D
 # For ZOOM_LEVELS[i][a], i represents different screen sizes and [a] represents
 # valid zoom levels at that size.
 # Zoom levels must be in size order, smallest vector length to largest.
+#var ZOOM_LEVELS = [
+		#[Vector2(0.5, 0.5), # 2x zoom
+		#Vector2(1.0, 1.0)], # 1x zoom
+		#
+		#[Vector2(1.0/3.0, 1.0/3.0), # 3x zoom
+		#Vector2(0.5, 0.5)], # 2x zoom
+		#
+		#[Vector2(0.25, 0.25), # 4x zoom
+		#Vector2(1.0/3.0, 1.0/3.0)], # 3x zoom
+	#]
+# TODO: This will probably break on super high resolutions and show out of bounds areas. Probably need a way to calculate this stuff programmatically.
 var ZOOM_LEVELS = [
-		[Vector2(0.5, 0.5), # 2x zoom
+		[Vector2(2.0, 2.0), # 2x zoom
 		Vector2(1.0, 1.0)], # 1x zoom
 		
-		[Vector2(1.0/3.0, 1.0/3.0), # 3x zoom
-		Vector2(0.5, 0.5)], # 2x zoom
+		[Vector2(3.0, 3.0), # 3x zoom
+		Vector2(2.0, 2.0)], # 2x zoom
 		
-		[Vector2(0.25, 0.25), # 4x zoom
-		Vector2(1.0/3.0, 1.0/3.0)], # 3x zoom
+		[Vector2(4.0, 4.0), # 4x zoom
+		Vector2(3.0, 3.0)], # 3x zoom
 	]
 # ZOOM_MIN_RESOLUTION[i] corresponds to ZOOM_LEVELS[i - 1] because ZOOM_LEVELS[0]
 # has no minimum resolution.
@@ -33,7 +44,7 @@ var _current_tween: Tween = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
 	_on_viewport_size_changed() # Adapt size once
 	zoom = zoom_levels[1] # Then choose correct starting zoom
 	# TODO: move correct starting zoom into a constant or export variable
@@ -90,7 +101,7 @@ func _input(event):
 				zoom_out()
 
 func _on_viewport_size_changed():
-	var size = viewport.size
+	var viewport_size = get_viewport().size
 	# End any currently running tweens
 	if _current_tween != null and _current_tween.is_valid():
 		_current_tween.kill()
@@ -104,7 +115,7 @@ func _on_viewport_size_changed():
 	var chosen_levels = 0
 	for i in range(1, ZOOM_LEVELS.size()):
 		var test_size = ZOOM_MIN_RESOLUTION[i-1]
-		if size.x >= test_size.x or size.y >= test_size.y:
+		if viewport_size.x >= test_size.x or viewport_size.y >= test_size.y:
 			chosen_levels = i
 	zoom_levels = ZOOM_LEVELS[chosen_levels]
 	# Finally update current zoom

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="3"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
@@ -194,12 +194,12 @@ position = Vector2(2704, 384)
 [node name="Barrier2" parent="." index="30" unique_id=674286711 instance=ExtResource("9")]
 position = Vector2(2160, 480)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4")])
 
 [node name="Barrier3" parent="." index="31" unique_id=940205814 instance=ExtResource("9")]
 position = Vector2(2320, 480)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4")])
 
 [node name="LevelEnd" parent="." index="32" unique_id=1275974767 instance=ExtResource("11")]
 position = Vector2(2776, 344)
@@ -212,9 +212,11 @@ shape = SubResource("4")
 position = Vector2(400, 464)
 sprite_frames = ExtResource("13")
 animation = &"alert-feed"
+autoplay = "alert-feed"
 frame = 2
 
 [node name="NormalScreen" type="AnimatedSprite2D" parent="." index="34" unique_id=1874752251]
 position = Vector2(256, 464)
 sprite_frames = ExtResource("12")
 animation = &"alert_warning"
+autoplay = "alert_warning"

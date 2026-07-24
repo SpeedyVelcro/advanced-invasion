@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bv5yg0pbiaycv" path="res://Art/Character/Militia/MilitiaLeft.png" id="11"]
 [ext_resource type="AudioStream" uid="uid://cypfqclwtg8rl" path="res://Sound/Machine/LowVoltSpark2.wav" id="12"]
 [ext_resource type="AudioStream" uid="uid://pwykhtdnc4pl" path="res://Sound/Alert/Alarm5.wav" id="13"]
-[ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/MainTerminalSpriteFrames.tres" id="14"]
+[ext_resource type="SpriteFrames" uid="uid://cw6eqx0a0chxc" path="res://Entity/Decor/Screen/MainTerminalSpriteFrames.tres" id="14"]
 [ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/BigScreenSpriteFrames.tres" id="15"]
 [ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/NormalScreenSpriteFrames.tres" id="16"]
 [ext_resource type="Texture2D" uid="uid://wuvycejysllu" path="res://Art/Decor/Screen/BigScreen/BigScreenPipes.png" id="17"]
@@ -713,8 +713,8 @@ texture = ExtResource("19")
 z_index = -5
 position = Vector2(0, 80)
 sprite_frames = ExtResource("14")
-animation = &"normal"
-frame = 2
+animation = &"alert"
+autoplay = "alert"
 
 [node name="BigScreenPipesOld" type="Sprite2D" parent="." index="19" unique_id=1660702392]
 visible = false
@@ -726,22 +726,26 @@ texture = ExtResource("17")
 position = Vector2(0, -64)
 sprite_frames = ExtResource("15")
 animation = &"normal"
+autoplay = "normal"
 
 [node name="NormalScreen" type="AnimatedSprite2D" parent="." index="21" unique_id=1859104447]
 position = Vector2(-192, -64)
 sprite_frames = ExtResource("16")
 animation = &"text"
+autoplay = "text"
 
 [node name="NormalScreen2" type="AnimatedSprite2D" parent="." index="22" unique_id=1846295449]
 position = Vector2(-224, 0)
 sprite_frames = ExtResource("16")
 animation = &"bars"
+autoplay = "bars"
 speed_scale = 0.85
 
 [node name="NormalScreen3" type="AnimatedSprite2D" parent="." index="23" unique_id=924886889]
 position = Vector2(224, 0)
 sprite_frames = ExtResource("16")
 animation = &"bars"
+autoplay = "bars"
 frame = 3
 speed_scale = 0.6
 
@@ -749,5 +753,6 @@ speed_scale = 0.6
 position = Vector2(192, -64)
 sprite_frames = ExtResource("16")
 animation = &"text"
+autoplay = "text"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

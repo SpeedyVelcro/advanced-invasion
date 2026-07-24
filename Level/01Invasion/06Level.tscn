@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c6jooacwis8lo"]
 
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
@@ -152,12 +152,14 @@ texture = ExtResource("8")
 position = Vector2(1296, 528)
 sprite_frames = ExtResource("12")
 animation = &"alert-feed"
+autoplay = "alert-feed"
 frame = 4
 
 [node name="BigScreen2" type="AnimatedSprite2D" parent="." index="26" unique_id=373664055]
 position = Vector2(1648, 528)
 sprite_frames = ExtResource("12")
 animation = &"alert-feed"
+autoplay = "alert-feed"
 frame = 3
 
 [node name="LevelEnd" parent="." index="27" unique_id=230044098 instance=ExtResource("11")]

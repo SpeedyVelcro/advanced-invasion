@@ -1,34 +1,57 @@
-[gd_resource type="SpriteFrames" load_steps=9 format=2]
+[gd_resource type="SpriteFrames" format=3 uid="uid://cw6eqx0a0chxc"]
 
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminal.png" type="Texture2D" id=1]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal3.png" type="Texture2D" id=2]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal2.png" type="Texture2D" id=3]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal1.png" type="Texture2D" id=4]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal4.png" type="Texture2D" id=5]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalAlert1.png" type="Texture2D" id=6]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalAlert2.png" type="Texture2D" id=7]
-[ext_resource path="res://Art/Decor/Screen/MainTerminal/MainTerminalCityMap.png" type="Texture2D" id=8]
-
+[ext_resource type="Texture2D" uid="uid://cwr6j41bxr5bi" path="res://Art/Decor/Screen/MainTerminal/MainTerminal.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c5yxhigcpc4xm" path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal3.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bltfjjxelodl1" path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dnxeclcbf3i4q" path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://0fkhyfqa7r5i" path="res://Art/Decor/Screen/MainTerminal/MainTerminalNormal4.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cl0frci7wqhfb" path="res://Art/Decor/Screen/MainTerminal/MainTerminalAlert1.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://dkdingcyqrgyt" path="res://Art/Decor/Screen/MainTerminal/MainTerminalAlert2.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://dse3u241uqs7" path="res://Art/Decor/Screen/MainTerminal/MainTerminalCityMap.png" id="8"]
 
 [resource]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
 }, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "normal",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "alert",
+"duration": 1.0,
+"texture": ExtResource("7")
+}],
+"loop": 1,
+"name": &"alert",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "city_map",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8")
+}],
+"loop": 1,
+"name": &"city_map",
 "speed": 5.0
-} ]
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": 1,
+"name": &"normal",
+"speed": 1.0
+}]

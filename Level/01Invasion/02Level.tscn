@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="3"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
@@ -273,11 +273,11 @@ _data = {
 
 [node name="Level" unique_id=628380126 instance=ExtResource("1")]
 script = ExtResource("11")
+dialogue_1 = Array[ExtResource("14")]([SubResource("1"), SubResource("2"), SubResource("3"), SubResource("4")])
+dialogue_2 = Array[ExtResource("14")]([SubResource("5")])
 cutscene_active = true
 play_music_on_start = true
 music_id = "invasion"
-dialogue_1 = [SubResource("1"), SubResource("2"), SubResource("3"), SubResource("4")]
-dialogue_2 = [SubResource("5")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=308698628]
 
@@ -356,7 +356,7 @@ shape = SubResource("7")
 [node name="Barrier" parent="." index="15" unique_id=1675587145 instance=ExtResource("9")]
 position = Vector2(624, 608)
 condition = 2
-creep_paths = [NodePath("../VirusPawn")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn")])
 
 [node name="Barrier2" parent="." index="16" unique_id=729351649 instance=ExtResource("9")]
 position = Vector2(2608, 608)
@@ -365,11 +365,13 @@ position = Vector2(2608, 608)
 position = Vector2(-512, 464)
 sprite_frames = ExtResource("10")
 animation = &"bars"
+autoplay = "bars"
 
 [node name="NormalScreen2" type="AnimatedSprite2D" parent="." index="18" unique_id=457385756]
 position = Vector2(-384, 464)
 sprite_frames = ExtResource("10")
 animation = &"text"
+autoplay = "text"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="19" unique_id=1313143806]
 libraries/ = SubResource("AnimationLibrary_r1g5a")

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://87bprbbmqi33"]
 
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
 [ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/NormalScreenSpriteFrames.tres" id="4"]
 [ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/BigScreenSpriteFrames.tres" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
-[ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/MainTerminalSpriteFrames.tres" id="8"]
+[ext_resource type="SpriteFrames" uid="uid://cw6eqx0a0chxc" path="res://Entity/Decor/Screen/MainTerminalSpriteFrames.tres" id="8"]
 [ext_resource type="Texture2D" uid="uid://crts4166jpl2e" path="res://Art/Character/MilitiaCommander/MilitiaCommanderLeft.png" id="9"]
 [ext_resource type="Texture2D" uid="uid://cj06hvmcenxas" path="res://Art/Player/PlayerRight.png" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
@@ -603,13 +603,13 @@ _data = {
 
 [node name="Level" unique_id=1804252271 instance=ExtResource("2")]
 script = ExtResource("12")
+dialogue_1 = Array[ExtResource("13")]([SubResource("1")])
+dialogue_2 = Array[ExtResource("13")]([SubResource("2"), SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11")])
+dialogue_3 = Array[ExtResource("13")]([SubResource("12"), SubResource("13"), SubResource("14"), SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18")])
+dialogue_4 = Array[ExtResource("13")]([SubResource("19"), SubResource("20"), SubResource("21")])
+dialogue_5 = Array[ExtResource("13")]([SubResource("22")])
 cutscene_active = true
 play_music_on_start = true
-dialogue_1 = [SubResource("1")]
-dialogue_2 = [SubResource("2"), SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11")]
-dialogue_3 = [SubResource("12"), SubResource("13"), SubResource("14"), SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18")]
-dialogue_4 = [SubResource("19"), SubResource("20"), SubResource("21")]
-dialogue_5 = [SubResource("22")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=1594598737]
 
@@ -675,26 +675,32 @@ texture = ExtResource("15")
 z_index = -5
 position = Vector2(832, 592)
 sprite_frames = ExtResource("8")
+autoplay = "default"
 
 [node name="BigScreen" type="AnimatedSprite2D" parent="." index="12" unique_id=37369776]
 position = Vector2(832, 448)
 sprite_frames = ExtResource("5")
+autoplay = "default"
 
 [node name="NormalScreen" type="AnimatedSprite2D" parent="." index="13" unique_id=29648992]
 position = Vector2(640, 448)
 sprite_frames = ExtResource("4")
+autoplay = "default"
 
 [node name="NormalScreen2" type="AnimatedSprite2D" parent="." index="14" unique_id=2066918482]
 position = Vector2(608, 512)
 sprite_frames = ExtResource("4")
+autoplay = "default"
 
 [node name="NormalScreen3" type="AnimatedSprite2D" parent="." index="15" unique_id=660050322]
 position = Vector2(1024, 448)
 sprite_frames = ExtResource("4")
+autoplay = "default"
 
 [node name="NormalScreen4" type="AnimatedSprite2D" parent="." index="16" unique_id=120446863]
 position = Vector2(1056, 512)
 sprite_frames = ExtResource("4")
+autoplay = "default"
 
 [node name="MilitiaCommander" type="Node2D" parent="." index="17" unique_id=1027874418]
 z_index = -1

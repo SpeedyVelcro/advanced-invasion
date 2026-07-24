@@ -36,7 +36,7 @@ class RichTextSpeed extends RichTextEffect:
 		if label == null:
 			return true # No label assigned to control the speed of
 		
-		if char_fx.absolute_index == label.get_visible_characters() - 1:
+		if char_fx.range.x == label.get_visible_characters() - 1:
 			var spd = char_fx.env.get("mult", 1.0)
 			label.set_speed_multiplier(spd)
 			# print(char_fx.env)

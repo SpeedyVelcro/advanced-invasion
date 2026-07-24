@@ -8,7 +8,7 @@ extends Level
 
 func _ready():
 	player.set_visible(false)
-	DialogueManager.connect("end_broadcast", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.connect("end_broadcast_signal", Callable(self, "_on_DialogueManager_end_broadcast"))
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 

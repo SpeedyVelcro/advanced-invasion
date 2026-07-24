@@ -641,7 +641,6 @@ libraries/ = SubResource("AnimationLibrary_0pxfv")
 layer = 50
 
 [node name="FadeColorRect" type="ColorRect" parent="NarrationCanvasLayer" index="0" unique_id=1045084974]
-modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -691,7 +690,7 @@ volume_db = -16.0
 bus = &"Effects"
 
 [node name="MilitiaRunner" type="Sprite2D" parent="." index="13" unique_id=1062605616]
-position = Vector2(-656, 112)
+position = Vector2(-368, 112)
 texture = ExtResource("11")
 
 [node name="Militia2" type="Sprite2D" parent="." index="14" unique_id=1022679208]
@@ -703,7 +702,7 @@ position = Vector2(-656, 112)
 texture = ExtResource("11")
 
 [node name="MilitiaDoor" type="Sprite2D" parent="." index="16" unique_id=1665116689]
-position = Vector2(-656, 112)
+position = Vector2(-192, 112)
 texture = ExtResource("11")
 
 [node name="Commander" type="Sprite2D" parent="." index="17" unique_id=610829188]

@@ -1,6 +1,6 @@
 extends Node
 
-@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
 @export var portal_left_path: NodePath
 @onready var portal_left = get_node(portal_left_path)
 @export var portal_right_path: NodePath

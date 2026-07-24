@@ -1,8 +1,8 @@
 extends Level
 
-@export var dialogue_start = [] # (Array, Resource)
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
+@export var dialogue_start: Array[Dialogue] = []
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
 
 @onready var player = $Player
 @onready var player_camera = $Player/CameraPlayer

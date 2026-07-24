@@ -2,9 +2,9 @@ extends Level
 
 @onready var animation_player = $AnimationPlayer
 @onready var timer = $Timer
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
-@export var dialogue_3 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
 
 const NEXT_SCENE = "res://Level/02Underbelly/10Boss.tscn"
 var stage = 0

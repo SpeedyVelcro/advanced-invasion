@@ -8,7 +8,7 @@ extends Level
 @onready var player = $Player
 @onready var robot_audio_stream = $RobotAudioStreamPlayer2D
 
-@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
 
 func _ready():
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)

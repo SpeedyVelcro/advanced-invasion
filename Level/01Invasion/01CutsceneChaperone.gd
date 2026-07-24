@@ -1,9 +1,9 @@
 extends Node
 
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_1_2 = [] # because I have terrible foresight lol # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
-@export var dialogue_3 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_1_2: Array[Dialogue] = [] # because I have terrible foresight lol
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
 
 var current_event = 0
 

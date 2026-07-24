@@ -1,6 +1,6 @@
 extends Level
 
-@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
 @onready var animation_player = $CutsceneChaperone/AnimationPlayer
 const NEXT_SCENE = "res://Level/01Invasion/10Cutscene.tscn"
 const VIRUS_RESOURCE = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")

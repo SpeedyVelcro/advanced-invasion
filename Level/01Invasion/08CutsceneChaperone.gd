@@ -1,6 +1,6 @@
 extends Node
 
-@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
 
 const NEXT_SCENE = "res://Level/01Invasion/09Cutscene.tscn"
 

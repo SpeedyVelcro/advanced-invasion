@@ -1,7 +1,7 @@
 extends Level
 
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
 
 @onready var animation_player = $AnimationPlayer
 @onready var player = $Player

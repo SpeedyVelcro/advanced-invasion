@@ -1,10 +1,10 @@
 extends Level
 
 @onready var animation_player = $AnimationPlayer
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
-@export var dialogue_3 = [] # (Array, Resource)
-@export var dialogue_4 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
+@export var dialogue_4: Array[Dialogue] = []
 const NEXT_SCENE = "res://Level/03Base/ApproachLevel.tscn"
 
 func _ready():

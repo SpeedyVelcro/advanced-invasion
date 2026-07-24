@@ -1,6 +1,6 @@
 extends Level
 
-@export var dialogue_1 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
 
 @onready var boss_start_area = $BossStartArea
 @onready var player = $Player

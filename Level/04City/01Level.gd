@@ -5,8 +5,8 @@ extends Level
 @onready var player = $Player
 @onready var button_blocker = $ButtonBlocker
 var button_freed = false
-@export var dialogue_1 = [] # (Array, Resource)
-@export var dialogue_2 = [] # (Array, Resource)
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
 
 func _ready():
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)

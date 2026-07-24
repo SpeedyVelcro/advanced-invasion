@@ -607,10 +607,10 @@ _data = {
 
 [node name="Level" unique_id=1274445669 instance=ExtResource("1")]
 script = ExtResource("5")
-dialogue_1 = [SubResource("1")]
-dialogue_2 = [SubResource("2")]
-dialogue_3 = [SubResource("3"), SubResource("4"), SubResource("5")]
-dialogue_4 = [SubResource("6"), SubResource("7"), SubResource("8")]
+dialogue_1 = Array[ExtResource("7")]([SubResource("1")])
+dialogue_2 = Array[ExtResource("7")]([SubResource("2")])
+dialogue_3 = Array[ExtResource("7")]([SubResource("3"), SubResource("4"), SubResource("5")])
+dialogue_4 = Array[ExtResource("7")]([SubResource("6"), SubResource("7"), SubResource("8")])
 cutscene_active = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=574081893]

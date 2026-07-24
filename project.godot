@@ -130,6 +130,10 @@ look_down={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locale/Dialogue.en.translation")
+
 [layer_names]
 
 2d_physics/layer_1="wall"

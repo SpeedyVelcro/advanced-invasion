@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="14"]
@@ -33,6 +33,7 @@ music_id = "anxiety"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1688336525 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
@@ -179,7 +180,7 @@ shape = SubResource("1")
 [node name="Barrier" parent="." index="36" unique_id=791933651 instance=ExtResource("13")]
 position = Vector2(3568, 576)
 condition = 2
-creep_paths = [NodePath("../VirusPawn10"), NodePath("../VirusPawn11"), NodePath("../VirusPawn12"), NodePath("../VirusPawn13"), NodePath("../VirusPawn14")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn10"), NodePath("../VirusPawn11"), NodePath("../VirusPawn12"), NodePath("../VirusPawn13"), NodePath("../VirusPawn14")])
 
 [node name="VirusPawn19" parent="." index="37" unique_id=1245933602 instance=ExtResource("7")]
 position = Vector2(4144, 720)
@@ -214,7 +215,7 @@ start_direction = 0
 [node name="Barrier2" parent="." index="46" unique_id=1959222713 instance=ExtResource("13")]
 position = Vector2(5392, 736)
 condition = 2
-creep_paths = [NodePath("../VirusPawn19"), NodePath("../VirusPawn20"), NodePath("../VirusPawn21"), NodePath("../VirusPawn22"), NodePath("../VirusPawn23"), NodePath("../VirusPawn24"), NodePath("../VirusPawn25"), NodePath("../VirusPawn26"), NodePath("../VirusPawn27")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn19"), NodePath("../VirusPawn20"), NodePath("../VirusPawn21"), NodePath("../VirusPawn22"), NodePath("../VirusPawn23"), NodePath("../VirusPawn24"), NodePath("../VirusPawn25"), NodePath("../VirusPawn26"), NodePath("../VirusPawn27")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="47" unique_id=177868990]
 position = Vector2(-64, 816)

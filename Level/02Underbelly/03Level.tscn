@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/Underbelly/MovingPlatformUnderbelly.tscn" id="11"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://c1s8cuiq4b6br" path="res://Entity/Obstacle/MovingPlatform/Underbelly/MovingPlatformUnderbelly.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="14"]
@@ -34,6 +34,7 @@ music_id = "anxiety"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1392815634 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
@@ -163,12 +164,12 @@ shape = SubResource("2")
 [node name="Barrier" parent="." index="19" unique_id=1876017316 instance=ExtResource("13")]
 position = Vector2(720, -128)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")])
 
 [node name="Barrier2" parent="." index="20" unique_id=1043918376 instance=ExtResource("13")]
 position = Vector2(272, -128)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")])
 
 [node name="VirusPawn" parent="." index="21" unique_id=1367706605 instance=ExtResource("8")]
 position = Vector2(304, 816)
@@ -435,7 +436,7 @@ position = Vector2(5072, 400)
 [node name="Barrier3" parent="." index="105" unique_id=17600845 instance=ExtResource("13")]
 position = Vector2(4752, 576)
 condition = 2
-creep_paths = [NodePath("../VirusPawn27"), NodePath("../VirusPawn28"), NodePath("../VirusPawn29"), NodePath("../VirusPawn30")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn27"), NodePath("../VirusPawn28"), NodePath("../VirusPawn29"), NodePath("../VirusPawn30")])
 
 [node name="HeatBlock50" parent="." index="106" unique_id=1464846694 instance=ExtResource("9")]
 position = Vector2(4784, 400)
@@ -464,7 +465,7 @@ position = Vector2(5552, 560)
 [node name="Barrier4" parent="." index="114" unique_id=1042911088 instance=ExtResource("13")]
 position = Vector2(6064, 416)
 condition = 2
-creep_paths = [NodePath("../VirusPawn31"), NodePath("../VirusPawn32"), NodePath("../VirusPawn33"), NodePath("../VirusPawn34")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn31"), NodePath("../VirusPawn32"), NodePath("../VirusPawn33"), NodePath("../VirusPawn34")])
 
 [node name="VirusPawn34" parent="." index="115" unique_id=1433778574 instance=ExtResource("14")]
 position = Vector2(5872, 400)

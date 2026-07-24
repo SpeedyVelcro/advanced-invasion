@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
@@ -37,6 +37,7 @@ music_id = "anxiety"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=555781984 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
@@ -177,7 +178,7 @@ position = Vector2(312, 624)
 [node name="Barrier" parent="." index="27" unique_id=1667181575 instance=ExtResource("13")]
 position = Vector2(944, 832)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5")])
 
 [node name="VirusPawn6" parent="." index="28" unique_id=1437221797 instance=ExtResource("8")]
 position = Vector2(1168, 816)
@@ -221,7 +222,7 @@ position = Vector2(2456, 816)
 [node name="Barrier2" parent="." index="41" unique_id=517955438 instance=ExtResource("13")]
 position = Vector2(2576, 832)
 condition = 2
-creep_paths = [NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn6"), NodePath("../VirusPawn7"), NodePath("../VirusPawn8"), NodePath("../VirusPawn9")])
 
 [node name="Barrier3" parent="." index="42" unique_id=1170004882 instance=ExtResource("13")]
 position = Vector2(3392, 784)
@@ -230,12 +231,12 @@ rotation = -1.57079
 [node name="Barrier4" parent="." index="43" unique_id=1760811913 instance=ExtResource("13")]
 position = Vector2(3472, 832)
 condition = 2
-creep_paths = [NodePath("../VirusPawn11"), NodePath("../VirusPawn12"), NodePath("../VirusPawn13")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn11"), NodePath("../VirusPawn12"), NodePath("../VirusPawn13")])
 
 [node name="Barrier5" parent="." index="44" unique_id=1829951771 instance=ExtResource("13")]
 position = Vector2(3664, 32)
 condition = 2
-creep_paths = [NodePath("../VirusPawn10"), NodePath("../VirusPawn14"), NodePath("../VirusPawn15"), NodePath("../VirusPawn16"), NodePath("../VirusPawn17"), NodePath("../VirusPawn18"), NodePath("../VirusPawn19"), NodePath("../VirusPawn28"), NodePath("../VirusPawn29"), NodePath("../VirusPawn30"), NodePath("../VirusPawn31"), NodePath("../VirusPawn32"), NodePath("../VirusPawn33")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn10"), NodePath("../VirusPawn14"), NodePath("../VirusPawn15"), NodePath("../VirusPawn16"), NodePath("../VirusPawn17"), NodePath("../VirusPawn18"), NodePath("../VirusPawn19"), NodePath("../VirusPawn28"), NodePath("../VirusPawn29"), NodePath("../VirusPawn30"), NodePath("../VirusPawn31"), NodePath("../VirusPawn32"), NodePath("../VirusPawn33")])
 
 [node name="VirusPawn10" parent="." index="45" unique_id=1699591764 instance=ExtResource("14")]
 position = Vector2(3008, 816)
@@ -327,7 +328,7 @@ position = Vector2(4064, 816)
 [node name="Barrier6" parent="." index="73" unique_id=1253800270 instance=ExtResource("13")]
 position = Vector2(3184, 544)
 condition = 2
-creep_paths = [NodePath("../VirusPawn20"), NodePath("../VirusPawn21"), NodePath("../VirusPawn22"), NodePath("../VirusPawn23"), NodePath("../VirusPawn24"), NodePath("../VirusPawn25"), NodePath("../VirusPawn26"), NodePath("../VirusPawn27")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn20"), NodePath("../VirusPawn21"), NodePath("../VirusPawn22"), NodePath("../VirusPawn23"), NodePath("../VirusPawn24"), NodePath("../VirusPawn25"), NodePath("../VirusPawn26"), NodePath("../VirusPawn27")])
 
 [node name="KillZone" parent="." index="74" unique_id=791712552 instance=ExtResource("11")]
 position = Vector2(2144, 1304)

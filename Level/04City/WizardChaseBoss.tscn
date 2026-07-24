@@ -109,9 +109,9 @@ _data = {
 
 [node name="Level" unique_id=540856455 instance=ExtResource("2")]
 script = ExtResource("10")
+dialogue_1 = Array[ExtResource("13")]([SubResource("1")])
 play_music_on_start = true
 music_id = "petra"
-dialogue_1 = [SubResource("1")]
 
 [node name="BackupBackgroundLayer" type="CanvasLayer" parent="." index="2" unique_id=1188979232]
 layer = -110
@@ -142,6 +142,7 @@ scroll_speed = Vector2(-8, 0)
 
 [node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=304654603]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("5")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -153,6 +154,7 @@ scroll_speed = Vector2(8, 8)
 
 [node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0" unique_id=1958958930]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("8")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -468,7 +470,7 @@ position = Vector2(424, 384)
 [node name="Barrier" parent="." index="51" unique_id=2095516491 instance=ExtResource("18")]
 position = Vector2(1488, 640)
 condition = 2
-creep_paths = [NodePath("../Guardian2"), NodePath("../Guardian3")]
+creep_paths = Array[NodePath]([NodePath("../Guardian2"), NodePath("../Guardian3")])
 
 [node name="Guardian2" parent="." index="52" unique_id=2031791124 instance=ExtResource("20")]
 position = Vector2(1184, 624)
@@ -552,7 +554,7 @@ position = Vector2(7280, 368)
 [node name="Barrier2" parent="." index="78" unique_id=375614488 instance=ExtResource("18")]
 position = Vector2(4464, 544)
 condition = 2
-creep_paths = [NodePath("../Guardian14"), NodePath("../Guardian15"), NodePath("../Guardian16"), NodePath("../Guardian17")]
+creep_paths = Array[NodePath]([NodePath("../Guardian14"), NodePath("../Guardian15"), NodePath("../Guardian16"), NodePath("../Guardian17")])
 
 [node name="Guardian5" parent="." index="79" unique_id=652738512 instance=ExtResource("20")]
 position = Vector2(3080, 336)

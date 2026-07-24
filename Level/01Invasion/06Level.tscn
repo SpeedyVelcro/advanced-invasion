@@ -35,6 +35,7 @@ music_id = "invasion"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=2030037088 instance=ExtResource("7")]
+texture_repeat = 2
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
 

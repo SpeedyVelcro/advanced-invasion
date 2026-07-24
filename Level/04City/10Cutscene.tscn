@@ -1303,11 +1303,11 @@ _data = {
 
 [node name="Level" unique_id=427256963 instance=ExtResource("2")]
 script = ExtResource("10")
+dialogue_1 = Array[ExtResource("13")]([SubResource("1"), SubResource("2")])
+dialogue_2 = Array[ExtResource("13")]([SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12")])
+dialogue_3 = Array[ExtResource("13")]([SubResource("13"), SubResource("14"), SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18"), SubResource("19"), SubResource("20"), SubResource("21"), SubResource("22"), SubResource("23"), SubResource("24"), SubResource("25"), SubResource("26"), SubResource("27")])
 cutscene_active = true
 play_music_on_start = true
-dialogue_1 = [SubResource("1"), SubResource("2")]
-dialogue_2 = [SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12")]
-dialogue_3 = [SubResource("13"), SubResource("14"), SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18"), SubResource("19"), SubResource("20"), SubResource("21"), SubResource("22"), SubResource("23"), SubResource("24"), SubResource("25"), SubResource("26"), SubResource("27")]
 
 [node name="LastStandHUD" parent="." index="2" unique_id=280766952 instance=ExtResource("27")]
 
@@ -1361,12 +1361,14 @@ scroll_speed = Vector2(32, 0)
 [node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=372990074]
 visible = false
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("5")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
 
 [node name="ScrollBackgroundRed" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="1" unique_id=766914814]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("16")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -1379,12 +1381,14 @@ scroll_speed = Vector2(-32, -32)
 [node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0" unique_id=1427896525]
 visible = false
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("8")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
 
 [node name="ScrollBackground2Red" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1" unique_id=1329142883]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("18")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)

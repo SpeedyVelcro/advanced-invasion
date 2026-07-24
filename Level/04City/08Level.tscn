@@ -163,8 +163,8 @@ colors = PackedColorArray(0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0
 
 [node name="Level" unique_id=1913605235 instance=ExtResource("2")]
 script = ExtResource("13")
+dialogue_1 = Array[ExtResource("15")]([SubResource("1"), SubResource("2")])
 play_music_on_start = true
-dialogue_1 = [SubResource("1"), SubResource("2")]
 
 [node name="BackupBackgroundLayer" type="CanvasLayer" parent="." index="2" unique_id=2090183080]
 layer = -110
@@ -195,6 +195,7 @@ scroll_speed = Vector2(-8, 0)
 
 [node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=817998054]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("5")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -206,6 +207,7 @@ scroll_speed = Vector2(8, 8)
 
 [node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0" unique_id=309712801]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("8")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)

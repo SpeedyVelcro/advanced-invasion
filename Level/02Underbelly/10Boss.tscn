@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://5ynaay1sbeu6" path="res://Art/Character/Green/GreenLeft.png" id="12"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="13"]
@@ -359,11 +359,11 @@ _data = {
 
 [node name="Level" unique_id=245632340 instance=ExtResource("1")]
 script = ExtResource("15")
+dialogue_1 = Array[ExtResource("13")]([SubResource("1")])
+dialogue_2 = Array[ExtResource("13")]([SubResource("2"), SubResource("3")])
 cutscene_active = true
 play_music_on_start = true
 music_id = "invasion"
-dialogue_1 = [SubResource("1")]
-dialogue_2 = [SubResource("2"), SubResource("3")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=1649232162]
 
@@ -371,6 +371,7 @@ dialogue_2 = [SubResource("2"), SubResource("3")]
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=55632577 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)

@@ -507,13 +507,13 @@ _data = {
 
 [node name="Level" unique_id=1173142425 instance=ExtResource("1")]
 script = ExtResource("8")
+dialogue_1 = Array[ExtResource("13")]([SubResource("1"), SubResource("2"), SubResource("3"), SubResource("4")])
+dialogue_2 = Array[ExtResource("13")]([SubResource("5"), SubResource("6")])
+dialogue_3 = Array[ExtResource("13")]([SubResource("7"), SubResource("8")])
+dialogue_4 = Array[ExtResource("13")]([SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")])
 cutscene_active = true
 play_music_on_start = true
 music_id = "anxiety"
-dialogue_1 = [SubResource("1"), SubResource("2"), SubResource("3"), SubResource("4")]
-dialogue_2 = [SubResource("5"), SubResource("6")]
-dialogue_3 = [SubResource("7"), SubResource("8")]
-dialogue_4 = [SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=127212020]
 
@@ -521,6 +521,7 @@ dialogue_4 = [SubResource("9"), SubResource("10"), SubResource("11"), SubResourc
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1915658680 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)

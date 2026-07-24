@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -31,6 +31,7 @@ music_id = "anxiety"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1317769975 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)

@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/Underbelly/MovingPlatformUnderbelly.tscn" id="11"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="PackedScene" uid="uid://c1s8cuiq4b6br" path="res://Entity/Obstacle/MovingPlatform/Underbelly/MovingPlatformUnderbelly.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="14"]
@@ -33,6 +33,7 @@ music_id = "anxiety"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=639011132 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
@@ -140,7 +141,7 @@ position = Vector2(672, 624)
 [node name="Barrier" parent="." index="28" unique_id=1356378631 instance=ExtResource("13")]
 position = Vector2(912, 800)
 condition = 2
-creep_paths = [NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn"), NodePath("../VirusPawn2"), NodePath("../VirusPawn3"), NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7")])
 
 [node name="MovingPlatform" parent="." index="29" unique_id=1460709054 instance=ExtResource("11")]
 position = Vector2(992, 864)

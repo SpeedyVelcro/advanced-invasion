@@ -750,6 +750,7 @@ frame = 3
 speed_scale = 0.6
 
 [node name="NormalScreen4" type="AnimatedSprite2D" parent="." index="24" unique_id=453746687]
+texture_repeat = 2
 position = Vector2(192, -64)
 sprite_frames = ExtResource("16")
 animation = &"text"

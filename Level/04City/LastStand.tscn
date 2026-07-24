@@ -759,13 +759,13 @@ colors = PackedColorArray(0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0
 
 [node name="Level" unique_id=1108680991 instance=ExtResource("2")]
 script = ExtResource("10")
+dialogue_1 = Array[ExtResource("14")]([SubResource("1")])
+dialogue_2 = Array[ExtResource("14")]([SubResource("2"), SubResource("3"), SubResource("4"), SubResource("5")])
+dialogue_3 = Array[ExtResource("14")]([SubResource("6")])
+dialogue_4 = Array[ExtResource("14")]([SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")])
 cutscene_active = true
 play_music_on_start = true
 music_id = "invasion"
-dialogue_1 = [SubResource("1")]
-dialogue_2 = [SubResource("2"), SubResource("3"), SubResource("4"), SubResource("5")]
-dialogue_3 = [SubResource("6")]
-dialogue_4 = [SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")]
 
 [node name="LastStandHUD" parent="." index="2" unique_id=2057643716 instance=ExtResource("27")]
 
@@ -809,6 +809,7 @@ scroll_speed = Vector2(-8, 0)
 
 [node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1983170462]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("5")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -816,6 +817,7 @@ region_rect = Rect2(0, 0, 4096, 4096)
 [node name="ScrollBackgroundRed" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="1" unique_id=1880161833]
 visible = false
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("16")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -827,6 +829,7 @@ scroll_speed = Vector2(8, 8)
 
 [node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0" unique_id=38831696]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("8")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -834,6 +837,7 @@ region_rect = Rect2(0, 0, 4096, 4096)
 [node name="ScrollBackground2Red" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1" unique_id=627765507]
 visible = false
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("18")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)

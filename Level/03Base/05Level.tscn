@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://qwdlxb8dax0a"]
 
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
@@ -42,6 +42,7 @@ music_id = "militia"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=397152700 instance=ExtResource("7")]
+texture_repeat = 2
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
 

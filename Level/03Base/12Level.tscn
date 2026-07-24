@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dp8ijae62u1jn"]
 
-[ext_resource type="TileSet" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
@@ -36,6 +36,7 @@ music_id = "invasion"
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=437176661 instance=ExtResource("7")]
+texture_repeat = 2
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
 
@@ -192,4 +193,4 @@ start_direction = 0
 [node name="Barrier" parent="." index="32" unique_id=654591833 instance=ExtResource("16")]
 position = Vector2(912, -64)
 condition = 2
-creep_paths = [NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7")]
+creep_paths = Array[NodePath]([NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7")])

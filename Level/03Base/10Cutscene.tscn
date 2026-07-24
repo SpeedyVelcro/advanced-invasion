@@ -617,6 +617,7 @@ play_music_on_start = true
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1439275733 instance=ExtResource("7")]
+texture_repeat = 2
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)
 

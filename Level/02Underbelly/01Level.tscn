@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="8"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="9"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="Script" uid="uid://cgbamqw7jq5ar" path="res://Level/02Underbelly/01Level.gd" id="11"]
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
@@ -338,10 +338,10 @@ size = Vector2(304, 208)
 
 [node name="Level" unique_id=176565775 instance=ExtResource("1")]
 script = ExtResource("11")
+dialogue_start = Array[ExtResource("7")]([SubResource("1"), SubResource("2")])
+dialogue_1 = Array[ExtResource("7")]([SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")])
+dialogue_2 = Array[ExtResource("7")]([SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18"), SubResource("19")])
 play_music_on_start = true
-dialogue_start = [SubResource("1"), SubResource("2")]
-dialogue_1 = [SubResource("3"), SubResource("4"), SubResource("5"), SubResource("6"), SubResource("7"), SubResource("8"), SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")]
-dialogue_2 = [SubResource("15"), SubResource("16"), SubResource("17"), SubResource("18"), SubResource("19")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="2" unique_id=1735877956]
 
@@ -349,6 +349,7 @@ dialogue_2 = [SubResource("15"), SubResource("16"), SubResource("17"), SubResour
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1838549200 instance=ExtResource("2")]
+texture_repeat = 2
 texture = ExtResource("3")
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(20, 20)

@@ -1,23 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene format=3 uid="uid://burpnsjfhjxxr"]
 
-[ext_resource path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Art/Tile/Normal/AlbumBack.png" type="Texture2D" id=2]
-[ext_resource path="res://GUI/PauseMenu/PauseMenu.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://ccy58r6pp01gc" path="res://Art/Tile/Normal/AlbumBack.png" id="2"]
+[ext_resource type="PackedScene" path="res://GUI/PauseMenu/PauseMenu.tscn" id="3"]
 
-[node name="AlbumBackground" type="Node2D"]
+[node name="AlbumBackground" type="Node2D" unique_id=533998365]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=24742047]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 4096, 4096 )
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2014324181]
+motion_mirroring = Vector2(4096, 4096)
 
-[node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 4096, 4096 )
-scroll_speed = Vector2( -8, -8 )
+[node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" unique_id=1803474604 instance=ExtResource("1")]
+texture_repeat = 2
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 4096, 4096)
+scroll_speed = Vector2(-8, -8)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-zoom = Vector2( 0.25, 0.25 )
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1957478963]
+zoom = Vector2(0.25, 0.25)
 
-[node name="PauseMenu" parent="." instance=ExtResource( 3 )]
+[node name="PauseMenu" parent="." unique_id=1523152577 instance=ExtResource("3")]

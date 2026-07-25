@@ -28,9 +28,9 @@ enum {SHIELD_BACK, SHIELD_FRONT, SHIELD_TOP}
 	SHIELD_FRONT : get_node("ShieldFront/CPUParticles2D"),
 	SHIELD_TOP : get_node("ShieldTop/CPUParticles2D")
 }
-@onready var shield_static_body = {
-	SHIELD_BACK : get_node("ShieldBack/StaticBody2D"),
-	SHIELD_FRONT : get_node("ShieldFront/StaticBody2D"),
+@onready var shield_collision_body = {
+	SHIELD_BACK : get_node("ShieldBack/CharacterBody2D"),
+	SHIELD_FRONT : get_node("ShieldFront/CharacterBody2D"),
 	SHIELD_TOP : null
 }
 @export var back_shield_active_on_ready = false
@@ -167,10 +167,10 @@ func reverse_direction():
 
 func update_shield(shield):
 	shield_particles[shield].set_emitting(is_shield_active(shield))
-	if shield_static_body[shield] != null:
-		# shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
-		# shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
-		shield_static_body[shield].process_mode = PROCESS_MODE_INHERIT if is_shield_active(shield) else PROCESS_MODE_DISABLED
+	if shield_collision_body[shield] != null:
+		# shield_collision_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
+		# shield_collision_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
+		shield_collision_body[shield].process_mode = PROCESS_MODE_INHERIT if is_shield_active(shield) else PROCESS_MODE_DISABLED
 
 # Getters and setters
 func set_direction(dir : Vector2):

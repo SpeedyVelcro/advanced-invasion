@@ -82,11 +82,11 @@ initial_velocity_min = 12.0
 initial_velocity_max = 12.0
 color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldBack" unique_id=724067299]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldBack" unique_id=782106786]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/StaticBody2D" unique_id=1659412509]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/CharacterBody2D" unique_id=1659412509]
 polygon = PackedVector2Array(-13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16)
 
 [node name="ShieldFront" type="Node2D" parent="." unique_id=622653821]
@@ -104,11 +104,11 @@ initial_velocity_min = 12.0
 initial_velocity_max = 12.0
 color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldFront" unique_id=1993134356]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldFront" unique_id=992120652]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/StaticBody2D" unique_id=1598294616]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/CharacterBody2D" unique_id=1598294616]
 polygon = PackedVector2Array(13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16)
 
 [node name="ShieldTop" type="Node2D" parent="." unique_id=1664596491]

@@ -12,7 +12,7 @@ extends CharacterBody2D
 var end_position
 var forward = true # True if next state is STATE_FORWARD, false if STATE_REVERSE
 
-signal activated
+signal activated_signal # TODO: better name, this was just a quick fix for a name collision during the Godot 3->4 migration.
 
 enum {
 	STATE_WAIT,
@@ -79,7 +79,7 @@ func _physics_process(delta):
 func set_activated(value : bool):
 	activated = value
 	if activated and state == STATE_WAIT:
-		emit_signal("activated")
+		emit_signal("activated_signal")
 		change_state(STATE_IDLE)
 		if activate_immediately:
 			$IdleTimer.stop()

@@ -109,7 +109,7 @@ func _on_HurtArea_body_entered(body):
 	# TODO: come up with a more concrete way of getting end_point that doesn't require end_polygon to exist
 	var hline_start_point = body.get_global_position()
 	var hline_direction = Vector2.RIGHT
-	var intersect = Geometry.line_intersects_line(beam_start_point, beam_direction, hline_start_point, hline_direction)
+	var intersect = Geometry2D.line_intersects_line(beam_start_point, beam_direction, hline_start_point, hline_direction)
 	if not (intersect is Vector2):
 		# If the function doesn't return a Vector2 beam must be horizontal
 		# So instead just pick any old random direction.

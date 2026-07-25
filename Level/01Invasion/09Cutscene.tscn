@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://lma44kimmkdk" path="res://Art/Boss/Wizard/Wizard.png" id="12"]
 [ext_resource type="Script" uid="uid://c52tonnegwplg" path="res://Level/01Invasion/09Cutscene.gd" id="13"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="14"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/Wizard/WizardBeam.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://dit6y3jrufqyf" path="res://Entity/Boss/Wizard/WizardBeam.tscn" id="15"]
 [ext_resource type="Script" uid="uid://ejwtiybt4pei" path="res://Entity/Utility/Hitbox/Hitbox.gd" id="16"]
 [ext_resource type="AudioStream" uid="uid://cevj4464dm83" path="res://Sound/Movement/LightWoosh.wav" id="17"]
 

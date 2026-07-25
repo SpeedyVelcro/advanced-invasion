@@ -16,8 +16,6 @@ const CREEP_CULLABLE_HEIGHT = 96
 @onready var barrier = $Barrier
 @onready var player = $Player
 
-signal start
-
 func _ready():
 	#._ready() # Don't need to do this, happens automatically for inbuilt functions
 	left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
@@ -27,7 +25,7 @@ func _on_WakeArea_body_entered(_body):
 	# NB: This is one-shot
 	# We know it's the player due to collision mask
 	landing_timer.start(START_DELAY)
-	player_camera.set_limit(MARGIN_LEFT, 0)
+	player_camera.set_limit(SIDE_LEFT, 0)
 	player_camera.set_global_position(giant.get_global_position())
 	player.set_input_locked(true)
 

@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
 [ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/Giant/Giant.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://b7ek144i7bcpo" path="res://Entity/Boss/Giant/Giant.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
 [ext_resource type="Script" uid="uid://dhoruop07q5j7" path="res://Level/01Invasion/07Boss.gd" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="10"]
 
 [sub_resource type="RectangleShape2D" id="1"]

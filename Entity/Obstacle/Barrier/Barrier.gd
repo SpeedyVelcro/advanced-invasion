@@ -28,20 +28,7 @@ var button_count = 0
 @onready var mechanical_audio_player = $MechanicalAudioStreamPlayer
 
 func _ready():
-	raycast.force_raycast_update()
-	var end_pos = raycast.get_collision_point()
-	var length = global_position.distance_to(end_pos)
-	end_sprite.position.y = -length
-	beam_sprite.position.y = -length / 2
-	beam_sprite.region_rect.size.y = length - BEAM_LENGTH_BUFFER
-	static_body.position.y = -length / 2
-	collision_shape.shape.extents.y = length / 2
-	collision_shape.set_deferred("disabled", false)
-	# Enable/disable with instant and force to ensure visuals are correct
-	if enabled:
-		enable(true, true)
-	else:
-		disable(true, true)
+	_configure_dimensions()
 	# Set up conditions
 	match condition:
 		ConditionType.CREEP_ALL:
@@ -63,6 +50,27 @@ func _ready():
 			for button in buttons:
 				button.connect("pressed", Callable(self, "_on_button_pressed"))
 				button_count += 1
+
+func _configure_dimensions() -> void:
+	raycast.add_exception(static_body)
+	# raycast.force_raycast_update()
+	await get_tree().process_frame # force_raycast_update is not working for some reason. Awaiting the next process_frame (NOT physics_frame) does seem to work though. TODO: might want to verify, make a reproducible example, and report.
+	if not raycast.is_colliding():
+		push_warning("Barrier raycast is not colliding.")
+	var end_pos = raycast.get_collision_point()
+	var length = global_position.distance_to(end_pos)
+	end_sprite.position.y = -length
+	beam_sprite.position.y = -length / 2
+	beam_sprite.region_rect.size.y = length - BEAM_LENGTH_BUFFER
+	static_body.position.y = -length / 2
+	collision_shape.shape.extents.y = length / 2
+	collision_shape.set_deferred("disabled", false)
+	# Enable/disable with instant and force to ensure visuals are correct
+	if enabled:
+		enable(true, true)
+	else:
+		disable(true, true)
+	
 
 func _on_creep_death():
 	creep_count -= 1

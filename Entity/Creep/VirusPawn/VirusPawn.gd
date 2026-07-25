@@ -168,8 +168,9 @@ func reverse_direction():
 func update_shield(shield):
 	shield_particles[shield].set_emitting(is_shield_active(shield))
 	if shield_static_body[shield] != null:
-		shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
-		shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
+		# shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
+		# shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
+		shield_static_body[shield].process_mode = PROCESS_MODE_INHERIT if is_shield_active(shield) else PROCESS_MODE_DISABLED
 
 # Getters and setters
 func set_direction(dir : Vector2):

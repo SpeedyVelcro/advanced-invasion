@@ -45,7 +45,7 @@ func play(music_id, fadeout_sec = 0.0, from_position = 0.0, force = false):
 		$AudioStreamPlayer.play(from_position)
 		if from_position != 0:
 			$AudioStreamPlayer.volume_db = -80
-			var tween := Tween.new()
+			var tween := create_tween()
 			tween.set_trans(Tween.TRANS_LINEAR)
 			tween.set_ease(Tween.EASE_IN)
 			tween.tween_property($AudioStreamPlayer, "volume_db", 0.0, 1.0)
@@ -58,7 +58,7 @@ func play(music_id, fadeout_sec = 0.0, from_position = 0.0, force = false):
 		next_from_position = from_position
 		fading_out = true
 		music_queued = true
-		var tween := Tween.new()
+		var tween := create_tween()
 		tween.set_trans(Tween.TRANS_LINEAR)
 		tween.set_ease(Tween.EASE_IN)
 		tween.tween_property($AudioStreamPlayer, "volume_db", -80, fadeout_sec)
@@ -73,7 +73,7 @@ func stop(fadeout_sec = 1.0):
 		$AudioStreamPlayer.stop()
 	else:
 		fading_out = true
-		var tween := Tween.new()
+		var tween := create_tween()
 		tween.set_trans(Tween.TRANS_LINEAR)
 		tween.set_ease(Tween.EASE_IN)
 		tween.tween_property($AudioStreamPlayer, "volume_db", -80, fadeout_sec)
@@ -85,7 +85,7 @@ func adjust_volume_linear(volume, time_sec):
 	if time_sec == 0:
 		$AudioStreamPlayer.set_volume_db(linear_to_db(volume))
 	else:
-		var tween := Tween.new()
+		var tween := create_tween()
 		tween.set_trans(Tween.TRANS_LINEAR)
 		tween.set_ease(Tween.EASE_IN)
 		tween.tween_property($AudioStreamPlayer, "volume_db", linear_to_db(volume), time_sec)
@@ -105,7 +105,7 @@ func _on_VolumeTween_tween_completed():
 			music_queued = false
 			if next_from_position != 0:
 				$AudioStreamPlayer.volume_db = -80
-				var tween := Tween.new()
+				var tween := create_tween()
 				tween.set_trans(Tween.TRANS_LINEAR)
 				tween.set_ease(Tween.EASE_IN)
 				tween.tween_property($AudioStreamPlayer, "volume_db", 0.0, 1.0)

@@ -7,7 +7,7 @@
 
 extends CharacterBody2D
 
-@export var start_direction # (int, "Left", "Right")
+@export_enum("Left", "Right") var start_direction := 0
 @onready var ignore_player_timer = $IgnorePlayerTimer
 @onready var gun_audio_player = $GunAudioStreamPlayer2D
 @onready var death_audio_player = $DeathAudioStreamPlayer2D
@@ -15,8 +15,6 @@ extends CharacterBody2D
 var gravity = 850
 var walk_speed = 80
 var direction = Vector2(1, 0)
-var velocity = Vector2()
-var up_direction = Vector2(0, -1)
 var snap_vector = Vector2(0, 2)
 var melee_knockback = Vector2(200, -150)
 var melee_damage = 1
@@ -47,9 +45,9 @@ enum {SHIELD_BACK, SHIELD_FRONT, SHIELD_TOP}
 	SHIELD_FRONT : get_node("ShieldFront/CPUParticles2D"),
 	SHIELD_TOP : get_node("ShieldTop/CPUParticles2D")
 }
-@onready var shield_static_body = {
-	SHIELD_BACK : get_node("ShieldBack/StaticBody2D"),
-	SHIELD_FRONT : get_node("ShieldFront/StaticBody2D"),
+@onready var shield_collision_body = {
+	SHIELD_BACK : get_node("ShieldBack/CharacterBody2D"),
+	SHIELD_FRONT : get_node("ShieldFront/CharacterBody2D"),
 	SHIELD_TOP : null
 }
 @export var back_shield_active_on_ready = false
@@ -217,9 +215,10 @@ func reverse_direction():
 
 func update_shield(shield):
 	shield_particles[shield].set_emitting(is_shield_active(shield))
-	if shield_static_body[shield] != null:
-		shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
-		shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
+	if shield_collision_body[shield] != null:
+		# shield_static_body[shield].set_collision_layer_value(6, is_shield_active(shield)) # bullet stopper
+		# shield_static_body[shield].set_collision_mask_value(4, is_shield_active(shield)) # bullet
+		shield_collision_body[shield].process_mode = PROCESS_MODE_INHERIT if is_shield_active(shield) else PROCESS_MODE_DISABLED
 
 func _on_GunTimer_timeout():
 	gun_ready = true

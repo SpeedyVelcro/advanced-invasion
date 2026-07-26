@@ -180,6 +180,7 @@ shape = SubResource("6")
 
 [node name="FirstGuardian" parent="." index="12" unique_id=649092539 instance=ExtResource("12")]
 position = Vector2(568, 688)
+start_direction = 0
 
 [node name="GuardianLeftOffSprite" type="Sprite2D" parent="." index="13" unique_id=2062983715]
 position = Vector2(568, 688)

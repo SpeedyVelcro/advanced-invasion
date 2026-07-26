@@ -2,7 +2,7 @@
 
 extends CharacterBody2D
 
-@export_enum("Left", "Right") var start_direction
+@export_enum("Left", "Right") var start_direction := 0
 @onready var ignore_player_timer = $IgnorePlayerTimer
 @onready var death_scream_audio_player = $DeathScreamAudioStreamPlayer2D
 var gravity = 850

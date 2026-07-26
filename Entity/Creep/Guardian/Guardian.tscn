@@ -1,154 +1,150 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene format=3 uid="uid://d3d8ddic6amtu"]
 
-[ext_resource path="res://Art/Creep/Guardian/GuardianShieldLeft.png" type="Texture2D" id=1]
-[ext_resource path="res://Entity/Creep/Guardian/Guardian.gd" type="Script" id=2]
-[ext_resource path="res://Art/Creep/Guardian/GuardianShieldTop.png" type="Texture2D" id=3]
-[ext_resource path="res://Entity/Creep/Guardian/GuardianSpriteFrames.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://Art/Creep/Guardian/GuardianShieldRight.png" type="Texture2D" id=5]
-[ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sound/Weapon/LightRetroGun.wav" type="AudioStream" id=7]
-[ext_resource path="res://Sound/Destruction/DryAnvilHit.wav" type="AudioStream" id=8]
-[ext_resource path="res://Sound/Death/GuardianDeathScream.wav" type="AudioStream" id=9]
+[ext_resource type="Texture2D" uid="uid://dtld3ilfbbxu1" path="res://Art/Creep/Guardian/GuardianShieldLeft.png" id="1"]
+[ext_resource type="Script" uid="uid://tbnevijr2mig" path="res://Entity/Creep/Guardian/Guardian.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://dncdq84lsuu32" path="res://Art/Creep/Guardian/GuardianShieldTop.png" id="3"]
+[ext_resource type="SpriteFrames" path="res://Entity/Creep/Guardian/GuardianSpriteFrames.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://yrwcwwa8rxno" path="res://Art/Creep/Guardian/GuardianShieldRight.png" id="5"]
+[ext_resource type="PackedScene" path="res://Entity/Utility/Hitbox/Hitbox.tscn" id="6"]
+[ext_resource type="AudioStream" uid="uid://c8x024d35bxtm" path="res://Sound/Weapon/LightRetroGun.wav" id="7"]
+[ext_resource type="AudioStream" uid="uid://74xqft4k8m5i" path="res://Sound/Destruction/DryAnvilHit.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://d1v1g7j363owa" path="res://Sound/Death/GuardianDeathScream.wav" id="9"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 15.5
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id="2"]
 radius = 16.0
 
-[sub_resource type="Gradient" id=3]
-offsets = PackedFloat32Array( 0, 0.15894, 1 )
-colors = PackedColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0, 0.15894, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0)
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AnimatedSprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 0)]
 }
 
-[node name="Guardian" type="CharacterBody2D" groups=[
-"creep",
-"player_collider",
-]]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsxb4"]
+_data = {
+&"death": SubResource("4")
+}
+
+[node name="Guardian" type="CharacterBody2D" unique_id=1786235335 groups=["creep", "player_collider"]]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = ExtResource( 4 )
-animation = "right"
-playing = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=502862620]
+sprite_frames = ExtResource("4")
+animation = &"right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1185649040]
+position = Vector2(0, 0.5)
+shape = SubResource("1")
 
-[node name="FrontRayCast" type="RayCast2D" parent="."]
-enabled = true
-target_position = Vector2( 17, 0 )
+[node name="FrontRayCast" type="RayCast2D" parent="." unique_id=531033337]
+target_position = Vector2(17, 0)
 collision_mask = 129
 
-[node name="PlayerDetectionRaycast" type="RayCast2D" parent="."]
-enabled = true
-target_position = Vector2( 270, 0 )
+[node name="PlayerDetectionRaycast" type="RayCast2D" parent="." unique_id=976591268]
+target_position = Vector2(270, 0)
 collision_mask = 2
 
-[node name="BackRayCast" type="RayCast2D" parent="."]
-enabled = true
-target_position = Vector2( -17, 0 )
+[node name="BackRayCast" type="RayCast2D" parent="." unique_id=1533446822]
+target_position = Vector2(-17, 0)
 collision_mask = 129
 
-[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+[node name="Hitbox" parent="." unique_id=50869884 instance=ExtResource("6")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=78398884]
+shape = SubResource("2")
 
-[node name="ShieldBack" type="Node2D" parent="."]
+[node name="ShieldBack" type="Node2D" parent="." unique_id=913369474]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldBack"]
-position = Vector2( -14, 0 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldBack" unique_id=1167547551]
+position = Vector2(-14, 0)
 emitting = false
 amount = 5
+texture = ExtResource("1")
 lifetime = 0.4
-texture = ExtResource( 1 )
-direction = Vector2( -1, 0 )
+direction = Vector2(-1, 0)
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldBack"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldBack" unique_id=817588615]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/StaticBody2D"]
-polygon = PackedVector2Array( -13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/CharacterBody2D" unique_id=304234110]
+polygon = PackedVector2Array(-13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16)
 
-[node name="ShieldFront" type="Node2D" parent="."]
+[node name="ShieldFront" type="Node2D" parent="." unique_id=1503886413]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldFront"]
-position = Vector2( 14, 0 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldFront" unique_id=1783680329]
+position = Vector2(14, 0)
 emitting = false
 amount = 5
+texture = ExtResource("5")
 lifetime = 0.4
-texture = ExtResource( 5 )
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldFront"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldFront" unique_id=1975446880]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/StaticBody2D"]
-polygon = PackedVector2Array( 13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/CharacterBody2D" unique_id=1729244352]
+polygon = PackedVector2Array(13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16)
 
-[node name="ShieldTop" type="Node2D" parent="."]
+[node name="ShieldTop" type="Node2D" parent="." unique_id=743281594]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldTop"]
-position = Vector2( 0, -15 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldTop" unique_id=1676822608]
+position = Vector2(0, -15)
 emitting = false
 amount = 5
+texture = ExtResource("3")
 lifetime = 0.4
-texture = ExtResource( 3 )
-direction = Vector2( 0, -1 )
+direction = Vector2(0, -1)
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+color_ramp = SubResource("3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 4 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=952017562]
+libraries/ = SubResource("AnimationLibrary_wsxb4")
 
-[node name="IgnorePlayerTimer" type="Timer" parent="."]
+[node name="IgnorePlayerTimer" type="Timer" parent="." unique_id=1725021011]
 one_shot = true
 
-[node name="GunTimer" type="Timer" parent="."]
+[node name="GunTimer" type="Timer" parent="." unique_id=1376114845]
 one_shot = true
 
-[node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
-bus = "Effects"
+[node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1648855760]
+stream = ExtResource("7")
+bus = &"Effects"
 
-[node name="DeathAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 8 )
+[node name="DeathAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=12545562]
+stream = ExtResource("8")
 volume_db = -7.8
 pitch_scale = 0.8
-bus = "Effects"
+bus = &"Effects"
 
-[node name="DeathScreamAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 9 )
+[node name="DeathScreamAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=1953553534]
+stream = ExtResource("9")
 volume_db = -10.4
-bus = "Effects"
+bus = &"Effects"
+
 [connection signal="attacked" from="Hitbox" to="." method="_on_Hitbox_attacked"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="IgnorePlayerTimer" to="." method="_on_IgnorePlayerTimer_timeout"]

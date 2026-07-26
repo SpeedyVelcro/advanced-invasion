@@ -33,8 +33,7 @@ func _on_ActivateArea_body_entered(_body):
 	wizard.fly_in()
 	player.set_input_locked(true)
 	DialogueManager.queue_dialogue(dialogue_1)
-	camera_player.zoom_in()
-	# TODO: play swoosh sound as the wizard flies in.
+	camera_player.zoom_in(true)
 
 func _on_DialogueManager_finished():
 	match dialogue_stage:
@@ -49,7 +48,7 @@ func _on_DialogueManager_finished():
 			barrier_right.enable()
 			$LevelHUD.show_boss_health()
 			dialogue_stage = 1
-			camera_player.zoom_out()
+			camera_player.zoom_out(true)
 			camera_player.position = Vector2(0, 0)
 		1:
 			camera_player.drag_vertical_enabled = true

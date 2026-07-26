@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/Normal/MovingPlatformHiddenColumn.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/Wizard/WizardFight/WizardFight.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://cdo78qwhg821" path="res://Entity/Boss/Wizard/WizardFight/WizardFight.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
 [ext_resource type="Script" uid="uid://ky11mrafc836" path="res://Level/03Base/BaseBoss.gd" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]

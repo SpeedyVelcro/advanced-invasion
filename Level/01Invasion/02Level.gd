@@ -7,6 +7,7 @@ extends Level
 @onready var yellow_cutscene = $YellowCutscene
 
 func _ready():
+	super()
 	player.set_visible(false)
 	DialogueManager.connect("end_broadcast_signal", Callable(self, "_on_DialogueManager_end_broadcast"))
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))

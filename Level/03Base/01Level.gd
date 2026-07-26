@@ -5,6 +5,8 @@ extends Level
 @onready var dialogue_area = $DialogueArea
 
 func _ready():
+	super()
+	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 

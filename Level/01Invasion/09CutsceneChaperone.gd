@@ -5,7 +5,7 @@ extends Node
 @onready var portal_left = get_node(portal_left_path)
 @export var portal_right_path: NodePath
 @onready var portal_right = get_node(portal_right_path)
-@onready var creep_resource = preload("res://Entity/Creeps/VirusPawn/VirusPawn.tscn")
+@onready var creep_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
 
 const NEXT_SCENE = "res://Level/01Invasion/10Cutscene.tscn"
 

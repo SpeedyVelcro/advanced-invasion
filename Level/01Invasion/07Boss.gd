@@ -17,6 +17,8 @@ const CREEP_CULLABLE_HEIGHT = 96
 @onready var player = $Player
 
 func _ready():
+	super()
+	
 	#._ready() # Don't need to do this, happens automatically for inbuilt functions
 	left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
 	right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)

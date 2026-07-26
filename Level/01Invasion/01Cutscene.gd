@@ -8,6 +8,8 @@ extends Level
 const NEXT_SCENE = "res://Level/01Invasion/02Level.tscn"
 
 func _ready():
+	super()
+	
 	GlobalMusic.play("invasion")
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))

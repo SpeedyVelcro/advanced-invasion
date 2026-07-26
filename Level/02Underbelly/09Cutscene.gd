@@ -10,6 +10,8 @@ const NEXT_SCENE = "res://Level/02Underbelly/10Boss.tscn"
 var stage = 0
 
 func _ready():
+	super()
+	
 	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")

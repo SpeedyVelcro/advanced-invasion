@@ -48,6 +48,8 @@ const CUTSCENE_BULLET_IMPULSE = [
 const CAMERA_BATTLE_POSITION = Vector2(-64, 0)
 
 func _ready():
+	super()
+	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	animation_player.play("cutscene_1")
 	for bullet in cutscene_bullet:

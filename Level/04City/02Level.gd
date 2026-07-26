@@ -11,6 +11,8 @@ extends Level
 @export var dialogue_1: Array[Dialogue] = []
 
 func _ready():
+	super()
+	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	first_guardian.set_process(false)
 	first_guardian.set_physics_process(false)

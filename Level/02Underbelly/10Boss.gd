@@ -18,6 +18,8 @@ var rng = RandomNumberGenerator.new()
 var remaining_viruses = 0
 
 func _ready():
+	super()
+	
 	$Portal.set_visible(false)
 	$Portal2.set_visible(false)
 	$Portal3.set_visible(false)

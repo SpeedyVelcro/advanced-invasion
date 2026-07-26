@@ -9,6 +9,8 @@ var button_freed = false
 @export var dialogue_2: Array[Dialogue] = []
 
 func _ready():
+	super()
+	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	DialogueManager.queue_dialogue(dialogue_1, "dialogue_1")

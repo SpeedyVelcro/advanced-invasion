@@ -8,6 +8,8 @@ extends Level
 const QUAKE_KNOCKBACK = Vector2(300, -250)
 
 func _ready():
+	super()
+	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 
 func _on_ExplosionArea_body_entered(_body):

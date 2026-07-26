@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(128, 304)
@@ -48,7 +48,7 @@ layer_0/tile_data = PackedInt32Array(262132, 0, 0, 262133, 0, 0, 262134, 0, 0, 2
 [node name="WallTileMap2" type="TileMap" parent="." index="4" unique_id=560793834]
 tile_set = ExtResource("5")
 format = 2
-layer_0/tile_data = PackedInt32Array(1310721, 5, 0, 1310722, 5, 0, 1310723, 5, 0, 1310724, 5, 0, 1376257, 5, 0, 1376258, 5, 0, 1376259, 5, 0, 1376260, 5, 0)
+layer_0/tile_data = PackedInt32Array(1310721, 2, 0, 1310722, 2, 0, 1310723, 2, 0, 1310724, 2, 0, 1376257, 2, 0, 1376258, 2, 0, 1376259, 2, 0, 1376260, 2, 0)
 
 [node name="DecorTileMap" type="TileMap" parent="." index="5" unique_id=1272261244]
 tile_set = ExtResource("3")

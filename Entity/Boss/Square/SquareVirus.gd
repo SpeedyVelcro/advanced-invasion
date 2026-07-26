@@ -7,7 +7,6 @@ extends CharacterBody2D
 @onready var seek_max_timer = $SeekMaxTimer
 @onready var vulnerable_start_timer = $VulnerableStartTimer
 @onready var vulnerable_end_timer = $VulnerableEndTimer
-@onready var height_tween = $HeightTween
 @onready var animation_player = $AnimationPlayer
 @onready var attack_area = $AttackArea
 @onready var hitbox = $Hitbox
@@ -25,7 +24,6 @@ enum {
 }
 var state = STATE_SLEEP
 var next_state = state
-var velocity = Vector2(0, 0)
 var seek_height = 0.0
 @export var player_path: NodePath
 @onready var player = get_node(player_path)
@@ -56,6 +54,7 @@ var seek_min_time_elapsed = false
 var seek_max_time_elapsed = false
 var vulnerable_end_time_elapsed = false
 var current_fall_speed = 0.0
+var height_tween: Tween
 
 signal health_changed(health, max_health)
 signal hang_back
@@ -117,15 +116,20 @@ func _on_state_enter(p_state = state):
 			emit_signal("hang_back")
 			var target_pos = global_position
 			target_pos.y = seek_height - HANG_BACK_HEIGHT
-			height_tween.interpolate_property(self, "global_position", null, target_pos,
-					HANG_BACK_TWEEN_TIME, Tween.TRANS_SINE, Tween.EASE_OUT)
-			height_tween.start()
+			height_tween = create_tween()
+			height_tween.set_trans(Tween.TRANS_SINE)
+			height_tween.set_ease(Tween.EASE_OUT)
+			height_tween.tween_property(self, "global_position", target_pos, HANG_BACK_TWEEN_TIME)
+			height_tween.play()
 		STATE_RETURN:
 			var target_pos = global_position
 			target_pos.y = seek_height
-			height_tween.interpolate_property(self, "global_position", null, target_pos,
-					RETURN_TWEEN_TIME, Tween.TRANS_SINE, Tween.EASE_OUT)
-			height_tween.start()
+			height_tween = create_tween()
+			height_tween.set_trans(Tween.TRANS_SINE)
+			height_tween.set_ease(Tween.EASE_OUT)
+			height_tween.tween_property(self, "global_position", target_pos, RETURN_TWEEN_TIME)
+			height_tween.tween_callback(change_state.bind(STATE_SEEK))
+			height_tween.play()
 		STATE_DEATH:
 			animation_player.play("death")
 			attack_area.set_deferred("monitoring", false)
@@ -216,10 +220,10 @@ func _on_state_exit(p_state = state):
 			# Both STATE_BOUNCE and STATE_HANG_BACK when shields active and front sprite
 			animated_sprite.play("front")
 			set_shield_active(true)
-		STATE_HANG_BACK:
-			height_tween.stop_all()
-		STATE_RETURN:
-			height_tween.stop_all()
+		STATE_HANG_BACK, STATE_RETURN:
+			if height_tween != null and height_tween.is_valid():
+				height_tween.kill()
+				height_tween = null
 
 func _on_SeekMinTimer_timeout():
 	seek_min_time_elapsed = true
@@ -233,10 +237,6 @@ func _on_VulnerableStartTimer_timeout():
 
 func _on_VulnerableEndTimer_timeout():
 	vulnerable_end_time_elapsed = true
-
-func _on_HeightTween_tween_completed(_object, _key):
-	if state == STATE_RETURN:
-		change_state(STATE_SEEK)
 
 func _on_Hitbox_attacked(damage, _from_direction):
 	if not shield_active:

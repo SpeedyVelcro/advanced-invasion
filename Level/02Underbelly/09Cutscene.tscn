@@ -157,8 +157,8 @@ broadcast_enabled = true
 broadcast_message = "max_come_on"
 
 [sub_resource type="Curve" id="24"]
-_data = [Vector2(0.304167, 0.981818), 0.0, -0.0382777, 0, 0, Vector2(1, 0.2), -1.79221, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0.304167, 0.981818), 0.0, -0.0382777, 0, 0, Vector2(0.6, 0.5125523), -2.561989, -2.561989, 0, 0, Vector2(1, 0.2), -0.39292023, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="25"]
 offsets = PackedFloat32Array(0, 0.133641, 1)
@@ -545,6 +545,18 @@ amount = 12
 direction = Vector2(0, -1)
 spread = 15.0
 gravity = Vector2(0, 0)
+initial_velocity_max = 40.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+linear_accel_max = 30.0
+radial_accel_min = 20.0
+radial_accel_max = 20.0
+tangential_accel_min = -8.0
+tangential_accel_max = 8.0
+angle_min = -15.0
+angle_max = 15.0
+scale_amount_min = 12.0
+scale_amount_max = 14.0
 scale_amount_curve = SubResource("24")
 color_ramp = SubResource("25")
 

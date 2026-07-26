@@ -1,183 +1,199 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene format=3 uid="uid://cfdlf3q3w1ajs"]
 
-[ext_resource path="res://Art/Boss/Square/SquareSleep.png" type="Texture2D" id=1]
-[ext_resource path="res://Art/Boss/Square/SquareLeft.png" type="Texture2D" id=2]
-[ext_resource path="res://Art/Boss/Square/SquareRight.png" type="Texture2D" id=3]
-[ext_resource path="res://Art/Boss/Square/SquareDrop.png" type="Texture2D" id=4]
-[ext_resource path="res://Art/Boss/Square/SquareLand.png" type="Texture2D" id=5]
-[ext_resource path="res://Art/Boss/Square/SquareFront.png" type="Texture2D" id=6]
-[ext_resource path="res://Art/Boss/Square/SquareSideShield.png" type="Texture2D" id=7]
-[ext_resource path="res://Entity/Boss/Square/SquareVirus.gd" type="Script" id=8]
-[ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sound/Destruction/LowThump.wav" type="AudioStream" id=10]
+[ext_resource type="Texture2D" uid="uid://bdt47cugg4ese" path="res://Art/Boss/Square/SquareSleep.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dh6jtank6hx0v" path="res://Art/Boss/Square/SquareLeft.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cxe24o264xa5n" path="res://Art/Boss/Square/SquareRight.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://clbg7ayionnbo" path="res://Art/Boss/Square/SquareDrop.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://btoabmmncbym3" path="res://Art/Boss/Square/SquareLand.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cxhihrrwbu3q" path="res://Art/Boss/Square/SquareFront.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://1w77pdivfot5" path="res://Art/Boss/Square/SquareSideShield.png" id="7"]
+[ext_resource type="Script" uid="uid://c8hqpnn4j1qns" path="res://Entity/Boss/Square/SquareVirus.gd" id="8"]
+[ext_resource type="PackedScene" path="res://Entity/Utility/Hitbox/Hitbox.tscn" id="9"]
+[ext_resource type="AudioStream" uid="uid://damfha2d4ub0g" path="res://Sound/Destruction/LowThump.wav" id="10"]
 
-
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "left",
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4")
+}],
+"loop": 1,
+"name": &"drop",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "right",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6")
+}],
+"loop": 1,
+"name": &"front",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "front",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
+"loop": 1,
+"name": &"land",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "sleep",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2")
+}],
+"loop": 1,
+"name": &"left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "drop",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3")
+}],
+"loop": 1,
+"name": &"right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "land",
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}],
+"loop": 1,
+"name": &"sleep",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 48, 64 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(96, 128)
 
-[sub_resource type="Gradient" id=3]
-offsets = PackedFloat32Array( 0, 0.15894, 1 )
-colors = PackedColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0, 0.15894, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0)
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 48, 60 )
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(96, 120)
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 48, 64 )
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(96, 128)
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "death"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AnimatedSprite2D:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 1 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ) ]
+"values": [Vector2(0, 0), Vector2(0, -32)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("AnimatedSprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 1 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("AnimatedSprite2D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
-"values": [ {
-"args": [ "front", false ],
-"method": "play"
-} ]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["front", false],
+"method": &"play"
+}]
 }
 
-[node name="SquareVirus" type="CharacterBody2D" groups=[
-"boss",
-]]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojumw"]
+_data = {
+&"death": SubResource("6")
+}
+
+[node name="SquareVirus" type="CharacterBody2D" unique_id=94671974 groups=["boss"]]
 collision_layer = 524288
-script = ExtResource( 8 )
+script = ExtResource("8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource( 1 )
-animation = "right"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1675757089]
+sprite_frames = SubResource("1")
+animation = &"right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=248190364]
+shape = SubResource("2")
 
-[node name="ShieldParticlesRight" type="CPUParticles2D" parent="."]
-position = Vector2( 52, 0 )
+[node name="ShieldParticlesRight" type="CPUParticles2D" parent="." unique_id=308583209]
+position = Vector2(52, 0)
 emitting = false
 amount = 5
+texture = ExtResource("7")
 lifetime = 0.4
-texture = ExtResource( 7 )
+local_coords = true
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+color_ramp = SubResource("3")
 
-[node name="ShieldParticlesLeft" type="CPUParticles2D" parent="."]
-position = Vector2( -52, 0 )
+[node name="ShieldParticlesLeft" type="CPUParticles2D" parent="." unique_id=1952913611]
+position = Vector2(-52, 0)
 emitting = false
 amount = 5
+texture = ExtResource("7")
 lifetime = 0.4
-texture = ExtResource( 7 )
-direction = Vector2( -1, 0 )
+local_coords = true
+direction = Vector2(-1, 0)
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+color_ramp = SubResource("3")
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="." unique_id=527238527]
 collision_layer = 524288
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-shape = SubResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=503769961]
+shape = SubResource("4")
 
-[node name="SeekMinTimer" type="Timer" parent="."]
+[node name="SeekMinTimer" type="Timer" parent="." unique_id=1914961456]
 one_shot = true
 
-[node name="SeekMaxTimer" type="Timer" parent="."]
+[node name="SeekMaxTimer" type="Timer" parent="." unique_id=1822533772]
 one_shot = true
 
-[node name="VulnerableStartTimer" type="Timer" parent="."]
+[node name="VulnerableStartTimer" type="Timer" parent="." unique_id=1410022459]
 one_shot = true
 
-[node name="VulnerableEndTimer" type="Timer" parent="."]
+[node name="VulnerableEndTimer" type="Timer" parent="." unique_id=407757127]
 one_shot = true
 
-[node name="HeightTween" type="Tween" parent="."]
+[node name="Hitbox" parent="." unique_id=1673047651 instance=ExtResource("9")]
 
-[node name="Hitbox" parent="." instance=ExtResource( 9 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1451640640]
+shape = SubResource("5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 5 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=150910748]
+libraries/ = SubResource("AnimationLibrary_ojumw")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 6 )
+[node name="ImpactAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=438171412]
+position = Vector2(0, 64)
+stream = ExtResource("10")
 
-[node name="ImpactAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 0, 64 )
-stream = ExtResource( 10 )
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="timeout" from="SeekMinTimer" to="." method="_on_SeekMinTimer_timeout"]
 [connection signal="timeout" from="SeekMaxTimer" to="." method="_on_SeekMaxTimer_timeout"]
 [connection signal="timeout" from="VulnerableStartTimer" to="." method="_on_VulnerableStartTimer_timeout"]
 [connection signal="timeout" from="VulnerableEndTimer" to="." method="_on_VulnerableEndTimer_timeout"]
-[connection signal="tween_completed" from="HeightTween" to="." method="_on_HeightTween_tween_completed"]
 [connection signal="attacked" from="Hitbox" to="." method="_on_Hitbox_attacked"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

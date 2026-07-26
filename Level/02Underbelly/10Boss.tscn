@@ -8,12 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
 [ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://5ynaay1sbeu6" path="res://Art/Character/Green/GreenLeft.png" id="12"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="13"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/Square/SquareVirus.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://cfdlf3q3w1ajs" path="res://Entity/Boss/Square/SquareVirus.tscn" id="14"]
 [ext_resource type="Script" uid="uid://dbuclgamxk2e6" path="res://Level/02Underbelly/10Boss.gd" id="15"]
 [ext_resource type="PackedScene" path="res://Entity/Decor/Breach/Portal/Portal.tscn" id="16"]
 [ext_resource type="Texture2D" uid="uid://5u7eb3dncbb7" path="res://Art/Character/Green/GreenRight.png" id="17"]
@@ -457,3 +457,6 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(592, 624)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="death" from="SquareVirus" to="." method="_on_SquareVirus_death"]
+[connection signal="hang_back" from="SquareVirus" to="." method="_on_SquareVirus_hang_back"]
+[connection signal="health_changed" from="SquareVirus" to="LevelHUD" method="_on_boss_health_changed"]

@@ -1,198 +1,193 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene format=3 uid="uid://okjixuiw435w"]
 
-[ext_resource path="res://GUI/LevelHUD/LevelHUD.gd" type="Script" id=1]
-[ext_resource path="res://Art/Player/PlayerRight.png" type="Texture2D" id=2]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=3]
-[ext_resource path="res://GUI/LevelHUD/Lives.gd" type="Script" id=4]
-[ext_resource path="res://GUI/LevelHUD/BossHealth.gd" type="Script" id=5]
+[ext_resource type="Script" uid="uid://b7bppnr51qlms" path="res://GUI/LevelHUD/LevelHUD.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cj06hvmcenxas" path="res://Art/Player/PlayerRight.png" id="2"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="3"]
+[ext_resource type="Script" uid="uid://8w0qmit2wvnh" path="res://GUI/LevelHUD/Lives.gd" id="4"]
+[ext_resource type="Script" uid="uid://8uqye7l1u6hr" path="res://GUI/LevelHUD/BossHealth.gd" id="5"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "hide"
 length = 0.3
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.3 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -64 ) ]
+"values": [Vector2(0, 0), Vector2(0, -64)]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "show"
 length = 0.3
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.3 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, -64 ), Vector2( 0, 0 ) ]
+"values": [Vector2(0, -64), Vector2(0, 0)]
 }
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0.862745, 0.0901961, 1 )
-border_width_right = 4
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_right = 5.0
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p57bw"]
+_data = {
+&"hide": SubResource("1"),
+&"show": SubResource("2")
+}
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0.243137, 0.0235294, 1 )
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4y2n"]
+bg_color = Color(0, 0.24313726, 0.023529412, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
+border_color = Color(0, 0, 0, 1)
 expand_margin_left = 4.0
-expand_margin_right = 4.0
 expand_margin_top = 4.0
+expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ooua1"]
+bg_color = Color(0, 0.8627451, 0.09019608, 1)
+border_width_right = 4
+border_color = Color(0, 0, 0, 1)
+expand_margin_right = 4.0
+
+[sub_resource type="Animation" id="5"]
 resource_name = "hide"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 1 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("ProgressBar:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 1 ),
-"transitions": PackedFloat32Array( 0.25, 1 ),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
 "update": 0,
-"values": [ Vector2( 40, 14 ), Vector2( 40, 96 ) ]
+"values": [Vector2(40, 14), Vector2(40, 96)]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "show"
 length = 2.0
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("ProgressBar:value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.2, 2 ),
-"transitions": PackedFloat32Array( 1, 0.574349, 1 ),
+"times": PackedFloat32Array(0, 0.2, 2),
+"transitions": PackedFloat32Array(1, 0.574349, 1),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0 ]
+"values": [0.0, 0.0, 1.0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("ProgressBar:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 0.366021, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.366021, 1),
 "update": 0,
-"values": [ Vector2( 40, 96 ), Vector2( 40, 14 ) ]
+"values": [Vector2(40, 96), Vector2(40, 14)]
 }
 
-[node name="LevelHUD" type="CanvasLayer"]
-layer = 95
-script = ExtResource( 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75ld1"]
+_data = {
+&"hide": SubResource("5"),
+&"show": SubResource("6")
+}
 
-[node name="Lives" type="Control" parent="."]
+[node name="LevelHUD" type="CanvasLayer" unique_id=1847627896]
+layer = 95
+script = ExtResource("1")
+
+[node name="Lives" type="Control" parent="." unique_id=1331754947]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -64.0
 offset_right = -1120.0
 offset_bottom = -688.0
 mouse_filter = 2
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("4")
 
-[node name="Panel" type="Panel" parent="Lives"]
+[node name="Panel" type="Panel" parent="Lives" unique_id=1372003428]
+custom_minimum_size = Vector2(126, 52)
+layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 40.0
 offset_bottom = 40.0
-custom_minimum_size = Vector2( 126, 52 )
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource("3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Lives/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Lives/Panel" unique_id=790406998]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 10.0
 offset_top = 10.0
 offset_right = -10.0
 offset_bottom = -10.0
-custom_minimum_size = Vector2( 96, 32 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="TextureRect" type="TextureRect" parent="Lives/Panel/HBoxContainer"]
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect" type="TextureRect" parent="Lives/Panel/HBoxContainer" unique_id=682746115]
+layout_mode = 2
+texture = ExtResource("2")
 
-[node name="TextureRect2" type="TextureRect" parent="Lives/Panel/HBoxContainer"]
-offset_left = 36.0
-offset_right = 68.0
-offset_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect2" type="TextureRect" parent="Lives/Panel/HBoxContainer" unique_id=562018876]
+layout_mode = 2
+texture = ExtResource("2")
 
-[node name="TextureRect3" type="TextureRect" parent="Lives/Panel/HBoxContainer"]
-offset_left = 72.0
-offset_right = 104.0
-offset_bottom = 32.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TextureRect3" type="TextureRect" parent="Lives/Panel/HBoxContainer" unique_id=150405061]
+layout_mode = 2
+texture = ExtResource("2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Lives"]
-anims/hide = SubResource( 1 )
-anims/show = SubResource( 2 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lives" unique_id=1660511080]
+libraries/ = SubResource("AnimationLibrary_p57bw")
 
-[node name="BossHealth" type="Control" parent="."]
+[node name="BossHealth" type="Control" parent="." unique_id=755040360]
+visible = false
+layout_mode = 3
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -200,12 +195,10 @@ anchor_bottom = 1.0
 offset_left = -400.0
 offset_top = -64.0
 offset_right = 400.0
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("5")
 
-[node name="ProgressBar" type="ProgressBar" parent="BossHealth"]
+[node name="ProgressBar" type="ProgressBar" parent="BossHealth" unique_id=1547069591]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -213,16 +206,12 @@ anchor_bottom = 1.0
 offset_left = -360.0
 offset_top = 32.0
 offset_right = 360.0
-offset_bottom = 54.0
-theme_override_styles/fg = SubResource( 3 )
-theme_override_styles/bg = SubResource( 4 )
+offset_bottom = 58.999977
+theme_override_styles/background = SubResource("StyleBoxFlat_n4y2n")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ooua1")
 max_value = 1.0
 step = 0.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BossHealth"]
-anims/hide = SubResource( 5 )
-anims/show = SubResource( 6 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BossHealth" unique_id=798041266]
+libraries/ = SubResource("AnimationLibrary_75ld1")

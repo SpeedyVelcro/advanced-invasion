@@ -32,18 +32,12 @@ func _process(delta):
 		end()
 
 func display_text_file(file_path):
-	var file = File.new()
-	file.open(file_path, File.READ)
+	var file := FileAccess.open(file_path, FileAccess.READ)
 	var credits_text = "[center]"
-	while true:
-		credits_text += file.get_line()
-		if file.eof_reached():
-			break
-		else:
-			credits_text += "\n"
+	credits_text += file.get_as_text()
 	file.close()
 	credits_text += "[/center]"
-	rich_label.set_bbcode(credits_text)
+	rich_label.set_text(credits_text)
 	#rich_label.get_v_scroll().set_value(0.0)
 
 func _on_StartTimer_timeout():

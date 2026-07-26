@@ -5,7 +5,7 @@ extends Node2D
 # --Hide a bunch of sprites
 # --Spawn viruses at those sprites
 @onready var virus_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
-@export var start_direction # (int, "Left", "Right")
+@export_enum("Left", "Right") var start_direction := 0
 
 func start_viruses():
 	# Returns number of viruses spawned

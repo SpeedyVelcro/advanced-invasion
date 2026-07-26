@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cbx8kdllu1j0h" path="res://Art/Tile/City/CityBackLayer2.png" id="8"]
 [ext_resource type="TileSet" uid="uid://7iqpkc7wqe1u" path="res://Tile/City/CityColumn.tres" id="9"]
 [ext_resource type="Script" uid="uid://dvusmhym4356j" path="res://Level/04City/10Cutscene.gd" id="10"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/LastStand/Flashbang/Flashbang.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://4kqasvyu4mqc" path="res://Entity/Boss/LastStand/Flashbang/Flashbang.tscn" id="11"]
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="12"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="13"]
 [ext_resource type="Texture2D" uid="uid://b7qiaesh5unig" path="res://Art/Creep/VirusPawn/VirusPawnRight.png" id="14"]
@@ -548,7 +548,7 @@ tracks/1/path = NodePath("Yellow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 6.1, 6.3, 19.9, 20.3),
+"times": PackedFloat32Array(0, 5.0333333, 5.2333336, 19.9, 20.3),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(2000, -16), Vector2(2000, -16), Vector2(2008, -16), Vector2(2008, -16), Vector2(1984, -16)]
@@ -560,7 +560,7 @@ tracks/2/path = NodePath("Yellow:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 6.1, 19.3),
+"times": PackedFloat32Array(0, 5.0333333, 19.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [ExtResource("4"), ExtResource("29"), ExtResource("4")]
@@ -572,7 +572,7 @@ tracks/3/path = NodePath("TealSprite:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 6, 6.2, 20.8, 21.2),
+"times": PackedFloat32Array(0, 4.9333334, 5.133333, 20.8, 21.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(1968, -16), Vector2(1968, -16), Vector2(1960, -16), Vector2(1960, -16), Vector2(1944, -16)]
@@ -584,7 +584,7 @@ tracks/4/path = NodePath("TealSprite:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 4.9333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("12"), ExtResource("28")]
@@ -1483,7 +1483,9 @@ texture = ExtResource("4")
 [node name="Flashbang" parent="." index="21" unique_id=1123202069 instance=ExtResource("11")]
 z_index = 80
 position = Vector2(2504, -56)
-angular_velocity = -30.0
+freeze = true
+continuous_cd = 2
+angular_velocity = -3.1415927
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="22" unique_id=669362480]
 libraries/ = SubResource("AnimationLibrary_7ul0k")
@@ -1872,9 +1874,9 @@ position = Vector2(-424, 0)
 texture = ExtResource("30")
 
 [node name="Scareye" type="Sprite2D" parent="." index="31" unique_id=392957412]
-z_index = -5
+z_index = -1
 position = Vector2(2512, -16)
-texture = ExtResource("33")
+texture = ExtResource("32")
 
 [node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="32" unique_id=1290845243]
 position = Vector2(1664, -24)

@@ -82,8 +82,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			zoomed_in = true
 
 func fire_cutscene_bullet(number : int):
-	cutscene_bullet[number].set_visible(true)
-	cutscene_bullet[number].apply_central_impulse(CUTSCENE_BULLET_IMPULSE[number])
+	if is_instance_valid(cutscene_bullet[number]): # May not be valid if cutscene is skipped early.
+		cutscene_bullet[number].set_visible(true)
+		cutscene_bullet[number].apply_central_impulse(CUTSCENE_BULLET_IMPULSE[number])
 
 func play_dynamite():
 	GlobalMusic.play("dynamite")

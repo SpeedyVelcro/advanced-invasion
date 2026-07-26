@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="12"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="13"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="14"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="15"]
 [ext_resource type="Texture2D" uid="uid://dprnat6fraum3" path="res://Art/Tile/City/CityBackRed1.png" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
 [ext_resource type="Texture2D" uid="uid://d2kg11c7darwt" path="res://Art/Tile/City/CityBackRed2.png" id="18"]
@@ -749,11 +749,11 @@ _data = {
 &"cutscene_3": SubResource("19")
 }
 
-[sub_resource type="Curve" id="20"]
+[sub_resource type="Curve" id="Curve_ninhv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.988095, 0.545455), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="21"]
+[sub_resource type="Gradient" id="Gradient_r843a"]
 offsets = PackedFloat32Array(0, 0.117904, 1)
 colors = PackedColorArray(0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0.454902, 0.682353, 0.666667, 0.556863, 0.454902, 0)
 
@@ -933,17 +933,23 @@ position = Vector2(1280, -16)
 
 [node name="DustCPUParticles2D" type="CPUParticles2D" parent="." index="22" unique_id=488622914]
 z_index = -80
-position = Vector2(1984, -320)
+position = Vector2(-40, 352)
 emitting = false
-amount = 60
+amount = 240
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.32
-emission_shape = 2
-emission_sphere_radius = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
 direction = Vector2(0, 1)
-scale_amount_curve = SubResource("20")
-color_ramp = SubResource("21")
+initial_velocity_max = 90.0
+angular_velocity_min = -62.07
+angular_velocity_max = 62.07
+scale_amount_min = 0.0
+scale_amount_max = 16.0
+scale_amount_curve = SubResource("Curve_ninhv")
+color_ramp = SubResource("Gradient_r843a")
 
 [node name="DistantExplosionAudioStreamPlayer" type="AudioStreamPlayer" parent="." index="23" unique_id=655917746]
 stream = ExtResource("20")

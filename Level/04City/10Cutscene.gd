@@ -8,7 +8,7 @@ extends Level
 @onready var camera = $CameraPlayer
 @onready var pin_audio_player = $PinAudioStreamPlayer
 @onready var flashbang = $Flashbang
-const FLASHBANG_VELOCITY = Vector2(-140, -50)
+const FLASHBANG_VELOCITY = Vector2(-206.4, -400)
 const NEXT_SCENE = "res://GUI/EndCredits/EndCredits.tscn"
 
 func _ready():
@@ -36,7 +36,7 @@ func _on_DialogueManager_end_broadcast(message):
 			animation_player.play("cutscene_2")
 		"dialogue_2":
 			flashbang.set_visible(true)
-			flashbang.set_mode(flashbang.MODE_RIGID)
+			flashbang.freeze = false
 			flashbang.set_linear_velocity(FLASHBANG_VELOCITY)
 			animation_player.play("cutscene_3")
 		"dialogue_3":

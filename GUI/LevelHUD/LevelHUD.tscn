@@ -147,6 +147,8 @@ anchor_bottom = 1.0
 offset_top = -64.0
 offset_right = -1120.0
 offset_bottom = -688.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4")
 
@@ -195,6 +197,8 @@ anchor_bottom = 1.0
 offset_left = -400.0
 offset_top = -64.0
 offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("5")
 
 [node name="ProgressBar" type="ProgressBar" parent="BossHealth" unique_id=1547069591]

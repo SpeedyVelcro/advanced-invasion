@@ -1,33 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene format=3 uid="uid://4kqasvyu4mqc"]
 
-[ext_resource path="res://Art/Boss/LastStand/Flashbang.png" type="Texture2D" id=1]
-[ext_resource path="res://Sound/Weapon/GrenadeBounce1.wav" type="AudioStream" id=2]
-[ext_resource path="res://Entity/Boss/LastStand/Flashbang/Flashbang.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://b61ogm0xdcw1d" path="res://Art/Boss/LastStand/Flashbang.png" id="1"]
+[ext_resource type="AudioStream" uid="uid://bwpqy7o40xpi0" path="res://Sound/Weapon/GrenadeBounce1.wav" id="2"]
+[ext_resource type="Script" uid="uid://dps4giui160fn" path="res://Entity/Boss/LastStand/Flashbang/Flashbang.gd" id="3"]
 
-
-
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id="2"]
 friction = 0.1
 bounce = 0.7
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1, 2 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(2, 4)
 
-[node name="Flashbang" type="RigidBody2D"]
-collision_mask = 524288
-physics_material_override = SubResource( 2 )
+[node name="Flashbang" type="RigidBody2D" unique_id=1930885103]
+collision_layer = 524288
+mass = 0.1
+physics_material_override = SubResource("2")
+gravity_scale = 0.5
 continuous_cd = 1
-max_contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 3 )
+max_contacts_reported = 1
+angular_velocity = -0.5235988
+script = ExtResource("3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource( 1 )
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=48272211]
+texture = ExtResource("1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1445895697]
+shape = SubResource("1")
 
-[node name="BounceAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 2 )
+[node name="BounceAudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1739703346]
+stream = ExtResource("2")
 volume_db = -5.859
+
 [connection signal="body_entered" from="." to="." method="_on_Flashbang_body_entered"]

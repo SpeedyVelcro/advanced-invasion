@@ -47,7 +47,7 @@ layer_0/tile_data = PackedInt32Array(-131111, 0, 0, -131110, 0, 0, -131109, 0, 0
 [node name="DecorTileMap" type="TileMap" parent="." index="4" unique_id=1511067240]
 tile_set = ExtResource("3")
 format = 2
-layer_0/tile_data = PackedInt32Array(1179649, 3, 0, 1179651, 3, 0, 1179665, 0, 0, 1179668, 2, 0, 1179670, 2, 0, 1179690, 2, 0, 1179692, 2, 0, 1179694, 0, 0, 1245214, 0, 0, 1245217, 2, 0, 1245219, 2, 0)
+layer_0/tile_data = PackedInt32Array(1179649, 2, 0, 1179651, 2, 0, 1179665, 0, 0, 1179668, 2, 0, 1179670, 2, 0, 1179690, 2, 0, 1179692, 2, 0, 1179694, 0, 0, 1245214, 0, 0, 1245217, 2, 0, 1245219, 2, 0)
 
 [node name="Player" parent="." index="5" unique_id=1663062666 instance=ExtResource("4")]
 position = Vector2(88, 624)

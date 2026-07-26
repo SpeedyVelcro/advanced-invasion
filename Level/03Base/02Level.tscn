@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/RedButton.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawnUmbrella.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawnShield.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 [ext_resource type="Texture2D" uid="uid://cfawiylrfjmhl" path="res://Art/Character/Corpse/CorpseLeft.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://24gobd2mdj64" path="res://Art/Character/Corpse/CorpseRight.png" id="15"]
 

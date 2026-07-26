@@ -4,8 +4,14 @@ extends Area2D
 @export var depressed_texture: Texture2D
 @onready var sprite = $Sprite2D
 @onready var audio_stream_player = $AudioStreamPlayer2D
-var depressed = false: get = is_depressed, set = set_depressed
+var depressed: bool:
+	set(value):
+		set_depressed(value)
+	get:
+		return is_depressed()
 @export var start_depressed = false # Must be seperate from depressed, otherwise: set = tries
+
+var _depressed := false
 
 signal pressed
 
@@ -24,10 +30,10 @@ func set_depressed(value : bool, play_sound = false):
 	else:
 		sprite.set_texture(normal_texture)
 	set_deferred("monitoring", not value)
-	depressed = value
+	_depressed = value
 
 func is_depressed()->bool:
-	return depressed
+	return _depressed
 
 func _on_PushButton_body_entered(_body):
 	# Guaranteed to be player due to mask

@@ -55,7 +55,7 @@ func _physics_process(delta):
 			spd += distance_over * DISTANT_SPEED_COEFFICIENT
 			
 			var previous_x = position.x
-			offset += spd * delta
+			progress += spd * delta
 			if position.x >= previous_x:
 				body_sprite.play("right")
 			else:

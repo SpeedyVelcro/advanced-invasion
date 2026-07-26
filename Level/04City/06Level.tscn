@@ -11,15 +11,15 @@
 [ext_resource type="TileSet" uid="uid://7iqpkc7wqe1u" path="res://Tile/City/CityColumn.tres" id="9"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/RedButton.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/RedBarrier.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/BlueBarrier.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://jlcla8o7ctny" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/BlueButton.tscn" id="18"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/AncientBarrier.tscn" id="19"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
+[ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(128, 368)
@@ -410,3 +410,7 @@ position = Vector2(160, 1040)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=505136904]
 shape = SubResource("4")
+
+[connection signal="activated_signal" from="MovingPlatform" to="MovingPlatform2" method="set_activated" binds= [true]]
+[connection signal="activated_signal" from="MovingPlatform" to="MovingPlatform3" method="set_activated" binds= [true]]
+[connection signal="activated_signal" from="MovingPlatform" to="MovingPlatform4" method="set_activated" binds= [true]]

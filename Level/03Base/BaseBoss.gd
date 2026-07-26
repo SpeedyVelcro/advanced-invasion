@@ -21,6 +21,7 @@ var dialogue_stage = 0
 const TALK_CAMERA_Y = -155
 
 func _ready():
+	super()
 	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	beam_polygon.set_visible(false)

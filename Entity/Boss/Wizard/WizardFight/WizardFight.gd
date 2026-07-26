@@ -271,7 +271,8 @@ func attack_spin():
 		var start_pos = global_position + (dir_vector * ATTACK_SPIN_FIRE_DISTANCE)
 		var spd = ATTACK_SPIN_BULLET_SPEED * dir_vector
 		# We add the patrol movement so momentum looks conserved
-		spd.x += PATROL_SPEED * patrol_x_direction
+		# EDIT: Actually we don't because it makes some bullets travel super slow which looks very dumb.
+		# spd.x += PATROL_SPEED * patrol_x_direction
 		# Create the bullet
 		var new_bullet = bullet_resource.instantiate()
 		get_parent().add_child(new_bullet)

@@ -17,9 +17,9 @@
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="18"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="19"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
+[ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="18"]
+[ext_resource type="PackedScene" uid="uid://jlcla8o7ctny" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="19"]
+[ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
 
 [sub_resource type="Resource" id="1"]
 script = ExtResource("15")
@@ -344,13 +344,19 @@ bus = &"Effects"
 z_index = -80
 position = Vector2(-40, 352)
 emitting = false
-amount = 60
+amount = 240
 lifetime = 1.5
 one_shot = true
 explosiveness = 0.32
-emission_shape = 2
-emission_sphere_radius = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1)
 direction = Vector2(0, 1)
+initial_velocity_max = 90.0
+angular_velocity_min = -62.07
+angular_velocity_max = 62.07
+scale_amount_min = 0.0
+scale_amount_max = 16.0
 scale_amount_curve = SubResource("8")
 color_ramp = SubResource("9")
 

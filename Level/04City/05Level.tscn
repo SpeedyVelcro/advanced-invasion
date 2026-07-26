@@ -9,13 +9,13 @@
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://cbx8kdllu1j0h" path="res://Art/Tile/City/CityBackLayer2.png" id="8"]
 [ext_resource type="TileSet" uid="uid://7iqpkc7wqe1u" path="res://Tile/City/CityColumn.tres" id="9"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/AncientBarrier.tscn" id="19"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
+[ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(128, 368)
@@ -62,6 +62,7 @@ scroll_speed = Vector2(-8, 0)
 
 [node name="ScrollBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" index="0" unique_id=1268704590]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("5")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)
@@ -73,6 +74,7 @@ scroll_speed = Vector2(8, 8)
 
 [node name="ScrollBackground2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0" unique_id=562758850]
 z_index = -2048
+texture_repeat = 2
 texture = ExtResource("8")
 region_enabled = true
 region_rect = Rect2(0, 0, 4096, 4096)

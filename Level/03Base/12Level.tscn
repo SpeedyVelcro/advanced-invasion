@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/RedButton.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="13"]
 [ext_resource type="Texture2D" uid="uid://cfawiylrfjmhl" path="res://Art/Character/Corpse/CorpseLeft.png" id="14"]
 [ext_resource type="Texture2D" uid="uid://24gobd2mdj64" path="res://Art/Character/Corpse/CorpseRight.png" id="15"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="16"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="16"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(128, 368)
@@ -194,3 +194,5 @@ start_direction = 0
 position = Vector2(912, -64)
 condition = 2
 creep_paths = Array[NodePath]([NodePath("../VirusPawn4"), NodePath("../VirusPawn5"), NodePath("../VirusPawn6"), NodePath("../VirusPawn7")])
+
+[connection signal="pressed" from="RedButton" to="MovingPlatform" method="set_activated" binds= [true]]

@@ -10,7 +10,7 @@ it on [Newgrounds](https://www.newgrounds.com/portal/view/project/1626557),
 **NOTE** This is for building the game from source code. If you just want to
 play it, I recommend downloading/playing it on Newgrounds, Game Jolt or itch.
 
-* Download Godot 3.2.3
+* Download Godot 4.7
 * In the project manager, import the project.godot file and open the project.
 * Project > Export
 * Select the preset for your platform and click "Export Project".
@@ -30,26 +30,3 @@ licenses. And as for the rest, in general I am personally fine with people
 redistributing or modifying it for non-commercial purposes, and I know Blublub
 was generally fine with people making fangames before he disappeared. So use your
 own discretion.
-
-## API keys
-This information is really only provided for myself in-case I forget
-it. It's probably only useful for you if you use Advanced Invasion source code
-as a base for your game to upload on Newgrounds/Game Jolt.
-
-If you are not using the Newgrounds or Game Jolt APIs, you can diregard this
-info.
-
-It is recommended you run the following commands in order to avoid accidentally
-pushing private keys and app IDs to a public repository.
-
-```
-git update-index --assume-unchanged AutoLoad/GameJoltIntegration/GameJoltSecret.gd
-git update-index --assume-unchanged AutoLoad/NewgroundsIntegration/NewgroundsSecret.gd
-```
-
-To undo this run the following
-
-```
-git update-index --no-assume-unchanged AutoLoad/GameJoltIntegration/GameJoltSecret.gd
-git update-index --no-assume-unchanged AutoLoad/NewgroundsIntegration/NewgroundsSecret.gd
-```

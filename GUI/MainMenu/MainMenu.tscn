@@ -87,6 +87,7 @@ options_path = NodePath("CanvasLayer/Options")
 motion_mirroring = Vector2(4096, 4096)
 
 [node name="ScrollBackground" parent="ParallaxBackground/ParallaxLayer" unique_id=1064291670 instance=ExtResource("5")]
+texture_repeat = 2
 position = Vector2(8, -56)
 region_rect = Rect2(0, 0, 4096, 4096)
 scroll_speed = Vector2(6, 6)
@@ -105,7 +106,7 @@ input_enabled = false
 [node name="DecorTileMap" type="TileMap" parent="World" unique_id=2048323880]
 tile_set = ExtResource("15")
 format = 2
-layer_0/tile_data = PackedInt32Array(655420, 3, 0, 655423, 3, 0, 655425, 1, 0, 655439, 1, 0, 655442, 3, 0, 655445, 3, 0, 917572, 3, 0, 917574, 3, 0, 917576, 1, 0, 917579, 3, 0, 917581, 3, 0, 3276808, 1, 0, 3276811, 3, 0, 3539017, 3, 0, 3539020, 3, 0, 3539023, 3, 0, 3539026, 3, 0, 3735624, 3, 0, 3735627, 3, 0, 3735629, 1, 0, 3735632, 3, 0, 3735635, 3, 0, 3735678, 3, 0, 3735680, 1, 0, 3866776, 1, 0, 3932295, 1, 0, 3932298, 3, 0, 3932300, 3, 0, 4063378, 3, 0, 4063381, 1, 0, 4063385, 3, 0)
+layer_0/tile_data = PackedInt32Array(655420, 2, 0, 655423, 2, 0, 655425, 0, 0, 655439, 0, 0, 655442, 2, 0, 655445, 2, 0, 917572, 2, 0, 917574, 2, 0, 917576, 0, 0, 917579, 2, 0, 917581, 2, 0, 3276808, 0, 0, 3276811, 2, 0, 3539017, 2, 0, 3539020, 2, 0, 3539023, 2, 0, 3539026, 2, 0, 3735624, 2, 0, 3735627, 2, 0, 3735629, 0, 0, 3735632, 2, 0, 3735635, 2, 0, 3735678, 2, 0, 3735680, 0, 0, 3866776, 0, 0, 3932295, 0, 0, 3932298, 2, 0, 3932300, 2, 0, 4063378, 2, 0, 4063381, 0, 0, 4063385, 2, 0)
 
 [node name="Area1" type="Node2D" parent="World" unique_id=259940954]
 position = Vector2(352, 384)

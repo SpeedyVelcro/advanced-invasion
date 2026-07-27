@@ -3,12 +3,12 @@
 class_name State2D
 extends Node2D
 
-var func_change_state : FuncRef
-var func_revert_state : FuncRef
-var func_set_state_history : FuncRef
-var func_get_state_history : FuncRef
+var func_change_state : Callable
+var func_revert_state : Callable
+var func_set_state_history : Callable
+var func_get_state_history : Callable
 var state_active = false 
-export var invisible_when_inactive = true
+@export var invisible_when_inactive = true
 
 signal state_entered
 signal state_exited
@@ -48,16 +48,16 @@ func _on_state_exit():
 
 # funcrefs
 func change_state(state):
-	func_change_state.call_func(state)
+	func_change_state.call(state)
 
 func revert_state():
-	func_revert_state.call_func()
+	func_revert_state.call()
 
 func set_state_history():
-	func_set_state_history.call_func()
+	func_set_state_history.call()
 
 func get_state_history():
-	func_get_state_history.call_func()
+	func_get_state_history.call()
 
 # Setter and getters
 func is_state_active():

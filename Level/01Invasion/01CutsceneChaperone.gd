@@ -1,9 +1,9 @@
 extends Node
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_1_2 = [] # because I have terrible foresight lol
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_1_2: Array[Dialogue] = [] # because I have terrible foresight lol
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
 
 var current_event = 0
 
@@ -11,7 +11,7 @@ const NEXT_SCENE = "res://Level/01Invasion/02Level.tscn"
 
 func _ready():
 	$AnimationPlayer.play("cutscene_1")
-	DialogueManager.connect("finished", self, "_on_DialogueManager_finished")
+	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
 
 func advance():
 	current_event += 1

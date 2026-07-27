@@ -1,22 +1,24 @@
 extends Level
 
-export(Array, Resource) var dialogue_start = []
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
+@export var dialogue_start: Array[Dialogue] = []
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
 
-onready var player = $Player
-onready var player_camera = $Player/CameraPlayer
-onready var teal_character = $Teal
-onready var umbrella_camera_position = $UmbrellaCameraPosition
-onready var teal_position = $TealPosition
-onready var timer = $Timer
-onready var tutorialise_area = $TutorialiseArea
-onready var animation_player = $AnimationPlayer
-onready var oof_area = $OofArea
+@onready var player = $Player
+@onready var player_camera = $Player/CameraPlayer
+@onready var teal_character = $Teal
+@onready var umbrella_camera_position = $UmbrellaCameraPosition
+@onready var teal_position = $TealPosition
+@onready var timer = $Timer
+@onready var tutorialise_area = $TutorialiseArea
+@onready var animation_player = $AnimationPlayer
+@onready var oof_area = $OofArea
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	super()
+	
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("reset")
 
 func _on_OofArea_body_entered(body):

@@ -1,3 +1,6 @@
+# Godot 4+  Specific Ignores
+.godot/
+
 .DS_Store
 *~
 .import/

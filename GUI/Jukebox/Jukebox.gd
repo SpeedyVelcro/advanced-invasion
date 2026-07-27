@@ -1,9 +1,9 @@
 extends Control
 
-onready var entry_container = $CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer/EntryContainer
-onready var commentary_label = $CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/CommentaryLabel
+@onready var entry_container = $CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer/EntryContainer
+@onready var commentary_label = $CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer/CommentaryLabel
 
-export(String, MULTILINE) var default_commentary
+@export_multiline var default_commentary: String
 var entries = [ [
 		# DISC 1
 		preload("res://GUI/Jukebox/Entries/Download.tres"),
@@ -37,16 +37,16 @@ func _ready():
 		
 		# Create disc header
 		if entries.size() > 1:
-			var header = disc_header_resource.instance()
+			var header = disc_header_resource.instantiate()
 			entry_container.add_child(header)
 			header.set_disc_number(disc + 1)
 		
 		# Add all the entries below this
 		entry_buttons.append([])
 		for entry in entries[disc].size():
-			entry_buttons[disc].append(entry_button_resource.instance())
+			entry_buttons[disc].append(entry_button_resource.instantiate())
 			entry_container.add_child(entry_buttons[disc][entry])
-			text = String(entry + 1)
+			text = str(entry + 1)
 			text += ". "
 			if GameStatus.is_soundtrack_unlocked(entries[disc][entry].get_music_id()):
 				text += entries[disc][entry].get_title()
@@ -54,8 +54,8 @@ func _ready():
 				text += "???"
 				entry_buttons[disc][entry].set_disabled(true)
 			entry_buttons[disc][entry].set_text(text)
-			entry_buttons[disc][entry].connect("pressed", self, "_on_JukeboxEntryButton_pressed", [disc, entry])
-	commentary_label.set_bbcode(default_commentary)
+			entry_buttons[disc][entry].connect("pressed", Callable(self, "_on_JukeboxEntryButton_pressed").bind(disc, entry))
+	commentary_label.set_text(default_commentary)
 
 func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	if GlobalMusic.get_current_music_id() != entries[disc][entry].get_music_id():
@@ -63,9 +63,9 @@ func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	var text = "[b]"
 	if entries.size() > 1:
 		text += "Disc "
-		text += String(disc + 1)
+		text += str(disc + 1)
 		text += " -- "
-	text += String(entry + 1)
+	text += str(entry + 1)
 	text += ". "
 	text += entries[disc][entry].get_title()
 	text += "[/b]\n\n"
@@ -75,11 +75,13 @@ func _on_JukeboxEntryButton_pressed(disc : int, entry : int):
 	# text += entries[disc][entry].get_artist()
 	# text += "\n\n"
 	text += entries[disc][entry].get_commentary()
-	commentary_label.set_bbcode(text)
+	commentary_label.set_text(text)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

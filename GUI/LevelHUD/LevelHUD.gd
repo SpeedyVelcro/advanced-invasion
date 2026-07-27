@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var boss_health = $BossHealth
-onready var lives = $Lives
+@onready var boss_health = $BossHealth
+@onready var lives = $Lives
 var lives_enabled = true
 
 func _on_Player_health_changed(value):
@@ -10,10 +10,12 @@ func _on_Player_health_changed(value):
 func _on_boss_health_changed(health, max_health):
 	boss_health.update_health(health, max_health)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show(instant = false):
 	# Show all hud elements
 	lives.show(instant)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide(instant = false):
 	# Hide all hud elements
 	lives.hide(instant)
@@ -28,4 +30,4 @@ func hide_boss_health(instant = false):
 func set_lives_enabled(value : bool):
 	lives_enabled = value
 	lives.set_visible(value)
-	print("lives enabled is " + String(value))
+	print("lives enabled is " + str(value))

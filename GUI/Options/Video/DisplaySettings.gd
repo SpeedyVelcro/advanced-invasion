@@ -1,15 +1,15 @@
 extends Control
 
-export(NodePath) var resolution_option_path
-onready var resolution_option = get_node(resolution_option_path)
-export(NodePath) var fullscreen_checkbox_path
-onready var fullscreen_checkbox = get_node(fullscreen_checkbox_path)
-export(NodePath) var vsync_checkbox_path
-onready var vsync_checkbox = get_node(vsync_checkbox_path)
-export(NodePath) var confirm_prompt_path
-onready var confirm_prompt = get_node(confirm_prompt_path)
+@export var resolution_option_path: NodePath
+@onready var resolution_option = get_node(resolution_option_path)
+@export var fullscreen_checkbox_path: NodePath
+@onready var fullscreen_checkbox = get_node(fullscreen_checkbox_path)
+@export var vsync_checkbox_path: NodePath
+@onready var vsync_checkbox = get_node(vsync_checkbox_path)
+@export var confirm_prompt_path: NodePath
+@onready var confirm_prompt = get_node(confirm_prompt_path)
 
-onready var viewport = get_tree().get_root()
+@onready var viewport = get_tree().get_root()
 var current_resolution = Vector2(1280, 720)
 var current_fullscreen = false
 var current_vsync = false
@@ -41,16 +41,16 @@ func _ready():
 	# Iterate backwards since removal changes size/causes skipping otherwise
 	for i in range(resolution_list.size() - 1, -1, -1):
 		var found_valid_screen = false
-		for screen in range(OS.get_screen_count()):
-			if resolution_list[i].x <= OS.get_screen_size(screen).x:
-				if resolution_list[i].y <= OS.get_screen_size(screen).y:
+		for screen in range(DisplayServer.get_screen_count()):
+			if resolution_list[i].x <= DisplayServer.screen_get_size(screen).x:
+				if resolution_list[i].y <= DisplayServer.screen_get_size(screen).y:
 					found_valid_screen = true
 		if not found_valid_screen:
 			resolution_list.remove(i)
 	# Add monitor sizes to resolution list
-	for i in range(OS.get_screen_count()):
-		if not resolution_list.has(OS.get_screen_size(i)):
-			resolution_list.append(OS.get_screen_size(i))
+	for i in range(DisplayServer.get_screen_count()):
+		if not resolution_list.has(DisplayServer.screen_get_size(i)):
+			resolution_list.append(DisplayServer.screen_get_size(i))
 	if not resolution_list.has(viewport.get_size()):
 		resolution_list.append(viewport.get_size())
 	# Populate options button with resolutions
@@ -59,8 +59,8 @@ func _ready():
 		resolution_option.add_item(res_as_string(resolution))
 	# Set controls
 	current_resolution = viewport.get_size()
-	current_fullscreen = OS.is_window_fullscreen()
-	current_vsync = OS.is_vsync_enabled()
+	current_fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
+	current_vsync = (DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED)
 	revert_controls()
 
 func revert_controls():
@@ -74,7 +74,7 @@ func revert_controls():
 	vsync_checkbox.set_pressed(current_vsync)
 
 func res_as_string(resolution : Vector2)->String:
-	return String(resolution.x) + "x" + String(resolution.y)
+	return str(resolution.x) + "x" + str(resolution.y)
 
 func _on_ApplyButton_pressed():
 	OptionsManager.set_display(selected_resolution, fullscreen_checkbox.is_pressed(), vsync_checkbox.is_pressed())
@@ -87,8 +87,8 @@ func _on_ConfirmPrompt_no():
 func _on_ConfirmPrompt_yes():
 	print(viewport.get_size())
 	current_resolution = selected_resolution
-	current_fullscreen = OS.is_window_fullscreen()
-	current_vsync = OS.is_vsync_enabled()
+	current_fullscreen = ((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))
+	current_vsync = (DisplayServer.window_get_vsync_mode() != DisplayServer.VSYNC_DISABLED)
 	# TODO: get OptionsManager to save
 
 func _on_ResolutionOptionButton_item_selected(index):

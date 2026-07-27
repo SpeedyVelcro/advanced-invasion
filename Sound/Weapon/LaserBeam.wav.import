@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/LaserBeam.wav-3e96c9effae292aa6cf3e24160b280de.sample"
+type="AudioStreamWAV"
+uid="uid://b8h8eb5a4p0ae"
+path="res://.godot/imported/LaserBeam.wav-3e96c9effae292aa6cf3e24160b280de.sample"
 
 [deps]
 
 source_file="res://Sound/Weapon/LaserBeam.wav"
-dest_files=[ "res://.import/LaserBeam.wav-3e96c9effae292aa6cf3e24160b280de.sample" ]
+dest_files=["res://.godot/imported/LaserBeam.wav-3e96c9effae292aa6cf3e24160b280de.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=true
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

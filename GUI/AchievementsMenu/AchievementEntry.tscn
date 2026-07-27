@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Font/NotoSans/NotoSansAchievement.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Font/NotoSans/NotoSansBold.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Art/Achievement/Secret.png" type="Texture" id=3]
+[ext_resource path="res://Font/NotoSans/NotoSansAchievement.tres" type="FontFile" id=1]
+[ext_resource path="res://Font/NotoSans/NotoSansBold.tres" type="FontFile" id=2]
+[ext_resource path="res://Art/Achievement/Secret.png" type="Texture2D" id=3]
 [ext_resource path="res://GUI/AchievementsMenu/AchievementEntry.gd" type="Script" id=4]
-[ext_resource path="res://Font/NotoSans/NotoSansAchievementProgress.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Font/NotoSans/NotoSansAchievementProgress.tres" type="FontFile" id=5]
 [ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=6]
 
 
@@ -33,9 +33,9 @@ border_width_bottom = 2
 border_color = Color( 0.0117647, 0, 0.145098, 1 )
 
 [node name="AchievementEntry" type="Control"]
-margin_right = 460.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 120 )
+offset_right = 460.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 120 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -50,18 +50,18 @@ sync_button_path = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/SyncButto
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 0 )
+offset_right = 100.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 100, 0 )
 size_flags_vertical = 3
 texture = ExtResource( 3 )
 expand = true
@@ -72,85 +72,85 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="HBoxContainer/TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer"]
-margin_left = 104.0
-margin_right = 114.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 10, 0 )
+offset_left = 104.0
+offset_right = 114.0
+offset_bottom = 100.0
+custom_minimum_size = Vector2( 10, 0 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 118.0
-margin_right = 440.0
-margin_bottom = 100.0
+offset_left = 118.0
+offset_right = 440.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_right = 322.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 2 )
+offset_right = 322.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource( 2 )
 text = "Achievement Title"
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-margin_top = 24.0
-margin_right = 322.0
-margin_bottom = 69.0
-rect_min_size = Vector2( 0, 45 )
+offset_top = 24.0
+offset_right = 322.0
+offset_bottom = 69.0
+custom_minimum_size = Vector2( 0, 45 )
 size_flags_vertical = 3
 
 [node name="Description" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_right = 214.0
-margin_bottom = 45.0
+offset_right = 214.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = ExtResource( 1 )
+theme_override_fonts/font = ExtResource( 1 )
 text = "Very descriptive description of descriptionness that tells you in adequete detail how to unlock this mysterious achievement of mysteriousness."
 autowrap = true
 clip_text = true
 
 [node name="ReferenceRect" type="ReferenceRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 218.0
-margin_right = 226.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 8, 0 )
+offset_left = 218.0
+offset_right = 226.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 8, 0 )
 
 [node name="SyncButton" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 230.0
-margin_top = 6.0
-margin_right = 310.0
-margin_bottom = 38.0
-rect_min_size = Vector2( 80, 32 )
+offset_left = 230.0
+offset_top = 6.0
+offset_right = 310.0
+offset_bottom = 38.0
+custom_minimum_size = Vector2( 80, 32 )
 size_flags_vertical = 4
 theme = ExtResource( 6 )
 text = "SYNC"
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 314.0
-margin_right = 322.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 8, 0 )
+offset_left = 314.0
+offset_right = 322.0
+offset_bottom = 45.0
+custom_minimum_size = Vector2( 8, 0 )
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer"]
-margin_top = 73.0
-margin_right = 322.0
-margin_bottom = 100.0
+offset_top = 73.0
+offset_right = 322.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+theme_override_styles/fg = SubResource( 2 )
+theme_override_styles/bg = SubResource( 3 )
 value = 35.0
 percent_visible = false
 
 [node name="ProgressLabel" type="Label" parent="HBoxContainer/VBoxContainer/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
+theme_override_fonts/font = ExtResource( 5 )
 text = "3/10"
 align = 1
 valign = 1

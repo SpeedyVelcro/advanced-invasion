@@ -1,16 +1,16 @@
 extends Control
 
-onready var available_container = $Available
-onready var unavailable_container = $UnavailableLabel
-onready var status_label = $Available/StatusLabel
-onready var platform_label = $Available/PlatformLabel
+@onready var available_container = $Available
+@onready var unavailable_container = $UnavailableLabel
+@onready var status_label = $Available/StatusLabel
+@onready var platform_label = $Available/PlatformLabel
 const ENABLED_COLOR = Color(0.0, 1.0, 0.0, 1.0)
 const DISABLED_COLOR = Color(1.0, 0.0, 0.0, 1.0)
 const ENABLED_TEXT = "Enabled"
 const DISABLED_TEXT = "Disabled"
 const NEWGROUNDS_TEXT = "Newgrounds"
 const GAME_JOLT_TEXT = "Game Jolt"
-var integration_available = false setget, is_integration_available
+var integration_available = false
 
 signal activated
 
@@ -20,10 +20,10 @@ func _ready():
 	available_container.set_visible(integration_available)
 	unavailable_container.set_visible(not integration_available)
 	# Connect signals
-	GameJoltIntegration.connect("session_open", self, "_on_integration_enabled")
-	GameJoltIntegration.connect("session_closed", self, "_on_integration_disabled")
-	NewgroundsIntegration.connect("enabled", self, "_on_integration_enabled")
-	NewgroundsIntegration.connect("disabled", self, "_on_integration_disabled")
+	GameJoltIntegration.connect("session_open", Callable(self, "_on_integration_enabled"))
+	GameJoltIntegration.connect("session_closed", Callable(self, "_on_integration_disabled"))
+	NewgroundsIntegration.connect("enabled", Callable(self, "_on_integration_enabled"))
+	NewgroundsIntegration.connect("disabled", Callable(self, "_on_integration_disabled"))
 	# Updated enabled
 	var integration_enabled = NewgroundsIntegration.is_integration_enabled() or GameJoltIntegration.is_integration_enabled()
 	if integration_enabled:
@@ -46,11 +46,11 @@ func _on_integration_disabled():
 	mark_disabled()
 
 func mark_enabled():
-	status_label.set("custom_colors/font_color", ENABLED_COLOR)
+	status_label.set("theme_override_colors/font_color", ENABLED_COLOR)
 	status_label.set_text(ENABLED_TEXT)
 
 func mark_disabled():
-	status_label.set("custom_colors/font_color", DISABLED_COLOR)
+	status_label.set("theme_override_colors/font_color", DISABLED_COLOR)
 	status_label.set_text(DISABLED_TEXT)
 
 # Getters and setters

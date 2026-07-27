@@ -1,10 +1,10 @@
 extends PathFollow2D
 
-onready var body_sprite = $AnimatedSprite
-onready var animation_player = $AnimationPlayer
-onready var attack_area = $AttackArea
-onready var beam_bottom = $BeamBottom
-onready var beam_top = $BeamTop
+@onready var body_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var attack_area = $AttackArea
+@onready var beam_bottom = $BeamBottom
+@onready var beam_top = $BeamTop
 var player
 const FOLLOW_SPEED = 90.0
 const DISTANT_SPEED_COEFFICIENT = 1.0
@@ -55,7 +55,7 @@ func _physics_process(delta):
 			spd += distance_over * DISTANT_SPEED_COEFFICIENT
 			
 			var previous_x = position.x
-			offset += spd * delta
+			progress += spd * delta
 			if position.x >= previous_x:
 				body_sprite.play("right")
 			else:

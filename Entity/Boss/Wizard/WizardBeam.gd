@@ -1,27 +1,27 @@
 extends Node2D
 
-export var start_activated = false
-export var start_charging = false
-onready var beam_sprite = $FadeNode/Sprite
-onready var sight_sprite = $SightSprite
-onready var end_polygon = $FadeNode/EndPolygon
-onready var end_particles = $EndParticles
-onready var end_particles_one_shot = $EndParticlesOneShot
-onready var raycast = $RayCast2D
-onready var hurt_area = $HurtArea
-onready var hurt_area_shape = $HurtArea/CollisionShape2D
-onready var animation_player = $AnimationPlayer
-onready var charge_animation_player = $ChargeAnimationPlayer
-onready var end_particles_charge = $EndParticlesCharge
-onready var pulse_audio_player = $PulseAudioStreamPlayer2D
-onready var beam_audio_player = $BeamAudioStreamPlayer2D
-onready var rng = RandomNumberGenerator.new()
+@export var start_activated = false
+@export var start_charging = false
+@onready var beam_sprite = $FadeNode/Sprite2D
+@onready var sight_sprite = $SightSprite
+@onready var end_polygon = $FadeNode/EndPolygon
+@onready var end_particles = $EndParticles
+@onready var end_particles_one_shot = $EndParticlesOneShot
+@onready var raycast = $RayCast2D
+@onready var hurt_area = $HurtArea
+@onready var hurt_area_shape = $HurtArea/CollisionShape2D
+@onready var animation_player = $AnimationPlayer
+@onready var charge_animation_player = $ChargeAnimationPlayer
+@onready var end_particles_charge = $EndParticlesCharge
+@onready var pulse_audio_player = $PulseAudioStreamPlayer2D
+@onready var beam_audio_player = $BeamAudioStreamPlayer2D
+@onready var rng = RandomNumberGenerator.new()
 var charging = false
 var beam_active = false
-export var knockback = Vector2(300, -250)
-export var damage = 1 # Remember -1 is insta-kill
-export var ignore_invincibility = false
-export var knockback_ignores_invincibility = true # Not sure about this.
+@export var knockback = Vector2(300, -250)
+@export var damage = 1 # Remember -1 is insta-kill
+@export var ignore_invincibility = false
+@export var knockback_ignores_invincibility = true # Not sure about this.
 
 func _ready():
 	rng.randomize()
@@ -46,7 +46,7 @@ func update():
 		end_pos = raycast.get_collision_point()
 	else:
 		# End pos is expected to be global so add position
-		end_pos = raycast.get_cast_to() + raycast.get_position()
+		end_pos = raycast.get_target_position() + raycast.get_position()
 	var length = global_position.distance_to(end_pos)
 	end_polygon.position.y = length
 	beam_sprite.position.y = length / 2
@@ -109,7 +109,7 @@ func _on_HurtArea_body_entered(body):
 	# TODO: come up with a more concrete way of getting end_point that doesn't require end_polygon to exist
 	var hline_start_point = body.get_global_position()
 	var hline_direction = Vector2.RIGHT
-	var intersect = Geometry.line_intersects_line_2d(beam_start_point, beam_direction, hline_start_point, hline_direction)
+	var intersect = Geometry2D.line_intersects_line(beam_start_point, beam_direction, hline_start_point, hline_direction)
 	if not (intersect is Vector2):
 		# If the function doesn't return a Vector2 beam must be horizontal
 		# So instead just pick any old random direction.

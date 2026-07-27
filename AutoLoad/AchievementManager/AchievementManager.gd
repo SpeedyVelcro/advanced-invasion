@@ -7,14 +7,14 @@ extends CanvasLayer
 # achievements to game logic, from a separate achievement watchdog singleton
 # you make yourself that keeps an eye on the game state.
 
-export(NodePath) var popup_node_path
-onready var popup_node = get_node(popup_node_path)
-export(NodePath) var icon_texture_rect_path
-onready var icon_texture_rect = get_node(icon_texture_rect_path)
-export(NodePath) var title_label_path
-onready var title_label = get_node(title_label_path)
-export(NodePath) var description_label_path
-onready var description_label = get_node(description_label_path)
+@export var popup_node_path: NodePath
+@onready var popup_node = get_node(popup_node_path)
+@export var icon_texture_rect_path: NodePath
+@onready var icon_texture_rect = get_node(icon_texture_rect_path)
+@export var title_label_path: NodePath
+@onready var title_label = get_node(title_label_path)
+@export var description_label_path: NodePath
+@onready var description_label = get_node(description_label_path)
 
 const SAVE_FILE_PATH = "user://achievements.json"
 const ACHIEVEMENT_FOLDER_PATH = "res://AutoLoad/AchievementManager/Achievements"
@@ -31,15 +31,16 @@ signal achievement_synced(achievement_id)
 func _ready():
 	popup_node.set_visible(false)
 	# Load achievement data
-	var dir = Directory.new()
+	# TODO: This comment may be outdated as it is from Godot 3
 	# IMPORTANT NOTE:
 	# Directory.dir_exists() DOES NOT WORK ON HTML5 (I should probably make a minimal project at some point and submit this as a bug)
 	#if not dir.dir_exists(ACHIEVEMENT_FOLDER_PATH):
 	#	push_error("Achievement manager: has invalid ACHIEVEMENT_FOLDER_PATH set. No achievements loaded.")
-	if not dir.open(ACHIEVEMENT_FOLDER_PATH) == OK:
-		push_error("Achivement manager: error occured while opening folder")
+	var dir := DirAccess.open(ACHIEVEMENT_FOLDER_PATH)
+	if not dir:
+		push_error("Achivement manager: error occured while opening folder. Error ID %d" % DirAccess.get_open_error())
 	else:
-		dir.list_dir_begin()
+		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var file = dir.get_next()
 		var path
 		var loaded_file
@@ -59,19 +60,20 @@ func _ready():
 
 # Save and load
 func save_file_exists():
-	var file = File.new()
-	return file.file_exists(SAVE_FILE_PATH)
+	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func make_save_string():
 	var dict = {
 		"achievement_unlocked" : achievement_unlocked,
 		"achievement_progress" : achievement_progress
 	}
-	return to_json(dict)
+	return JSON.stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
-	var dict = parse_json(value)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(value)
+	var dict = test_json_conv.get_data()
 	if typeof(dict) != TYPE_DICTIONARY:
 		push_error("Corrupt save data: not recognised as dictionary")
 		return false
@@ -80,16 +82,14 @@ func load_save_string(value):
 	return true
 
 func save():
-	var file = File.new()
-	file.open(SAVE_FILE_PATH, File.WRITE)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string(make_save_string())
 	file.close()
 
 func load_achievements():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_PATH):
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return false
-	file.open(SAVE_FILE_PATH, File.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var result = load_save_string(file.get_as_text())
 	if not result:
 		push_error("Failed to load game data")
@@ -104,7 +104,7 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 		var value = dictionary[key]
 		# Cast real to int if that's the type given
 		# (because parsing json seems to always gives reals not ints)
-		if type == TYPE_INT and typeof(value) == TYPE_REAL:
+		if type == TYPE_INT and typeof(value) == TYPE_FLOAT:
 			value = int(value)
 		if typeof(value) == type:
 			set(property, dictionary[key])
@@ -156,26 +156,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_Timer_timeout():
 	$AnimationPlayer.play("hide")
 
-func load_icon(achievement_id : String)->Texture:
-	# THIS FUNCTION IS BROKEN
-	# DO NOT USE IT
-	# USE get_achievement_icon() INSTEAD
-	var icon_path = achievements[achievement_id].get_icon_path()
-	var load_fail = false
-	var icon
-	var dir = Directory.new()
-	# This is the particular part that's broken.
-	# file_exists() always returns false on exported projects
-	# MIGHT be due to not exporting *.png but I didn't test this extensively
-	# enough to confirm
-	if dir.file_exists(icon_path):
-		icon = load(icon_path)
-	else:
-		push_error("Achievement manager: Tried to load non-existent icon " + icon_path)
-	if not icon is Texture:
-		icon = load(DEFAULT_ICON_PATH)
-		push_error("Achievement manager: Resource is not an icon at path " + icon_path)
-	return icon
 
 # Getters and setters
 func get_achievement_title(achievement_id : String)->String:
@@ -202,7 +182,7 @@ func get_achievement_icon_path(achievement_id : String)->String:
 func get_achievement_icon(achievement_id : String)->Resource:
 	if achievements.has(achievement_id):
 		var tex = load(achievements[achievement_id].get_icon_path())
-		if tex is Texture:
+		if tex is Texture2D:
 			return tex
 		else:
 			push_error("When loading achievement icon with id " + achievement_id + ", a non-texture was returned.")

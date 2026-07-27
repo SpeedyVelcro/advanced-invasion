@@ -1,20 +1,20 @@
 extends HBoxContainer
 
-export(NodePath) var slider_path
-onready var slider = get_node(slider_path)
-export(NodePath) var mute_button_path
-onready var mute_button = get_node(mute_button_path)
-export(NodePath) var title_label_path
-onready var title_label = get_node(title_label_path)
-export(NodePath) var percent_label_path
-onready var percent_label = get_node(percent_label_path)
-export(String) var title = "Master"
-export(String) var bus_name = "Master"
+@export var slider_path: NodePath
+@onready var slider = get_node(slider_path)
+@export var mute_button_path: NodePath
+@onready var mute_button = get_node(mute_button_path)
+@export var title_label_path: NodePath
+@onready var title_label = get_node(title_label_path)
+@export var percent_label_path: NodePath
+@onready var percent_label = get_node(percent_label_path)
+@export var title: String = "Master"
+@export var bus_name: String = "Master"
 
-onready var bus_index = AudioServer.get_bus_index(bus_name)
+@onready var bus_index = AudioServer.get_bus_index(bus_name)
 
 func _ready():
-	var vol_linear = clamp(db2linear(AudioServer.get_bus_volume_db(bus_index)), 0.0, 1.0)
+	var vol_linear = clamp(db_to_linear(AudioServer.get_bus_volume_db(bus_index)), 0.0, 1.0)
 	var mute = AudioServer.is_bus_mute(bus_index)
 	mute_button.set_pressed(mute)
 	slider.set_value(vol_linear) # Sets label by signal
@@ -28,11 +28,11 @@ func _on_MuteButton_toggled(button_pressed):
 
 func _on_HSlider_value_changed(value):
 	var vol_linear = value / slider.get_max()
-	AudioServer.set_bus_volume_db(bus_index, linear2db(vol_linear))
+	AudioServer.set_bus_volume_db(bus_index, linear_to_db(vol_linear))
 	percent_label.set_text(linear_to_percent_string(vol_linear))
 
 func linear_to_percent_string(value)->String:
-	return String(value * 100.0).pad_decimals(0) + "%"
+	return str(value * 100.0).pad_decimals(0) + "%"
 
 # Getters and setters
 func set_bus_name(value : String):

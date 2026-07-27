@@ -1,17 +1,19 @@
 extends Level
 
-onready var animation_player = $AnimationPlayer
-onready var timer = $Timer
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
+@onready var animation_player = $AnimationPlayer
+@onready var timer = $Timer
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
 
 const NEXT_SCENE = "res://Level/02Underbelly/10Boss.tscn"
 var stage = 0
 
 func _ready():
-	DialogueManager.connect("finished", self, "_on_DialogueManager_finished")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	super()
+	
+	DialogueManager.connect("finished", Callable(self, "_on_DialogueManager_finished"))
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 
 func _on_DialogueManager_finished():

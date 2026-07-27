@@ -1,12 +1,12 @@
 extends Node2D
 
-onready var animation_player = $AnimationPlayer
-onready var area = $Physical/Area2D
-onready var sprite = $Physical/Sprite
-onready var timer = $Timer
-onready var raycast = $Physical/RayCast2D
-onready var physical_node = $Physical
-onready var gun_audio_player = $GunAudioStreamPlayer2D
+@onready var animation_player = $AnimationPlayer
+@onready var area = $Physical/Area2D
+@onready var sprite = $Physical/Sprite2D
+@onready var timer = $Timer
+@onready var raycast = $Physical/RayCast2D
+@onready var physical_node = $Physical
+@onready var gun_audio_player = $GunAudioStreamPlayer2D
 var dead = false
 const FIRST_GUN_TIME = 0.2
 const BASE_GUN_TIME = 0.9
@@ -31,7 +31,7 @@ func start():
 
 func fire_gun():
 	gun_audio_player.play()
-	var bullet = bullet_resource.instance()
+	var bullet = bullet_resource.instantiate()
 	get_parent().add_child(bullet)
 	bullet.set_global_position(physical_node.global_position + BULLET_SPAWN_POS)
 	bullet.set_linear_velocity(BULLET_SPEED * Vector2.LEFT)
@@ -48,7 +48,7 @@ func _on_Timer_timeout():
 	if raycast.is_colliding():
 		fire_gun()
 	var distance = abs(raycast.get_collision_point().x - raycast.global_position.x)
-	var distance_frac = clamp(distance / raycast.cast_to.length(), 0.0, 1.0)
+	var distance_frac = clamp(distance / raycast.target_position.length(), 0.0, 1.0)
 	var t = BASE_GUN_TIME * distance_frac
 	t = max(t, MIN_GUN_TIME)
 	timer.start(t)

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/RubbleFall.wav-03475023984c6683ef05b50a6b28d5c6.sample"
+type="AudioStreamWAV"
+uid="uid://b61tjqbwodht3"
+path="res://.godot/imported/RubbleFall.wav-03475023984c6683ef05b50a6b28d5c6.sample"
 
 [deps]
 
 source_file="res://Sound/Destruction/RubbleFall.wav"
-dest_files=[ "res://.import/RubbleFall.wav-03475023984c6683ef05b50a6b28d5c6.sample" ]
+dest_files=["res://.godot/imported/RubbleFall.wav-03475023984c6683ef05b50a6b28d5c6.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

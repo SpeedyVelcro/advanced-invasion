@@ -1,66 +1,68 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene format=3 uid="uid://bh50kxbi5soqe"]
 
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockLine.png" type="Texture" id=1]
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture" id=2]
-[ext_resource path="res://Entity/Obstacle/HeatBlock/HeatBlock.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://diq2ecvgujh7m" path="res://Art/Obstacle/HeatBlock/HeatBlockLine.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cxejchs07oy6m" path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" id="2"]
+[ext_resource type="Script" uid="uid://dra22wnlskkw7" path="res://Entity/Obstacle/HeatBlock/HeatBlock.gd" id="3"]
 
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(32, 32)
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16, 16 )
-
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "pulsate"
 length = 1.5
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("SpriteLine:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Color( 0.407843, 0.407843, 0.407843, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.407843, 0.407843, 0.407843, 1 ) ]
+"values": [Color(0.407843, 0.407843, 0.407843, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.407843, 0.407843, 0.407843, 1)]
 }
 
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 1, 0.67451, 0.113725, 1, 1, 0.67451, 0.113725, 0 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvclr"]
+_data = {
+&"pulsate": SubResource("1")
+}
 
-[node name="HeatBlock" type="StaticBody2D" groups=[
-"heat_block",
-]]
+[sub_resource type="Gradient" id="2"]
+colors = PackedColorArray(1, 0.67451, 0.113725, 1, 1, 0.67451, 0.113725, 0)
+
+[node name="HeatBlock" type="StaticBody2D" unique_id=1448904290 groups=["heat_block"]]
 z_index = 10
 collision_layer = 33
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2026518283]
+shape = SubResource("3")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1250793239]
 visible = false
 z_index = -10
-color = Color( 1, 0.67451, 0.113725, 1 )
-polygon = PoolVector2Array( -17, -17, 17, -17, 17, 17, -17, 17 )
+color = Color(1, 0.67451, 0.113725, 1)
+polygon = PackedVector2Array(-17, -17, 17, -17, 17, 17, -17, 17)
 
-[node name="SpriteBack" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="SpriteBack" type="Sprite2D" parent="." unique_id=1550947725]
+texture = ExtResource("2")
 
-[node name="SpriteLine" type="Sprite" parent="."]
-modulate = Color( 0.611392, 0.611392, 0.611392, 1 )
-texture = ExtResource( 1 )
+[node name="SpriteLine" type="Sprite2D" parent="." unique_id=1263734799]
+modulate = Color(0.611392, 0.611392, 0.611392, 1)
+texture = ExtResource("1")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/pulsate = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=155255481]
+libraries/ = SubResource("AnimationLibrary_lvclr")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=803450283]
 z_index = -10
 amount = 4
 lifetime = 0.1
 spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 35.0
-initial_velocity_random = 1.0
-scale_amount = 36.0
-color_ramp = SubResource( 2 )
+gravity = Vector2(0, 0)
+initial_velocity_max = 35.0
+scale_amount_min = 36.0
+scale_amount_max = 36.0
+color_ramp = SubResource("2")

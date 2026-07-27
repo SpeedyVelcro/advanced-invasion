@@ -1,11 +1,11 @@
 extends Level
 
-onready var animation_player = $AnimationPlayer
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
-export(Array, Resource) var dialogue_4 = []
-export(Array, Resource) var dialogue_5 = []
+@onready var animation_player = $AnimationPlayer
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
+@export var dialogue_4: Array[Dialogue] = []
+@export var dialogue_5: Array[Dialogue] = []
 # You must flee...
 # Find another computer...
 # *drops dead*
@@ -23,8 +23,10 @@ export(Array, Resource) var dialogue_5 = []
 const NEXT_SCENE = "res://Level/03Base/11Level.tscn"
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	super()
+	
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -7,7 +7,7 @@ var set_velocity # Set to a funcref by Player.gd
 var get_velocity # As above
 var kinematic_body # Set to kinematic body by Player.gd
 var input_locked
-export var gravity_enabled = true
+@export var gravity_enabled = true
 
 signal player_state_entered(gravity_enabled) # Automatically connected by Player.gd
 signal snap_disable(auto_enable)

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 signal death
 
@@ -28,16 +28,16 @@ func _ready():
 	var states = $StateMachine2D.get_children()
 	for state in states:
 		if state is PlayerState:
-			state.connect("player_state_entered", self, "_on_player_state_entered")
+			state.connect("player_state_entered", Callable(self, "_on_player_state_entered"))
 	$StateMachine2D.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Choose facing
 	if Input.is_action_pressed("move_right"):
-		$AnimatedSprite.set_animation("right")
+		$AnimatedSprite2D.set_animation("right")
 	elif Input.is_action_pressed("move_left"):
-		$AnimatedSprite.set_animation("left")
+		$AnimatedSprite2D.set_animation("left")
 
 func _physics_process(delta):
 	velocity.y += gravity * delta # This is a rate of change, so multiplied by delta
@@ -53,11 +53,18 @@ func _physics_process(delta):
 		velocity.x = 0
 		velocity += get_walk_unit_vector() * walk_speed
 	if (just_jumped or creep_bounce):
-		velocity = move_and_slide(velocity, up_direction)
+		set_velocity(velocity)
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 		just_jumped = false
 		creep_bounce = false
 	else:
-		velocity = move_and_slide_with_snap(velocity, snap_vector, up_direction)
+		set_velocity(velocity)
+		# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`
+		set_up_direction(up_direction)
+		move_and_slide()
+		velocity = velocity
 	if velocity.x > -2 and velocity.x < 2:
 		ragdoll = false
 	# Round sprite position to prevent jitter

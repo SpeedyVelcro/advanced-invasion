@@ -1,15 +1,16 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-onready var player = $Player
-onready var animation_player = $AnimationPlayer
-onready var yellow_cutscene = $YellowCutscene
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@onready var player = $Player
+@onready var animation_player = $AnimationPlayer
+@onready var yellow_cutscene = $YellowCutscene
 
 func _ready():
+	super()
 	player.set_visible(false)
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	DialogueManager.connect("end_broadcast_signal", Callable(self, "_on_DialogueManager_end_broadcast"))
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 
 func _on_DialogueManager_end_broadcast(message):

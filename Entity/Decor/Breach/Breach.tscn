@@ -1,25 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene format=3 uid="uid://bs4f5igflnevd"]
 
-[ext_resource path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" type="Texture" id=2]
+[ext_resource type="Texture2D" uid="uid://cxejchs07oy6m" path="res://Art/Obstacle/HeatBlock/HeatBlockBack.png" id="2"]
 
+[sub_resource type="Gradient" id="2"]
+colors = PackedColorArray(0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0)
 
-[sub_resource type="Gradient" id=2]
-colors = PoolColorArray( 0, 0.862745, 0.0901961, 1, 0, 0.862745, 0.0901961, 0 )
-
-[node name="Breach" type="Node2D"]
+[node name="Breach" type="Node2D" unique_id=1236884526]
 z_index = 10
 
-[node name="SpriteBack" type="Sprite" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-texture = ExtResource( 2 )
+[node name="SpriteBack" type="Sprite2D" parent="." unique_id=732570001]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1878321901]
 z_index = -10
 amount = 4
 lifetime = 0.1
+local_coords = true
 spread = 180.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 35.0
-initial_velocity_random = 1.0
-scale_amount = 36.0
-color_ramp = SubResource( 2 )
+gravity = Vector2(0, 0)
+initial_velocity_max = 35.0
+scale_amount_min = 36.0
+scale_amount_max = 36.0
+color_ramp = SubResource("2")

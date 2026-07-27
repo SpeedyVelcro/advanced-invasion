@@ -1,18 +1,18 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export var activated = false setget set_activated, is_activated
-export var player_activates = true
-export var activate_immediately = true
-export var pause_time_sec = 2.0
-export var speed = 35.0
-export var stopping_at_start = false
-export var stopping_at_end = false
-export var remember_stop_settings = false # Whether stopping_at_x resets to false on stop
-onready var start_position = position
+@export var activated = false: get = is_activated, set = set_activated
+@export var player_activates = true
+@export var activate_immediately = true
+@export var pause_time_sec = 2.0
+@export var speed = 35.0
+@export var stopping_at_start = false
+@export var stopping_at_end = false
+@export var remember_stop_settings = false # Whether stopping_at_x resets to false on stop
+@onready var start_position = position
 var end_position
 var forward = true # True if next state is STATE_FORWARD, false if STATE_REVERSE
 
-signal activated
+signal activated_signal # TODO: better name, this was just a quick fix for a name collision during the Godot 3->4 migration.
 
 enum {
 	STATE_WAIT,
@@ -24,7 +24,7 @@ var state = STATE_WAIT
 
 func _ready():
 	for child in get_children():
-		if child is Position2D:
+		if child is Marker2D:
 			end_position = position + child.get_position()
 			child.queue_free()
 	if activated:
@@ -79,7 +79,7 @@ func _physics_process(delta):
 func set_activated(value : bool):
 	activated = value
 	if activated and state == STATE_WAIT:
-		emit_signal("activated")
+		emit_signal("activated_signal")
 		change_state(STATE_IDLE)
 		if activate_immediately:
 			$IdleTimer.stop()

@@ -9,26 +9,54 @@ enum ConditionType {
 	BUTTON_ALL_RED,
 	BUTTON_ALL_BLUE
 }
-export(ConditionType) var condition
-export(Array, NodePath) var creep_paths
-export var start_enabled = true
-onready var enabled = start_enabled
+@export var condition: ConditionType
+@export var creep_paths: Array[NodePath]
+@export var start_enabled = true
+@onready var enabled = start_enabled
 var creep_count = 0
 var button_count = 0
-onready var start_sprite = $StartAnimatedSprite
-onready var end_sprite = $EndAnimatedSprite
-onready var beam_fade_node = $BeamFadeNode
-onready var beam_sprite = $BeamFadeNode/BeamSprite
-onready var raycast = $RayCast2D
-onready var static_body = $StaticBody2D
-onready var collision_shape = $StaticBody2D/CollisionShape2D
-onready var start_particles = $StartAnimatedSprite/CPUParticles2D
-onready var end_particles = $EndAnimatedSprite/CPUParticles2D2
-onready var disengage_audio_player = $DisengageAudioStreamPlayer
-onready var mechanical_audio_player = $MechanicalAudioStreamPlayer
+@onready var start_sprite = $StartAnimatedSprite
+@onready var end_sprite = $EndAnimatedSprite
+@onready var beam_fade_node = $BeamFadeNode
+@onready var beam_sprite = $BeamFadeNode/BeamSprite
+@onready var raycast = $RayCast2D
+@onready var static_body = $StaticBody2D
+@onready var collision_shape = $StaticBody2D/CollisionShape2D
+@onready var start_particles = $StartAnimatedSprite/CPUParticles2D
+@onready var end_particles = $EndAnimatedSprite/CPUParticles2D2
+@onready var disengage_audio_player = $DisengageAudioStreamPlayer
+@onready var mechanical_audio_player = $MechanicalAudioStreamPlayer
 
 func _ready():
-	raycast.force_raycast_update()
+	_configure_dimensions()
+	# Set up conditions
+	match condition:
+		ConditionType.CREEP_ALL:
+			var creeps = get_tree().get_nodes_in_group("creep")
+			for creep in creeps:
+				creep.connect("death", Callable(self, "_on_creep_death"))
+				creep_count += 1
+		ConditionType.CREEP_SELECT:
+			for creep_path in creep_paths:
+				get_node(creep_path).connect("death", Callable(self, "_on_creep_death"))
+				creep_count += 1
+		ConditionType.BUTTON_ALL_BLUE:
+			var buttons = get_tree().get_nodes_in_group("push_button_blue")
+			for button in buttons:
+				button.connect("pressed", Callable(self, "_on_button_pressed"))
+				button_count += 1
+		ConditionType.BUTTON_ALL_RED:
+			var buttons = get_tree().get_nodes_in_group("push_button_red")
+			for button in buttons:
+				button.connect("pressed", Callable(self, "_on_button_pressed"))
+				button_count += 1
+
+func _configure_dimensions() -> void:
+	raycast.add_exception(static_body)
+	# raycast.force_raycast_update()
+	await get_tree().process_frame # force_raycast_update is not working for some reason. Awaiting the next process_frame (NOT physics_frame) does seem to work though. TODO: might want to verify, make a reproducible example, and report.
+	if not raycast.is_colliding():
+		push_warning("Barrier raycast is not colliding.")
 	var end_pos = raycast.get_collision_point()
 	var length = global_position.distance_to(end_pos)
 	end_sprite.position.y = -length
@@ -42,27 +70,7 @@ func _ready():
 		enable(true, true)
 	else:
 		disable(true, true)
-	# Set up conditions
-	match condition:
-		ConditionType.CREEP_ALL:
-			var creeps = get_tree().get_nodes_in_group("creep")
-			for creep in creeps:
-				creep.connect("death", self, "_on_creep_death")
-				creep_count += 1
-		ConditionType.CREEP_SELECT:
-			for creep_path in creep_paths:
-				get_node(creep_path).connect("death", self, "_on_creep_death")
-				creep_count += 1
-		ConditionType.BUTTON_ALL_BLUE:
-			var buttons = get_tree().get_nodes_in_group("push_button_blue")
-			for button in buttons:
-				button.connect("pressed", self, "_on_button_pressed")
-				button_count += 1
-		ConditionType.BUTTON_ALL_RED:
-			var buttons = get_tree().get_nodes_in_group("push_button_red")
-			for button in buttons:
-				button.connect("pressed", self, "_on_button_pressed")
-				button_count += 1
+	
 
 func _on_creep_death():
 	creep_count -= 1

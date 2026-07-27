@@ -1,7 +1,7 @@
 extends Control
 
-export(NodePath) var rich_label_path
-onready var rich_label = get_node(rich_label_path)
+@export var rich_label_path: NodePath
+@onready var rich_label = get_node(rich_label_path)
 var credits_file = "res://About/Credits.txt"
 var ofl11_file = "res://About/OFL11.txt"
 var hack_file = "res://About/Hack.txt"
@@ -29,8 +29,7 @@ func _on_MITButton_pressed():
 	display_text_file(mit_file)
 
 func display_text_file(file_path):
-	var file = File.new()
-	file.open(file_path, File.READ)
+	var file := FileAccess.open(file_path, FileAccess.READ)
 	var credits_text = ""
 	while true:
 		credits_text += file.get_line()
@@ -39,13 +38,15 @@ func display_text_file(file_path):
 		else:
 			credits_text += "\n"
 	file.close()
-	rich_label.set_bbcode(credits_text)
-	rich_label.get_v_scroll().set_value(0.0)
+	rich_label.text = credits_text
+	rich_label.scroll_to_line(0)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 	display_text_file(credits_file)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

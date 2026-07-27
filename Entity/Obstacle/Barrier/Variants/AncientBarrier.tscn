@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Entity/Obstacle/Barrier/Barrier.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Art/Obstacle/Barrier/AncientBarrier.png" type="Texture" id=2]
+[ext_resource path="res://Art/Obstacle/Barrier/AncientBarrier.png" type="Texture2D" id=2]
 
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.794118, 1 )
-colors = PoolColorArray( 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 0 )
+offsets = PackedFloat32Array( 0, 0.794118, 1 )
+colors = PackedColorArray( 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 0 )
 
 [sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.794118, 1 )
-colors = PoolColorArray( 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 0 )
+offsets = PackedFloat32Array( 0, 0.794118, 1 )
+colors = PackedColorArray( 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 1, 0.772549, 0.980392, 1, 0 )
 
 [node name="Barrier" instance=ExtResource( 1 )]
 

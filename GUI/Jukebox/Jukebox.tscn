@@ -1,157 +1,114 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene format=3 uid="uid://g4hx2iqhrajh"]
 
-[ext_resource path="res://Font/Hack/HackHeader.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Font/NotoSans/NotoSansBold.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Font/NotoSans/NotoSansBoldItalic.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Font/NotoSans/NotoSansItalic.tres" type="DynamicFont" id=4]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=5]
-[ext_resource path="res://GUI/Jukebox/Jukebox.gd" type="Script" id=6]
+[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="1"]
+[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansBold.tres" id="2"]
+[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansBoldItalic.tres" id="3"]
+[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansItalic.tres" id="4"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="5"]
+[ext_resource type="Script" uid="uid://b6pbdrermcb6" path="res://GUI/Jukebox/Jukebox.gd" id="6"]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
-[node name="Jukebox" type="Control"]
+[node name="Jukebox" type="Control" unique_id=1641617514]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("6")
 default_commentary = "[b]Advanced Invasion OST[/b]
 
 These are all MIDIs rendered using Roland SoundCanvas VA with SC-88 Pro sounds (though the VST is a little buggy so I might be wrong about that)."
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1723205291]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.5874
-margin_right = -1.5874
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -1.5874
+offset_right = -1.5874
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
-margin_left = 360.0
-margin_top = 119.0
-margin_right = 920.0
-margin_bottom = 599.0
-rect_min_size = Vector2( 560, 480 )
-theme = ExtResource( 5 )
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1203826575]
+custom_minimum_size = Vector2(560, 480)
+layout_mode = 2
+theme = ExtResource("5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=460517560]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = -20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 
-[node name="JukeboxTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-margin_right = 520.0
-margin_bottom = 33.0
-custom_fonts/font = ExtResource( 1 )
+[node name="JukeboxTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1819456265]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
 text = "Jukebox"
-align = 1
+horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-margin_top = 37.0
-margin_right = 520.0
-margin_bottom = 45.0
-rect_min_size = Vector2( 0, 8 )
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=151592394]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
-margin_top = 49.0
-margin_right = 520.0
-margin_bottom = 404.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_right = 234.0
-margin_bottom = 355.0
-size_flags_horizontal = 3
-custom_styles/bg = SubResource( 1 )
-
-[node name="EntryContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer"]
-margin_right = 234.0
-size_flags_horizontal = 3
-
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 238.0
-margin_right = 254.0
-margin_bottom = 355.0
-rect_min_size = Vector2( 16, 0 )
-
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 258.0
-margin_right = 262.0
-margin_bottom = 355.0
-
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 266.0
-margin_right = 282.0
-margin_bottom = 355.0
-rect_min_size = Vector2( 16, 0 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-margin_left = 286.0
-margin_right = 520.0
-margin_bottom = 355.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=1361432965]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CommentaryLabel" type="RichTextLabel" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
-margin_right = 234.0
-margin_bottom = 355.0
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=205829340]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EntryContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=462935578]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=374720767]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1427873916]
+layout_mode = 2
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1166326047]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=607573988]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/bold_italics_font = ExtResource( 3 )
-custom_fonts/italics_font = ExtResource( 4 )
-custom_fonts/bold_font = ExtResource( 2 )
+
+[node name="CommentaryLabel" type="RichTextLabel" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1128925402]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/bold_font = ExtResource("2")
+theme_override_fonts/bold_italics_font = ExtResource("3")
+theme_override_fonts/italics_font = ExtResource("4")
 bbcode_enabled = true
-bbcode_text = "[b]#. song[/b]
-
-by SpeedyVelcro
-
-Lorem ipsum dolor sit amet"
 text = "#. song
 
 by SpeedyVelcro
 
 Lorem ipsum dolor sit amet"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
-margin_top = 408.0
-margin_right = 520.0
-margin_bottom = 440.0
-rect_min_size = Vector2( 0, 32 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=2117937233]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 
-[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_right = 96.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 96, 0 )
+[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=952346544]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
 text = "Back"
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 100.0
-margin_right = 420.0
-margin_bottom = 32.0
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=527616323]
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DownloadButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2"]
-margin_left = 424.0
-margin_right = 520.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 96, 0 )
+[node name="DownloadButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1805021488]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
 disabled = true
 text = "Download"
+
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer2/DownloadButton" to="." method="_on_DownloadButton_pressed"]

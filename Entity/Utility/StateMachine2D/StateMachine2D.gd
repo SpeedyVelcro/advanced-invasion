@@ -3,9 +3,9 @@
 class_name StateMachine2D
 extends Node2D
 
-export var autostart = true
-export(NodePath) var initial_state_path
-export var state_history_max_size = 5
+@export var autostart = true
+@export var initial_state_path: NodePath
+@export var state_history_max_size = 5
 var current_state
 var state_history = []
 
@@ -32,10 +32,10 @@ func revert_state():
 	change_state(state_history.pop_back(), false)
 
 func connect_state(state):
-	state.func_change_state = funcref(self, "change_state")
-	state.func_revert_state = funcref(self, "revert_state")
-	state.func_set_state_history = funcref(self, "set_state_history")
-	state.func_get_state_history = funcref(self, "get_state_history")
+	state.func_change_state = change_state.bind()
+	state.func_revert_state = revert_state.bind()
+	state.func_set_state_history = set_state_history.bind()
+	state.func_get_state_history = get_state_history.bind()
 
 # Getters and setters
 func set_state_history(value : Array):

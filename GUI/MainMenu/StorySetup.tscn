@@ -1,135 +1,107 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene format=3 uid="uid://53fw81hg38d2"]
 
-[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="FontFile" id=1]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=2]
-[ext_resource path="res://GUI/MainMenu/StorySetup.gd" type="Script" id=3]
+[ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="1"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
+[ext_resource type="Script" uid="uid://ll65nvb3lscg" path="res://GUI/MainMenu/StorySetup.gd" id="3"]
 
-[sub_resource type="ButtonGroup" id=1]
-resource_name = "difficulty"
+[sub_resource type="ButtonGroup" id="ButtonGroup_n4y2n"]
 
-[node name="StorySetup" type="Control"]
+[node name="StorySetup" type="Control" unique_id=1723932360]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 1.0
 offset_bottom = 1.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-casual_button_path = NodePath("CenterContainer/Panel/VBoxContainer/CasualButton")
-normal_button_path = NodePath("CenterContainer/Panel/VBoxContainer/NormalButton")
-description_label_path = NodePath("CenterContainer/Panel/VBoxContainer/Description")
-back_button_path = NodePath("CenterContainer/Panel/VBoxContainer/HBoxContainer/BackButton")
-play_button_path = NodePath("CenterContainer/Panel/VBoxContainer/HBoxContainer/PlayButton")
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+casual_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/CasualButton")
+normal_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/NormalButton")
+description_label_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/Description")
+back_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/BackButton")
+play_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PlayButton")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1162877837]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
-offset_left = 490.0
-offset_top = 240.0
-offset_right = 790.0
-offset_bottom = 480.0
-custom_minimum_size = Vector2( 300, 240 )
-theme = ExtResource( 2 )
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=434810641]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme = ExtResource("2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=647241063]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Title" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_right = 260.0
-offset_bottom = 24.0
-theme_override_fonts/font = ExtResource( 1 )
+[node name="Title" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2134637250]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1")
 text = "Difficulty"
-align = 1
+horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 28.0
-offset_right = 260.0
-offset_bottom = 36.0
-custom_minimum_size = Vector2( 0, 8 )
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1991876905]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="CasualButton" type="CheckBox" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 40.0
-offset_right = 260.0
-offset_bottom = 60.0
-theme = ExtResource( 2 )
-group = SubResource( 1 )
+[node name="CasualButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=872541441]
+layout_mode = 2
+theme = ExtResource("2")
+button_group = SubResource("ButtonGroup_n4y2n")
 text = "Casual"
 
-[node name="NormalButton" type="CheckBox" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 64.0
-offset_right = 260.0
-offset_bottom = 84.0
-theme = ExtResource( 2 )
-group = SubResource( 1 )
+[node name="NormalButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1232077581]
+layout_mode = 2
+theme = ExtResource("2")
+button_group = SubResource("ButtonGroup_n4y2n")
 text = "Normal"
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 88.0
-offset_right = 260.0
-offset_bottom = 96.0
-custom_minimum_size = Vector2( 0, 8 )
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=948975223]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="Description" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 100.0
-offset_right = 260.0
-offset_bottom = 131.0
+[node name="Description" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=471305931]
+custom_minimum_size = Vector2(128, 100)
+layout_mode = 2
 text = "If you see this text, something went wrong."
-autowrap = true
+autowrap_mode = 3
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 135.0
-offset_right = 260.0
-offset_bottom = 168.0
+[node name="ReferenceRect3" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=644412043]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 172.0
-offset_right = 260.0
-offset_bottom = 200.0
-custom_minimum_size = Vector2( 0, 28 )
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1221372051]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
 
-[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-offset_right = 64.0
-offset_bottom = 28.0
-custom_minimum_size = Vector2( 64, 0 )
-theme = ExtResource( 2 )
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=116031928]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = ExtResource("2")
 text = "Back"
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-offset_left = 68.0
-offset_right = 192.0
-offset_bottom = 28.0
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1509679215]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PlayButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer"]
-offset_left = 196.0
-offset_right = 260.0
-offset_bottom = 28.0
-custom_minimum_size = Vector2( 64, 0 )
-theme = ExtResource( 2 )
+[node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1371371510]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme = ExtResource("2")
 text = "Play"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=819620268]
 one_shot = true
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/CasualButton" to="." method="_on_CasualButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/NormalButton" to="." method="_on_NormalButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/CasualButton" to="." method="_on_CasualButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/NormalButton" to="." method="_on_NormalButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

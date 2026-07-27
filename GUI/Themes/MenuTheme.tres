@@ -88,6 +88,18 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.0117647, 0, 0.145098, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7suc"]
+content_margin_left = 24.0
+content_margin_top = 24.0
+content_margin_right = 24.0
+content_margin_bottom = 24.0
+bg_color = Color(0, 0.0117647, 0.345098, 0.498039)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0117647, 0, 0.145098, 1)
+
 [sub_resource type="StyleBoxFlat" id="14"]
 bg_color = Color(0.6, 0.6, 0.6, 0.156863)
 border_width_left = 2
@@ -226,6 +238,7 @@ LineEdit/styles/focus = SubResource("10")
 LineEdit/styles/normal = SubResource("11")
 LineEdit/styles/read_only = SubResource("12")
 Panel/styles/panel = SubResource("13")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_h7suc")
 PopupMenu/colors/font_color = Color(0.88, 0.88, 0.88, 1)
 PopupMenu/colors/font_color_accel = Color(0.7, 0.7, 0.7, 0.8)
 PopupMenu/colors/font_color_disabled = Color(0.4, 0.4, 0.4, 0.8)

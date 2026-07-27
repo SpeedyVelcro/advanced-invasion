@@ -1,18 +1,17 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-onready var animated_sprite = $AnimatedSprite
-onready var shield_particles_left = $ShieldParticlesLeft
-onready var shield_particles_right = $ShieldParticlesRight
-onready var seek_min_timer = $SeekMinTimer
-onready var seek_max_timer = $SeekMaxTimer
-onready var vulnerable_start_timer = $VulnerableStartTimer
-onready var vulnerable_end_timer = $VulnerableEndTimer
-onready var height_tween = $HeightTween
-onready var animation_player = $AnimationPlayer
-onready var attack_area = $AttackArea
-onready var hitbox = $Hitbox
-onready var impact_audio_player = $ImpactAudioStreamPlayer2D
-var shield_active = false setget set_shield_active, is_shield_active
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var shield_particles_left = $ShieldParticlesLeft
+@onready var shield_particles_right = $ShieldParticlesRight
+@onready var seek_min_timer = $SeekMinTimer
+@onready var seek_max_timer = $SeekMaxTimer
+@onready var vulnerable_start_timer = $VulnerableStartTimer
+@onready var vulnerable_end_timer = $VulnerableEndTimer
+@onready var animation_player = $AnimationPlayer
+@onready var attack_area = $AttackArea
+@onready var hitbox = $Hitbox
+@onready var impact_audio_player = $ImpactAudioStreamPlayer2D
+var shield_active = false: get = is_shield_active, set = set_shield_active
 enum {
 	STATE_SLEEP,
 	STATE_SEEK,
@@ -25,10 +24,9 @@ enum {
 }
 var state = STATE_SLEEP
 var next_state = state
-var velocity = Vector2(0, 0)
 var seek_height = 0.0
-export(NodePath) var player_path
-onready var player = get_node(player_path)
+@export var player_path: NodePath
+@onready var player = get_node(player_path)
 var stage = 0
 const STAGE_THRESHOLD = [66.0, 33.0]
 const MINIMUM_SKIP_DAMAGE = 10.0
@@ -56,6 +54,7 @@ var seek_min_time_elapsed = false
 var seek_max_time_elapsed = false
 var vulnerable_end_time_elapsed = false
 var current_fall_speed = 0.0
+var height_tween: Tween
 
 signal health_changed(health, max_health)
 signal hang_back
@@ -117,15 +116,20 @@ func _on_state_enter(p_state = state):
 			emit_signal("hang_back")
 			var target_pos = global_position
 			target_pos.y = seek_height - HANG_BACK_HEIGHT
-			height_tween.interpolate_property(self, "global_position", null, target_pos,
-					HANG_BACK_TWEEN_TIME, Tween.TRANS_SINE, Tween.EASE_OUT)
-			height_tween.start()
+			height_tween = create_tween()
+			height_tween.set_trans(Tween.TRANS_SINE)
+			height_tween.set_ease(Tween.EASE_OUT)
+			height_tween.tween_property(self, "global_position", target_pos, HANG_BACK_TWEEN_TIME)
+			height_tween.play()
 		STATE_RETURN:
 			var target_pos = global_position
 			target_pos.y = seek_height
-			height_tween.interpolate_property(self, "global_position", null, target_pos,
-					RETURN_TWEEN_TIME, Tween.TRANS_SINE, Tween.EASE_OUT)
-			height_tween.start()
+			height_tween = create_tween()
+			height_tween.set_trans(Tween.TRANS_SINE)
+			height_tween.set_ease(Tween.EASE_OUT)
+			height_tween.tween_property(self, "global_position", target_pos, RETURN_TWEEN_TIME)
+			height_tween.tween_callback(change_state.bind(STATE_SEEK))
+			height_tween.play()
 		STATE_DEATH:
 			animation_player.play("death")
 			attack_area.set_deferred("monitoring", false)
@@ -154,7 +158,9 @@ func _physics_process(delta):
 				animated_sprite.play("right")
 			elif velocity.x < 0:
 				animated_sprite.play("left")
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 			# Sign of velocity flipping is a sign we crossed stopping point
 			if (velocity.x == 0) or (sign(velocity.x) != sign(last_velocity.x)):
 				# Come to stop so check if it's time to fall
@@ -167,7 +173,10 @@ func _physics_process(delta):
 			# to the upwards movement
 			velocity.y += FALL_ACCELERATION * delta # Moving down; down direction is acceleration
 			current_fall_speed = velocity.y
-			velocity = move_and_slide(velocity, UP_DIRECTION)
+			set_velocity(velocity)
+			set_up_direction(UP_DIRECTION)
+			move_and_slide()
+			velocity = velocity
 			if is_on_floor():
 				impact_audio_player.play()
 				if drop_count < MAX_DROP[stage]:
@@ -181,7 +190,9 @@ func _physics_process(delta):
 				# Set our height just to avoid small errors accumulating
 				position.y = seek_height
 				change_state(STATE_SEEK)
-			velocity = move_and_slide(velocity)
+			set_velocity(velocity)
+			move_and_slide()
+			velocity = velocity
 		STATE_VULNERABLE:
 			var stage_condition = false
 			if stage < STAGE_THRESHOLD.size():
@@ -209,10 +220,10 @@ func _on_state_exit(p_state = state):
 			# Both STATE_BOUNCE and STATE_HANG_BACK when shields active and front sprite
 			animated_sprite.play("front")
 			set_shield_active(true)
-		STATE_HANG_BACK:
-			height_tween.stop_all()
-		STATE_RETURN:
-			height_tween.stop_all()
+		STATE_HANG_BACK, STATE_RETURN:
+			if height_tween != null and height_tween.is_valid():
+				height_tween.kill()
+				height_tween = null
 
 func _on_SeekMinTimer_timeout():
 	seek_min_time_elapsed = true
@@ -226,10 +237,6 @@ func _on_VulnerableStartTimer_timeout():
 
 func _on_VulnerableEndTimer_timeout():
 	vulnerable_end_time_elapsed = true
-
-func _on_HeightTween_tween_completed(_object, _key):
-	if state == STATE_RETURN:
-		change_state(STATE_SEEK)
 
 func _on_Hitbox_attacked(damage, _from_direction):
 	if not shield_active:

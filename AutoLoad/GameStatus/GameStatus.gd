@@ -3,9 +3,9 @@ extends Node
 var soundtrack_unlocked = {
 	"militia" : true
 }
-var story_completion = false setget set_story_completion, is_story_complete
-var story_normal_completion = false setget set_story_normal_completion, is_story_normal_complete
-var main_menu_visited = false setget set_main_menu_visited, is_main_menu_visited
+var story_completion = false: get = is_story_complete, set = set_story_completion
+var story_normal_completion = false: get = is_story_normal_complete, set = set_story_normal_completion
+var main_menu_visited = false: get = is_main_menu_visited, set = set_main_menu_visited
 const SAVE_FILE_PATH = "user://game-status.json"
 
 signal story_complete
@@ -18,8 +18,7 @@ func _ready():
 
 # Save and load
 func save_file_exists():
-	var file = File.new()
-	return file.file_exists(SAVE_FILE_PATH)
+	return FileAccess.file_exists(SAVE_FILE_PATH)
 
 func make_save_string():
 	var dict = {
@@ -27,11 +26,13 @@ func make_save_string():
 		"story_normal_completion" : story_normal_completion,
 		"soundtrack_unlocked" : soundtrack_unlocked
 	}
-	return to_json(dict)
+	return JSON.stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
-	var dict = parse_json(value)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(value)
+	var dict = test_json_conv.get_data()
 	if typeof(dict) != TYPE_DICTIONARY:
 		push_error("Corrupt save data: not recognised as dictionary")
 		return false
@@ -41,16 +42,14 @@ func load_save_string(value):
 	return true
 
 func save():
-	var file = File.new()
-	file.open(SAVE_FILE_PATH, File.WRITE)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
 	file.store_string(make_save_string())
 	file.close()
 
 func load_game():
-	var file = File.new()
-	if not file.file_exists(SAVE_FILE_PATH):
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
 		return false
-	file.open(SAVE_FILE_PATH, File.READ)
+	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
 	var result = load_save_string(file.get_as_text())
 	if not result:
 		push_error("Failed to load game data")
@@ -65,7 +64,7 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 		var value = dictionary[key]
 		# Cast real to int if that's the type given
 		# (because parsing json seems to always gives reals not ints)
-		if type == TYPE_INT and typeof(value) == TYPE_REAL:
+		if type == TYPE_INT and typeof(value) == TYPE_FLOAT:
 			value = int(value)
 		if typeof(value) == type:
 			set(property, dictionary[key])
@@ -76,12 +75,12 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 
 # Getters and setters:
 
-func set_soundtrack_unlocked(name : String, value : bool):
-	soundtrack_unlocked[name] = value
+func set_soundtrack_unlocked(soundtrack_name : String, value : bool):
+	soundtrack_unlocked[soundtrack_name] = value
 
-func is_soundtrack_unlocked(name : String):
-	if soundtrack_unlocked.has(name):
-		return soundtrack_unlocked[name]
+func is_soundtrack_unlocked(soundtrack_name : String):
+	if soundtrack_unlocked.has(soundtrack_name):
+		return soundtrack_unlocked[soundtrack_name]
 	else:
 		return false
 

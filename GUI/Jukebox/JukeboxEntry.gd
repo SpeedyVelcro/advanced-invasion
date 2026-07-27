@@ -1,10 +1,10 @@
 class_name JukeboxEntry
 extends Resource
 
-export(String) var music_id
-export(String) var title
-export(String) var artist
-export(String, MULTILINE) var commentary
+@export var music_id: String
+@export var title: String
+@export var artist: String
+@export_multiline var commentary: String
 
 # Getters and setters
 func get_music_id()->String:

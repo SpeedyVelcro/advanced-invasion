@@ -1,7 +1,7 @@
 extends Control
 
-export(NodePath) var load_button_path
-onready var load_button = get_node(load_button_path)
+@export var load_button_path: NodePath
+@onready var load_button = get_node(load_button_path)
 
 var locked = false
 
@@ -39,6 +39,7 @@ func _on_Quit_pressed():
 	if not locked:
 		emit_signal("quit")
 
+@warning_ignore("native_method_override") # TODO: rename
 func show(animate = false):
 	if animate:
 		$AnimationPlayer.play("show")
@@ -47,6 +48,7 @@ func show(animate = false):
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
 		locked = false
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide(animate = false):
 	locked = true
 	if animate:

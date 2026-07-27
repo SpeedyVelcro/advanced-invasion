@@ -4,9 +4,11 @@ signal back
 signal jukebox
 signal achievements
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 

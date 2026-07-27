@@ -1,6 +1,6 @@
 extends Node
 
-export(Array, Resource) var dialogue_1 = []
+@export var dialogue_1: Array[Dialogue] = []
 const NEXT_SCENE = "res://Level/02Underbelly/01Level.tscn"
 
 func _ready():

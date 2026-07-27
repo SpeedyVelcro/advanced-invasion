@@ -13,8 +13,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.7, 1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.7, 1, 1.2 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
@@ -25,8 +25,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.991419 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.991419 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_new_game_blackout"
@@ -42,8 +42,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.6, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
@@ -54,8 +54,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.596322 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.596322 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_level_change_blackout"
@@ -72,8 +72,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.6, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
@@ -84,8 +84,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.594967 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0.594967 ),
+"transitions": PackedFloat32Array( 1 ),
 "values": [ {
 "args": [  ],
 "method": "_on_restart_level_blackout"
@@ -93,7 +93,7 @@ tracks/1/keys = {
 }
 
 [node name="Main" type="Node"]
-pause_mode = 2
+process_mode = 3
 script = ExtResource( 4 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 5 )]

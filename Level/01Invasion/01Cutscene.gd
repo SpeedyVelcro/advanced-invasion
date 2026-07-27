@@ -1,16 +1,18 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
-export(Array, Resource) var dialogue_4 = []
-onready var animation_player = $AnimationPlayer
+@export var dialogue_1: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_2: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_3: Array[Dialogue] = [] # (Array, Resource)
+@export var dialogue_4: Array[Dialogue] = [] # (Array, Resource)
+@onready var animation_player = $AnimationPlayer
 const NEXT_SCENE = "res://Level/01Invasion/02Level.tscn"
 
 func _ready():
+	super()
+	
 	GlobalMusic.play("invasion")
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	DialogueManager.queue_dialogue(dialogue_1, "dialogue_1")
 	animation_player.play("reset")
 

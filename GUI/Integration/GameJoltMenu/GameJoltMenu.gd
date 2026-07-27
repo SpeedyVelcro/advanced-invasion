@@ -1,21 +1,22 @@
 extends Control
 
-onready var username_line_edit = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer/UsernameLineEdit
-onready var token_line_edit = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer/TokenLineEdit
-onready var login_container = $CenterContainer/Panel/VBoxContainer/Login
-onready var logout_container = $CenterContainer/Panel/VBoxContainer/Logout
-onready var fail_label = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control/FailLabel
-onready var login_fail_animation_player = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control/LoginFailAnimationPlayer
-onready var continue_button = $CenterContainer/Panel/VBoxContainer/ContinueButton
+@onready var username_line_edit = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer/UsernameLineEdit
+@onready var token_line_edit = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer/TokenLineEdit
+@onready var login_container = $CenterContainer/Panel/VBoxContainer/Login
+@onready var logout_container = $CenterContainer/Panel/VBoxContainer/Logout
+@onready var fail_label = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control/FailLabel
+@onready var login_fail_animation_player = $CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control/LoginFailAnimationPlayer
+@onready var continue_button = $CenterContainer/Panel/VBoxContainer/ContinueButton
 const CONTINUE_BUTTON_TEXT = "Continue"
 const SKIP_BUTTON_TEXT = "Skip"
 
 signal back
 
 func _ready():
-	GameJoltIntegration.connect("session_open", self, "_on_GameJoltIntegration_session_open")
-	GameJoltIntegration.connect("session_open_fail", self, "_on_GameJoltIntegration_session_open_fail")
+	GameJoltIntegration.connect("session_open", Callable(self, "_on_GameJoltIntegration_session_open"))
+	GameJoltIntegration.connect("session_open_fail", Callable(self, "_on_GameJoltIntegration_session_open_fail"))
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	set_visible(true)
 	fail_label.set_visible(false)
@@ -24,6 +25,7 @@ func show():
 	else:
 		show_login()
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	set_visible(false)
 

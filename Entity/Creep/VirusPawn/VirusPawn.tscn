@@ -1,136 +1,143 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene format=3 uid="uid://bxuuxahiuhp1t"]
 
-[ext_resource path="res://Entity/Creep/VirusPawn/VirusPawnFrames.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://Entity/Creep/VirusPawn/VirusPawn.gd" type="Script" id=2]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldLeft.png" type="Texture" id=3]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldRight.png" type="Texture" id=4]
-[ext_resource path="res://Art/Creep/VirusPawn/VirusPawnShieldTop.png" type="Texture" id=5]
-[ext_resource path="res://Entity/Utility/Hitbox/Hitbox.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Sound/Death/VirusDeathScream.wav" type="AudioStream" id=7]
+[ext_resource type="SpriteFrames" uid="uid://46w56ulgamgd" path="res://Entity/Creep/VirusPawn/VirusPawnFrames.tres" id="1"]
+[ext_resource type="Script" uid="uid://roy43g4jgmrj" path="res://Entity/Creep/VirusPawn/VirusPawn.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://d38ba0qlrjtar" path="res://Art/Creep/VirusPawn/VirusPawnShieldLeft.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://ce5cli542syb4" path="res://Art/Creep/VirusPawn/VirusPawnShieldRight.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cp74yo4lo6ivg" path="res://Art/Creep/VirusPawn/VirusPawnShieldTop.png" id="5"]
+[ext_resource type="PackedScene" path="res://Entity/Utility/Hitbox/Hitbox.tscn" id="6"]
+[ext_resource type="AudioStream" uid="uid://bakjh0ig5mtrg" path="res://Sound/Death/VirusDeathScream.wav" id="7"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 radius = 15.5
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id="2"]
 radius = 16.0
 
-[sub_resource type="Gradient" id=3]
-offsets = PoolRealArray( 0, 0.15894, 1 )
-colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0 )
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0, 0.15894, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.84106, 1, 1, 1, 0)
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1.68, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.68, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[node name="VirusPawn" type="KinematicBody2D" groups=[
-"creep",
-"player_collider",
-]]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_swvge"]
+_data = {
+&"death": SubResource("4")
+}
+
+[node name="VirusPawn" type="CharacterBody2D" unique_id=1446714692 groups=["creep", "player_collider"]]
 collision_layer = 4
 collision_mask = 3
-script = ExtResource( 2 )
+script = ExtResource("2")
 start_direction = 1
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = ExtResource( 1 )
-animation = "right"
-playing = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=71722188]
+sprite_frames = ExtResource("1")
+animation = &"right"
+autoplay = "right"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 0.5 )
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160142221]
+position = Vector2(0, 0.5)
+shape = SubResource("1")
 
-[node name="FrontRayCast" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 17, 0 )
+[node name="FrontRayCast" type="RayCast2D" parent="." unique_id=1637162923]
+target_position = Vector2(17, 0)
 collision_mask = 129
 
-[node name="BackRayCast" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( -17, 0 )
+[node name="BackRayCast" type="RayCast2D" parent="." unique_id=1841763345]
+target_position = Vector2(-17, 0)
 collision_mask = 129
 
-[node name="Hitbox" parent="." instance=ExtResource( 6 )]
+[node name="Hitbox" parent="." unique_id=1000033212 instance=ExtResource("6")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1848890621]
+shape = SubResource("2")
 
-[node name="ShieldBack" type="Node2D" parent="."]
+[node name="ShieldBack" type="Node2D" parent="." unique_id=1264852082]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldBack"]
-position = Vector2( -14, 0 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldBack" unique_id=1488566350]
+position = Vector2(-14, 0)
 emitting = false
 amount = 5
+texture = ExtResource("3")
 lifetime = 0.4
-texture = ExtResource( 3 )
-direction = Vector2( -1, 0 )
+local_coords = true
+direction = Vector2(-1, 0)
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldBack"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldBack" unique_id=782106786]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/StaticBody2D"]
-polygon = PoolVector2Array( -13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldBack/CharacterBody2D" unique_id=1659412509]
+polygon = PackedVector2Array(-13, 16, -18, 12, -21, 5, -21, -5, -18, -12, -13, -16)
 
-[node name="ShieldFront" type="Node2D" parent="."]
+[node name="ShieldFront" type="Node2D" parent="." unique_id=622653821]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldFront"]
-position = Vector2( 14, 0 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldFront" unique_id=634453755]
+position = Vector2(14, 0)
 emitting = false
 amount = 5
+texture = ExtResource("4")
 lifetime = 0.4
-texture = ExtResource( 4 )
+local_coords = true
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+color_ramp = SubResource("3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ShieldFront"]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="ShieldFront" unique_id=992120652]
 collision_layer = 64
 collision_mask = 16
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/StaticBody2D"]
-polygon = PoolVector2Array( 13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ShieldFront/CharacterBody2D" unique_id=1598294616]
+polygon = PackedVector2Array(13, 16, 19, 12, 21, 5, 21, -5, 18, -12, 13, -16)
 
-[node name="ShieldTop" type="Node2D" parent="."]
+[node name="ShieldTop" type="Node2D" parent="." unique_id=1664596491]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldTop"]
-position = Vector2( 0, -15 )
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ShieldTop" unique_id=781576230]
+position = Vector2(0, -15)
 emitting = false
 amount = 5
+texture = ExtResource("5")
 lifetime = 0.4
-texture = ExtResource( 5 )
-direction = Vector2( 0, -1 )
+local_coords = true
+direction = Vector2(0, -1)
 spread = 20.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 12.0
-color_ramp = SubResource( 3 )
+gravity = Vector2(0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 12.0
+color_ramp = SubResource("3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 4 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1076284364]
+libraries/ = SubResource("AnimationLibrary_swvge")
 
-[node name="IgnorePlayerTimer" type="Timer" parent="."]
+[node name="IgnorePlayerTimer" type="Timer" parent="." unique_id=1574894332]
 one_shot = true
 
-[node name="DeathScreamAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 7 )
+[node name="DeathScreamAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1675370712]
+stream = ExtResource("7")
 volume_db = -8.667
-bus = "Effects"
-[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
+bus = &"Effects"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="attacked" from="Hitbox" to="." method="_on_Hitbox_attacked"]
 [connection signal="timeout" from="IgnorePlayerTimer" to="." method="_on_IgnorePlayerTimer_timeout"]

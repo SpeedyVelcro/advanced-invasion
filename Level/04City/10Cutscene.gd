@@ -1,19 +1,21 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
-export(Array, Resource) var dialogue_2 = []
-export(Array, Resource) var dialogue_3 = []
+@export var dialogue_1: Array[Dialogue] = []
+@export var dialogue_2: Array[Dialogue] = []
+@export var dialogue_3: Array[Dialogue] = []
 
-onready var animation_player = $AnimationPlayer
-onready var camera = $CameraPlayer
-onready var pin_audio_player = $PinAudioStreamPlayer
-onready var flashbang = $Flashbang
-const FLASHBANG_VELOCITY = Vector2(-140, -50)
+@onready var animation_player = $AnimationPlayer
+@onready var camera = $CameraPlayer
+@onready var pin_audio_player = $PinAudioStreamPlayer
+@onready var flashbang = $Flashbang
+const FLASHBANG_VELOCITY = Vector2(-206.4, -400)
 const NEXT_SCENE = "res://GUI/EndCredits/EndCredits.tscn"
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
-	DialogueManager.connect("broadcast", self, "_on_DialogueManager_broadcast")
+	super()
+	
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
+	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
 	flashbang.set_visible(false)
 
@@ -34,7 +36,7 @@ func _on_DialogueManager_end_broadcast(message):
 			animation_player.play("cutscene_2")
 		"dialogue_2":
 			flashbang.set_visible(true)
-			flashbang.set_mode(flashbang.MODE_RIGID)
+			flashbang.freeze = false
 			flashbang.set_linear_velocity(FLASHBANG_VELOCITY)
 			animation_player.play("cutscene_3")
 		"dialogue_3":

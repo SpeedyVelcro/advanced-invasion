@@ -1,21 +1,23 @@
 extends Level
 
-export(Array, Resource) var dialogue_1 = []
+@export var dialogue_1: Array[Dialogue] = []
 
-onready var boss_start_area = $BossStartArea
-onready var player = $Player
-onready var player_camera = $Player/CameraPlayer
-onready var breaker_audio_stream_player = $BreakerAudioStreamPlayer
-onready var boss_start_timer = $BossStartTimer
+@onready var boss_start_area = $BossStartArea
+@onready var player = $Player
+@onready var player_camera = $Player/CameraPlayer
+@onready var breaker_audio_stream_player = $BreakerAudioStreamPlayer
+@onready var boss_start_timer = $BossStartTimer
 const BOSS_START_DELAY = 2.0
-onready var wizard_chase = $Path2D/WizardChase
-onready var background_layer_1 = $ParallaxBackground/ParallaxLayer
-onready var background_layer_2 = $ParallaxBackground/ParallaxLayer2
-onready var blocking_barrier = $RedBarrier
-onready var animation_player = $AnimationPlayer
+@onready var wizard_chase = $Path2D/WizardChase
+@onready var background_layer_1 = $ParallaxBackground/ParallaxLayer
+@onready var background_layer_2 = $ParallaxBackground/ParallaxLayer2
+@onready var blocking_barrier = $RedBarrier
+@onready var animation_player = $AnimationPlayer
 
 func _ready():
-	DialogueManager.connect("end_broadcast", self, "_on_DialogueManager_end_broadcast")
+	super()
+	
+	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 
 func _on_BossStartArea_body_entered(_body):
 	# Guaranteed this is player due to collision mask

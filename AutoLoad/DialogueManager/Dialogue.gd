@@ -3,16 +3,16 @@
 class_name Dialogue
 extends Resource
 
-export(String) var character_name = ""
-export(String) var character_color_id = ""
-export(String, MULTILINE) var bbcode = ""
-export(bool) var ignore_input = false
-export(bool) var auto_advance = false
-export(float) var pause_sec = 0
-export(bool) var broadcast_enabled = false
-export(String) var broadcast_message = ""
+@export var character_name: String = ""
+@export var character_color_id: String = ""
+@export var bbcode = "" # (String, MULTILINE)
+@export var ignore_input: bool = false
+@export var auto_advance: bool = false
+@export var pause_sec: float = 0
+@export var broadcast_enabled: bool = false
+@export var broadcast_message: String = ""
 
-func _init(p_character_name = "", p_bbcode = "", p_character_color_id = "", p_ignore_input = true, p_auto_advance = false, p_pause_sec = -1):
+func _init(p_character_name = "", p_bbcode = "", p_character_color_id = "", p_ignore_input = false, p_auto_advance = false, p_pause_sec = 0):
 	character_name = p_character_name
 	character_color_id = p_character_color_id
 	bbcode = p_bbcode

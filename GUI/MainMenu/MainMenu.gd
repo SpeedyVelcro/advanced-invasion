@@ -1,23 +1,23 @@
 extends Node
 
-export(NodePath) var start_prompt_path
-onready var start_prompt = get_node(start_prompt_path)
-export(NodePath) var integration_menu_path
-onready var integration_menu = get_node(integration_menu_path)
-export(NodePath) var start_gui_path
-onready var start_gui = get_node(start_gui_path)
-export(NodePath) var story_setup_path
-onready var story_setup = get_node(story_setup_path)
-export(NodePath) var extras_path
-onready var extras = get_node(extras_path)
-export(NodePath) var jukebox_path
-onready var jukebox = get_node(jukebox_path)
-export(NodePath) var credits_path
-onready var credits = get_node(credits_path)
-export(NodePath) var achievements_path
-onready var achievements = get_node(achievements_path)
-export(NodePath) var options_path
-onready var options = get_node(options_path)
+@export var start_prompt_path: NodePath
+@onready var start_prompt = get_node(start_prompt_path)
+@export var integration_menu_path: NodePath
+@onready var integration_menu = get_node(integration_menu_path)
+@export var start_gui_path: NodePath
+@onready var start_gui = get_node(start_gui_path)
+@export var story_setup_path: NodePath
+@onready var story_setup = get_node(story_setup_path)
+@export var extras_path: NodePath
+@onready var extras = get_node(extras_path)
+@export var jukebox_path: NodePath
+@onready var jukebox = get_node(jukebox_path)
+@export var credits_path: NodePath
+@onready var credits = get_node(credits_path)
+@export var achievements_path: NodePath
+@onready var achievements = get_node(achievements_path)
+@export var options_path: NodePath
+@onready var options = get_node(options_path)
 
 const MUSIC_ID = "militia"
 var any_key_grace = false
@@ -40,7 +40,7 @@ signal new_game
 signal load_game
 
 func _ready():
-	start_prompt.hide()
+	start_prompt.hide_prompt()
 	start_gui.hide()
 	credits.hide()
 	if GameStatus.main_menu_visited:
@@ -75,7 +75,7 @@ func change_state(p_state):
 func _on_state_enter(p_state = state):
 	match(p_state):
 		STATE_PROMPT:
-			start_prompt.show()
+			start_prompt.show_prompt()
 			$StartPromptGrace.start(0.1)
 			any_key_grace = true
 		STATE_START:
@@ -104,7 +104,7 @@ func _on_state_enter(p_state = state):
 func _on_state_exit(p_state = state):
 	match(p_state):
 		STATE_PROMPT:
-			start_prompt.hide()
+			start_prompt.hide_prompt()
 		STATE_INTEGRATION:
 			integration_menu.hide()
 		STATE_START:

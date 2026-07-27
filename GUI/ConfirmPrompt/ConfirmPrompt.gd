@@ -1,8 +1,8 @@
 extends Control
 
-export(NodePath) var time_label_path
-onready var time_label = get_node(time_label_path)
-export var time_limit = 10.0
+@export var time_label_path: NodePath
+@onready var time_label = get_node(time_label_path)
+@export var time_limit = 10.0
 
 signal yes
 signal no
@@ -10,11 +10,13 @@ signal no
 func _ready():
 	set_process(false)
 
+@warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
 	$Timer.start(time_limit)
 	set_process(true)
 
+@warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 	set_process(false)
@@ -22,7 +24,7 @@ func hide():
 
 func _process(_delta):
 	var time = $Timer.get_time_left()
-	var time_string = String(ceil(time)).pad_decimals(0)
+	var time_string = str(ceil(time)).pad_decimals(0)
 	time_label.set_text(time_string)
 
 func _on_YesButton_pressed():

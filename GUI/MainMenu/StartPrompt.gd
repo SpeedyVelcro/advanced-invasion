@@ -1,21 +1,21 @@
 extends Control
 
-export var hidden = false
+@export var active := false
 
 func _ready():
 	if hidden:
-		hide()
+		hide_prompt()
 	else:
-		show()
+		show_prompt()
 
-func hide():
-	hidden = true
+func hide_prompt():
+	active = true
 	$AnimationPlayer.play("hide")
 
-func show():
-	hidden = false
+func show_prompt():
+	active = false
 	$Timer.start(1.5)
 
 func _on_Timer_timeout():
-	if not hidden:
+	if not active:
 		$AnimationPlayer.play("pulse")

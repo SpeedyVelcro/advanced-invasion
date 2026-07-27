@@ -3,15 +3,15 @@
 
 extends CanvasLayer
 
-onready var viewport = get_tree().get_root()
-onready var gradient_polygon = get_node("Polygon2D")
-onready var name_label = $Control/VBoxContainer/HBoxContainer/NameLabel
-onready var dialogue_label = $Control/VBoxContainer/HBoxContainer/DialogueLabel
-onready var voice_audio_player = $VoiceAudioStreamPlayer
-export var gradient_height_proportion = 0.3
+@onready var viewport = get_tree().get_root()
+@onready var gradient_polygon = get_node("Polygon2D")
+@onready var name_label = $Control/VBoxContainer/HBoxContainer/NameLabel
+@onready var dialogue_label = $Control/VBoxContainer/HBoxContainer/DialogueLabel
+@onready var voice_audio_player = $VoiceAudioStreamPlayer
+@export var gradient_height_proportion = 0.3
 var gradient_visible_y = 0.0 # Overwritten automatically
 var gradient_hidden_y = 0.0 # Overwritten automatically
-export var gradient_visibility = 0.0 setget set_gradient_visibility, get_gradient_visibility # Number between 0 and 1
+@export var gradient_visibility = 0.0: get = get_gradient_visibility, set = set_gradient_visibility # Number between 0 and 1
 var currently_displayed = false
 enum {STATE_IDLE, # Off screen or going through display/hide animation
 		STATE_TYPEWRITER, # Typing out text
@@ -19,7 +19,7 @@ enum {STATE_IDLE, # Off screen or going through display/hide animation
 var state = STATE_IDLE
 var cumulative_delta = 0
 var typewriter_speed = 30
-var dialogue_queue = []
+var dialogue_queue: Array[Dialogue] = []
 var color_resource = preload("res://AutoLoad/DialogueManager/DialogueColors.tres")
 var last_character_was_stop = false
 var stop_speed_multiplier = 0.3
@@ -27,15 +27,15 @@ var stop_characters = [".", "!", "?", ";", ",", ":", "-"]
 var end_broadcast = []
 const VOICE_SYTNH_PITCH = 1.0
 const VOICE_SYNTH_PITCH_VARY = 0.2
-onready var rng = RandomNumberGenerator.new()
+@onready var rng = RandomNumberGenerator.new()
 
 signal finished
 signal hidden
 signal broadcast(message)
-signal end_broadcast(message)
+signal end_broadcast_signal(message) # TODO: better name (this was just a quick change to avoid name collision during Godot 4 upgrade)
 
 func _ready():
-	viewport.connect("size_changed", self, "_on_viewport_size_changed")
+	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
 	_on_viewport_size_changed() # Adapt size once
 	gradient_polygon.set_visible(false)
 	name_label.set_visible(false)
@@ -65,7 +65,7 @@ func _process(delta):
 					# TODO: I'm about 90% sure this is redundant because we skip whitespace again below.
 					while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
 						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = char(dialogue_label.get_text().ord_at(next_char_index))
+						var next_char = dialogue_label.get_text()[next_char_index]
 						if next_char == " " or next_char == "\t":
 							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
 						else:
@@ -77,7 +77,7 @@ func _process(delta):
 						var mult = get_speed_multiplier()
 						# Skip whitespace
 						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = char(dialogue_label.get_text().ord_at(next_char_index))
+						var next_char = dialogue_label.get_text()[next_char_index]
 						if next_char == " " or next_char == "\t":
 							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
 						# Type through regular characters
@@ -141,14 +141,14 @@ func change_state(p_state):
 func _on_PauseTimer_timeout():
 	advance_dialogue()
 
-func queue_dialogue(dg_list = [], p_end_broadcast = "", display_immediately = true, override = false):
+func queue_dialogue(dg_list: Array[Dialogue] = [], p_end_broadcast = "", display_immediately = true, override = false):
 	# Override clears the dialogue queue and allows interrupting other dialogue
 	# rather than following on
 	if override:
-		dialogue_queue = []
+		dialogue_queue.clear()
 	if p_end_broadcast != "":
 		end_broadcast.append(p_end_broadcast)
-	dialogue_queue += dg_list
+	dialogue_queue.append_array(dg_list)
 	if display_immediately and ((state == STATE_IDLE) or override):
 		display()
 
@@ -169,7 +169,7 @@ func advance_dialogue() -> bool:
 			$AnimationPlayer.play("hide")
 			emit_signal("finished")
 			for message in end_broadcast:
-				emit_signal("end_broadcast", message)
+				end_broadcast_signal.emit(message)
 			end_broadcast = []
 			return false
 	else:
@@ -187,11 +187,11 @@ func display():
 
 func update_dialogue():
 	name_label.set_text(dialogue_queue[0].character_name + ":")
-	dialogue_label.set("custom_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
-	var txt = "[center]" + tr(dialogue_queue[0].bbcode) + "[/center]"
-	dialogue_label.set_bbcode(txt)
+	dialogue_label.set("theme_override_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
+	var txt = "[center][outline_size=8][outline_color=black]" + tr(dialogue_queue[0].bbcode) + "[/outline_color][/outline_size][/center]"
+	dialogue_label.set_text(txt)
 
-func hide():
+func hide_dialogue():
 	# Not sure that this function is even necessary but leaving it in for now just in case
 	$AnimationPlayer.play("hide")
 

@@ -1,10 +1,12 @@
 extends Level
 
-onready var animation_player = $AnimationPlayer
+@onready var animation_player = $AnimationPlayer
 
 const NEXT_SCENE = "res://Level/03Base/10Cutscene.tscn"
 
 func _ready():
+	super()
+	
 	animation_player.play("cutscene_1")
 
 func end():

@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://buimlfp78y8xa"
+path="res://.godot/imported/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggvorbisstr"
 
 [deps]
 
 source_file="res://Music/BrashNoIntro.ogg"
-dest_files=[ "res://.import/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggstr" ]
+dest_files=["res://.godot/imported/BrashNoIntro.ogg-5db86a53b2505f250df0c697350a4bd3.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=20.703
+bpm=0
+beat_count=0
+bar_beats=4

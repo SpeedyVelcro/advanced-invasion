@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/MachinePowerOff.wav-eef70d2fcbcb81ad38caf6df5064be78.sample"
+type="AudioStreamWAV"
+uid="uid://c1uvehxxwuo0w"
+path="res://.godot/imported/MachinePowerOff.wav-eef70d2fcbcb81ad38caf6df5064be78.sample"
 
 [deps]
 
 source_file="res://Sound/Machine/MachinePowerOff.wav"
-dest_files=[ "res://.import/MachinePowerOff.wav-eef70d2fcbcb81ad38caf6df5064be78.sample" ]
+dest_files=["res://.godot/imported/MachinePowerOff.wav-eef70d2fcbcb81ad38caf6df5064be78.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

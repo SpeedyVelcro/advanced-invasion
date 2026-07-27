@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/LightWoosh.wav-44330713e9cab43708c4227f9e17c928.sample"
+type="AudioStreamWAV"
+uid="uid://cevj4464dm83"
+path="res://.godot/imported/LightWoosh.wav-44330713e9cab43708c4227f9e17c928.sample"
 
 [deps]
 
 source_file="res://Sound/Movement/LightWoosh.wav"
-dest_files=[ "res://.import/LightWoosh.wav-44330713e9cab43708c4227f9e17c928.sample" ]
+dest_files=["res://.godot/imported/LightWoosh.wav-44330713e9cab43708c4227f9e17c928.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

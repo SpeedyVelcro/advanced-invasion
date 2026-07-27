@@ -1,14 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=3 uid="uid://s3t3um1mf2d2"]
 
-[ext_resource path="res://AutoLoad/GlobalMusic/GlobalMusic.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://cssr420f64t7d" path="res://AutoLoad/GlobalMusic/GlobalMusic.gd" id="1"]
 
-[node name="GlobalMusic" type="Node"]
-pause_mode = 2
-script = ExtResource( 1 )
+[node name="GlobalMusic" type="Node" unique_id=1468985095]
+process_mode = 3
+script = ExtResource("1")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-bus = "Music"
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1847271854]
+bus = &"Music"
 
-[node name="VolumeTween" type="Tween" parent="."]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
-[connection signal="tween_completed" from="VolumeTween" to="." method="_on_VolumeTween_tween_completed"]

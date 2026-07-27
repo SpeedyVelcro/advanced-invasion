@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample"
+type="AudioStreamWAV"
+uid="uid://4t3ho04a8yhp"
+path="res://.godot/imported/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample"
 
 [deps]
 
 source_file="res://Sound/Weapon/LaserPulse.wav"
-dest_files=[ "res://.import/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample" ]
+dest_files=["res://.godot/imported/LaserPulse.wav-1d51032eb36d1a3c656f8c7bd7797e28.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

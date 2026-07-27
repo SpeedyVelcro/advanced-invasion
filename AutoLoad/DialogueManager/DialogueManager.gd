@@ -188,7 +188,7 @@ func display():
 func update_dialogue():
 	name_label.set_text(dialogue_queue[0].character_name + ":")
 	dialogue_label.set("theme_override_colors/default_color", color_resource.get_color(dialogue_queue[0].character_color_id))
-	var txt = "[center]" + tr(dialogue_queue[0].bbcode) + "[/center]"
+	var txt = "[center][outline_size=8][outline_color=black]" + tr(dialogue_queue[0].bbcode) + "[/outline_color][/outline_size][/center]"
 	dialogue_label.set_text(txt)
 
 func hide_dialogue():

@@ -90,7 +90,7 @@ jobs:
         run: |
           gh release upload \
             "${{ github.ref_name }}" \
-            advanced-invasion-*-${{ github-ref }}.* \
+            advanced-invasion-*-${{ github.ref_name }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7

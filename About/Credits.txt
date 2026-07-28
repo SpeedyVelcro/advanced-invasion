@@ -138,7 +138,7 @@ OFL 1.1
 
 [b]Godot Engine[/b]
 This game uses the Godot Engine
-Copyright (c) 2007-2021 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2021 Godot Engine contributors.
+Copyright (c) 2007-2026 Juan Linietsky, Ariel Manzur. Copyright (c) 2014-2026 Godot Engine contributors.
 MIT License
 
 Portions of this software are copyright © 2021 The FreeType Project (www.freetype.org). All rights reserved.
@@ -151,13 +151,3 @@ Godot includes MBedTLS
 Copyright The Mbed TLS Contributors
 Apache 2.0 License
 
-[b]Addons[/b]
-Godot NewGrounds Plugin
-Copyright (c) 2018 rojekabc
-MIT License
-
-GameJolt API plugin for Godot Engine
-Copyright (c) 2016 Ackens (https://github.com/ackens)
-Copyright (c) 2018 Piotr Rojewski (https://github.com/rojekabc)
-Copyright (c) 2020 Deakcor (https://github.com/deakcor)
-MIT License

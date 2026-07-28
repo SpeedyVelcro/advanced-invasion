@@ -18,6 +18,7 @@ extends Node
 @onready var achievements = get_node(achievements_path)
 @export var options_path: NodePath
 @onready var options = get_node(options_path)
+@export var version_number_label: Label
 
 const MUSIC_ID = "militia"
 var any_key_grace = false
@@ -50,6 +51,8 @@ func _ready():
 	GlobalMusic.play(MUSIC_ID)
 	#$WorldAnimationPlayer.play("background")
 	#$WorldAnimationPlayer.seek(1.0, true)
+	
+	version_number_label.text = VersionNumber.value
 
 func _input(event):
 	match(state):

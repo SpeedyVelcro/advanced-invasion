@@ -30,6 +30,10 @@ jobs:
         with:
           version: "4.7.1-stable"
           sha_256: "86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
         run: make linux-x86_64
       - name: Build All

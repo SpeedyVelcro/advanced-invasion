@@ -12,11 +12,11 @@ linux-x86_32:
 linux-arm64:
 	mkdir -p build/linux-arm64; $(GODOT_PATH) --headless --export-release linux-arm64 "build/linux-arm64/advanced-invasion.arm64"
 
-windows-64:
-	mkdir -p build/windows-64; $(GODOT_PATH) --headless --export-release windows-64 "build/windows-64/advanced-invasion.exe"
+windows-x86_64:
+	mkdir -p build/windows-x86_64; $(GODOT_PATH) --headless --export-release windows-x86_64 "build/windows-x86_64/advanced-invasion.exe"
 
-windows-32:
-	mkdir -p build/windows-32; $(GODOT_PATH) --headless --export-release windows-32 "build/windows-32/advanced-invasion.exe"
+windows-x86_32:
+	mkdir -p build/windows-x86_32; $(GODOT_PATH) --headless --export-release windows-x86_32 "build/windows-x86_32/advanced-invasion.exe"
 
 windows-arm64:
 	mkdir -p build/windows-arm64; $(GODOT_PATH) --headless --export-release windows-arm64 "build/windows-arm64/advanced-invasion.exe"

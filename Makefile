@@ -1,7 +1,7 @@
 GODOT_PATH := godot
 
 
-all: linux-x86_64 linux-x86_32 linux-arm64 windows-64 windows-32 windows-arm64 macos-universal
+all: linux-x86_64 linux-x86_32 linux-arm64 windows-x86_64 windows-x86_32 windows-arm64 macos-universal
 
 linux-x86_64:
 	mkdir -p build/linux-x86_64; $(GODOT_PATH) --headless --export-release linux-x86_64 "build/linux-x86_64/advanced-invasion.x86_64"

@@ -38,6 +38,7 @@ jobs:
           for build in "${BUILDS[@]}"; do
             mkdir -p zip_root
             mv build/${build}/* zip_root
+            rm -f zip_root/.gitkeep
             (cd zip_root && zip -r \
               "../advanced-invasion-${build}-${{ github.ref_name }}.zip" \
               ./*)
@@ -47,6 +48,7 @@ jobs:
           for tarbuild in "${TARBUILDS[@]}"; do
             mkdir -p zip_root
             mv build/${tarbuild}/* zip_root
+            rm -f zip_root/.gitkeep
             (cd zip_root && tar -czf \
               "../advanced-invasion-${tarbuild}-${{ github.ref_name }}.tar.gz" \
               ./*)

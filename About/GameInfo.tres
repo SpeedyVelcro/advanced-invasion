@@ -3,21 +3,29 @@
 [ext_resource type="Script" uid="uid://n7jauopw8y1o" path="res://addons/sv_about_menu/data/sv_about_section.gd" id="1_gvi5b"]
 [ext_resource type="Script" uid="uid://buglxgortae4s" path="res://addons/sv_about_menu/data/sv_about_game_info.gd" id="2_t87x5"]
 [ext_resource type="Script" uid="uid://boomnqmjwlnh0" path="res://addons/sv_about_menu/data/sv_about_entry.gd" id="3_58d4w"]
-[ext_resource type="Script" uid="uid://dnv52qhamxm66" path="res://addons/sv_about_menu/data/sv_about_entry_godot.gd" id="3_ln031"]
 [ext_resource type="Script" uid="uid://cln0ipglvnm63" path="res://About/AdvancedInvasionAboutEntry.gd" id="4_t87x5"]
+[ext_resource type="Script" uid="uid://bjgnxatvg3ldr" path="res://addons/sv_about_menu/data/sv_about_entry_custom.gd" id="4_w3b1a"]
 [ext_resource type="Script" uid="uid://boyhjn5s58cit" path="res://About/CreditsAboutEntry.gd" id="5_58d4w"]
 
 [sub_resource type="Resource" id="Resource_ofs8c"]
 script = ExtResource("1_gvi5b")
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
 
-[sub_resource type="Resource" id="Resource_n4y2n"]
-script = ExtResource("3_ln031")
-metadata/_custom_type_script = "uid://dnv52qhamxm66"
+[sub_resource type="Resource" id="Resource_n47ni"]
+script = ExtResource("4_w3b1a")
+title = "SV About Menu"
+description = "Copyright © 2026 SpeedyVelcro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
 [sub_resource type="Resource" id="Resource_acjvw"]
 script = ExtResource("1_gvi5b")
-entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_n4y2n")])
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_n47ni")])
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
 
 [sub_resource type="Resource" id="Resource_ln031"]
@@ -35,6 +43,6 @@ custom_sections = Dictionary[String, ExtResource("1_gvi5b")]({
 "Assets": SubResource("Resource_ofs8c"),
 "Components": SubResource("Resource_acjvw")
 })
-godot_copyright_info_section_title = "Godot Components"
+godot_copyright_info_section_title = "Godot Licenses"
 godot_copyright_info_excludes = Array[String](["Godot Engine"])
 metadata/_custom_type_script = "uid://buglxgortae4s"

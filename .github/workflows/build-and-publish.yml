@@ -39,6 +39,7 @@ jobs:
                                            # and artifact storage.
         run: make
       - name: Package All
+        id: package-all
         if: steps.build-all.outcome == 'success'
         run: |
           # TODO: Combine tarball and zip steps into one for loop
@@ -63,6 +64,7 @@ jobs:
             rm -rf zip_root
           done
       - name: Upload Build Artifacts
+        if: steps.package-all.outcome == 'success'
         uses: actions/upload-artifact@v7
         with:
           name: builds

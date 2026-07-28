@@ -40,9 +40,8 @@ metadata/_custom_type_script = "uid://boyhjn5s58cit"
 script = ExtResource("2_t87x5")
 top_level_entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_ln031"), SubResource("Resource_tgd3o")])
 custom_sections = Dictionary[String, ExtResource("1_gvi5b")]({
-"Assets": SubResource("Resource_ofs8c"),
-"Components": SubResource("Resource_acjvw")
+"Asset Licenses": SubResource("Resource_ofs8c"),
+"Component Licenses": SubResource("Resource_acjvw")
 })
 godot_copyright_info_section_title = "Godot Licenses"
-godot_copyright_info_excludes = Array[String](["Godot Engine"])
 metadata/_custom_type_script = "uid://buglxgortae4s"

@@ -15,20 +15,17 @@ export.cfg
 .mono/
 data_*/
 
-# SpeedyVelcro's bizarre and convoluted way of organising exports
-# We don't exclude the folder structure itself because Godot's exporter
-# can't make directories - they need to already be there.
-compiled/distribute/*
-compiled/newgrounds/*
-compiled/global/html5/*
-compiled/global/linux32/*
-compiled/global/linux64/*
-compiled/global/macos/*
-compiled/global/win32/*
-compiled/global/win64/*
-compiled/gamejolt/html5/*
-compiled/gamejolt/linux32/*
-compiled/gamejolt/linux64/*
-compiled/gamejolt/macos/*
-compiled/gamejolt/win32/*
-compiled/gamejolt/win64/*
+# Build artifacts
+build/**/*.pck
+build/**/*.x86
+build/**/*.x86_64
+build/**/*.x86_32
+build/**/*.arm64
+build/**/*.sh
+build/**/*.exe
+build/**/*.app
+build/**/*.command
+build/**/*.html
+build/**/*.js
+build/**/*.png
+build/**/*.wasm

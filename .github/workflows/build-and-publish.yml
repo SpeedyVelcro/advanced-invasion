@@ -30,9 +30,16 @@ jobs:
         with:
           version: "4.7.1-stable"
           sha_256: "86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72"
-      - name: Build
+      - name: Build Any Platform # This step is just to verify there are no build errors.
+        run: make linux-x86_64
+      - name: Build All
+        id: build-all
+        if: github.event_name == 'release' # We only build and package for all platforms
+                                           # for releases, to save on workflow minutes
+                                           # and artifact storage.
         run: make
-      - name: Package Builds
+      - name: Package All
+        if: steps.build-all.outcome == 'success'
         run: |
           # TODO: Combine tarball and zip steps into one for loop
           BUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'macos-universal')

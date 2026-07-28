@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SVAboutGameInfo" format=3 uid="uid://cjh7riqk4gamu"]
+
+[ext_resource type="Script" uid="uid://n7jauopw8y1o" path="res://addons/sv_about_menu/data/sv_about_section.gd" id="1_gvi5b"]
+[ext_resource type="Script" uid="uid://buglxgortae4s" path="res://addons/sv_about_menu/data/sv_about_game_info.gd" id="2_t87x5"]
+[ext_resource type="Script" uid="uid://boomnqmjwlnh0" path="res://addons/sv_about_menu/data/sv_about_entry.gd" id="3_58d4w"]
+[ext_resource type="Script" uid="uid://dnv52qhamxm66" path="res://addons/sv_about_menu/data/sv_about_entry_godot.gd" id="3_ln031"]
+[ext_resource type="Script" uid="uid://cln0ipglvnm63" path="res://About/AdvancedInvasionAboutEntry.gd" id="4_t87x5"]
+[ext_resource type="Script" uid="uid://boyhjn5s58cit" path="res://About/CreditsAboutEntry.gd" id="5_58d4w"]
+
+[sub_resource type="Resource" id="Resource_ofs8c"]
+script = ExtResource("1_gvi5b")
+metadata/_custom_type_script = "uid://n7jauopw8y1o"
+
+[sub_resource type="Resource" id="Resource_n4y2n"]
+script = ExtResource("3_ln031")
+metadata/_custom_type_script = "uid://dnv52qhamxm66"
+
+[sub_resource type="Resource" id="Resource_acjvw"]
+script = ExtResource("1_gvi5b")
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_n4y2n")])
+metadata/_custom_type_script = "uid://n7jauopw8y1o"
+
+[sub_resource type="Resource" id="Resource_ln031"]
+script = ExtResource("4_t87x5")
+metadata/_custom_type_script = "uid://cln0ipglvnm63"
+
+[sub_resource type="Resource" id="Resource_tgd3o"]
+script = ExtResource("5_58d4w")
+metadata/_custom_type_script = "uid://boyhjn5s58cit"
+
+[resource]
+script = ExtResource("2_t87x5")
+top_level_entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_ln031"), SubResource("Resource_tgd3o")])
+custom_sections = Dictionary[String, ExtResource("1_gvi5b")]({
+"Assets": SubResource("Resource_ofs8c"),
+"Components": SubResource("Resource_acjvw")
+})
+godot_copyright_info_section_title = "Godot Components"
+godot_copyright_info_excludes = Array[String](["Godot Engine"])
+metadata/_custom_type_script = "uid://buglxgortae4s"

@@ -1,5 +1,3 @@
-[b]Advanced Invasion Credits[/b]
-
 Advanced Invasion Source Code by SpeedyVelcro
 Licensed under Apache 2.0.
 

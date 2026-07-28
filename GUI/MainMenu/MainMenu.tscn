@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgvrvoj5g2wcu"]
 
 [ext_resource type="Script" uid="uid://nuyt5dsgmi4r" path="res://GUI/MainMenu/MainMenu.gd" id="1"]
-[ext_resource type="PackedScene" uid="uid://do4im5jfi2w0j" path="res://GUI/MainMenu/Credits.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://do4im5jfi2w0j" path="res://GUI/MainMenu/AboutMenu.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dk4jgdk1sto7j" path="res://GUI/MainMenu/StartGUI.tscn" id="3"]
 [ext_resource type="FontFile" path="res://Font/Hack/HackTitle.tres" id="4"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="5"]

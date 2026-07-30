@@ -6,17 +6,18 @@
 [ext_resource type="Script" uid="uid://bgpc0iy24r0jj" path="res://addons/sv_about_menu/ui/buttons_selector.gd" id="4_ofs8c"]
 [ext_resource type="Script" uid="uid://b37gjky5xxyvp" path="res://addons/sv_about_menu/ui/selected_title_label.gd" id="5_acjvw"]
 [ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="5_ofs8c"]
+[ext_resource type="StyleBox" uid="uid://bl75kpk4e8x03" path="res://GUI/Themes/MenuGrooveStylebox.tres" id="5_ulvfq"]
 [ext_resource type="Script" uid="uid://bg46ajnerbf57" path="res://addons/sv_about_menu/ui/selected_description_label.gd" id="6_ulvfq"]
 [ext_resource type="Script" uid="uid://ctfwwsw3uisos" path="res://addons/sv_about_menu/ui/ui_controller.gd" id="7_mamg1"]
 [ext_resource type="Resource" uid="uid://cjh7riqk4gamu" path="res://About/GameInfo.tres" id="8_u3ycd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
 font = ExtResource("5_ofs8c")
-font_size = 28
+font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_gk03p"]
 font = ExtResource("5_ofs8c")
-font_size = 20
+font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_ooua1"]
 font = ExtResource("5_ofs8c")
@@ -67,9 +68,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=382812320]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/scrollbar_h_separation = 8
+theme_override_styles/panel = ExtResource("5_ulvfq")
 
 [node name="SVAboutButtonsSelector" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=1378227148 node_paths=PackedStringArray("ui_controller")]
 layout_mode = 2
@@ -101,6 +103,7 @@ metadata/_custom_type_script = "uid://b37gjky5xxyvp"
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
+theme_override_styles/normal = ExtResource("5_ulvfq")
 bbcode_enabled = true
 context_menu_enabled = true
 selection_enabled = true

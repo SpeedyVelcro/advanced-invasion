@@ -265,8 +265,6 @@ grow_vertical = 2
 
 [node name="Credits" parent="CanvasLayer" unique_id=1119660561 instance=ExtResource("2")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Jukebox" parent="CanvasLayer" unique_id=1167953524 instance=ExtResource("9")]
 visible = false

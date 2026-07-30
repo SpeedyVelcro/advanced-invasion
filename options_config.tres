@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="OptionsConfig" format=3 uid="uid://d17lhrx37rogq"]
+
+[ext_resource type="Script" uid="uid://bgpntw2sb3xq1" path="res://addons/sv_options_menu/data/editable_bus_config.gd" id="1_y0x8s"]
+[ext_resource type="Script" uid="uid://b03v2s84drqeh" path="res://addons/sv_options_menu/data/audio_bus_reference/audio_bus_id.gd" id="2_3sj0y"]
+[ext_resource type="Script" uid="uid://dt7kofv62xt16" path="res://addons/sv_options_menu/data/input_event_locks.gd" id="3_yn0ri"]
+[ext_resource type="Script" uid="uid://dm4oxbx41iy5e" path="res://addons/sv_options_menu/data/options_config.gd" id="4_24d8f"]
+
+[sub_resource type="Resource" id="Resource_aax7n"]
+script = ExtResource("2_3sj0y")
+
+[sub_resource type="Resource" id="Resource_dcy7j"]
+script = ExtResource("1_y0x8s")
+reference = SubResource("Resource_aax7n")
+name = "Master"
+
+[resource]
+script = ExtResource("4_24d8f")
+editable_buses = Array[ExtResource("1_y0x8s")]([SubResource("Resource_dcy7j")])

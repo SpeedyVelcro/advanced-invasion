@@ -7,9 +7,242 @@
 [ext_resource type="Script" uid="uid://bjgnxatvg3ldr" path="res://addons/sv_about_menu/data/sv_about_entry_custom.gd" id="4_w3b1a"]
 [ext_resource type="Script" uid="uid://boyhjn5s58cit" path="res://About/CreditsAboutEntry.gd" id="5_58d4w"]
 
+[sub_resource type="Resource" id="Resource_ta2p3"]
+script = ExtResource("4_w3b1a")
+title = "Virus Invasion"
+description = "Two characters in this game - \"Lieutenant Scareye\" and the \"Virus King\" - are adapted from the \"Virus Invasion\" series of games by YoYoGames Sandbox user Blublub. They are assumed to be the intellectual property of Blublub.
+
+These characters are used here based on a long-established history of Blublub allowing and encouraging Virus Invasion fangames.
+
+More generally, Advanced Invasion owes its main inspiration to Blublub as the originator of the \"virus game\" genre - a small subculture of platforming games about fending off computer viruses."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_6coi1"]
+script = ExtResource("4_w3b1a")
+title = "Advanced Invasion OST"
+description = "Copyright © SpeedyVelcro 2021
+
+[url]https://speedyvelcro.com/music/advanced-invasion-ost/[/url]
+
+Licensed under CC BY 4.0 ([url]https://new.creativecommons.org/licenses/by/4.0/[/url])"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_4tpc5"]
+script = ExtResource("4_w3b1a")
+title = "alarm5.WAV"
+description = "\"alarm5.WAV\" (freesound.org/people/Hoerspielwerkstatt_HEF/sounds/270643)
+By Hörspielwerkstatt (www.hörspiel-werkstatt.de)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_bynhv"]
+script = ExtResource("4_w3b1a")
+title = "lowvolt sparks.wav"
+description = "\"lowvolt sparks.wav\" (freesound.org/people/FreqMan/sounds/32682)
+By Richard Frohlich (freesound.org/people/FreqMan)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)
+Modified by SpeedyVelcro (cropped)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_kcaka"]
+script = ExtResource("4_w3b1a")
+title = "TV Off (short)"
+description = "\"TV Off (short)\" (freesound.org/people/snakebarney/sounds/138115)
+By snakebarney (freesound.org/people/snakebarney)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_08m04"]
+script = ExtResource("4_w3b1a")
+title = "btn121.wav"
+description = "\"btn121.wav\" (freesound.org/people/junggle/sounds/29301)
+By junggle (jazzy.junggle.net)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)
+Modified by SpeedyVelcro (Pitch changed and EQ applied)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_ouesk"]
+script = ExtResource("4_w3b1a")
+title = "SystemLoad.wav"
+description = "\"SystemLoad.wav\" (freesound.org/people/Zabuhailo/sounds/146957)
+by Zabuhailo (freesound.org/people/Zabuhailo)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_wphf0"]
+script = ExtResource("4_w3b1a")
+title = "Kill Switch (Large Breaker Switch).WAV"
+description = "\"Kill Switch (Large Breaker Switch).WAV\"
+(freesound.org/people/EchoCinematics/sounds/131599)
+By EchoCinematics (echocinematics.com)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_0ssle"]
+script = ExtResource("4_w3b1a")
+title = "Distant explosion.wav"
+description = "\"Distant explosion.wav\" (freesound.org/people/juskiddink/sounds/108640)
+By juskiddink (freesound.org/people/juskiddink)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_ymrlx"]
+script = ExtResource("4_w3b1a")
+title = "building_collapse-5_loud.wav"
+description = "\"building_collapse05_loud.wav\" (freesound.org/people/onteca/sounds/197775)
+By onteca (freesound.org/people/onteca)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_3qbhe"]
+script = ExtResource("4_w3b1a")
+title = "Grenade bouncing"
+description = "\"Grenade bouncing\" (freesound.org/people/-Patrick-/sounds/466453)
+By Patrick C. (freesound.org/people/-Patrick-)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)
+Modified by SpeedyVelcro (cropped)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_xha78"]
+script = ExtResource("4_w3b1a")
+title = "Grenade pin pull.flac"
+description = "\"Grenade pin pull.flac\" (freesound.org/people/CGEffex/sounds/93837)
+By CGEffex (freesound.org/people/CGEffex)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)
+Modified by SpeedyVelcro (cropped)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_ye328"]
+script = ExtResource("4_w3b1a")
+title = "oddworld_bomb.wav"
+description = "\"oddworld_bomb.wav\" (freesound.org/people/Oddworld/sounds/75330)
+By Oddworld (freesound.org/people/Oddworld)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (cropped and sped up)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_sjh0f"]
+script = ExtResource("4_w3b1a")
+title = "tinnitus.wav"
+description = "\"tinnitus.wav\" (freesound.org/people/tnturner/sounds/377205)
+By tnturner (freesound.org/people/tnturner)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_cpx1t"]
+script = ExtResource("4_w3b1a")
+title = "Voice Synth"
+description = "\"Voice Synth\"
+By SpeedyVelcro, made using jsfxr
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_go6pb"]
+script = ExtResource("4_w3b1a")
+title = "laser"
+description = "\"laser\" (freesound.org/people/SamsterBirdies/sounds/470903)
+By SamsterBirdies (freesound.org/people/SamsterBirdies)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (looped, EQ)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_om2rl"]
+script = ExtResource("4_w3b1a")
+title = "laser3"
+description = "\"laser3\" (freesound.org/people/nsstudios/sounds/344276)
+By NS Studios (www.nsstudiosweb.com)
+CC BY 3.0. (creativecommons.org/licenses/by/3.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_8blry"]
+script = ExtResource("4_w3b1a")
+title = "traditional stamp.wav"
+description = "\"traditional stamp.wav\" (https://freesound.org/people/I.fekry/sounds/470710)
+By I.fekry (freesound.org/people/I.fekry)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (cropped, reverb and EQ)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_h1nj3"]
+script = ExtResource("4_w3b1a")
+title = "Stick-Swoosh Whoosh"
+description = "\"Stick-Swoosh Whoosh\" (freesound.org/people/Hitrison/sounds/216675)
+By Hitrison (freesound.org/people/Hitrison)
+CC BY 3.0 (creativecommons.org/licenses/by/3.0)
+Modified by SpeedyVelcro (EQ)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_7pxv3"]
+script = ExtResource("4_w3b1a")
+title = "Light Retro Gun"
+description = "\"Light Retro Gun\"
+By SpeedyVelcro, made using jsfxr
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_2kkm8"]
+script = ExtResource("4_w3b1a")
+title = "Anvil Hit 1"
+description = "\"Anvil Hit 1\" (freesound.org/people/michorvath/sounds/270589)
+By michorvath (freesound.org/people/michorvath)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (Removed silence at beginning)
+Pitched down in-engine"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_1jmgv"]
+script = ExtResource("4_w3b1a")
+title = "MachinePowerOff.flac"
+description = "\"MachinePowerOff.flac\" (freesound.org/people/Skylar1146/sounds/395378)
+By Skylar1146 (freesound.org/people/Skylar1146)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (sped up, pitched down, fade out)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_l4uvm"]
+script = ExtResource("4_w3b1a")
+title = "Camera Shutter"
+description = "\"Camera Shutter\" (freesound.org/people/roachpowder/sounds/170229)
+By roachpowder (freesound.org/people/roachpowder)
+CC0 1.0. (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_lvro7"]
+script = ExtResource("4_w3b1a")
+title = "Death Screams"
+description = "\"Virus Death Scream\", \"Guardian Death Scream\" and \"Player Death Scream\"
+By SpeedyVelcro (speedyvelcro.com), made using Helm and Audacity
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_sicfn"]
+script = ExtResource("4_w3b1a")
+title = "Poof (3, varying degrees of intensity)"
+description = "\"Poof (3, varying degrees of intensity)\" (freesound.org/people/mendihola/sounds/440269)
+By mendihola (freesound.org/people/mendihola)
+CC0 1.0 (creativecommons.org/publicdomain/zero/1.0)
+Modified by SpeedyVelcro (cropped)"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
 [sub_resource type="Resource" id="Resource_ofs8c"]
 script = ExtResource("1_gvi5b")
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_ta2p3"), SubResource("Resource_6coi1"), SubResource("Resource_4tpc5"), SubResource("Resource_bynhv"), SubResource("Resource_kcaka"), SubResource("Resource_08m04"), SubResource("Resource_ouesk"), SubResource("Resource_wphf0"), SubResource("Resource_0ssle"), SubResource("Resource_ymrlx"), SubResource("Resource_3qbhe"), SubResource("Resource_xha78"), SubResource("Resource_ye328"), SubResource("Resource_sjh0f"), SubResource("Resource_cpx1t"), SubResource("Resource_go6pb"), SubResource("Resource_om2rl"), SubResource("Resource_8blry"), SubResource("Resource_h1nj3"), SubResource("Resource_7pxv3"), SubResource("Resource_2kkm8"), SubResource("Resource_1jmgv"), SubResource("Resource_l4uvm"), SubResource("Resource_lvro7"), SubResource("Resource_sicfn")])
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
+
+[sub_resource type="Resource" id="Resource_c6sps"]
+script = ExtResource("4_w3b1a")
+title = "Source Code"
+description = "Copyright © 2021-2026 SpeedyVelcro
+
+Licensed under the Apache License, Version 2.0 (the \"License\");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+"
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
 [sub_resource type="Resource" id="Resource_n47ni"]
 script = ExtResource("4_w3b1a")
@@ -23,9 +256,145 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
+[sub_resource type="Resource" id="Resource_jq33r"]
+script = ExtResource("4_w3b1a")
+title = "Schoon Square"
+description = "Copyright (c) 2019, Michiel van Kleef (schoonontwerp.nl).
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnershipwith others.
+
+The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded,  redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+\"Font Software\" refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.
+
+\"Reserved Font Name\" refers to any names specified as such after the copyright statement(s).
+
+\"Original Version\" refers to the collection of Font Software components as distributed by the Copyright Holder(s).
+
+\"Modified Version\" refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.
+
+\"Author\" refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+
+5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_toqiw"]
+script = ExtResource("4_w3b1a")
+title = "Hack"
+description = "Source Foundry Authors and Bitstream, Inc.
+
+The work in the Hack project is Copyright 2018 Source Foundry Authors and licensed under the MIT License
+
+The work in the DejaVu project was committed to the public domain.
+
+Bitstream Vera Sans Mono Copyright 2003 Bitstream Inc. and licensed under the Bitstream Vera License with Reserved Font Names \"Bitstream\" and \"Vera\"
+MIT License
+
+Copyright (c) 2018 Source Foundry Authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+BITSTREAM VERA LICENSE
+
+Copyright (c) 2003 by Bitstream, Inc. All Rights Reserved. Bitstream Vera is a trademark of Bitstream, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of the fonts accompanying this license (\"Fonts\") and associated documentation files (the \"Font Software\"), to reproduce and distribute the Font Software, including without limitation the rights to use, copy, merge, publish, distribute, and/or sell copies of the Font Software, and to permit persons to whom the Font Software is furnished to do so, subject to the following conditions:
+
+The above copyright and trademark notices and this permission notice shall be included in all copies of one or more of the Font Software typefaces.
+
+The Font Software may be modified, altered, or added to, and in particular the designs of glyphs or characters in the Fonts may be modified and additional glyphs or characters may be added to the Fonts, only if the fonts are renamed to names not containing either the words \"Bitstream\" or the word \"Vera\".
+
+This License becomes null and void to the extent applicable to Fonts or Font Software that has been modified and is distributed under the \"Bitstream Vera\" names.
+
+The Font Software may be sold as part of a larger software package but no copy of one or more of the Font Software typefaces may be sold by itself.
+
+THE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL BITSTREAM OR THE GNOME FOUNDATION BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE.
+
+Except as contained in this notice, the names of Gnome, the Gnome Foundation, and Bitstream Inc., shall not be used in advertising or otherwise to promote the sale, use or other dealings in this Font Software without prior written authorization from the Gnome Foundation or Bitstream Inc., respectively. For further information, contact: fonts at gnome dot org."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
+[sub_resource type="Resource" id="Resource_n3myw"]
+script = ExtResource("4_w3b1a")
+title = "Noto Sans"
+description = "Copyright (c) 2012 Google Inc.
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide development of collaborative font projects, to support the font creation efforts of academic and linguistic communities, and to provide a free and open framework in which fonts may be shared and improved in partnershipwith others.
+
+The OFL allows the licensed fonts to be used, studied, modified and redistributed freely as long as they are not sold by themselves. The fonts, including any derivative works, can be bundled, embedded,  redistributed and/or sold with any software provided that any reserved names are not used by derivative works. The fonts and derivatives, however, cannot be released under any other type of license. The requirement for fonts to remain under this license does not apply to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+\"Font Software\" refers to the set of files released by the Copyright Holder(s) under this license and clearly marked as such. This may include source files, build scripts and documentation.
+
+\"Reserved Font Name\" refers to any names specified as such after the copyright statement(s).
+
+\"Original Version\" refers to the collection of Font Software components as distributed by the Copyright Holder(s).
+
+\"Modified Version\" refers to any derivative made by adding to, deleting, or substituting -- in part or in whole -- any of the components of the Original Version, by changing formats or by porting the Font Software to a new environment.
+
+\"Author\" refers to any designer, engineer, programmer, technical writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining a copy of the Font Software, to use, study, copy, merge, embed, modify, redistribute, and sell modified and unmodified copies of the Font Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components, in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled, redistributed and/or sold with any software, provided that each copy contains the above copyright notice and this license. These can be included either as stand-alone text files, human-readable headers or in the appropriate machine-readable metadata fields within text or binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font Name(s) unless explicit written permission is granted by the corresponding Copyright Holder. This restriction only applies to the primary font name as presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font Software shall not be used to promote, endorse or advertise any Modified Version, except to acknowledge the contribution(s) of the Copyright Holder(s) and the Author(s) or with their explicit written permission.
+
+5) The Font Software, modified or unmodified, in part or in whole, must be distributed entirely under this license, and must not be distributed under any other license. The requirement for fonts to remain under this license does not apply to any document created using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM OTHER DEALINGS IN THE FONT SOFTWARE."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
 [sub_resource type="Resource" id="Resource_acjvw"]
 script = ExtResource("1_gvi5b")
-entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_n47ni")])
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_c6sps"), SubResource("Resource_n47ni"), SubResource("Resource_jq33r"), SubResource("Resource_toqiw"), SubResource("Resource_n3myw")])
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
 
 [sub_resource type="Resource" id="Resource_ln031"]

@@ -1,18 +1,65 @@
 [gd_resource type="Resource" script_class="OptionsConfig" format=3 uid="uid://d17lhrx37rogq"]
 
 [ext_resource type="Script" uid="uid://bgpntw2sb3xq1" path="res://addons/sv_options_menu/data/editable_bus_config.gd" id="1_y0x8s"]
-[ext_resource type="Script" uid="uid://b03v2s84drqeh" path="res://addons/sv_options_menu/data/audio_bus_reference/audio_bus_id.gd" id="2_3sj0y"]
+[ext_resource type="Script" uid="uid://dgoog2vtad4e0" path="res://addons/sv_options_menu/data/audio_bus_reference/audio_bus_name.gd" id="2_y0x8s"]
 [ext_resource type="Script" uid="uid://dt7kofv62xt16" path="res://addons/sv_options_menu/data/input_event_locks.gd" id="3_yn0ri"]
 [ext_resource type="Script" uid="uid://dm4oxbx41iy5e" path="res://addons/sv_options_menu/data/options_config.gd" id="4_24d8f"]
 
-[sub_resource type="Resource" id="Resource_aax7n"]
-script = ExtResource("2_3sj0y")
+[sub_resource type="Resource" id="Resource_y0x8s"]
+script = ExtResource("2_y0x8s")
+bus_name = "Master"
+metadata/_custom_type_script = "uid://dgoog2vtad4e0"
 
 [sub_resource type="Resource" id="Resource_dcy7j"]
 script = ExtResource("1_y0x8s")
-reference = SubResource("Resource_aax7n")
+reference = SubResource("Resource_y0x8s")
 name = "Master"
+
+[sub_resource type="Resource" id="Resource_yn0ri"]
+script = ExtResource("2_y0x8s")
+bus_name = "Music"
+metadata/_custom_type_script = "uid://dgoog2vtad4e0"
+
+[sub_resource type="Resource" id="Resource_3sj0y"]
+script = ExtResource("1_y0x8s")
+reference = SubResource("Resource_yn0ri")
+name = "Music"
+metadata/_custom_type_script = "uid://bgpntw2sb3xq1"
+
+[sub_resource type="Resource" id="Resource_aax7n"]
+script = ExtResource("2_y0x8s")
+bus_name = "Effects"
+metadata/_custom_type_script = "uid://dgoog2vtad4e0"
+
+[sub_resource type="Resource" id="Resource_24d8f"]
+script = ExtResource("1_y0x8s")
+reference = SubResource("Resource_aax7n")
+name = "Effects"
+metadata/_custom_type_script = "uid://bgpntw2sb3xq1"
+
+[sub_resource type="Resource" id="Resource_odl16"]
+script = ExtResource("2_y0x8s")
+bus_name = "UI"
+metadata/_custom_type_script = "uid://dgoog2vtad4e0"
+
+[sub_resource type="Resource" id="Resource_sbmeu"]
+script = ExtResource("1_y0x8s")
+reference = SubResource("Resource_odl16")
+name = "UI"
+metadata/_custom_type_script = "uid://bgpntw2sb3xq1"
 
 [resource]
 script = ExtResource("4_24d8f")
-editable_buses = Array[ExtResource("1_y0x8s")]([SubResource("Resource_dcy7j")])
+auto_start = false
+manage_resolution = true
+manage_window_mode = true
+manage_screen = true
+default_resolution_handling = 2
+auto_default_resolution = true
+maximum_auto_resolution = Vector2i(3840, 2160)
+manage_volume = true
+editable_buses = Array[ExtResource("1_y0x8s")]([SubResource("Resource_dcy7j"), SubResource("Resource_3sj0y"), SubResource("Resource_24d8f"), SubResource("Resource_sbmeu")])
+manage_ui_scaling = true
+ui_scaling_reference_resolution = Vector2i(1280, 720)
+manage_input_map = true
+editable_input_actions = Array[String](["move_left", "move_right", "jump", "attack", "look_down"])

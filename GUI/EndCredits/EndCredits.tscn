@@ -3,16 +3,23 @@
 [ext_resource type="Script" uid="uid://dumrgtmb2hc6d" path="res://GUI/EndCredits/EndCredits.gd" id="1"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsNormal.tres" id="2"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsBoldItalic.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="3_o1hcd"]
 [ext_resource type="FontFile" path="res://Font/Hack/HackTitle.tres" id="4"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsItalic.tres" id="5"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsBold.tres" id="6"]
 [ext_resource type="AudioStream" uid="uid://dq051d0mp30r1" path="res://Sound/Machine/BreakerSwitch.wav" id="7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
+font = ExtResource("3_o1hcd")
+font_size = 32
 
 [node name="EndCredits" type="Control" unique_id=1630692072]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1254106155]
@@ -32,10 +39,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4")
 text = "Advanced Invasion"
+label_settings = SubResource("LabelSettings_n4y2n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LicenseLabel" type="Label" parent="VBoxContainer" unique_id=1799180352]
+visible = false
 custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_horizontal = 3

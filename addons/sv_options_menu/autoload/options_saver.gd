@@ -27,6 +27,6 @@ func save() -> void:
 	_cloud_repository.save_options(OptionsProvider.get_cloud_options()) # TODO: not sure this should always save
 	_bindings_repository.save_options(OptionsProvider.get_bindings())
 	
-	# Only save if there's actually a backup to avoid any confusion to people expecting the user:// directory
+	# Only save if there's actually a backup to avoid any confusion to people inspecting the user:// directory
 	_bindings_cloud_backup_repository.save_options_if_any(OptionsProvider.get_bindings_cloud_backup())
 	

@@ -57,6 +57,27 @@ static func apply_screen(screen: int) -> void:
 	DisplayServer.window_set_current_screen(screen)
 
 
+## Applies the given vsync mode to the main window.
+static func apply_vsync(vsync: int) -> void:
+	if not _is_vsync_mode(vsync):
+		push_error("SV Options Menu Cannot apply vsync mode %d as it is not a valid vsync mode." % vsync)
+	
+	DisplayServer.window_set_vsync_mode(vsync)
+
+
+static func _is_vsync_mode(value: int) -> bool:
+	# There's not really a more robust way of doing this afaik as built-in enums
+	# are not dictionaries like GDScript ones are.
+	match value:
+		DisplayServer.VSyncMode.VSYNC_DISABLED, \
+		DisplayServer.VSyncMode.VSYNC_ENABLED, \
+		DisplayServer.VSyncMode.VSYNC_ADAPTIVE, \
+		DisplayServer.VSyncMode.VSYNC_MAILBOX:
+			return true
+		_:
+			return false
+
+
 static func _get_window() -> Window:
 	return (Engine.get_main_loop() as SceneTree).root.get_window()
 

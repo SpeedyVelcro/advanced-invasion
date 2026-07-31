@@ -21,6 +21,7 @@ func apply() -> void:
 	var options_with_resolution := local_options
 	var options_with_window_mode := local_options
 	var options_with_screen := local_options
+	var options_with_vsync := local_options
 	
 	if config.manage_volume:
 		var volume_settings = options_with_volume.get_option(config.volume_option_path)
@@ -73,6 +74,17 @@ func apply() -> void:
 			OptionsDisplayHelper.apply_screen(screen)
 		else:
 			push_error("Screen configured in options was missing or incorrect. Skipping applying screen.")
+	
+	if config.manage_vsync:
+		var vsync = options_with_vsync.get_option(config.vsync_option_path)
+		
+		if vsync is float:
+			vsync = int(vsync)
+		
+		if vsync is int:
+			OptionsDisplayHelper.apply_vsync(vsync)
+		else:
+			push_error("Vsync mode in options was missing or incorrect. Skipping applying VSync.")
 	
 	if config.manage_input_map:
 		var options_input_map = bindings.get_option(config.input_map_option_path)

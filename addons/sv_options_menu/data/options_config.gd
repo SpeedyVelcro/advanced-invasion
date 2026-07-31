@@ -108,6 +108,13 @@ enum DefaultResolutionHandling {
 ## [member manage_screen] is [code]true[/code].
 @export var screen_option_path: String = "display/screen"
 
+## Determines whether SV Options Menu will manage VSync mode of the main game
+## window. The default value will be [member ProjectSettings.display/window/vsync/vsync_mode].
+@export var manage_vsync: bool = true
+
+## Path to store VSync mode. Used if [member manage_vsync] is [code]true[/code].
+@export var vsync_option_path: String = "display/vsync"
+
 ## Determines how SV Options Menu determines default resolution on startup.
 @export var default_resolution_handling: DefaultResolutionHandling = DefaultResolutionHandling.STATIC
 
@@ -327,6 +334,9 @@ func get_default_options() -> GameOptions:
 		var res := calculate_default_resolution(DisplayServer.SCREEN_PRIMARY)
 		default_options.set_option(get_resolution_x_path(), res.x)
 		default_options.set_option(get_resolution_y_path(), res.y)
+	
+	if manage_vsync:
+		default_options.set_option(vsync_option_path, ProjectSettings.get_setting_with_override("display/window/vsync/vsync_mode"))
 	
 	if manage_ui_scaling:
 		var scale := OptionsUIScaleHelper.calculate_default_ui_scale(self)

@@ -167,3 +167,9 @@ environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 batching/precision/uv_contract=true
+
+[sv_jukebox]
+
+general/album="uid://dgx5v27u72ddt"
+general/audio_bus_name="Music"
+general/always_unlocked=["download", "militia"]

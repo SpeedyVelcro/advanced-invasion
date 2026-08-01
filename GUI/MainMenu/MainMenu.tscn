@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="8_i7lx1"]
 [ext_resource type="PackedScene" uid="uid://g4hx2iqhrajh" path="res://GUI/Jukebox/Jukebox.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" id="10"]
+[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="10_o7vgm"]
 [ext_resource type="PackedScene" uid="uid://c4ub7ekaomtov" path="res://GUI/Options/Options.tscn" id="11"]
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="12"]
 [ext_resource type="Texture2D" uid="uid://bv5yg0pbiaycv" path="res://Art/Character/Militia/MilitiaLeft.png" id="13"]
@@ -19,6 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://GUI/Integration/IntegrationMenu.tscn" id="17"]
 [ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="18"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
+font = ExtResource("10_o7vgm")
+font_size = 36
 
 [sub_resource type="Animation" id="1"]
 resource_name = "hide"
@@ -221,6 +226,7 @@ offset_right = -64.0
 offset_bottom = 300.0
 theme_override_fonts/font = ExtResource("4")
 text = "Advanced Invasion"
+label_settings = SubResource("LabelSettings_n4y2n")
 horizontal_alignment = 1
 
 [node name="StartPrompt" type="Control" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1064318338]
@@ -294,10 +300,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1099388602]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 16.0
 offset_right = 371.0
-offset_bottom = 96.0
+offset_bottom = -16.0
+grow_vertical = 0
 
 [node name="VersionNumber" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/VBoxContainer" unique_id=1824073452]
 layout_mode = 2

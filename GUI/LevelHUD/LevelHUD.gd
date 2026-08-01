@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var boss_health = $BossHealth
-@onready var lives = $Lives
+@onready var boss_health = $SubViewportContainer/UIScalingSubViewport/BossHealth
+@onready var lives = $SubViewportContainer/UIScalingSubViewport/Lives
 var lives_enabled = true
 
 func _on_Player_health_changed(value):

@@ -1,62 +1,65 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene format=3 uid="uid://c8leqe6da3kq4"]
 
-[ext_resource path="res://GUI/PauseMenu/PauseMenu.gd" type="Script" id=1]
-[ext_resource path="res://Font/Hack/HackSmallHeader.tres" type="FontFile" id=2]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=3]
-[ext_resource path="res://GUI/Options/Options.tscn" type="PackedScene" id=4]
+[ext_resource type="Script" uid="uid://jmxl20xippch" path="res://GUI/PauseMenu/PauseMenu.gd" id="1"]
+[ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="2"]
+[ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="2_1qfkk"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="3"]
+[ext_resource type="PackedScene" uid="uid://c4ub7ekaomtov" path="res://GUI/Options/Options.tscn" id="4"]
 
-[node name="PauseMenu" type="Node"]
+[node name="PauseMenu" type="Node" unique_id=33591457]
 process_mode = 3
-script = ExtResource( 1 )
-gui_path = NodePath("CanvasLayer/PauseMenuGUI")
-color_rect_path = NodePath("CanvasLayer/ColorRect")
-restart_button_path = NodePath("CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart")
-skip_cutscene_button_path = NodePath("CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene")
-options_path = NodePath("CanvasLayer/Options")
+script = ExtResource("1")
+gui_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI")
+color_rect_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/ColorRect")
+restart_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart")
+skip_cutscene_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene")
+options_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2127206328]
 layer = 96
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=647223377]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.219608 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseMenuGUI" type="Control" parent="CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/PauseMenuGUI"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MainPanel" type="Panel" parent="CanvasLayer/PauseMenuGUI/CenterContainer"]
-offset_left = 560.0
-offset_top = 240.0
-offset_right = 720.0
-offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_minimum_size = Vector2( 160, 240 )
+mouse_target = true
+
+[node name="UIScalingSubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1087964871]
+transparent_bg = true
+size = Vector2i(1280, 720)
+script = ExtResource("2_1qfkk")
+metadata/_custom_type_script = "uid://q556kuuqjbtq"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=673525949]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.219608)
+
+[node name="PauseMenuGUI" type="Control" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1232331021]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI" unique_id=1853355586]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MainPanel" type="Panel" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer" unique_id=1796566326]
+custom_minimum_size = Vector2(160, 240)
+layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource("3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel" unique_id=148331977]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
@@ -68,69 +71,58 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
-offset_right = 120.0
-offset_bottom = 24.0
-theme_override_fonts/font = ExtResource( 2 )
+[node name="Label" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1797747218]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
 text = "Paused"
-align = 1
+horizontal_alignment = 1
 clip_text = true
 
-[node name="Resume" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
-offset_top = 32.0
-offset_right = 120.0
-offset_bottom = 64.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="Resume" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=251711633]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 text = "Resume"
 
-[node name="Restart" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
-offset_top = 76.0
-offset_right = 120.0
-offset_bottom = 108.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="Restart" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1520766692]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Restart Level"
 
-[node name="SkipCutscene" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
+[node name="SkipCutscene" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1424572599]
 visible = false
-offset_top = 88.0
-offset_right = 120.0
-offset_bottom = 120.0
-custom_minimum_size = Vector2( 0, 32 )
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Skip Cutscene"
 
-[node name="Options" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
-offset_top = 120.0
-offset_right = 120.0
-offset_bottom = 152.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="Options" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=148015002]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Options"
 
-[node name="Quit" type="Button" parent="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer"]
-offset_top = 164.0
-offset_right = 120.0
-offset_bottom = 196.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="Quit" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=642692917]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Main Menu"
 
-[node name="Options" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="Options" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=176105212 instance=ExtResource("4")]
 visible = false
-[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene" to="." method="_on_SkipCutscene_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="CanvasLayer/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
-[connection signal="back" from="CanvasLayer/Options" to="." method="_on_Options_back"]
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene" to="." method="_on_SkipCutscene_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options" to="." method="_on_Options_back"]

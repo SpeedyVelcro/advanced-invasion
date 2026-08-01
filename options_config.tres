@@ -110,6 +110,7 @@ maximum_auto_resolution = Vector2i(3840, 2160)
 manage_volume = true
 editable_buses = Array[ExtResource("1_y0x8s")]([SubResource("Resource_dcy7j"), SubResource("Resource_3sj0y"), SubResource("Resource_24d8f"), SubResource("Resource_sbmeu")])
 manage_ui_scaling = true
+ui_scaling_snap_values = Array[float]([0.25, 0.5, 1.0, 2.0, 3.0, 4.0, 8.0])
 ui_scaling_reference_resolution = Vector2i(1280, 720)
 manage_input_map = true
 editable_input_actions = Array[String](["move_left", "move_right", "jump", "attack", "look_down"])

@@ -18,6 +18,14 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.490196, 0.952941, 1, 0.466667)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k40w"]
+bg_color = Color(0.007843138, 0, 0.25490198, 0.5803922)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.490196, 0.952941, 1, 0.466667)
+
 [sub_resource type="StyleBoxFlat" id="4"]
 bg_color = Color(0.0509804, 0.00392157, 0.631373, 0.105882)
 border_width_left = 2
@@ -33,6 +41,26 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.0117647, 0, 0.145098, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_megyo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gk03p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujk5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n4y2n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ooua1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dvkna"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bi63i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lygs7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgskd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpkem"]
 
 [sub_resource type="StyleBoxFlat" id="6"]
 bg_color = Color(0.0117647, 0, 0.145098, 1)
@@ -81,7 +109,7 @@ border_width_bottom = 2
 border_color = Color(0.145098, 0.145098, 0.145098, 1)
 
 [sub_resource type="StyleBoxFlat" id="13"]
-bg_color = Color(0, 0.0117647, 0.345098, 0.498039)
+bg_color = Color(0.07700001, 0.0861, 0.35, 0.78431374)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -115,6 +143,14 @@ border_color = Color(0.0117647, 0, 0.145098, 1)
 
 [sub_resource type="StyleBoxFlat" id="16"]
 draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0117647, 0, 0.145098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxy8d"]
+bg_color = Color(0.0509804, 0.00392157, 0.631373, 0.105882)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -160,6 +196,40 @@ border_color = Color(0.0117647, 0, 0.145098, 1)
 expand_margin_top = 10.0
 expand_margin_right = 2.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ivvxw"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.06445839, 0.038500004, 0.35, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.0117647, 0, 0.145098, 1)
+expand_margin_top = 5.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pjbj"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.0117647, 0.345098, 0.498039)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.0117647, 0, 0.145098, 1)
+expand_margin_top = 10.0
+expand_margin_right = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhlgk"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.0196078, 0, 0.243137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_color = Color(0.0117647, 0, 0.145098, 1)
+expand_margin_top = 5.0
+expand_margin_right = 2.0
+
 [sub_resource type="StyleBoxFlat" id="21"]
 bg_color = Color(1, 1, 1, 0.768627)
 
@@ -195,6 +265,7 @@ Button/fonts/font = null
 Button/styles/disabled = SubResource("1")
 Button/styles/focus = SubResource("2")
 Button/styles/hover = SubResource("3")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_4k40w")
 Button/styles/normal = SubResource("4")
 Button/styles/pressed = SubResource("5")
 CheckBox/colors/font_color = Color(0.88, 0.88, 0.88, 1)
@@ -209,12 +280,17 @@ CheckBox/icons/checked = null
 CheckBox/icons/radio_checked = null
 CheckBox/icons/radio_unchecked = null
 CheckBox/icons/unchecked = null
-CheckBox/styles/disabled = null
+CheckBox/styles/disabled = SubResource("StyleBoxEmpty_megyo")
 CheckBox/styles/focus = null
-CheckBox/styles/hover = null
-CheckBox/styles/hover_pressed = null
-CheckBox/styles/normal = null
-CheckBox/styles/pressed = null
+CheckBox/styles/hover = SubResource("StyleBoxEmpty_gk03p")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_ujk5d")
+CheckBox/styles/normal = SubResource("StyleBoxEmpty_n4y2n")
+CheckBox/styles/pressed = SubResource("StyleBoxEmpty_ooua1")
+CheckButton/styles/disabled = SubResource("StyleBoxEmpty_dvkna")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_bi63i")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_lygs7")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_rgskd")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_qpkem")
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = SubResource("6")
 HSlider/icons/grabber = null
@@ -272,11 +348,15 @@ TabBar/icons/decrement_highlight = null
 TabBar/icons/increment = null
 TabBar/icons/increment_highlight = null
 TabBar/styles/button = null
+TabBar/styles/button_highlight = null
 TabBar/styles/button_pressed = null
 TabBar/styles/panel = null
 TabBar/styles/tab_bg = null
 TabBar/styles/tab_disabled = null
 TabBar/styles/tab_fg = null
+TabBar/styles/tab_hovered = null
+TabBar/styles/tab_selected = null
+TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_kxy8d")
 TabContainer/colors/font_color_bg = Color(0.69, 0.69, 0.69, 1)
 TabContainer/colors/font_color_disabled = Color(0.9, 0.9, 0.9, 0.2)
 TabContainer/colors/font_color_fg = Color(0.94, 0.94, 0.94, 1)
@@ -296,6 +376,9 @@ TabContainer/styles/panel = SubResource("17")
 TabContainer/styles/tab_bg = SubResource("18")
 TabContainer/styles/tab_disabled = SubResource("19")
 TabContainer/styles/tab_fg = SubResource("20")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_ivvxw")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_4pjbj")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_rhlgk")
 VScrollBar/icons/decrement = null
 VScrollBar/icons/decrement_highlight = null
 VScrollBar/icons/increment = null

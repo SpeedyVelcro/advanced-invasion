@@ -28,7 +28,9 @@ mouse_target = true
 
 [node name="UIScalingSubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1087964871]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 script = ExtResource("2_1qfkk")
 metadata/_custom_type_script = "uid://q556kuuqjbtq"
 

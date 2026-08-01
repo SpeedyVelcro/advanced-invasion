@@ -54,7 +54,7 @@ var force_zoom_in := false
 var force_zoom_out := false
 var look_down_height = 160 # Variable not constant because may need to change with resolution
 var look_down_stored_height = 0
-var input_zoom_enabled = false
+var input_zoom_enabled = true
 
 var _current_tween: Tween = null
 
@@ -119,7 +119,7 @@ func zoom_out(force := false):
 func _input(event):
 	# TODO: Is this still true in Godot 4?
 	# input map doesn't work with mouse wheel so must be polled here
-	if input_zoom_enabled:
+	if input_zoom_enabled and input_enabled:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom_in()

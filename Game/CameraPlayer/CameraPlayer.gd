@@ -16,21 +16,35 @@ extends Camera2D
 		#Vector2(1.0/3.0, 1.0/3.0)], # 3x zoom
 	#]
 # TODO: This will probably break on super high resolutions and show out of bounds areas. Probably need a way to calculate this stuff programmatically.
+## @deprecated
 var ZOOM_LEVELS = [
-		[Vector2(2.0, 2.0), # 2x zoom
-		Vector2(1.0, 1.0)], # 1x zoom
+		[Vector2(2.0, 2.0),
+		Vector2(1.0, 1.0)],
 		
-		[Vector2(3.0, 3.0), # 3x zoom
-		Vector2(2.0, 2.0)], # 2x zoom
+		[Vector2(3.0, 3.0),
+		Vector2(2.0, 2.0)],
 		
-		[Vector2(4.0, 4.0), # 4x zoom
-		Vector2(3.0, 3.0)], # 3x zoom
+		[Vector2(4.0, 4.0),
+		Vector2(2.0, 2.0)],
+		
+		[Vector2(4.0, 4.0),
+		Vector2(3.0, 3.0)],
+		
+		[Vector2(5.0, 5.0),
+		Vector2(3.0, 3.0)],
+		
+		[Vector2(8.0, 8.0),
+		Vector2(4.0, 4.0)]
 	]
 # ZOOM_MIN_RESOLUTION[i] corresponds to ZOOM_LEVELS[i - 1] because ZOOM_LEVELS[0]
 # has no minimum resolution.
+## @deprecated
 var ZOOM_MIN_RESOLUTION = [
 	Vector2(1280, 720),
-	Vector2(1920, 1080)
+	Vector2(1920, 1080),
+	Vector2(2560, 1440),
+	Vector2(3200, 1800),
+	Vector2(3840, 2160)
 ]
 var zoom_levels = ZOOM_LEVELS[0] # Updated by viewport size change
 const ZOOM_DURATION = 0.2
@@ -40,7 +54,7 @@ var force_zoom_in := false
 var force_zoom_out := false
 var look_down_height = 160 # Variable not constant because may need to change with resolution
 var look_down_stored_height = 0
-var input_zoom_enabled = false
+var input_zoom_enabled = true
 
 var _current_tween: Tween = null
 
@@ -105,7 +119,7 @@ func zoom_out(force := false):
 func _input(event):
 	# TODO: Is this still true in Godot 4?
 	# input map doesn't work with mouse wheel so must be polled here
-	if input_zoom_enabled:
+	if input_zoom_enabled and input_enabled:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom_in()
@@ -114,7 +128,8 @@ func _input(event):
 				zoom_out()
 
 func _on_viewport_size_changed():
-	var viewport_size = get_viewport().size
+	var window = get_window()
+	var viewport_size = window.content_scale_size if window.content_scale_size.x > 0 and window.content_scale_size.y > 0 else window.size
 	# End any currently running tweens
 	if _current_tween != null and _current_tween.is_valid():
 		_current_tween.kill()
@@ -125,11 +140,16 @@ func _on_viewport_size_changed():
 		if zoom.x >= zoom_levels[i].x and zoom.y >= zoom_levels[i].y:
 			current_level = i
 	# Choose new set of zoom levels
-	var chosen_levels = 0
-	for i in range(1, ZOOM_LEVELS.size()):
-		var test_size = ZOOM_MIN_RESOLUTION[i-1]
-		if viewport_size.x >= test_size.x or viewport_size.y >= test_size.y:
-			chosen_levels = i
-	zoom_levels = ZOOM_LEVELS[chosen_levels]
+	#var chosen_levels = 0
+	#for i in range(1, ZOOM_LEVELS.size()):
+		#var test_size = ZOOM_MIN_RESOLUTION[i-1]
+		#if viewport_size.x >= test_size.x or viewport_size.y >= test_size.y:
+			#chosen_levels = i
+	var zoom_levels_num = [
+		3.0,
+		1.5
+	]
+	zoom_levels_num = zoom_levels_num.map(func(x): return ceil(x * max(viewport_size.x / 1280, viewport_size.y / 720)))
+	zoom_levels = zoom_levels_num.map(func(x): return Vector2(x, x))
 	# Finally update current zoom
 	zoom = zoom_levels[current_level]

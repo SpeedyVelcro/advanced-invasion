@@ -29,21 +29,27 @@ GameStatus="*res://AutoLoad/GameStatus/GameStatus.tscn"
 StoryStatus="*res://AutoLoad/StoryStatus/StoryStatus.tscn"
 AchievementManager="*res://AutoLoad/AchievementManager/AchievementManager.tscn"
 AchievementWatchdog="*res://AutoLoad/AchievementWatchdog/AchievementWatchdog.tscn"
-OptionsManager="*res://AutoLoad/OptionsManager/OptionsManager.tscn"
 NewgroundsIntegration="*res://AutoLoad/NewgroundsIntegration/NewgroundsIntegration.tscn"
 GameJoltIntegration="*res://AutoLoad/GameJoltIntegration/GameJoltIntegration.tscn"
+OptionsConfigProvider="*uid://crsy5td2cnkvc"
+OptionsProvider="*uid://bmxkuqvyotq70"
+ManagedOptionsSynchronizer="*uid://bbamh7evxqacu"
+OptionsLifecycle="*uid://bg6i2usjy2ola"
+OptionsSaver="*uid://byw1rlb3hl7lb"
+UIScaleLimiter="*uid://bvyix0sadk4ni"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("gamejolt_api_v2", "newgrounds")
+enabled=PackedStringArray("res://addons/sv_options_menu/plugin.cfg")
 
 [global]
 

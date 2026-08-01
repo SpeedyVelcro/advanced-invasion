@@ -30,7 +30,7 @@ func _on_BackButton_pressed():
 	go_back()
 
 func go_back():
-	OptionsManager.save()
+	OptionsSaver.save()
 	emit_signal("back")
 
 func _on_IntegrationSettings_activated():

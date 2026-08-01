@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://cjh1pf17a5clq" path="res://Entity/Boss/LastStand/LastStandInitialVirusCarrier.gd" id="24"]
 [ext_resource type="Texture2D" uid="uid://b7qiaesh5unig" path="res://Art/Creep/VirusPawn/VirusPawnRight.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://btp0poxrl7ll" path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" id="26"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" id="27"]
+[ext_resource type="PackedScene" uid="uid://bjoy05uwtg22l" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" id="27"]
 [ext_resource type="PackedScene" path="res://Entity/Boss/LastStand/TealLastStand/TealLastStand.tscn" id="28"]
 [ext_resource type="AudioStream" uid="uid://c8x024d35bxtm" path="res://Sound/Weapon/LightRetroGun.wav" id="29"]
 

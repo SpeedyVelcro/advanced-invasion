@@ -1,8 +1,8 @@
 extends Control
 
-@onready var title_label = $VBoxContainer/TitleLabel
-@onready var rich_label = $VBoxContainer/RichTextLabel
-@onready var vbox_container = $VBoxContainer
+@onready var title_label = $SubViewportContainer/UIScalingSubViewport/VBoxContainer/TitleLabel
+@onready var rich_label = $SubViewportContainer/UIScalingSubViewport/VBoxContainer/RichTextLabel
+@onready var vbox_container = $SubViewportContainer/UIScalingSubViewport/VBoxContainer
 @onready var finish_timer = $FinishTimer
 @onready var start_timer = $StartTimer
 @onready var music_start_timer = $MusicStartTimer

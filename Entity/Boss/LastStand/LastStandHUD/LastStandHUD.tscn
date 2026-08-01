@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpi4lhqk7k1lk" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://drajarfqwdb8u" path="res://Font/SchoonSquare/SchoonSquare-Regular.ttf" id="2_gd61e"]
+[ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="2_knyaj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
 font = ExtResource("2_gd61e")
@@ -16,7 +17,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:offset_top")
+tracks/0/path = NodePath("SubViewportContainer/UIScalingSubViewport/Label:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("SubViewportContainer/UIScalingSubViewport/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -44,7 +45,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:offset_top")
+tracks/0/path = NodePath("SubViewportContainer/UIScalingSubViewport/Label:offset_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("SubViewportContainer/UIScalingSubViewport/Label:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -76,11 +77,29 @@ _data = {
 layer = 96
 script = ExtResource("1")
 
-[node name="Label" type="Label" parent="." unique_id=1740186203]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=47621566]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_target = true
+
+[node name="UIScalingSubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=634560357]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+script = ExtResource("2_knyaj")
+metadata/_custom_type_script = "uid://q556kuuqjbtq"
+
+[node name="Label" type="Label" parent="SubViewportContainer/UIScalingSubViewport" unique_id=1740186203]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -80.0
 offset_bottom = 128.0
 theme_override_colors/font_color = Color(0, 0.862745, 0.0901961, 1)
 theme_override_fonts/font = ExtResource("2_gd61e")
@@ -89,5 +108,6 @@ text = "200 Viruses Remaining"
 label_settings = SubResource("LabelSettings_n4y2n")
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1162256061]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/UIScalingSubViewport" unique_id=1162256061]
+root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_knyaj")

@@ -77,11 +77,11 @@ func res_as_string(resolution : Vector2)->String:
 	return str(resolution.x) + "x" + str(resolution.y)
 
 func _on_ApplyButton_pressed():
-	OptionsManager.set_display(selected_resolution, fullscreen_checkbox.is_pressed(), vsync_checkbox.is_pressed())
+	# OptionsManager.set_display(selected_resolution, fullscreen_checkbox.is_pressed(), vsync_checkbox.is_pressed())
 	confirm_prompt.show()
 
 func _on_ConfirmPrompt_no():
-	OptionsManager.set_display(current_resolution, current_fullscreen, current_vsync)
+	# OptionsManager.set_display(current_resolution, current_fullscreen, current_vsync)
 	revert_controls()
 
 func _on_ConfirmPrompt_yes():

@@ -149,6 +149,8 @@ func _on_StartGUI_about():
 	change_state(STATE_CREDITS)
 
 func _on_StartGUI_quit():
+	OptionsSaver.save()
+	
 	if OS.get_name() == "HTML5":
 		fade_start_menu = true
 		change_state(STATE_PROMPT)

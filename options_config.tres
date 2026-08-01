@@ -48,6 +48,56 @@ reference = SubResource("Resource_odl16")
 name = "UI"
 metadata/_custom_type_script = "uid://bgpntw2sb3xq1"
 
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_y0x8s"]
+button_index = 13
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_3sj0y"]
+axis_value = -1.0
+
+[sub_resource type="Resource" id="Resource_n4y2n"]
+script = ExtResource("3_yn0ri")
+locked_events = Array[InputEvent]([SubResource("InputEventJoypadButton_y0x8s"), SubResource("InputEventJoypadMotion_3sj0y")])
+metadata/_custom_type_script = "uid://dt7kofv62xt16"
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_yn0ri"]
+button_index = 14
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_24d8f"]
+axis_value = 1.0
+
+[sub_resource type="Resource" id="Resource_gk03p"]
+script = ExtResource("3_yn0ri")
+locked_events = Array[InputEvent]([SubResource("InputEventJoypadButton_yn0ri"), SubResource("InputEventJoypadMotion_24d8f")])
+metadata/_custom_type_script = "uid://dt7kofv62xt16"
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_aax7n"]
+
+[sub_resource type="Resource" id="Resource_qpkem"]
+script = ExtResource("3_yn0ri")
+locked_events = Array[InputEvent]([SubResource("InputEventJoypadButton_aax7n")])
+metadata/_custom_type_script = "uid://dt7kofv62xt16"
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_dcy7j"]
+axis = 5
+axis_value = 1.0
+
+[sub_resource type="Resource" id="Resource_bi63i"]
+script = ExtResource("3_yn0ri")
+locked_events = Array[InputEvent]([SubResource("InputEventJoypadMotion_dcy7j")])
+metadata/_custom_type_script = "uid://dt7kofv62xt16"
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_odl16"]
+button_index = 12
+
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_sbmeu"]
+axis = 1
+axis_value = 1.0
+
+[sub_resource type="Resource" id="Resource_j06r2"]
+script = ExtResource("3_yn0ri")
+locked_events = Array[InputEvent]([SubResource("InputEventJoypadButton_odl16"), SubResource("InputEventJoypadMotion_sbmeu")])
+metadata/_custom_type_script = "uid://dt7kofv62xt16"
+
 [resource]
 script = ExtResource("4_24d8f")
 auto_start = false
@@ -63,3 +113,10 @@ manage_ui_scaling = true
 ui_scaling_reference_resolution = Vector2i(1280, 720)
 manage_input_map = true
 editable_input_actions = Array[String](["move_left", "move_right", "jump", "attack", "look_down"])
+locked_input_events = Dictionary[String, ExtResource("3_yn0ri")]({
+"attack": SubResource("Resource_bi63i"),
+"jump": SubResource("Resource_qpkem"),
+"look_down": SubResource("Resource_j06r2"),
+"move_left": SubResource("Resource_n4y2n"),
+"move_right": SubResource("Resource_gk03p")
+})

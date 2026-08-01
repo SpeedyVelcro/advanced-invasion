@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://duiy0ct63l2lx" path="res://GUI/MainMenu/StartPrompt.gd" id="6"]
 [ext_resource type="PackedScene" uid="uid://53fw81hg38d2" path="res://GUI/MainMenu/StorySetup.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://GUI/MainMenu/Extras.tscn" id="8"]
+[ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="8_i7lx1"]
 [ext_resource type="PackedScene" uid="uid://g4hx2iqhrajh" path="res://GUI/Jukebox/Jukebox.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" id="10"]
-[ext_resource type="PackedScene" path="res://GUI/Options/Options.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://c4ub7ekaomtov" path="res://GUI/Options/Options.tscn" id="11"]
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="12"]
 [ext_resource type="Texture2D" uid="uid://bv5yg0pbiaycv" path="res://Art/Character/Militia/MilitiaLeft.png" id="13"]
 [ext_resource type="Texture2D" uid="uid://ua0i15te18ho" path="res://Art/Character/Militia/MilitiaRight.png" id="14"]
@@ -71,16 +72,16 @@ _data = {
 
 [node name="MainMenu" type="Node" unique_id=722674970 node_paths=PackedStringArray("version_number_label")]
 script = ExtResource("1")
-start_prompt_path = NodePath("CanvasLayer/StartPrompt")
-integration_menu_path = NodePath("CanvasLayer/IntegrationMenu")
-start_gui_path = NodePath("CanvasLayer/StartGUI")
-story_setup_path = NodePath("CanvasLayer/StorySetup")
-extras_path = NodePath("CanvasLayer/Extras")
-jukebox_path = NodePath("CanvasLayer/Jukebox")
-credits_path = NodePath("CanvasLayer/Credits")
-achievements_path = NodePath("CanvasLayer/AchievementsMenu")
-options_path = NodePath("CanvasLayer/Options")
-version_number_label = NodePath("CanvasLayer/VBoxContainer/VersionNumber")
+start_prompt_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt")
+integration_menu_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/IntegrationMenu")
+start_gui_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI")
+story_setup_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/StorySetup")
+extras_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Extras")
+jukebox_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Jukebox")
+credits_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Credits")
+achievements_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/AchievementsMenu")
+options_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options")
+version_number_label = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/VBoxContainer/VersionNumber")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1152890348]
 
@@ -195,7 +196,21 @@ color = Color(0, 0, 0, 1)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=912248200]
 layer = 40
 
-[node name="Title" type="Label" parent="CanvasLayer" unique_id=1107702225]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1986343889]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_target = true
+
+[node name="UIScalingSubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1977815586]
+transparent_bg = true
+size = Vector2i(1280, 720)
+script = ExtResource("8_i7lx1")
+metadata/_custom_type_script = "uid://q556kuuqjbtq"
+
+[node name="Title" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1107702225]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 64.0
@@ -206,7 +221,7 @@ theme_override_fonts/font = ExtResource("4")
 text = "Advanced Invasion"
 horizontal_alignment = 1
 
-[node name="StartPrompt" type="Control" parent="CanvasLayer" unique_id=1064318338]
+[node name="StartPrompt" type="Control" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1064318338]
 layout_mode = 3
 anchors_preset = 12
 anchor_top = 1.0
@@ -217,7 +232,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("6")
 
-[node name="Label" type="Label" parent="CanvasLayer/StartPrompt" unique_id=1929402031]
+[node name="Label" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt" unique_id=1929402031]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 anchor_right = 1.0
@@ -226,69 +241,67 @@ theme_override_fonts/font = ExtResource("18")
 text = "Press any button to start"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/StartPrompt" unique_id=2073591215]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt" unique_id=2073591215]
 libraries/ = SubResource("AnimationLibrary_h5uq1")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/StartPrompt" unique_id=2060398037]
+[node name="Timer" type="Timer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt" unique_id=2060398037]
 one_shot = true
 
-[node name="IntegrationMenu" parent="CanvasLayer" unique_id=1811649685 instance=ExtResource("17")]
+[node name="IntegrationMenu" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1811649685 instance=ExtResource("17")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartGUI" parent="CanvasLayer" unique_id=2051884794 instance=ExtResource("3")]
+[node name="StartGUI" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=2051884794 instance=ExtResource("3")]
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StorySetup" parent="CanvasLayer" unique_id=517522825 instance=ExtResource("7")]
+[node name="StorySetup" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=517522825 instance=ExtResource("7")]
 visible = false
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Options" parent="CanvasLayer" unique_id=1293521007 instance=ExtResource("11")]
+[node name="Options" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1293521007 instance=ExtResource("11")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Extras" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1517476385 instance=ExtResource("8")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Extras" parent="CanvasLayer" unique_id=1517476385 instance=ExtResource("8")]
+[node name="Credits" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1119660561 instance=ExtResource("2")]
+visible = false
+
+[node name="Jukebox" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1167953524 instance=ExtResource("9")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AchievementsMenu" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=914410462 instance=ExtResource("10")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Credits" parent="CanvasLayer" unique_id=1119660561 instance=ExtResource("2")]
-visible = false
-
-[node name="Jukebox" parent="CanvasLayer" unique_id=1167953524 instance=ExtResource("9")]
-visible = false
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="AchievementsMenu" parent="CanvasLayer" unique_id=914410462 instance=ExtResource("10")]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1099388602]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1099388602]
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 256.0
+offset_right = 371.0
 offset_bottom = 96.0
 
-[node name="VersionNumber" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1824073452]
+[node name="VersionNumber" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/VBoxContainer" unique_id=1824073452]
 layout_mode = 2
 text = "v1.0.0"
 
-[node name="EpilepsyWarning" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1456475199]
+[node name="EpilepsyWarning" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/VBoxContainer" unique_id=1456475199]
 layout_mode = 2
 text = "This game contains fullscreen flashing effects."
 
@@ -296,20 +309,20 @@ text = "This game contains fullscreen flashing effects."
 wait_time = 0.1
 one_shot = true
 
-[connection signal="timeout" from="CanvasLayer/StartPrompt/Timer" to="CanvasLayer/StartPrompt" method="_on_Timer_timeout"]
-[connection signal="back" from="CanvasLayer/IntegrationMenu" to="." method="_on_IntegrationMenu_back"]
-[connection signal="about" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_about"]
-[connection signal="extras" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_extras"]
-[connection signal="load_game" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_load_game"]
-[connection signal="new_game" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_new_game"]
-[connection signal="options" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_options"]
-[connection signal="quit" from="CanvasLayer/StartGUI" to="." method="_on_StartGUI_quit"]
-[connection signal="back" from="CanvasLayer/StorySetup" to="." method="_on_StorySetup_back"]
-[connection signal="back" from="CanvasLayer/Options" to="." method="_on_Options_back"]
-[connection signal="achievements" from="CanvasLayer/Extras" to="." method="_on_Extras_achievements"]
-[connection signal="back" from="CanvasLayer/Extras" to="." method="_on_Extras_back"]
-[connection signal="jukebox" from="CanvasLayer/Extras" to="." method="_on_Extras_jukebox"]
-[connection signal="back" from="CanvasLayer/Credits" to="." method="_on_Credits_back"]
-[connection signal="back" from="CanvasLayer/Jukebox" to="." method="_on_Jukebox_back"]
-[connection signal="back" from="CanvasLayer/AchievementsMenu" to="." method="_on_AchievementsMenu_back"]
+[connection signal="timeout" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt/Timer" to="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartPrompt" method="_on_Timer_timeout"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/IntegrationMenu" to="." method="_on_IntegrationMenu_back"]
+[connection signal="about" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_about"]
+[connection signal="extras" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_extras"]
+[connection signal="load_game" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_load_game"]
+[connection signal="new_game" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_new_game"]
+[connection signal="options" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_options"]
+[connection signal="quit" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StartGUI" to="." method="_on_StartGUI_quit"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/StorySetup" to="." method="_on_StorySetup_back"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options" to="." method="_on_Options_back"]
+[connection signal="achievements" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Extras" to="." method="_on_Extras_achievements"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Extras" to="." method="_on_Extras_back"]
+[connection signal="jukebox" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Extras" to="." method="_on_Extras_jukebox"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Credits" to="." method="_on_Credits_back"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Jukebox" to="." method="_on_Jukebox_back"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/AchievementsMenu" to="." method="_on_AchievementsMenu_back"]
 [connection signal="timeout" from="StartPromptGrace" to="." method="_on_StartPromptGrace_timeout"]

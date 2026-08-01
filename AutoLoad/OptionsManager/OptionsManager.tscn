@@ -1,7 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=3 uid="uid://bqq1id2rnqf5w"]
 
-[ext_resource path="res://AutoLoad/OptionsManager/OptionsManager.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://cesh2wrkmmf8w" path="res://AutoLoad/OptionsManager/OptionsManager.gd" id="1"]
 
-[node name="OptionsManager" type="Node"]
-script = ExtResource( 1 )
+[node name="OptionsManager" type="Node" unique_id=918008951]
+script = ExtResource("1")
+
 [connection signal="tree_exiting" from="." to="." method="_on_OptionsManager_tree_exiting"]

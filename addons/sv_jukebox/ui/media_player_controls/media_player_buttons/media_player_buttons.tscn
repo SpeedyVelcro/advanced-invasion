@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cgnlb85whisev"]
+
+[ext_resource type="Script" uid="uid://bs07qibjmt164" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/media_player_buttons.gd" id="1_8rtc8"]
+[ext_resource type="PackedScene" uid="uid://fffb5jwgl5hm" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/play_pause_button/play_pause_button.tscn" id="1_51pkj"]
+[ext_resource type="Texture2D" uid="uid://d2xutkktvdii4" path="res://addons/sv_jukebox/icon/play.svg" id="2_ll77x"]
+[ext_resource type="Texture2D" uid="uid://drjw2btceo2eh" path="res://addons/sv_jukebox/icon/pause.svg" id="3_vw4ta"]
+[ext_resource type="PackedScene" uid="uid://co6p48jsig32n" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/stop_button/stop_button.tscn" id="4_vw4ta"]
+[ext_resource type="Texture2D" uid="uid://ldtuf1d1icp7" path="res://addons/sv_jukebox/icon/stop.svg" id="4_yssae"]
+[ext_resource type="Texture2D" uid="uid://bw882u3sw6vop" path="res://addons/sv_jukebox/icon/skip_forward.svg" id="5_q3lxt"]
+[ext_resource type="Texture2D" uid="uid://deuclc43p23re" path="res://addons/sv_jukebox/icon/skip_backward.svg" id="5_q6mh8"]
+[ext_resource type="PackedScene" uid="uid://dtat6bi3rkij4" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/skip_forward_button/skip_forward_button.tscn" id="6_o1y0g"]
+[ext_resource type="Texture2D" uid="uid://6gcy5ju56c1m" path="res://addons/sv_jukebox/icon/shuffle.svg" id="7_q1bii"]
+[ext_resource type="PackedScene" uid="uid://bhxymvy7lupyt" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/skip_backward_button/skip_backward_button.tscn" id="7_q3lxt"]
+[ext_resource type="Texture2D" uid="uid://ysdlo3pkeg10" path="res://addons/sv_jukebox/icon/shuffle_off.svg" id="8_w83ns"]
+[ext_resource type="Texture2D" uid="uid://bis08eb6ktts8" path="res://addons/sv_jukebox/icon/loop_off.svg" id="9_3hu7u"]
+[ext_resource type="Texture2D" uid="uid://cgmqbr1ekou1x" path="res://addons/sv_jukebox/icon/loop.svg" id="10_p700y"]
+[ext_resource type="PackedScene" uid="uid://doq8mpmifmhru" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/shuffle_button/shuffle_button.tscn" id="11_rn5h3"]
+[ext_resource type="Texture2D" uid="uid://b6md0u2rec0tx" path="res://addons/sv_jukebox/icon/loop_one.svg" id="11_y5lo3"]
+[ext_resource type="PackedScene" uid="uid://cbhw6dn5gy3hq" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/loop_button/loop_button.tscn" id="14_w83ns"]
+
+[node name="MediaPlayerButtons" type="HBoxContainer" unique_id=187863056]
+alignment = 1
+script = ExtResource("1_8rtc8")
+play_icon = ExtResource("2_ll77x")
+pause_icon = ExtResource("3_vw4ta")
+stop_icon = ExtResource("4_yssae")
+skip_backward_icon = ExtResource("5_q6mh8")
+skip_forward_icon = ExtResource("5_q3lxt")
+shuffle_on_icon = ExtResource("7_q1bii")
+shuffle_off_icon = ExtResource("8_w83ns")
+loop_off_icon = ExtResource("9_3hu7u")
+loop_icon = ExtResource("10_p700y")
+loop_one_icon = ExtResource("11_y5lo3")
+
+[node name="SkipBackwardButton" parent="." unique_id=1639146383 instance=ExtResource("7_q3lxt")]
+layout_mode = 2
+
+[node name="StopButton" parent="." unique_id=1162309528 instance=ExtResource("4_vw4ta")]
+layout_mode = 2
+
+[node name="PlayPauseButton" parent="." unique_id=1406065625 instance=ExtResource("1_51pkj")]
+layout_mode = 2
+
+[node name="SkipForwardButton" parent="." unique_id=182009163 instance=ExtResource("6_o1y0g")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="." unique_id=812555585]
+layout_mode = 2
+
+[node name="ShuffleButton" parent="." unique_id=1522905595 instance=ExtResource("11_rn5h3")]
+layout_mode = 2
+
+[node name="LoopButton" parent="." unique_id=745428770 instance=ExtResource("14_w83ns")]
+layout_mode = 2

@@ -173,3 +173,4 @@ batching/precision/uv_contract=true
 general/album="uid://dgx5v27u72ddt"
 general/audio_bus_name="Music"
 general/always_unlocked=["download", "militia"]
+general/unlocks_file="user://music-unlocks.json"

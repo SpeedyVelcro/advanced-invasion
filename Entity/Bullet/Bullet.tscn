@@ -1,16 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=3 uid="uid://cpu4q2s24nnnm"]
 
-[ext_resource path="res://Entity/Bullet/Bullet.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://d1jdwlg7jm57p" path="res://Entity/Bullet/Bullet.gd" id="1"]
 
-[node name="Bullet" type="RigidBody2D" groups=[
-"bullet",
-]]
+[node name="Bullet" type="RigidBody2D" unique_id=221758458 groups=["bullet"]]
 collision_layer = 16
 collision_mask = 73
 gravity_scale = 0.0
 continuous_cd = 1
-max_contacts_reported = 1
 contact_monitor = true
-linear_damp = 0.0
-angular_damp = 0.0
-script = ExtResource( 1 )
+max_contacts_reported = 1
+linear_damp_mode = 1
+script = ExtResource("1")

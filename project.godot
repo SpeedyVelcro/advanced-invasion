@@ -22,6 +22,13 @@ config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
+OptionsConfigProvider="*uid://crsy5td2cnkvc"
+OptionsProvider="*uid://bmxkuqvyotq70"
+ManagedOptionsSynchronizer="*uid://bbamh7evxqacu"
+OptionsLifecycle="*uid://bg6i2usjy2ola"
+OptionsSaver="*uid://byw1rlb3hl7lb"
+UIScaleLimiter="*uid://bvyix0sadk4ni"
+SVJukebox="*uid://bpddgxcxhtwfw"
 DialogueManager="*res://AutoLoad/DialogueManager/DialogueManager.tscn"
 SceneTransition="*res://AutoLoad/SceneTransition/SceneTransition.tscn"
 GlobalMusic="*res://AutoLoad/GlobalMusic/GlobalMusic.tscn"
@@ -31,13 +38,6 @@ AchievementManager="*res://AutoLoad/AchievementManager/AchievementManager.tscn"
 AchievementWatchdog="*res://AutoLoad/AchievementWatchdog/AchievementWatchdog.tscn"
 NewgroundsIntegration="*res://AutoLoad/NewgroundsIntegration/NewgroundsIntegration.tscn"
 GameJoltIntegration="*res://AutoLoad/GameJoltIntegration/GameJoltIntegration.tscn"
-OptionsConfigProvider="*uid://crsy5td2cnkvc"
-OptionsProvider="*uid://bmxkuqvyotq70"
-ManagedOptionsSynchronizer="*uid://bbamh7evxqacu"
-OptionsLifecycle="*uid://bg6i2usjy2ola"
-OptionsSaver="*uid://byw1rlb3hl7lb"
-UIScaleLimiter="*uid://bvyix0sadk4ni"
-SVJukebox="*uid://bpddgxcxhtwfw"
 
 [display]
 

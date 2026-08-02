@@ -44,14 +44,9 @@ var _options: GameOptions
 func _ready() -> void:
 	_options_config = OptionsConfigProvider.get_config()
 	_options = OptionsProvider.get_local_options()
-	_options.option_modified.connect(_on_options_option_modifed)
+	_connect_signals()
 	
-	if _options_config.manage_resolution:
-		_update_resolution()
-	
-	if _options_config.manage_ui_scaling:
-		var option_value = _options.get_option(_options_config.ui_scale_option_path)
-		_set_ui_scale_from_variant(option_value)
+	_update()
 
 
 func _set_ui_scale_from_variant(value: Variant) -> void:
@@ -60,6 +55,15 @@ func _set_ui_scale_from_variant(value: Variant) -> void:
 		return
 	
 	ui_scale = value
+
+
+func _update() -> void:
+	if _options_config.manage_resolution:
+		_update_resolution()
+	
+	if _options_config.manage_ui_scaling:
+		var option_value = _options.get_option(_options_config.ui_scale_option_path)
+		_set_ui_scale_from_variant(option_value)
 
 
 func _update_resolution() -> void:
@@ -82,10 +86,57 @@ func _update_scaling_properties() -> void:
 
 # Signal connection
 func _on_options_option_modifed(path: String, new_value: Variant) -> void:
+	var relevant := false
+	
 	if _options_config.manage_ui_scaling:
 		if path == _options_config.ui_scale_option_path:
-			_set_ui_scale_from_variant(new_value)
+			relevant = true
 	
 	if _options_config.manage_resolution:
 		if path.begins_with(_options_config.resolution_option_path):
-			_update_resolution()
+			relevant = true
+	
+	if relevant:
+		_update()
+
+
+# Signal connection
+func _on_options_provider_local_options_changed(new_value: GameOptions) -> void:
+	# In downstream projects I have had use cases where the options may be switched
+	# out after ready e.g. when this node is included in an autoloaded scene, ready may
+	# be called before OptionsLifecycle.start_up()
+	_disconnect_option_modified_signal()
+	_options = new_value
+	_connect_option_modified_signal()
+	
+	# New options may have different UI scale or resolution on them, so update
+	_update()
+
+
+func _connect_signals() -> void:
+	if not OptionsProvider.local_options_changed.is_connected(_on_options_provider_local_options_changed):
+		OptionsProvider.local_options_changed.connect(_on_options_provider_local_options_changed)
+	
+	_connect_option_modified_signal()
+
+
+func _disconnect_signals() -> void:
+	if OptionsProvider.local_options_changed.is_connected(_on_options_provider_local_options_changed):
+		OptionsProvider.local_options_changed.disconnect(_on_options_provider_local_options_changed)
+	
+	_disconnect_option_modified_signal()
+
+
+func _connect_option_modified_signal() -> void:
+	if not _options.option_modified.is_connected(_on_options_option_modifed):
+		_options.option_modified.connect(_on_options_option_modifed)
+
+
+func _disconnect_option_modified_signal() -> void:
+	if _options.option_modified.is_connected(_on_options_option_modifed):
+		_options.option_modified.disconnect(_on_options_option_modifed)
+
+
+# Override
+func _exit_tree() -> void:
+	_disconnect_signals()

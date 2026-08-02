@@ -3,15 +3,12 @@
 
 extends CanvasLayer
 
-@onready var viewport = get_tree().get_root()
-@onready var gradient_polygon = get_node("Polygon2D")
-@onready var name_label = $Control/VBoxContainer/HBoxContainer/NameLabel
-@onready var dialogue_label = $Control/VBoxContainer/HBoxContainer/DialogueLabel
+@onready var viewport = $SubViewportContainer/UIScalingSubViewport
+@onready var name_label = $SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel
+@onready var dialogue_label = $SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel
+@onready var gradient_texture_rect := $SubViewportContainer/UIScalingSubViewport/TextureRect
 @onready var voice_audio_player = $VoiceAudioStreamPlayer
 @export var gradient_height_proportion = 0.3
-var gradient_visible_y = 0.0 # Overwritten automatically
-var gradient_hidden_y = 0.0 # Overwritten automatically
-@export var gradient_visibility = 0.0: get = get_gradient_visibility, set = set_gradient_visibility # Number between 0 and 1
 var currently_displayed = false
 enum {STATE_IDLE, # Off screen or going through display/hide animation
 		STATE_TYPEWRITER, # Typing out text
@@ -36,8 +33,7 @@ signal end_broadcast_signal(message) # TODO: better name (this was just a quick 
 
 func _ready():
 	viewport.connect("size_changed", Callable(self, "_on_viewport_size_changed"))
-	_on_viewport_size_changed() # Adapt size once
-	gradient_polygon.set_visible(false)
+	gradient_texture_rect.set_visible(false)
 	name_label.set_visible(false)
 	dialogue_label.set_visible(false)
 	_on_state_enter()
@@ -209,38 +205,9 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		"hide":
 			emit_signal("hidden")
 
-func _on_viewport_size_changed():
-	var size = viewport.size
-	# Adjust polygon
-	var top_left = Vector2(0, 0)
-	var top_right = Vector2(size.x, 0)
-	var bottom_left = Vector2(0, size.y * gradient_height_proportion)
-	var bottom_right = Vector2(size.x, size.y * gradient_height_proportion)
-	var vertices = gradient_polygon.get_polygon()
-	vertices.set(0, top_left)
-	vertices.set(1, top_right)
-	vertices.set(2, bottom_right)
-	vertices.set(3, bottom_left)
-	gradient_polygon.set_polygon(vertices)
-	gradient_hidden_y = size.y
-	gradient_visible_y = ceil(size.y * (1.0 - gradient_height_proportion))
-	# Update position of polygon as values it depends on have changed
-	set_gradient_visibility(get_gradient_visibility())
 
 func play_voice_synth():
 	var pitch = VOICE_SYTNH_PITCH - VOICE_SYNTH_PITCH_VARY
 	pitch += rng.randf() * VOICE_SYNTH_PITCH_VARY * 2
 	voice_audio_player.set_pitch_scale(pitch)
 	voice_audio_player.play()
-
-# Setters and getters
-func set_gradient_visibility(value):
-	gradient_visibility = value
-	if gradient_polygon == null:
-		return
-	var pos = gradient_polygon.get_position()
-	pos.y = gradient_hidden_y * (1 - gradient_visibility) + gradient_visible_y * gradient_visibility
-	gradient_polygon.set_position(pos)
-
-func get_gradient_visibility():
-	return gradient_visibility

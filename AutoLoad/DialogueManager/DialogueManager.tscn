@@ -2,8 +2,16 @@
 
 [ext_resource type="AudioStream" uid="uid://0itnq53p1km1" path="res://Sound/VoiceSynth/VoiceSynth.wav" id="2"]
 [ext_resource type="FontFile" uid="uid://drajarfqwdb8u" path="res://Font/SchoonSquare/SchoonSquare-Regular.ttf" id="2_b0b7v"]
+[ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="2_tkihy"]
 [ext_resource type="Script" uid="uid://celeuq6d4n10b" path="res://AutoLoad/DialogueManager/DialogueManager.gd" id="5"]
 [ext_resource type="Script" uid="uid://d17jn1j5060us" path="res://AutoLoad/DialogueManager/DialogueLabel.gd" id="6"]
+
+[sub_resource type="Gradient" id="Gradient_tkihy"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_318ov"]
+gradient = SubResource("Gradient_tkihy")
+fill_to = Vector2(0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_b0b7v"]
 outline_size = 8
@@ -22,13 +30,64 @@ variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
 base_font = ExtResource("2_b0b7v")
 variation_transform = Transform2D(1, 0.25, 0, 1, 0, 0)
 
+[sub_resource type="Animation" id="Animation_tkihy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="1"]
 resource_name = "hide"
 length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/VBoxContainer/HBoxContainer/DialogueLabel:modulate")
+tracks/0/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -40,7 +99,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/VBoxContainer/HBoxContainer/NameLabel:modulate")
+tracks/1/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -52,50 +111,50 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/VBoxContainer/HBoxContainer/NameLabel:visible")
+tracks/2/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/VBoxContainer/HBoxContainer/DialogueLabel:visible")
+tracks/3/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Polygon2D:visible")
+tracks/4/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:gradient_visibility")
+tracks/5/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="2"]
@@ -103,7 +162,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control/VBoxContainer/HBoxContainer/DialogueLabel:modulate")
+tracks/0/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -115,7 +174,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Control/VBoxContainer/HBoxContainer/NameLabel:modulate")
+tracks/1/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -127,7 +186,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Control/VBoxContainer/HBoxContainer/NameLabel:visible")
+tracks/2/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/NameLabel:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -139,7 +198,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Control/VBoxContainer/HBoxContainer/DialogueLabel:visible")
+tracks/3/path = NodePath("SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer/DialogueLabel:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -151,30 +210,31 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Polygon2D:visible")
+tracks/4/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewportContainer/UIScalingSubViewport/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:gradient_visibility")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tkihy"]
 _data = {
+&"RESET": SubResource("Animation_tkihy"),
 &"hide": SubResource("1"),
 &"show": SubResource("2")
 }
@@ -182,39 +242,62 @@ _data = {
 [node name="DialogueManager" type="CanvasLayer" unique_id=502321193]
 layer = 120
 script = ExtResource("5")
-gradient_visibility = 1.0
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1483763378]
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 256, 1024, 256, 1024, 600, 0, 600)
-vertex_colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1712544816]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_target = true
 
-[node name="Control" type="Control" parent="." unique_id=23530541]
+[node name="UIScalingSubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=448309428]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+script = ExtResource("2_tkihy")
+metadata/_custom_type_script = "uid://q556kuuqjbtq"
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/UIScalingSubViewport" unique_id=18701094]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -240.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_318ov")
+
+[node name="Control" type="Control" parent="SubViewportContainer/UIScalingSubViewport" unique_id=23530541]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=682661860]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/UIScalingSubViewport/Control" unique_id=682661860]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer" unique_id=1473914829]
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer" unique_id=1473914829]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer" unique_id=1019156556]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer" unique_id=1019156556]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="NameLabel" type="Label" parent="Control/VBoxContainer/HBoxContainer" unique_id=1260319521]
+[node name="NameLabel" type="Label" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer" unique_id=1260319521]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -226,12 +309,12 @@ label_settings = SubResource("LabelSettings_b0b7v")
 horizontal_alignment = 2
 clip_text = true
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=1918039032]
+[node name="ReferenceRect2" type="ReferenceRect" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer" unique_id=1918039032]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="DialogueLabel" type="RichTextLabel" parent="Control/VBoxContainer/HBoxContainer" unique_id=160300814]
+[node name="DialogueLabel" type="RichTextLabel" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer" unique_id=160300814]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -251,12 +334,12 @@ bbcode_enabled = true
 text = "[center][outline_size=8][outline_color=black]This looks promising. Follow me![/outline_color][/outline_size][/center]"
 script = ExtResource("6")
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=224949226]
+[node name="ReferenceRect3" type="ReferenceRect" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer" unique_id=224949226]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 mouse_filter = 2
 
-[node name="ReferenceRect" type="ReferenceRect" parent="Control/VBoxContainer/HBoxContainer" unique_id=371524985]
+[node name="ReferenceRect" type="ReferenceRect" parent="SubViewportContainer/UIScalingSubViewport/Control/VBoxContainer/HBoxContainer" unique_id=371524985]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

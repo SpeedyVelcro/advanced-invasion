@@ -1,0 +1,139 @@
+[gd_resource type="Resource" script_class="AlbumInfo" format=3 uid="uid://dgx5v27u72ddt"]
+
+[ext_resource type="Script" uid="uid://chvpucuf8rp7d" path="res://addons/sv_jukebox/data/album_disc_info.gd" id="1_67ixv"]
+[ext_resource type="Script" uid="uid://ctgnm5iymuhhy" path="res://addons/sv_jukebox/data/track_info.gd" id="2_uocwd"]
+[ext_resource type="Script" uid="uid://c4mywst67rhre" path="res://addons/sv_jukebox/data/album_info.gd" id="3_elk2l"]
+
+[sub_resource type="Resource" id="Resource_imag7"]
+script = ExtResource("2_uocwd")
+id = "download"
+looping_stream_path = "uid://dyf74mdtrh8rg"
+title = "download"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_tykey"]
+script = ExtResource("2_uocwd")
+id = "invasion"
+looping_stream_path = "uid://cpan8gxo6j2nd"
+title = "invasion"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_3nob1"]
+script = ExtResource("2_uocwd")
+id = "meager"
+looping_stream_path = "uid://dgushva6f8oif"
+title = "meager"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_xndq8"]
+script = ExtResource("2_uocwd")
+id = "firefly"
+looping_stream_path = "uid://q217yb7fmdsi"
+title = "firefly"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_0ju0m"]
+script = ExtResource("2_uocwd")
+id = "anxiety"
+looping_stream_path = "uid://bjo0jjdpd5lrd"
+title = "anxiety"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_bdvte"]
+script = ExtResource("2_uocwd")
+id = "sanctuary"
+looping_stream_path = "uid://b78ho6o58vcli"
+title = "sanctuary"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_mlwcp"]
+script = ExtResource("2_uocwd")
+id = "brash"
+looping_stream_path = "uid://bgiu6mx3p42y0"
+title = "brash"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_o48fh"]
+script = ExtResource("2_uocwd")
+id = "militia"
+looping_stream_path = "uid://cpeuoxp3ith6e"
+title = "militia"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_tspgs"]
+script = ExtResource("2_uocwd")
+id = "deathbed"
+linear_stream_path = "uid://bqsokfmp3yv2r"
+title = "deathbed"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_hi67n"]
+script = ExtResource("2_uocwd")
+id = "petra"
+looping_stream_path = "uid://1fx4ivvnl23"
+title = "petra"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_di7kv"]
+script = ExtResource("2_uocwd")
+id = "dynamite"
+looping_stream_path = "uid://34nr33282sgj"
+title = "dynamite"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_x0jhq"]
+script = ExtResource("2_uocwd")
+id = "favour"
+linear_stream_path = "uid://doj2uyk2mx7be"
+title = "favour"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_fugso"]
+script = ExtResource("2_uocwd")
+id = "brash_fakeout"
+linear_stream_path = "uid://bfqfbvhbxb2ht"
+title = "brash (Fakeout Version)"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_v2jl6"]
+script = ExtResource("2_uocwd")
+id = "brash_intro"
+linear_stream_path = "uid://bfyn7bxnbfy3a"
+title = "brash (Intro Only)"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_5nqiv"]
+script = ExtResource("2_uocwd")
+id = "brash_no_intro"
+looping_stream_path = "uid://buimlfp78y8xa"
+title = "brash (No Intro)"
+artists = Array[String](["SpeedyVelcro"])
+metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
+
+[sub_resource type="Resource" id="Resource_pn6q1"]
+script = ExtResource("1_67ixv")
+side_a = Array[ExtResource("2_uocwd")]([SubResource("Resource_imag7"), SubResource("Resource_tykey"), SubResource("Resource_3nob1"), SubResource("Resource_xndq8"), SubResource("Resource_0ju0m"), SubResource("Resource_bdvte"), SubResource("Resource_mlwcp"), SubResource("Resource_o48fh"), SubResource("Resource_tspgs"), SubResource("Resource_hi67n"), SubResource("Resource_di7kv"), SubResource("Resource_x0jhq")])
+side_b = Array[ExtResource("2_uocwd")]([SubResource("Resource_fugso"), SubResource("Resource_v2jl6"), SubResource("Resource_5nqiv")])
+metadata/_custom_type_script = "uid://chvpucuf8rp7d"
+
+[resource]
+script = ExtResource("3_elk2l")
+discs = Array[ExtResource("1_67ixv")]([SubResource("Resource_pn6q1")])
+title = "Advanced Invasion OST"
+liner_notes = "These are all MIDIs rendered using Roland SoundCanvas VA with SC-88 Pro sounds (though the VST is a little buggy so I might be wrong about that.)"
+download_url = "https://speedyvelcro.com/music/advanced-invasion-ost/"
+metadata/_custom_type_script = "uid://c4mywst67rhre"

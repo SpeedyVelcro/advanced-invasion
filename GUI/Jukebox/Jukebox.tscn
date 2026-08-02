@@ -1,21 +1,33 @@
 [gd_scene format=3 uid="uid://g4hx2iqhrajh"]
 
 [ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="1"]
-[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansBold.tres" id="2"]
-[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansBoldItalic.tres" id="3"]
-[ext_resource type="FontFile" path="res://Font/NotoSans/NotoSansItalic.tres" id="4"]
+[ext_resource type="Script" uid="uid://fjpidxpcjgbo" path="res://addons/sv_jukebox/ui_controller/ui_controller.gd" id="2_tqbjq"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="5"]
+[ext_resource type="PackedScene" uid="uid://fsot1vh4mmw0" path="res://addons/sv_jukebox/ui/play_all_button/play_all_button.tscn" id="5_ocueo"]
 [ext_resource type="Script" uid="uid://b6pbdrermcb6" path="res://GUI/Jukebox/Jukebox.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://ce6b2cxp556du" path="res://addons/sv_jukebox/ui/shuffle_all_button/shuffle_all_button.tscn" id="6_c42l4"]
+[ext_resource type="PackedScene" uid="uid://ctwlw4jbbvssn" path="res://addons/sv_jukebox/ui/buttons_track_selector/buttons_track_selector.tscn" id="7_nk4mp"]
+[ext_resource type="PackedScene" uid="uid://bc621wkqr7rhs" path="res://addons/sv_jukebox/ui/info/selected_track_title/selected_track_title.tscn" id="8_gr00i"]
+[ext_resource type="PackedScene" uid="uid://8ep2u88yr68m" path="res://addons/sv_jukebox/ui/info/selected_liner_notes/selected_liner_notes.tscn" id="9_bliyb"]
+[ext_resource type="StyleBox" uid="uid://bl75kpk4e8x03" path="res://GUI/Themes/MenuGrooveStylebox.tres" id="9_ocueo"]
+[ext_resource type="PackedScene" uid="uid://fe0fxs0lyk1a" path="res://addons/sv_jukebox/ui/info/currently_playing_title/currently_playing_title.tscn" id="10_m477u"]
+[ext_resource type="PackedScene" uid="uid://dia8o3sgcsxka" path="res://addons/sv_jukebox/ui/media_player_controls/time_label/time_label.tscn" id="11_038yf"]
+[ext_resource type="PackedScene" uid="uid://i2onovq88kp6" path="res://addons/sv_jukebox/ui/media_player_controls/seek_bar/seek_bar.tscn" id="12_pss8n"]
+[ext_resource type="PackedScene" uid="uid://cgnlb85whisev" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/media_player_buttons.tscn" id="13_c0m34"]
+[ext_resource type="PackedScene" uid="uid://cxkio4e0gvbaa" path="res://addons/sv_jukebox/ui/download_album_button/download_album_button.tscn" id="14_sfeo8"]
 
 [node name="Jukebox" type="Control" unique_id=1641617514]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6")
-default_commentary = "[b]Advanced Invasion OST[/b]
 
-These are all MIDIs rendered using Roland SoundCanvas VA with SC-88 Pro sounds (though the VST is a little buggy so I might be wrong about that)."
+[node name="SVJukeboxUIController" type="Node" parent="." unique_id=1804520543]
+script = ExtResource("2_tqbjq")
+metadata/_custom_type_script = "uid://fjpidxpcjgbo"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1723205291]
 layout_mode = 0
@@ -24,91 +36,133 @@ anchor_bottom = 1.0
 offset_left = -1.5874
 offset_right = -1.5874
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1203826575]
-custom_minimum_size = Vector2(560, 480)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1334899843]
+custom_minimum_size = Vector2(640, 480)
 layout_mode = 2
 theme = ExtResource("5")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=460517560]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=460517560]
+layout_mode = 2
 
-[node name="JukeboxTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1819456265]
+[node name="JukeboxTitle" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1819456265]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1")
 text = "Jukebox"
 horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=151592394]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=151592394]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=1361432965]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1361432965]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=205829340]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=607573988]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="EntryContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=462935578]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=739854650]
+layout_mode = 2
+
+[node name="PlayAllButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1757967544 node_paths=PackedStringArray("ui_controller") instance=ExtResource("5_ocueo")]
 layout_mode = 2
 size_flags_horizontal = 3
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=374720767]
+[node name="ShuffleAllButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=268842193 node_paths=PackedStringArray("ui_controller") instance=ExtResource("6_c42l4")]
+layout_mode = 2
+size_flags_horizontal = 3
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1700354901]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 5
+
+[node name="SVJukeboxButtonsTrackSelector" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer/ScrollContainer" unique_id=2058736376 node_paths=PackedStringArray("ui_controller") instance=ExtResource("7_nk4mp")]
+layout_mode = 2
+size_flags_horizontal = 3
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=374720767]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1427873916]
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1427873916]
 layout_mode = 2
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=1166326047]
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1166326047]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=607573988]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=270666238]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="CommentaryLabel" type="RichTextLabel" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1128925402]
+[node name="SelectedTrackTitle" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=571218577 node_paths=PackedStringArray("ui_controller") instance=ExtResource("8_gr00i")]
 layout_mode = 2
-size_flags_horizontal = 3
+ui_controller = NodePath("../../../../../../SVJukeboxUIController")
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=855643695]
+layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/bold_font = ExtResource("2")
-theme_override_fonts/bold_italics_font = ExtResource("3")
-theme_override_fonts/italics_font = ExtResource("4")
-bbcode_enabled = true
-text = "#. song
+theme_override_styles/panel = ExtResource("9_ocueo")
 
-by SpeedyVelcro
+[node name="SelectedLinerNotes" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=1854171085 node_paths=PackedStringArray("ui_controller") instance=ExtResource("9_bliyb")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
 
-Lorem ipsum dolor sit amet"
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1835004598]
+layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=2117937233]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1570845538]
+layout_mode = 2
+text = "Playing:"
+
+[node name="CurrentlyPlayingTitle" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1375628940 node_paths=PackedStringArray("ui_controller") instance=ExtResource("10_m477u")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+display_album = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=51545690]
+layout_mode = 2
+
+[node name="TimeLabel" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=634770239 node_paths=PackedStringArray("ui_controller") instance=ExtResource("11_038yf")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+
+[node name="SeekBar" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1416280595 node_paths=PackedStringArray("ui_controller") instance=ExtResource("12_pss8n")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+
+[node name="TimeLabel2" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=570919794 node_paths=PackedStringArray("ui_controller") instance=ExtResource("11_038yf")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
+type = 4
+
+[node name="MediaPlayerButtons" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=187863056 node_paths=PackedStringArray("ui_controller") instance=ExtResource("13_c0m34")]
+layout_mode = 2
+ui_controller = NodePath("../../../../../../SVJukeboxUIController")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2117937233]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=952346544]
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=952346544]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 text = "Back"
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=527616323]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=527616323]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DownloadButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer2" unique_id=1805021488]
-custom_minimum_size = Vector2(96, 0)
+[node name="DownloadAlbumButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=745012040 node_paths=PackedStringArray("ui_controller") instance=ExtResource("14_sfeo8")]
 layout_mode = 2
-disabled = true
 text = "Download"
+ui_controller = NodePath("../../../../../SVJukeboxUIController")
 
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer2/DownloadButton" to="." method="_on_DownloadButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]

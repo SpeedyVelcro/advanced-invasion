@@ -11,6 +11,9 @@ extends Node
 static func migrate_all() -> void:
 	# Options migrations
 	migrate_options_to_sv_options()
+	
+	# Music unlock migrations
+	migrate_music_unlocks_to_sv_jukebox()
 
 
 static func migrate_options_to_sv_options() -> void:
@@ -105,11 +108,96 @@ static func migrate_options_to_sv_options() -> void:
 	
 	if not new_file:
 		push_error("Failed to save migrated options due to error %d" % FileAccess.get_open_error())
+		return
 	
 	new_file.store_string(json_string)
 	new_file.close()
 	
 	DirAccess.remove_absolute(OLD_FILENAME)
+
+
+static func migrate_music_unlocks_to_sv_jukebox() -> void:
+	const GAME_STATUS_FILENAME := "user://game-status.json"
+	const NEW_FILENAME := "user://music-unlocks.json"
+	
+	if FileAccess.file_exists(NEW_FILENAME):
+		# Already migrated
+		
+		# No need to delete old file, as the game status file still contains other info.
+		return
+	
+	var game_status_file := FileAccess.open(GAME_STATUS_FILENAME, FileAccess.READ_WRITE)
+	
+	if not game_status_file:
+		var file_error := FileAccess.get_open_error()
+		
+		if file_error == ERR_FILE_NOT_FOUND:
+			return # Nothing to migrate
+		
+		push_error("Unable to migrate music unlocks as cannot open game status file due to error %d" % file_error)
+		return
+	
+	var text := game_status_file.get_as_text()
+	# We will keep the game status file open as we still need to delete the soundtrack_unlocked
+	# section once migrated.
+	
+	var json := JSON.new()
+	var json_error := json.parse(text)
+	
+	if json_error != OK:
+		push_error("Failed to migrate music unlocks due to JSON parse error %d" % json_error)
+		game_status_file.close()
+		return
+	
+	var data_received = json.data
+	
+	if data_received is not Dictionary:
+		push_error("Failed to migrate music unlocks due to parsed JSON not being a dictionary")
+		game_status_file.close()
+		return
+	
+	if not data_received.has("soundtrack_unlocked"):
+		game_status_file.close()
+		return # No unlocks to migrate.
+	
+	var unlocks_dict = data_received["soundtrack_unlocked"]
+	
+	if unlocks_dict is not Dictionary:
+		push_error("Failed to migrate music unlocks due to soundtrack_unlocked section not being a dictionary")
+		game_status_file.close()
+		return
+	
+	var new_dict: Dictionary = {
+		"unlocked_ids": unlocks_dict.keys()
+				.filter(func(key: String) -> bool: return unlocks_dict[key] is bool and unlocks_dict[key])
+				.map(func(key: String) -> String: return key)
+	}
+	
+	var json_string = JSON.stringify(new_dict, "\t")
+	
+	var new_file := FileAccess.open(NEW_FILENAME, FileAccess.WRITE)
+	
+	if not new_file:
+		push_error("Failed to save migrated music unlocks due to error %d" % FileAccess.get_open_error())
+		game_status_file.close()
+		return
+	
+	new_file.store_string(json_string)
+	new_file.close()
+	
+	SVJukebox.load_unlocks()
+	
+	# Now that it's migrated we can safely delete the soundtrack_unlocked section.
+	data_received.erase("soundtrack_unlocked")
+	
+	var game_status_new_json_string = JSON.stringify(data_received, "\t")
+	game_status_file.seek(0)
+	game_status_file.store_string(game_status_new_json_string)
+	var err := game_status_file.resize(game_status_file.get_position()) # Truncate manually, because we're open in READ_WRITE not just WRITE
+	if err != OK:
+		push_error("Error when truncating game status file during music unlocks migration: %d" % err)
+		# Not much we can do here so just continue and close the file and hope for the best.
+	game_status_file.close()
 
 
 static func _get_bool_from_json_dict(dict: Dictionary, path_keys: Array[String], default := false) -> bool:

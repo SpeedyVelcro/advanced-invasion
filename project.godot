@@ -37,6 +37,7 @@ ManagedOptionsSynchronizer="*uid://bbamh7evxqacu"
 OptionsLifecycle="*uid://bg6i2usjy2ola"
 OptionsSaver="*uid://byw1rlb3hl7lb"
 UIScaleLimiter="*uid://bvyix0sadk4ni"
+SVJukebox="*uid://bpddgxcxhtwfw"
 
 [display]
 
@@ -49,7 +50,7 @@ window/vsync/vsync_mode=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sv_options_menu/plugin.cfg")
+enabled=PackedStringArray("res://addons/sv_jukebox/plugin.cfg", "res://addons/sv_options_menu/plugin.cfg")
 
 [global]
 
@@ -166,3 +167,10 @@ environment/defaults/default_environment="res://default_env.tres"
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 batching/precision/uv_contract=true
+
+[sv_jukebox]
+
+general/album="uid://dgx5v27u72ddt"
+general/audio_bus_name="Music"
+general/always_unlocked=["download", "militia"]
+general/unlocks_file="user://music-unlocks.json"

@@ -1,8 +1,5 @@
 extends Node
 
-var soundtrack_unlocked = {
-	"militia" : true
-}
 var story_completion = false: get = is_story_complete, set = set_story_completion
 var story_normal_completion = false: get = is_story_normal_complete, set = set_story_normal_completion
 var main_menu_visited = false: get = is_main_menu_visited, set = set_main_menu_visited
@@ -23,10 +20,9 @@ func save_file_exists():
 func make_save_string():
 	var dict = {
 		"story_completion" : story_completion,
-		"story_normal_completion" : story_normal_completion,
-		"soundtrack_unlocked" : soundtrack_unlocked
+		"story_normal_completion" : story_normal_completion
 	}
-	return JSON.stringify(dict)
+	return JSON.stringify(dict, "\t")
 
 func load_save_string(value):
 	# Returns true if successful
@@ -36,7 +32,6 @@ func load_save_string(value):
 	if typeof(dict) != TYPE_DICTIONARY:
 		push_error("Corrupt save data: not recognised as dictionary")
 		return false
-	safe_set("soundtrack_unlocked", dict, "soundtrack_unlocked", TYPE_DICTIONARY)
 	safe_set("story_completion", dict, "story_completion", TYPE_BOOL)
 	safe_set("story_normal_completion", dict, "story_normal_completion", TYPE_BOOL)
 	return true
@@ -75,14 +70,20 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 
 # Getters and setters:
 
+## Old method from when this class still handled soundtrack unlocks
+##
+## @deprecated: Use SV Jukebox instead
 func set_soundtrack_unlocked(soundtrack_name : String, value : bool):
-	soundtrack_unlocked[soundtrack_name] = value
-
-func is_soundtrack_unlocked(soundtrack_name : String):
-	if soundtrack_unlocked.has(soundtrack_name):
-		return soundtrack_unlocked[soundtrack_name]
+	if value:
+		SVJukebox.unlock(soundtrack_name)
 	else:
-		return false
+		SVJukebox.remove_unlock(soundtrack_name)
+
+## Old method from when this class still handled soundtrack unlocks
+##
+## @deprecated: Use SV Jukebox instead
+func is_soundtrack_unlocked(soundtrack_name : String):
+	return SVJukebox.is_unlocked(soundtrack_name)
 
 func set_story_completion(value : bool):
 	story_completion = value

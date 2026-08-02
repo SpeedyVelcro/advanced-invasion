@@ -76,6 +76,8 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 func set_soundtrack_unlocked(soundtrack_name : String, value : bool):
 	if value:
 		SVJukebox.unlock(soundtrack_name)
+	else:
+		SVJukebox.remove_unlock(soundtrack_name)
 
 ## Old method from when this class still handled soundtrack unlocks
 ##

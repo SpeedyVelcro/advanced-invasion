@@ -39,6 +39,7 @@ AchievementWatchdog="*res://AutoLoad/AchievementWatchdog/AchievementWatchdog.tsc
 NewgroundsIntegration="*res://AutoLoad/NewgroundsIntegration/NewgroundsIntegration.tscn"
 GameJoltIntegration="*res://AutoLoad/GameJoltIntegration/GameJoltIntegration.tscn"
 AchievementService="*uid://cl58nbrkylxrq"
+AchievementOverlayAutoload="*uid://bxv641h4ur7l3"
 
 [display]
 
@@ -56,6 +57,10 @@ enabled=PackedStringArray("res://addons/sv_achievements/plugin.cfg", "res://addo
 [global]
 
 thread=false
+
+[gui]
+
+theme/custom="uid://n6fdrx4r7yqh"
 
 [input]
 

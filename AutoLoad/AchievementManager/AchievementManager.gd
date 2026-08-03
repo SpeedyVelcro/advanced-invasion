@@ -1,21 +1,12 @@
-extends CanvasLayer
+extends Node
 ## This node keeps track of achievements and achievement progress
-## It also displays unlock popups
+## [s]It also displays unlock popups[/s]
 ## To unlock achievements you should call this singleton's methods from other
 ## scripts e.g. directly from relevant objects, or if you don't want to tie
 ## achievements to game logic, from a separate achievement watchdog singleton
 ## you make yourself that keeps an eye on the game state.
 ##
-## @deprecated: Use SV Achievements instead.
-
-@export var popup_node_path: NodePath
-@onready var popup_node = get_node(popup_node_path)
-@export var icon_texture_rect_path: NodePath
-@onready var icon_texture_rect = get_node(icon_texture_rect_path)
-@export var title_label_path: NodePath
-@onready var title_label = get_node(title_label_path)
-@export var description_label_path: NodePath
-@onready var description_label = get_node(description_label_path)
+## @deprecated: Use SV Achievements and its overlay scene instead.
 
 ## Old signal
 ##

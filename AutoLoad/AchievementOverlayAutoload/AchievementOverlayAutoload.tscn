@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bxv641h4ur7l3"]
+
+[ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="1_bta3j"]
+[ext_resource type="PackedScene" uid="uid://cnf4r72kds3xj" path="res://addons/sv_achievements/ui/achievement_overlay/achievement_overlay.tscn" id="2_8j2ch"]
+[ext_resource type="StyleBox" uid="uid://cevtkws71fgla" path="res://GUI/Themes/AchievementBorder.tres" id="3_1om8n"]
+[ext_resource type="Theme" uid="uid://ej1yktjemtfj" path="res://GUI/Themes/AchievementPopupTheme.tres" id="3_8j2ch"]
+[ext_resource type="Texture2D" uid="uid://bm67xaaa31nyu" path="res://Art/Achievement/Secret.png" id="4_265bv"]
+
+[node name="AchievementOverlayAutoload" type="Node" unique_id=372713734]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=422542742]
+layer = 1000
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=1699999212]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_target = true
+
+[node name="UIScalingSubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=1269487464]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+script = ExtResource("1_bta3j")
+metadata/_custom_type_script = "uid://q556kuuqjbtq"
+
+[node name="AchievementOverlay" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1634175387 instance=ExtResource("2_8j2ch")]
+theme = ExtResource("3_8j2ch")
+icon_border_stylebox_override = ExtResource("3_1om8n")
+default_achievement_icon = ExtResource("4_265bv")

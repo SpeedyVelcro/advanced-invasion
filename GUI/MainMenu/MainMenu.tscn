@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" path="res://GUI/MainMenu/Extras.tscn" id="8"]
 [ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="8_i7lx1"]
 [ext_resource type="PackedScene" uid="uid://g4hx2iqhrajh" path="res://GUI/Jukebox/Jukebox.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://dco5wqs2fs4cv" path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" id="10"]
 [ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="10_o7vgm"]
 [ext_resource type="PackedScene" uid="uid://c4ub7ekaomtov" path="res://GUI/Options/Options.tscn" id="11"]
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="12"]
@@ -274,8 +274,6 @@ offset_bottom = 0.0
 
 [node name="Options" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1293521007 instance=ExtResource("11")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Extras" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1517476385 instance=ExtResource("8")]
 visible = false
@@ -289,13 +287,9 @@ visible = false
 
 [node name="Jukebox" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1167953524 instance=ExtResource("9")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="AchievementsMenu" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=914410462 instance=ExtResource("10")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 

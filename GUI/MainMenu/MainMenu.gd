@@ -150,6 +150,8 @@ func _on_StartGUI_about():
 
 func _on_StartGUI_quit():
 	OptionsSaver.save()
+	SVJukebox.save_unlocks()
+	AchievementService.save_progress()
 	
 	if OS.get_name() == "HTML5":
 		fade_start_menu = true

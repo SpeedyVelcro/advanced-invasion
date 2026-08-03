@@ -1,5 +1,8 @@
-class_name Achievement
+class_name OldAchievement
 extends Resource
+## Old achievement data type from before migration to SV Achievements.
+##
+## @deprecated: Use [Achievement] from SV Achievements instead.
 
 @export var icon_path: String
 @export var id: String

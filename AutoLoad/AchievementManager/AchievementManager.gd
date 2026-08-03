@@ -1,73 +1,17 @@
-extends CanvasLayer
+extends Node
+## This node keeps track of achievements and achievement progress
+## [s]It also displays unlock popups[/s]
+## To unlock achievements you should call this singleton's methods from other
+## scripts e.g. directly from relevant objects, or if you don't want to tie
+## achievements to game logic, from a separate achievement watchdog singleton
+## you make yourself that keeps an eye on the game state.
+##
+## @deprecated: Use SV Achievements and its overlay scene instead.
 
-# This node keeps track of achievements and achievement progress
-# It also displays unlock popups
-# To unlock achievements you should call this singleton's methods from other
-# scripts e.g. directly from relevant objects, or if you don't want to tie
-# achievements to game logic, from a separate achievement watchdog singleton
-# you make yourself that keeps an eye on the game state.
-
-@export var popup_node_path: NodePath
-@onready var popup_node = get_node(popup_node_path)
-@export var icon_texture_rect_path: NodePath
-@onready var icon_texture_rect = get_node(icon_texture_rect_path)
-@export var title_label_path: NodePath
-@onready var title_label = get_node(title_label_path)
-@export var description_label_path: NodePath
-@onready var description_label = get_node(description_label_path)
-
-const SAVE_FILE_PATH = "user://achievements.json"
-const ACHIEVEMENT_FOLDER_PATH = "res://AutoLoad/AchievementManager/Achievements"
-const DEFAULT_ICON_PATH = "res://Art/Achievement/Secret.png"
-const POPUP_SHOW_TIME_SEC = 3.0
-var achievements = {}
-var achievement_progress = {}
-var achievement_unlocked = {}
-var popup_showing = false
-var popup_queue = [] # Stores achievement ids
-
+## Old signal
+##
+## @deprecated: No longer emitted as this class is no longer used for achievement syncing. See SV Jukebox.
 signal achievement_synced(achievement_id)
-
-func _ready():
-	popup_node.set_visible(false)
-	# Load achievement data
-	# TODO: This comment may be outdated as it is from Godot 3
-	# IMPORTANT NOTE:
-	# Directory.dir_exists() DOES NOT WORK ON HTML5 (I should probably make a minimal project at some point and submit this as a bug)
-	#if not dir.dir_exists(ACHIEVEMENT_FOLDER_PATH):
-	#	push_error("Achievement manager: has invalid ACHIEVEMENT_FOLDER_PATH set. No achievements loaded.")
-	var dir := DirAccess.open(ACHIEVEMENT_FOLDER_PATH)
-	if not dir:
-		push_error("Achivement manager: error occured while opening folder. Error ID %d" % DirAccess.get_open_error())
-	else:
-		dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
-		var file = dir.get_next()
-		var path
-		var loaded_file
-		while file != "":
-			if not dir.current_is_dir():
-				if file.ends_with(".tres"):
-					path = ACHIEVEMENT_FOLDER_PATH + "/" + file
-					loaded_file = load(path)
-					# We check just in case I accidentally threw some other
-					# resource in there
-					if loaded_file is Achievement:
-						achievements[loaded_file.get_id()] = loaded_file
-			# Increment
-			file = dir.get_next()
-	# Load achievement progress from user directory
-	load_achievements()
-
-# Save and load
-func save_file_exists():
-	return FileAccess.file_exists(SAVE_FILE_PATH)
-
-func make_save_string():
-	var dict = {
-		"achievement_unlocked" : achievement_unlocked,
-		"achievement_progress" : achievement_progress
-	}
-	return JSON.stringify(dict)
 
 func load_save_string(value):
 	# Returns true if successful
@@ -81,21 +25,21 @@ func load_save_string(value):
 	safe_set("achievement_progress", dict, "achievement_progress", TYPE_DICTIONARY)
 	return true
 
+## Old save method
+##
+## @deprecated: Use SV Achievements instead.
 func save():
-	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
-	file.store_string(make_save_string())
-	file.close()
+	AchievementService.save_progress()
 
+## Old load method
+##
+## @deprecated: Use SV Achievements instead.
 func load_achievements():
-	if not FileAccess.file_exists(SAVE_FILE_PATH):
-		return false
-	var file := FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
-	var result = load_save_string(file.get_as_text())
-	if not result:
-		push_error("Failed to load game data")
-	else:
-		return true
+	AchievementService.load_progress()
 
+## Old safe get method
+##
+## @deprecated: Do not use this class.
 func safe_set(property : String, dictionary : Dictionary, key : String, type : int):
 	# Tries to set property to a value from a dictionary, checking for type.
 	# Silently fails if key isn't in dictionary or type is wrong.
@@ -113,144 +57,116 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 	else:
 		print("Failed to safely set " + property + " as " + key + " is missing from dictionary")
 
-# Useful functions
+## Old unlock method
+##
+## @deprecated: Use SV Achievements instead.
 func unlock(achievement_id : String):
-	set_achievement_unlocked(achievement_id, true)
+	AchievementService.unlock(achievement_id)
 
+## Old method to add progress to an achievement
+##
+## @deprecated: Method now does nothing. Use SV Achievements instead.
 func add_progress(achievement_id : String, value : float):
-	var current = get_achievement_progress(achievement_id)
-	set_achievement_progress(achievement_id, current + value)
+	pass # Do nothing. None of the old achievements supported progress anyway.
 
+## Old method to sync an achievement.
+##
+## @deprecated: Use SV achievements instead.
 func sync_achievement(achievement_id : String):
-	print("AchievementManager is attempting to sync achievement " + String(achievement_id))
-	emit_signal("achievement_synced", achievement_id)
-
-func _queue_popup(achievement_id : String):
-	if not popup_showing:
-		_show_popup(achievement_id)
-	else:
-		popup_queue.push_back(achievement_id)
-
-func _show_popup(achievement_id : String, force = false):
-	if popup_showing and not force:
-		push_error("Achievement manager: Tried to show popup while a popup was already showing")
-		return
-	# Fill in popup with achievement details
-	icon_texture_rect.set_texture(get_achievement_icon(achievement_id))
-	title_label.set_text(get_achievement_title(achievement_id))
-	description_label.set_text(get_achievement_description(achievement_id))
-	# Show popup
-	popup_showing = true
-	$AnimationPlayer.play("show")
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	match(anim_name):
-		"show":
-			$Timer.start(POPUP_SHOW_TIME_SEC)
-		"hide":
-			popup_showing = false
-			var next_id = popup_queue.pop_front()
-			if next_id != null:
-				_show_popup(next_id)
+	AchievementService.sync_achievement(achievement_id)
 
 func _on_Timer_timeout():
 	$AnimationPlayer.play("hide")
 
 
 # Getters and setters
+## Old achievement title getter
+##
+## @deprecated: Use SV Achievements instead.
 func get_achievement_title(achievement_id : String)->String:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].get_title()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return "Undefined"
+	var achievement := AchievementService.get_achievement(achievement_id)
+	return achievement.name if achievement else "Undefined"
 
+## Old achievement description getter
+##
+## @deprecated: Use SV Achievements instead.
 func get_achievement_description(achievement_id : String)->String:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].get_description()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return "Achievement not found."
+	var achievement := AchievementService.get_achievement(achievement_id)
+	return achievement.description if achievement else "Achievement not found."
 
+## Old achievement icon path getter
+##
+## @deprecated: Use SV Achievements instead.
 func get_achievement_icon_path(achievement_id : String)->String:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].get_icon_path()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return DEFAULT_ICON_PATH
+	var icon := get_achievement_icon(achievement_id)
+	return icon.resource_path if icon else "res://Art/Achievement/Secret.png"
 
+## Old achievement icon getter
+##
+## @deprecated: Use SV Achievements instead.
 func get_achievement_icon(achievement_id : String)->Resource:
-	if achievements.has(achievement_id):
-		var tex = load(achievements[achievement_id].get_icon_path())
-		if tex is Texture2D:
-			return tex
-		else:
-			push_error("When loading achievement icon with id " + achievement_id + ", a non-texture was returned.")
-			return load(DEFAULT_ICON_PATH)
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return load(DEFAULT_ICON_PATH)
+	var achievement := AchievementService.get_achievement(achievement_id)
+	return achievement.icon if achievement else load("res://Art/Achievement/Secret.png")
 
+## Old achievement target enabled getter
+##
+## @deprecated: Now always returns false as this was never used anyway. Use SV Achievements instead.
 func is_achievement_target_enabled(achievement_id : String)->bool:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].is_target_enabled()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return false
+	return false
 
+## Old achievement target getter
+##
+## @deprecated: Now always returns 0.0 as this was never used anyway. Use SV Achievements instead.
 func get_achievement_target(achievement_id : String)->float:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].get_target()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return 0.0
+	return 0.0
 
+## Old achievement unlock status checker
+##
+## @deprecated: Use SV Achievements instead
 func is_achievement_unlocked(achievement_id : String)->bool:
-	if achievement_unlocked.has(achievement_id):
-		return achievement_unlocked[achievement_id]
-	else:
-		return false
+	var achievement := AchievementService.get_achievement(achievement_id)
+	return achievement.is_unlocked() if achievement else false
 
+## Old achievement unlock status setter
+##
+## @deprecated: Use SV Achievements instead.
 func set_achievement_unlocked(achievement_id : String, value : bool):
-	var newly_unlocked = value and not is_achievement_unlocked(achievement_id)
-	achievement_unlocked[achievement_id] = value
-	if newly_unlocked:
-		_queue_popup(achievement_id)
-		save()
+	var achievement := AchievementService.get_achievement(achievement_id)
+	if not achievement:
+		return
 	if value:
-		sync_achievement(achievement_id)
+		achievement.unlock()
+	else:
+		achievement.reset_completion()
+	AchievementService.save_progress()
 
+## Old achievement progress getter
+##
+## @deprecated: Now always returns 0.0 as this was never used anyway. Use SV Achievements instead.
 func get_achievement_progress(achievement_id : String)-> float:
-	if achievement_progress.has(achievement_id):
-		return float(achievement_progress[achievement_id])
-	else:
-		return 0.0
+	return 0.0
 
+## Old achievement progress setter
+##
+## @deprecated: Now does nothing as this was never used anyway. Use SV Achievements instead.
 func set_achievement_progress(achievement_id : String, value : float):
-	achievement_progress[achievement_id] = value
-	if is_achievement_target_enabled(achievement_id):
-		if value >= get_achievement_target(achievement_id):
-			achievement_progress[achievement_id] = get_achievement_target(achievement_id)
-			unlock(achievement_id)
-		else:
-			# TODO: come up with better solution, probably not great to be
-			# saving constantly like this
-			save()
+	pass
 
+## Old method to check if an achievement is secret
+##
+## @deprecated: Use SV Achievements instead
 func is_achievement_secret(achievement_id : String)->bool:
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].is_secret()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return false
+	var achievement := AchievementService.get_achievement(achievement_id)
+	return (achievement.secret_name or achievement.secret_icon or achievement.secret_description) if achievement else false
 
+## Old method
+##
+## @deprecated: No idea what this method does, but it was never used because it was to do with progress. Now does just returns 0.
 func get_achievement_target_dp(achievement_id : String)->int:
-	# decimal places
-	if achievements.has(achievement_id):
-		return achievements[achievement_id].get_target_decimal_places()
-	else:
-		push_error("No such achievement with id " + achievement_id)
-		return 0
+	return 0
 
+## Old achievement list getter
+##
+## @deprecated: Use SV Achievements
 func get_achievement_list():
-	return achievements.keys()
+	return AchievementService.achievements.map(func(a: Achievement): return a.achievement_id)

@@ -10,10 +10,16 @@ extends Node
 ## Runs all migrations in order.
 static func migrate_all() -> void:
 	# Options migrations
-	migrate_options_to_sv_options()
+	migrate_options_to_sv_options() #v1.0.0 to next version
+	# No need to manually load changes because we have auto-start off, so the first load won't have happened yet.
 	
 	# Music unlock migrations
-	migrate_music_unlocks_to_sv_jukebox()
+	migrate_music_unlocks_to_sv_jukebox() #v1.0.0 to next version
+	SVJukebox.load_unlocks()
+	
+	# Achievement migrations
+	migrate_achievements_to_sv_achievements() #v1.0.0 to next version
+	AchievementService.load_progress()
 
 
 static func migrate_options_to_sv_options() -> void:
@@ -185,8 +191,6 @@ static func migrate_music_unlocks_to_sv_jukebox() -> void:
 	new_file.store_string(json_string)
 	new_file.close()
 	
-	SVJukebox.load_unlocks()
-	
 	# Now that it's migrated we can safely delete the soundtrack_unlocked section.
 	data_received.erase("soundtrack_unlocked")
 	
@@ -198,6 +202,86 @@ static func migrate_music_unlocks_to_sv_jukebox() -> void:
 		push_error("Error when truncating game status file during music unlocks migration: %d" % err)
 		# Not much we can do here so just continue and close the file and hope for the best.
 	game_status_file.close()
+
+
+static func migrate_achievements_to_sv_achievements() -> void:
+	const FILENAME := "user://achievements.json" # In-file migration
+	
+	var file := FileAccess.open(FILENAME, FileAccess.READ_WRITE)
+	
+	if not file:
+		var file_error := FileAccess.get_open_error()
+		
+		if file_error == ERR_FILE_NOT_FOUND:
+			return # Nothing to migrate
+		
+		push_error("Cannot migrate achievements file to SV Achievements due to file access error %d" % file_error)
+		return
+	
+	var text := file.get_as_text()
+	
+	var json := JSON.new()
+	var json_error := json.parse(text)
+	
+	if json_error != OK:
+		push_error("Failed to migrate achievements file due to JSON parse error %d" % json_error)
+		file.close()
+		return
+	
+	var data_received = json.data
+	
+	if data_received is not Dictionary:
+		push_error("Failed to migrate achievements file due to parsed JSON not being a dictionary")
+		file.close()
+		return
+	
+	# Due to my poor foresight these files don't have version numbers built in so I guess we just
+	# have to go by the structure of the file.
+	var needs_migration: bool = data_received.has("achievement_progress") or data_received.has("achievement_unlocked")
+	
+	if not needs_migration:
+		file.close()
+		return # Already migrated
+	
+	var unlocks = data_received.get("achievement_unlocked")
+	
+	if unlocks is not Dictionary:
+		file.close()
+		push_error("Cannot migrate achievements to SV Achievements as there is an incorrect type in the JSON.")
+		return
+	
+	var defeat_giant: bool = unlocks["defeat_giant"] if unlocks["defeat_giant"] is bool else false
+	var defeat_square: bool = unlocks["defeat_square"] if unlocks["defeat_square"] is bool else false
+	var defeat_wizard: bool = unlocks["defeat_wizard"] if unlocks["defeat_wizard"] is bool else false
+	var complete_casual: bool = unlocks["complete_casual"] if unlocks["complete_casual"] is bool else false
+	var complete_normal: bool = unlocks["complete_normal"] if unlocks["complete_normal"] is bool else false
+	
+	var new_dict: Dictionary = {
+		"defeat_giant": {
+			"unlocked": defeat_giant
+		},
+		"defeat_square": {
+			"unlocked": defeat_square
+		},
+		"defeat_wizard": {
+			"unlocked": defeat_wizard
+		},
+		"complete_casual": {
+			"unlocked": complete_casual
+		},
+		"complete_normal": {
+			"unlocked": complete_normal
+		}
+	}
+	
+	var new_json_string = JSON.stringify(new_dict, "\t")
+	file.seek(0)
+	file.store_string(new_json_string)
+	var err := file.resize(file.get_position()) # Truncate manually, because we're open in READ_WRITE not just WRITE
+	if err != OK:
+		push_error("Error when truncating achievements file during achievement unlocks migration: %d" % err)
+		# Not much we can do here so just continue and close the file and hope for the best.
+	file.close()
 
 
 static func _get_bool_from_json_dict(dict: Dictionary, path_keys: Array[String], default := false) -> bool:

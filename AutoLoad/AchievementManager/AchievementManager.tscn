@@ -85,6 +85,7 @@ title_label_path = NodePath("TransformControl/Panel/HBoxContainer/VBoxContainer/
 description_label_path = NodePath("TransformControl/Panel/HBoxContainer/VBoxContainer/Description")
 
 [node name="TransformControl" type="Control" parent="." unique_id=354098718]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,6 +152,3 @@ libraries/ = SubResource("AnimationLibrary_4lh6o")
 
 [node name="Timer" type="Timer" parent="." unique_id=1081298826]
 one_shot = true
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,6 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=2]
+[gd_resource type="Resource" format=2]
 
-[ext_resource path="res://AutoLoad/AchievementManager/Achievement.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://cx7h5lic5hcbk" path="res://AutoLoad/AchievementManager/OldAchievement.gd" id="1"]
 
 [resource]
 script = ExtResource( 1 )

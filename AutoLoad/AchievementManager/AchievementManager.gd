@@ -51,7 +51,7 @@ func _ready():
 					loaded_file = load(path)
 					# We check just in case I accidentally threw some other
 					# resource in there
-					if loaded_file is Achievement:
+					if loaded_file is OldAchievement:
 						achievements[loaded_file.get_id()] = loaded_file
 			# Increment
 			file = dir.get_next()

@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="AchievementList" format=3 uid="uid://cf6sahjleo1jb"]
+
+[ext_resource type="Script" uid="uid://bfkrw11bj6wk" path="res://addons/sv_achievements/data/achievement/achievement.gd" id="1_xuvmq"]
+[ext_resource type="Texture2D" uid="uid://djm4h1j64pdcp" path="res://Art/Achievement/Creep.png" id="2_7gkm8"]
+[ext_resource type="Script" uid="uid://dux30a2ax0nyt" path="res://addons/sv_achievements/data/achievement_list/achievement_list.gd" id="2_psorq"]
+[ext_resource type="Texture2D" uid="uid://cik0wexc8thjv" path="res://Art/Achievement/Square.png" id="3_hrxo1"]
+[ext_resource type="Texture2D" uid="uid://xy58pe4s5sd0" path="res://Art/Achievement/Wizard.png" id="4_nmhlb"]
+[ext_resource type="Texture2D" uid="uid://cbxqjbr1jurg3" path="res://Art/Achievement/Yellow.png" id="5_gsmep"]
+[ext_resource type="Texture2D" uid="uid://ckvrhoohb1mom" path="res://Art/Achievement/MilitiaCommander.png" id="6_uibmq"]
+
+[sub_resource type="Resource" id="Resource_gjtcv"]
+script = ExtResource("1_xuvmq")
+achievement_id = "defeat_giant"
+name = "Giant Defeated"
+description = "Defeat a giant virus."
+icon = ExtResource("2_7gkm8")
+newgrounds_id = 62836
+game_jolt_id = 139868
+custom_api_info = null
+metadata/_custom_type_script = "uid://bfkrw11bj6wk"
+
+[sub_resource type="Resource" id="Resource_r1jti"]
+script = ExtResource("1_xuvmq")
+achievement_id = "defeat_square"
+name = "Square Defeated"
+description = "Defeat a square virus."
+icon = ExtResource("3_hrxo1")
+newgrounds_id = 62837
+game_jolt_id = 139869
+custom_api_info = null
+metadata/_custom_type_script = "uid://bfkrw11bj6wk"
+
+[sub_resource type="Resource" id="Resource_d8kq2"]
+script = ExtResource("1_xuvmq")
+achievement_id = "defeat_wizard"
+name = "Powerful Virus"
+description = "Defeat a powerful virus."
+icon = ExtResource("4_nmhlb")
+newgrounds_id = 62838
+game_jolt_id = 139870
+custom_api_info = null
+metadata/_custom_type_script = "uid://bfkrw11bj6wk"
+
+[sub_resource type="Resource" id="Resource_vgp3x"]
+script = ExtResource("1_xuvmq")
+achievement_id = "complete_casual"
+name = "Safe at Last...?"
+description = "Complete the game."
+icon = ExtResource("5_gsmep")
+newgrounds_id = 62839
+game_jolt_id = 139871
+custom_api_info = null
+metadata/_custom_type_script = "uid://bfkrw11bj6wk"
+
+[sub_resource type="Resource" id="Resource_f43ru"]
+script = ExtResource("1_xuvmq")
+achievement_id = "complete_normal"
+name = "Hardened"
+description = "Complete the game on normal difficulty."
+icon = ExtResource("6_uibmq")
+newgrounds_id = 62840
+game_jolt_id = 139872
+custom_api_info = null
+metadata/_custom_type_script = "uid://bfkrw11bj6wk"
+
+[resource]
+script = ExtResource("2_psorq")
+achievements = Array[ExtResource("1_xuvmq")]([SubResource("Resource_gjtcv"), SubResource("Resource_r1jti"), SubResource("Resource_d8kq2"), SubResource("Resource_vgp3x"), SubResource("Resource_f43ru")])
+metadata/_custom_type_script = "uid://dux30a2ax0nyt"

@@ -171,7 +171,7 @@ batching/precision/uv_contract=true
 
 [sv_achievements]
 
-general/achievements=""
+general/achievements="uid://cf6sahjleo1jb"
 general/completion_save_file_path="user://achievements.json"
 
 [sv_jukebox]

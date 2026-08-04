@@ -1,5 +1,5 @@
 name: Install Export Templates
-description: Installs export templates for the Godot Engine to the path for the duration of the current job.
+description: Installs export templates for the Godot Engine to the templates directory for the duration of the current job.
 inputs:
   version:
     description: "Version, e.g. 4.6-stable"

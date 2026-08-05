@@ -111,8 +111,19 @@ runs:
         sudo apt-get install -y \
           mingw-w64
     - name: Install Dependencies (Linux -> Windows arm64)
+      id: linux-to-windows-arm64-dependencies
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'arm64' }}
-      # TODO
+      shell: bash
+      run: |
+        # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
+        # Don't clutter the working directory
+        dir=$(mktemp -d -p ${{ runner.temp }})
+        cd ${dir}
+        wget "https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-msvcrt-ubuntu-22.04-x86_64.tar.xz"
+        ! (echo "${{ inputs.sha_256 }} ${{ env.TEMPLATES_ZIP }}" | sha256sum -c) && exit 1
+        tar -xf *.tar.xz
+        llvm_dir=$(pwd)/$(ls -d --zero */)
+        echo "mingw-llvm-directory=${llvm_dir}" >> $GITHUB_OUTPUT
     - name: Install Dependencies (macOS -> macOS)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
@@ -133,6 +144,8 @@ runs:
       # TODO: macOS universal binary
       run: |
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption_key }}"
+        [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \
+          && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
         targets=()
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets += "release"
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets += "debug"
@@ -141,6 +154,7 @@ runs:
             platform=${{ inputs.platform }} \
             $( [[ -n "${{ inputs.arch }}" ]] && printf %s "arch=${{ inputs.arch }}" ) \
             target=template_${target} \
+            $( [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] && printf %s "use_llvm=yes" ) \
             production=yes
         done
         echo "output-directory=$(pwd)/bin" >> &GITHUB_OUTPUT

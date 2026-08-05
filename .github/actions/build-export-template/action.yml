@@ -1,5 +1,5 @@
 name: Build Export Templates
-description: Builds custom export templates for Godot for a particular platform and architecture. Should be run on macOS when building macOS export templates, and on Linux for all other platforms.
+description: Builds custom export templates for Godot for a particular platform and architecture. Should be run on macOS when building macOS export templates, and on Linux for all other platforms. Per the docs, when compiling Linux binaries you should run this action on a runner using Ubuntu 20.04 and no higher (see https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_linuxbsd.html#building-export-templates).
 inputs:
   version:
     description: "Godot version. If not provided, the latest will be pulled. This should be a ref to a branch, tag, or commit from the GitHub repo. Example values: '4.7', '4.7-stable', etc."
@@ -24,7 +24,6 @@ inputs:
     description: "Whether to install the templates into the standard export templates directory. Version must be set to a version tag such as '4.7-stable' for this to work, as export template folders are separated by version. Valid values: 'true', 'false'"
     required: false
     default: 'false'
-  # TODO: we might need inputs for optimization and without symbols? See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_with_script_encryption_key.html
 outputs:
   output-directory:
     description: "The directory where built export templates can be found."
@@ -60,7 +59,7 @@ runs:
       with:
         path: bin
         key: ${{ steps.cache-key.outputs.cache-key }}
-    - name: Install Dependencies (Linux -> Linux) # Assumes ubuntu-latest
+    - name: Install Dependencies (Linux -> Linux)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' }}
@@ -81,12 +80,27 @@ runs:
           libudev-dev \
           libxi-dev \
           libxrandr-dev \
-          libwayland-dev \
+          libwayland-dev
     - name: Configure Dependencies (Linux -> Linux x86_32)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' && inputs.arch == 'x86_32' }}
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
-      # TODO
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential:i386 \
+          pkg-config:i386 \
+          libxcursor-dev:i386 \
+          libxinerama-dev:i386 \
+          libgl1-mesa-dev:i386 \
+          libglu1-mesa-dev:i386 \
+          libasound2-dev:i386 \
+          libpulse-dev:i386 \
+          libudev-dev:i386 \
+          libxi-dev:i386 \
+          libxrandr-dev:i386 \
+          libwayland-dev:i386
     - name: Install Dependencies (Linux -> Windows x86)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && startsWith(inputs.arch, 'x86') }}
       shell: bash
@@ -116,6 +130,7 @@ runs:
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
       # TODO: some templates might need renaming
+      # TODO: macOS universal binary
       run: |
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption_key }}"
         targets=()
@@ -125,7 +140,8 @@ runs:
           scons \
             platform=${{ inputs.platform }} \
             $( [[ -n "${{ inputs.arch }}" ]] && printf %s "arch=${{ inputs.arch }}" ) \
-            target=template_${target}
+            target=template_${target} \
+            production=yes
         done
         echo "output-directory=$(pwd)/bin" >> &GITHUB_OUTPUT
     - name: Save Export Templates to Cache

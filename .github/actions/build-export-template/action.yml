@@ -20,6 +20,10 @@ inputs:
     description: "Encryption key to embed in the export template. If this is left empty, the export template will not support encryption."
     required: false
     default: ''
+  rename:
+    description: "Rename the compiled export templates to match the names used by the official export templates. If you set the install input to 'true', then this input must also be 'true' for the installed templates to be recognised by Godot. Valid values: 'true', 'false'"
+    required: false
+    default: 'true'
   install:
     description: "Whether to install the templates into the standard export templates directory. Version must be set to a version tag such as '4.7-stable' for this to work, as export template folders are separated by version. Valid values: 'true', 'false'"
     required: false
@@ -177,6 +181,53 @@ runs:
       with:
         path: bin
         key: ${{ steps.cache-key.outputs.cache-key }}
+    - name: Rename Export Templates
+      if: ${{ inputs.rename == 'true' }}
+      shell: bash
+      working-directory: ${{ steps.working-directory.outputs.working-directory }}
+      run: |
+        cd bin
+        # If inputs.arch is not supplied we will need to infer the arch compiled for from the current arch of the system
+        if [ -n "${{ inputs.arch }}" ]; then
+          [ "$(uname -m)" == "x86_64" ] && arch="x86_64"
+          [ "$(uname -m)" == "i386" ] && arch="x86_32"
+          [ "$(uname -m)" == "arm64" ] && arch="arm64"
+        else
+          arch="${{ inputs.arch }}"
+        fi
+        if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ]; then release="true"; else release="false"; fi
+        if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
+        # Linux
+        if [ "${{ inputs.platform }}" == "linux"]; then
+          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64
+          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_64 linux_debug.x86_64
+          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_32 linux_release.x86_32
+          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_32 linux_debug.x86_32
+          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.arm64 linux_release.arm64
+          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.arm64 linux_debug.arm64
+        fi
+        # macOS
+        [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && mv godot_macos.zip macos.zip
+        # Windows
+        if [ "${{ inputs.platform }}" == "windows"]; then
+          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.exe windows_release_x86_64.exe
+          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.console.exe windows_release_x86_64_console.exe
+          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.exe windows_debug_x86_64.exe
+          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.console.exe windows_debug_x86_64_console.exe
+          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.exe windows_release_x86_32.exe
+          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.console.exe windows_release_x86_32_console.exe
+          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.exe windows_debug_x86_32.exe
+          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.console.exe windows_debug_x86_32_console.exe
+          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.exe windows_release_arm64.exe
+          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.console.exe windows_release_arm64_console.exe
+          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.exe windows_debug_arm64.exe
+          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.console.exe windows_debug_arm64_console.exe
+        fi
+        # Web
+        if [ "${{ inputs.platform }}" == "web"]; then
+          [ "${release}" == true ] && mv godot.web.template_release.wasm32.zip web_release.zip
+          [ "${debug}" == true ] && mv godot.web.template_release.wasm32.zip web_debug.zip
+        fi
     - name: Install Export Templates
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}

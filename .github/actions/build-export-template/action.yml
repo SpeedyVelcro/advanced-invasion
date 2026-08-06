@@ -134,6 +134,7 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
+    # TODO: Web might need emscripten dependency
     - uses: actions/checkout@v7
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       with:
@@ -144,7 +145,6 @@ runs:
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
-      # TODO: some templates might need renaming
       run: |
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption_key }}"
         [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \

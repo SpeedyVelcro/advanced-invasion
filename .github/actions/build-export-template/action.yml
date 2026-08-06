@@ -134,7 +134,11 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
-    # TODO: Web might need emscripten dependency
+    - name: Set Up Emscripten Dependency (Linux -> Web)
+      uses: emscripten-core/setup-emsdk@v15
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}
+      with:
+        version: 4.0.23 # Docs currently recommend 4.0.0+: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_web.html#requirements
     - uses: actions/checkout@v7
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       with:

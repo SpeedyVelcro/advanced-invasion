@@ -10,7 +10,7 @@ inputs:
     required: true
     default: ''
   arch:
-    description: "Target architecture for the export template. If this is not provided, the arch parameter will not be passed to SCons. Valid values: 'x86_64', 'x86_32', 'arm64'"
+    description: "Target architecture for the export template. If this is not provided, the arch parameter will not be passed to SCons. A value of 'universal' should only be used for the macOS platform, and will bundle 64-bit and arm64 architectures into a single Universal 2 bundle similar to the official templates. Valid values: 'x86_64', 'x86_32', 'arm64', 'universal'"
     required: false
   target:
     description: "Release or debug template. If not provided, both will be compiled. Valid values: 'release', 'debug'"
@@ -141,7 +141,6 @@ runs:
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
       # TODO: some templates might need renaming
-      # TODO: macOS universal binary
       run: |
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption_key }}"
         [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \
@@ -149,13 +148,27 @@ runs:
         targets=()
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets += "release"
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets += "debug"
-        for target in ${targets[@]}; do
-          scons \
-            platform=${{ inputs.platform }} \
-            $( [[ -n "${{ inputs.arch }}" ]] && printf %s "arch=${{ inputs.arch }}" ) \
-            target=template_${target} \
-            $( [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] && printf %s "use_llvm=yes" ) \
-            production=yes
+        arches=()
+        if [ -n "${{ inputs.arch }}" ]; then
+          arches += ""
+        elif [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ]; then
+          arches += "arm64"
+          arches += "x86_64"
+        else
+          arches += "${{ inputs.arch }}"
+        fi
+        for arch in ${arches[@]}; do
+          for target in ${targets[@]}; do
+            last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" )
+            generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && "${last_iteration}" == "true" && printf %s "true" )
+            scons \
+              platform=${{ inputs.platform }} \
+              $( [[ -n "${arch}" ]] && printf %s "arch=${arch}" ) \
+              target=template_${target} \
+              $( [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] && printf %s "use_llvm=yes" ) \
+              production=yes \
+              $( [ "${generate_bundle}" == "true" ] && printf %s "generate_bundle=yes" )
+          done
         done
         echo "output-directory=$(pwd)/bin" >> &GITHUB_OUTPUT
     - name: Save Export Templates to Cache

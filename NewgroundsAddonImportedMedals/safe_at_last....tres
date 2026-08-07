@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MedalResource" format=3 uid="uid://dm743u56ygppv"]
+
+[ext_resource type="Script" uid="uid://d1n8h8ulcgxda" path="res://addons/newgrounds/data/medal_resource.gd" id="1_bmkfp"]
+
+[resource]
+script = ExtResource("1_bmkfp")
+name = "Safe at Last...?"
+description = "Complete the game."
+icon_url = "https://apifiles.ngfiles.com/medals/51000/51766/62839_safeatlast.jpg"
+id = 62839
+value = 50
+difficulty = 4

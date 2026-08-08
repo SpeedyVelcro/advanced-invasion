@@ -199,6 +199,8 @@ batching/precision/uv_contract=true
 
 general/achievements="uid://cf6sahjleo1jb"
 general/completion_save_file_path="user://achievements.json"
+sync/enable_sync=true
+sync/achievement_api=2
 
 [sv_jukebox]
 

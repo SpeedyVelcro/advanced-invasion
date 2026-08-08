@@ -5,6 +5,10 @@ var first_scene_path = "res://GUI/MainMenu/MainMenu.tscn"
 func _ready():
 	Migrator.migrate_all()
 	
+	# DEBUG: Temporary lines for web export just for this testing branch.
+	OptionsConfigProvider.get_config().manage_resolution = false
+	OptionsConfigProvider.get_config().manage_window_mode = false
+	
 	OptionsLifecycle.start_up()
 	
 	# Workaround because default UI scale doesn't calculate correctly when calculated
@@ -20,5 +24,8 @@ func _ready():
 	
 	if OS.has_feature("game_jolt"):
 		GameJolt.private_key = Secrets.GAME_JOLT_PRIVATE_KEY
+	
+	# DEBUG: unlock achievement for testing
+	AchievementService.unlock("giant_defeated")
 	
 	SceneTransition.fade(first_scene_path, 0.0, 1.0)

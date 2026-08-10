@@ -10,7 +10,7 @@ NOTE: some of the listed directories have **non-free** licenses.
 ## Listed Directories
 The following directories have their own licenses:
 ```
-addons/gamejolt_api_v2
+addons/gamejolt
 addons/newgrounds
 Art
 Font/Hack
@@ -27,6 +27,11 @@ Sound/Movement
 Sound/VoiceSynth
 Sound/Weapon
 ```
+
+In addition, I have dedicated some more trivial files in this repo to
+the public domain using [UNLICENSE](https://unlicense.org/). You do not
+need to worry about these as those files do not require attribution, and
+UNLICENSE is compatible with the main repository license.
 
 ## Main Respository License
 Copyright (c) SpeedyVelcro 2021-2026

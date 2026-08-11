@@ -1,0 +1,112 @@
+# Authored by Speedyvelcro, 2026
+#
+# This is free and unencumbered software released into the public domain.
+#
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+#
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# For more information, please refer to <https://unlicense.org/>
+name: Build, Test and Publish
+on:
+  push:
+    branches:
+      - "*"
+  release:
+    types: [published]
+
+env:
+  GODOT_VERSION: "4.7.1-stable"
+
+permissions:
+  contents: write
+
+jobs:
+  build-newgrounds:
+    name: Build for Newgrounds
+    id: build-newgrounds
+    runs-on: macos-latest
+    if: endsWith( github.ref, '-ng' )
+    steps:
+      - name: Build Export Templates (web)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7-stable"
+          platform: "web"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+      - name: Build project
+        run: make newgrounds
+      - name: Package
+        id: package
+        run: |
+          mkdir -p zip_root
+          cp -r build/newgrounds/* zip_root
+          rm -f zip_root/.gitkeep
+          (cd zip_root && zip -r \
+              "../advanced-invasion-web-${{ github.ref_name }}.zip" \
+              ./*)
+          rm -rf zip_root
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: newgrounds-builds
+          path: advanced-invasion-web-${{ github.ref_name }}.zip
+  publish:
+    name: Publish release
+    needs: [build-newgrounds]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Builds
+        uses: actions/download-artifact@v8
+        with:
+          name: newgrounds-builds
+          skip-decompress: false
+          merge-multiple: true
+      - name: Release artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload \
+            "${{ github.ref_name }}" \
+            advanced-invasion-*-${{ github.ref_name }}.* \
+            --repo "${{ github.repository }}"
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Compile Release Notes
+        run: |
+          notes_file=$(if [ -f release-notes/${{ github.ref_name }}.md ]; then echo "${{ github.ref_name }}.md"; else echo "latest.md"; fi)
+          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ github.ref_name }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ github.ref_name }})" > release-notes.md
+          echo "\n" >> release-notes.md
+          cat $notes_file >> release-notes.md
+      - name: Copy Release Notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release edit \
+            "${{ github.ref_name }}" \
+            --repo "${{ github.repository }}" \
+            --notes-file release-notes.md
+

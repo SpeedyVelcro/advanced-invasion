@@ -1,0 +1,237 @@
+# Authored by Speedyvelcro, 2026
+#
+# This is free and unencumbered software released into the public domain.
+#
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+#
+# In jurisdictions that recognize copyright laws, the author or authors
+# of this software dedicate any and all copyright interest in the
+# software to the public domain. We make this dedication for the benefit
+# of the public at large and to the detriment of our heirs and
+# successors. We intend this dedication to be an overt act of
+# relinquishment in perpetuity of all present and future rights to this
+# software under copyright law.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+# OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+# ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+#
+# For more information, please refer to <https://unlicense.org/>
+name: Build and Publish (Game Jolt)
+on:
+  release:
+    types: [published]
+
+env:
+  GODOT_VERSION: "4.7.1-stable"
+
+permissions:
+  contents: write
+
+jobs:
+  build-game_jolt:
+    # Build using custom export templates with encryption key, except macOS.
+    name: Build non-macOS for Game Jolt
+    iD: build-game_jolt
+    runs-on: ubuntu-22.04
+    if: endsWith( github.ref, '-gj' )
+    steps:
+      - name: Install Godot Engine
+        uses: "./.github/actions/install-godot"
+        with:
+          version: "4.7.1-stable"
+          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+          platform: "linux.x86_64"
+      - name: Build Export Templates (Linux x86_64)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "linuxbsd"
+          arch: "x86_64"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Linux x86_32)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "linuxbsd"
+          arch: "x86_32"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Linux arm64)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "linuxbsd"
+          arch: "arm64"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Windows x86_64)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "windows"
+          arch: "x86_64"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Windows x86_32)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "windows"
+          arch: "x86_32"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Windows arm64)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "windows"
+          arch: "arm64"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Build Export Templates (Web)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "web"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+      - name: Build project
+        run: make game_jolt-except-macos
+      - name: Package All
+        id: package-all
+        run: |
+          # TODO: Combine tarball and zip steps into one for loop
+          BUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
+          for build in "${BUILDS[@]}"; do
+            mkdir -p zip_root
+            cp -r build/game_jolt/${build}/* zip_root
+            rm -f zip_root/.gitkeep
+            (cd zip_root && zip -r \
+              "../advanced-invasion-${build}-${{ github.ref_name }}.zip" \
+              ./*)
+            rm -rf zip_root
+          done
+          TARBUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64')
+          for tarbuild in "${TARBUILDS[@]}"; do
+            mkdir -p zip_root
+            cp -r build/game_jolt/${build}/* zip_root
+            rm -f zip_root/.gitkeep
+            (cd zip_root && tar -czf \
+              "../advanced-invasion-${tarbuild}-${{ github.ref_name }}.tar.gz" \
+              ./*)
+            rm -rf zip_root
+          done
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: game_jolt-builds
+          path: advanced-invasion-*-${{ github.ref_name }}.*
+  build-game_jolt-macos:
+    name: Build macOS for Game Jolt
+    id: build-game_jolt-macos
+    runs-on: macos-latest
+    if: endsWith( github.ref, '-gj' )
+    steps:
+      # Don't think my install script would work on macos, and I'm not sure how
+      # I'd adapt it to use the macOS universal bundle that the GitHub distributes.
+      # Just using brew seems easiest for now.
+      - name: Install Godot Engine
+        run: brew install godot@4.7.1
+#      - name: Install Godot Engine
+#        uses: "./.github/actions/install-godot"
+#        with:
+#          version: "4.7.1-stable"
+#          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+#          platform: "linux.x86_64"
+      - name: Build Export Templates (macOS Universal)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "macos"
+          arch: "universal"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+      - name: Build project
+        run: make game_jolt-macos-universal
+      - name: Package
+        id: package
+        run: |
+          mkdir -p zip_root
+          cp -r build/game_jolt/macos-universal/* zip_root
+          rm -f zip_root/.gitkeep
+          (cd zip_root && zip -r \
+              "../advanced-invasion-macos-universal-${{ github.ref_name }}.zip" \
+              ./*)
+          rm -rf zip_root
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: game_jolt-macos-builds
+          path: advanced-invasion-macos-universal-${{ github.ref_name }}.zip
+  publish:
+    name: Publish Game Jolt Release
+    runs-on: ubuntu-latest
+    needs: [build-game_jolt, build-game_jolt-macos]
+    steps:
+      - name: Download Non-macOS Builds
+        uses: actions/download-artifact@v8
+        with:
+          name: game_jolt-builds
+          skip-decompress: false
+          merge-multiple: true
+      - name: Download macOS builds
+        uses: actions/download-artifact@v8
+        with:
+          name: game_jolt-macos-builds
+          skip-decompress: false
+          merge-multiple: true
+      - name: Release artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload \
+            "${{ github.ref_name }}" \
+            advanced-invasion-*-${{ github.ref_name }}.* \
+            --repo "${{ github.repository }}"
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Compile Release Notes
+        run: |
+          notes_file=$(if [ -f release-notes/${{ github.ref_name }}.md ]; then echo "${{ github.ref_name }}.md"; else echo "latest.md"; fi)
+          echo "This release comprises the Game Jolt builds, which you would typically obtain through the game's Game Jolt page. There is no reason to use these if you are not a Game Jolt user. Instead, see the main release: [${{ github.ref_name }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ github.ref_name }})" > release-notes.md
+          echo "\n" >> release-notes.md
+          cat $notes_file >> release-notes.md
+      - name: Copy Release Notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release edit \
+            "${{ github.ref_name }}" \
+            --repo "${{ github.repository }}" \
+            --notes-file release-notes.md
+

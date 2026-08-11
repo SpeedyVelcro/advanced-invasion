@@ -1,0 +1,56 @@
+name: Create Releases
+on:
+  push:
+    tags:
+      - "*"
+permissions:
+  contents: write
+jobs:
+  create-releases:
+    name: Create Releases
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if Tag is Main Version
+        id: is-main-version
+        run: |
+          regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
+          result=$(if [[ ${{ github.ref }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
+          echo "result=${result}" >> $GITHUB_OUTPUT
+      - name: Check if Tag is Any Kind of Version
+        id: is-version
+        run: |
+          regex='^v[0-9]+\.[0-9]+\.[0-9]+-.*$'
+          result=$(if [[ ${{ github.ref }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
+          echo "result=${result}" >> $GITHUB_OUTPUT
+      - name: Create Game Jolt Tag
+        if: steps.is-main-version.outputs.result == 'true'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ github.ref }}-gj",
+              sha: context.sha
+            })
+      - name: Create Newgrounds Tag
+        if: steps.is-main-version.outputs.result == 'true'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ github.ref }}-ng",
+              sha: context.sha
+            })
+      - name: Create Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create \
+            "${{ github.ref_name }}" \
+            --title "${{ github.ref_name }}" \
+            $(if [ "${{ steps.is-main-version.outputs.result }}" == "true" ]; then printf %s "--latest"; else printf %s "--latest=false"; fi) \
+            --verify-tag \
+            --repo "${{ github.repository }}"

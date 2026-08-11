@@ -15,7 +15,7 @@ jobs:
         id: extract-tag
         run: |
           echo "Extracting tag from ref ${{ github.ref }}"
-          tag=$(echo "${{ github.ref }}" | sed "s/ref\/tags\///")
+          tag=$(echo "${{ github.ref }}" | sed "s/refs\/tags\///")
           echo "Result: ${tag}"
           echo "tag=${tag}" >> $GITHUB_OUTPUT
       - name: Check if Tag is Main Version

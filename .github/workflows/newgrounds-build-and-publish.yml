@@ -26,9 +26,6 @@
 # For more information, please refer to <https://unlicense.org/>
 name: Build, Test and Publish
 on:
-  push:
-    branches:
-      - "*"
   release:
     types: [published]
 
@@ -41,7 +38,6 @@ permissions:
 jobs:
   build-newgrounds:
     name: Build for Newgrounds
-    id: build-newgrounds
     runs-on: macos-latest
     if: endsWith( github.ref, '-ng' )
     steps:

@@ -10,20 +10,28 @@ jobs:
     name: Create Releases
     runs-on: ubuntu-latest
     steps:
+      # Unlike on releases, the github ref includes "ref/tags/" on push.tags events.
+      - name: Extract Tag from Ref
+        id: extract-tag
+        run: |
+          echo "Extracting tag from ref ${{ github.ref }}"
+          tag=$(echo "${{ github.ref }}" | sed "s/ref/\/tags\///")
+          echo "Result: ${tag}"
+          echo "tag=${tag}" >> $GITHUB_OUTPUT
       - name: Check if Tag is Main Version
         id: is-main-version
         run: |
           regex='^v[0-9]+\.[0-9]+\.[0-9]+$'
-          echo "Checking ${{ github.ref }}"
-          result=$(if [[ ${{ github.ref }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
+          echo "Checking ${{ steps.extract-tag.outputs.tag }}"
+          result=$(if [[ ${{ steps.extract-tag.outputs.tag }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
           echo "Result: ${result}"
           echo "result=${result}" >> $GITHUB_OUTPUT
       - name: Check if Tag is Any Kind of Version
         id: is-any-version
         run: |
           regex='^v[0-9]+\.[0-9]+\.[0-9]+-.*$'
-          echo "Checking ${{ github.ref }}"
-          result=$(if [[ ${{ github.ref }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
+          echo "Checking ${{ steps.extract-tag.outputs.tag }}"
+          result=$(if [[ ${{ steps.extract-tag.outputs.tag }} =~ $regex ]]; then echo "true"; else echo "false"; fi)
           echo "Result: ${result}"
           echo "result=${result}" >> $GITHUB_OUTPUT
       - name: Create Game Jolt Tag
@@ -34,7 +42,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: "refs/tags/${{ github.ref }}-gj",
+              ref: "refs/tags/${{ steps.extract-tag.outputs.tag }}-gj",
               sha: context.sha
             })
       - name: Create Newgrounds Tag
@@ -45,7 +53,7 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: "refs/tags/${{ github.ref }}-ng",
+              ref: "refs/tags/${{ steps.extract-tag.outputs.tag }}-ng",
               sha: context.sha
             })
       - name: Create Release
@@ -54,8 +62,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create \
-            "${{ github.ref_name }}" \
-            --title "${{ github.ref_name }}" \
+            "${{ steps.extract-tag.outputs.tag }}" \
+            --title "${{ steps.extract-tag.outputs.tag }}" \
             $(if [ "${{ steps.is-main-version.outputs.result }}" == "true" ]; then printf %s "--latest"; else printf %s "--latest=false"; fi) \
             --verify-tag \
             --repo "${{ github.repository }}"

@@ -45,6 +45,8 @@ jobs:
     runs-on: macos-latest
     if: endsWith( github.ref, '-ng' )
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
       - name: Build Export Templates (web)
         uses: "./.github/actions/build-export-templates"
         with:
@@ -57,6 +59,9 @@ jobs:
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+      - name: Inject PCK Encryption Key
+        run: |
+          ./inject-pck-encryption-key.sh newgrounds ${{ secrets.PCK_ENCRYPTION_KEY }}
       - name: Build project
         run: make newgrounds
       - name: Package

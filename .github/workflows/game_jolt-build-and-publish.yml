@@ -43,6 +43,8 @@ jobs:
     runs-on: ubuntu-22.04
     if: endsWith( github.ref, '-gj' )
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
@@ -152,6 +154,8 @@ jobs:
     runs-on: macos-latest
     if: endsWith( github.ref, '-gj' )
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
       # Don't think my install script would work on macos, and I'm not sure how
       # I'd adapt it to use the macOS universal bundle that the GitHub distributes.
       # Just using brew seems easiest for now.
@@ -176,6 +180,16 @@ jobs:
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+      - name: Inject PCK Encryption Keys
+        run: |
+          ./inject-pck-encryption-key.sh game_jolt-linux-x86_64 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-linux-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-linux-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-windows-x86_64 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-windows-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-windows-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-macos-universal ${{ secrets.PCK_ENCRYPTION_KEY }}
+          ./inject-pck-encryption-key.sh game_jolt-web ${{ secrets.PCK_ENCRYPTION_KEY }}
       - name: Build project
         run: make game_jolt-macos-universal
       - name: Package

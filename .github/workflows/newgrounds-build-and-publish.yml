@@ -24,22 +24,36 @@
 # OTHER DEALINGS IN THE SOFTWARE.
 #
 # For more information, please refer to <https://unlicense.org/>
-name: Build, Test and Publish
+name: Build and Publish (Newgrounds)
 on:
   release:
     types: [published]
-
+  workflow_call:
+    inputs:
+      tag:
+        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
+        required: true
+        type: string
 env:
   GODOT_VERSION: "4.7.1-stable"
-
 permissions:
   contents: write
-
 jobs:
+  get-tag:
+    name: Get Release Tag
+    runs-on: ubuntu-latest
+    steps:
+      name: Get Release Tag
+      run: |
+        if [ -n "${{ inputs.tag }}" ]; then
+          echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+        else
+          echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+        fi
   build-newgrounds:
     name: Build for Newgrounds
-    runs-on: macos-latest
-    if: endsWith( github.ref, '-ng' )
+    runs-on: ubuntu-latest
+    if: endsWith( jobs.get-tag.outputs.tag, '-ng' )
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -54,7 +68,7 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
-          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ jobs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Key
         run: |
           ./inject-pck-encryption-key.sh newgrounds ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -67,14 +81,14 @@ jobs:
           cp -r build/newgrounds/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-              "../advanced-invasion-web-${{ github.ref_name }}.zip" \
+              "../advanced-invasion-web-${{ jobs.get-tag.outputs.tag }}.zip" \
               ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: newgrounds-builds
-          path: advanced-invasion-web-${{ github.ref_name }}.zip
+          path: advanced-invasion-web-${{ jobs.get-tag.outputs.tag }}.zip
   publish:
     name: Publish release
     needs: [build-newgrounds]
@@ -91,15 +105,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload \
-            "${{ github.ref_name }}" \
-            advanced-invasion-*-${{ github.ref_name }}.* \
+            "${{ jobs.get-tag.outputs.tag }}" \
+            advanced-invasion-*-${{ jobs.get-tag.outputs.tag }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Compile Release Notes
         run: |
-          notes_file=$(if [ -f release-notes/${{ github.ref_name }}.md ]; then echo "${{ github.ref_name }}.md"; else echo "latest.md"; fi)
-          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ github.ref_name }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ github.ref_name }})" > release-notes.md
+          notes_file=$(if [ -f release-notes/${{ jobs.get-tag.outputs.tag }}.md ]; then echo "${{ jobs.get-tag.outputs.tag }}.md"; else echo "latest.md"; fi)
+          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ jobs.get-tag.outputs.tag }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ jobs.get-tag.outputs.tag }})" > release-notes.md
           echo "\n" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes
@@ -107,7 +121,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release edit \
-            "${{ github.ref_name }}" \
+            "${{ jobs.get-tag.outputs.tag }}" \
             --repo "${{ github.repository }}" \
             --notes-file release-notes.md
 

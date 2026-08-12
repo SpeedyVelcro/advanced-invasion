@@ -202,7 +202,7 @@ runs:
         for arch in "${arches[@]}"; do
           for target in "${targets[@]}"; do
             last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" )
-            generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && "${last_iteration}" == "true" && printf %s "true" )
+            generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && [ "${last_iteration}" == "true" ] && printf %s "true" )
             scons \
               platform=${{ inputs.platform }} \
               $( [[ -n "${arch}" ]] && printf %s "arch=${arch}" ) \

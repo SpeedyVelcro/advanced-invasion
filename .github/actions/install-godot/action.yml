@@ -71,5 +71,9 @@ runs:
       run: |
         BIN_DIR=${{ runner.temp }}/godot-bin
         mkdir -p $BIN_DIR
-        mv ${{ env.GODOT_FILE }} $BIN_DIR/godot
+        if [ "${{ inputs.platform }}" == "macos.universal" ]; then
+          mv Godot.app/Contents/MacOS/Godot $BIN_DIR godot
+        else
+          mv ${{ env.GODOT_FILE }} $BIN_DIR/godot
+        fi
         echo "$BIN_DIR" >> "$GITHUB_PATH" # Documented at https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#adding-a-system-path

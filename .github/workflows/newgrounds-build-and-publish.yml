@@ -53,7 +53,8 @@ jobs:
   build-newgrounds:
     name: Build for Newgrounds
     runs-on: ubuntu-latest
-    if: endsWith( jobs.get-tag.outputs.tag, '-ng' )
+    needs: get-tag
+    if: endsWith( needs.get-tag.outputs.tag, '-ng' )
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -68,7 +69,7 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
-          sed -i 's/\(config\/version="\).*\("\)/\1${{ jobs.get-tag.outputs.tag }}\2/' project.godot
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Key
         run: |
           ./inject-pck-encryption-key.sh newgrounds ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -81,17 +82,17 @@ jobs:
           cp -r build/newgrounds/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-              "../advanced-invasion-web-${{ jobs.get-tag.outputs.tag }}.zip" \
+              "../advanced-invasion-web-${{ needs.get-tag.outputs.tag }}.zip" \
               ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: newgrounds-builds
-          path: advanced-invasion-web-${{ jobs.get-tag.outputs.tag }}.zip
+          path: advanced-invasion-web-${{ needs.get-tag.outputs.tag }}.zip
   publish:
     name: Publish release
-    needs: [build-newgrounds]
+    needs: [get-tag, build-newgrounds]
     runs-on: ubuntu-latest
     steps:
       - name: Download Builds
@@ -105,15 +106,15 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload \
-            "${{ jobs.get-tag.outputs.tag }}" \
-            advanced-invasion-*-${{ jobs.get-tag.outputs.tag }}.* \
+            "${{ needs.get-tag.outputs.tag }}" \
+            advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Compile Release Notes
         run: |
-          notes_file=$(if [ -f release-notes/${{ jobs.get-tag.outputs.tag }}.md ]; then echo "${{ jobs.get-tag.outputs.tag }}.md"; else echo "latest.md"; fi)
-          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ jobs.get-tag.outputs.tag }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ jobs.get-tag.outputs.tag }})" > release-notes.md
+          notes_file=$(if [ -f release-notes/${{ needs.get-tag.outputs.tag }}.md ]; then echo "${{ needs.get-tag.outputs.tag }}.md"; else echo "latest.md"; fi)
+          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ needs.get-tag.outputs.tag }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ needs.get-tag.outputs.tag }})" > release-notes.md
           echo "\n" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes
@@ -121,7 +122,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release edit \
-            "${{ jobs.get-tag.outputs.tag }}" \
+            "${{ needs.get-tag.outputs.tag }}" \
             --repo "${{ github.repository }}" \
             --notes-file release-notes.md
 

@@ -71,7 +71,7 @@ jobs:
           main_tag=$(echo "${{ github.ref_name }}" | sed 's/-.*$//')
           newgrounds_tag="${main-tag}-ng"
           game_jolt_tag="${main-tag}-gj"
-          echo: "Tag is:"
+          echo "Tag is:"
           [ is_any == "true" ] && echo "Any Version"
           [ is_main == "true" ] && echo "Main version"
           [ is_game_jolt == "true" ] && echo "Game Jolt"

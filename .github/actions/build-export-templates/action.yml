@@ -212,7 +212,7 @@ runs:
               $( [ "${generate_bundle}" == "true" ] && printf %s "generate_bundle=yes" )
           done
         done
-        echo "output-directory=$(pwd)/bin" >> &GITHUB_OUTPUT
+        echo "output-directory=$(pwd)/bin" >> $GITHUB_OUTPUT
     - name: Save Export Templates to Cache
       id: cache-export-templates-save
       uses: actions/cache/save@v6

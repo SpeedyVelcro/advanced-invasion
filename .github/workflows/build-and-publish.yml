@@ -83,13 +83,13 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
-        if: github.event_name != 'release'
+        if: github.event_name != 'release' && ( github.event_name != 'workflow_call' || inputs.release == 'false' )
         run: make linux-x86_64
       - name: Build All
         id: build-all
-        if: github.event_name == 'release' # We only build and package for all platforms
-                                           # for releases, to save on workflow minutes
-                                           # and artifact storage.
+        # We only build and package for all platforms for releases, to save
+        # on workflow minutes and artifact storage.
+        if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
         run: make
       - name: Package All
         id: package-all

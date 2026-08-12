@@ -119,6 +119,7 @@ runs:
         sudo apt-get update
         sudo apt-get install -y \
           build-essential:i386 \
+          scons \
           pkg-config:i386 \
           libxcursor-dev:i386 \
           libxinerama-dev:i386 \
@@ -138,6 +139,7 @@ runs:
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
         sudo apt-get update
         sudo apt-get install -y \
+          scons \
           mingw-w64
     - name: Install Dependencies (Linux -> Windows arm64)
       id: linux-to-windows-arm64-dependencies
@@ -145,6 +147,8 @@ runs:
       shell: bash
       run: |
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
+        sudo apt-get update
+        sudo apt-get install -y scons
         # Don't clutter the working directory
         dir=$(mktemp -d -p ${{ runner.temp }})
         cd ${dir}
@@ -159,6 +163,13 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
+    - name: Install Dependencies (Linux -> Web) (Except Emscripten)
+      shell: bash
+      working-directory: ${{ steps.working-directory.outputs.working-directory }}
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y scons
     - name: Set Up Emscripten Dependency (Linux -> Web)
       uses: emscripten-core/setup-emsdk@v15
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}

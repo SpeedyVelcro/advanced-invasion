@@ -38,7 +38,7 @@ on:
         required: true
         type: string
       release:
-        desccription: "Whether this workflow call is for a release (the release must already exist for the given tag)"
+        description: "Whether this workflow call is for a release (the release must already exist for the given tag)"
         required: false
         default: "true"
         type: string

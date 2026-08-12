@@ -175,8 +175,9 @@ runs:
         git init
         git remote add origin https://github.com/godotengine/godot.git
         git fetch
-        git reset origin/${{ inputs.version }}
-        git checkout -t origin/${{ inputs.version }}
+        git fetch --tags --all
+        git reset ${{ inputs.version }}
+        git checkout ${{ inputs.version }}
     - name: Build Templates
       id: build
       shell: bash

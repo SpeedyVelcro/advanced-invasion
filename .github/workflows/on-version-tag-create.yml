@@ -69,8 +69,8 @@ jobs:
           newgrounds_regex='-ng$'
           is_newgrounds=$(if [ is-any == "true" ] && [[ ${{ github.ref_name }} =~ $newgrounds_regex ]]; then echo "true"; else echo "false"; fi)
           main_tag=$(echo "${{ github.ref_name }}" | sed 's/-.*$//')
-          newgrounds_tag="${main-tag}-ng"
-          game_jolt_tag="${main-tag}-gj"
+          newgrounds_tag="${main_tag}-ng"
+          game_jolt_tag="${main_tag}-gj"
           echo "Tag is:"
           [ is_any == "true" ] && echo "Any Version"
           [ is_main == "true" ] && echo "Main version"
@@ -164,7 +164,7 @@ jobs:
     name: "Call General Release Workflow"
     needs: create-releases
     if: ${{ needs.create-releases.outputs.created-main-release == 'true' }}
-    uses: $/.github/workflows/newgrounds-build-and-publish.yml
+    uses: $/.github/workflows/build-and-publish.yml
     with:
       tag: ${{ needs.create-releases.outputs.main-tag }}
     secrets: inherit

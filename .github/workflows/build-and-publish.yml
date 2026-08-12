@@ -54,6 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tag: ${{ steps.get-tag.outputs.tag }}
+      is-main: ${{ steps.get-tag.outputs.is-main }}
     steps:
       - name: Get Release Tag
         id: get-tag
@@ -64,6 +65,9 @@ jobs:
           else
             echo "Tag will be: ${{ github.ref_name }}"
             echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            if [[ "${{ github.ref_name }}" =~ '^v[0-9]+\.[0-9]+\.[0-9]+$' ]]; then
+              echo "Tag is not a main release."
+              echo "is-main='true'" >> $GITHUB_OUTPUT
           fi
   build:
     name: Build All
@@ -88,13 +92,13 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
-        if: github.event_name != 'release' && ( github.event_name != 'workflow_call' || inputs.release == 'false' )
+        if: ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( github.event_name != 'workflow_call' || inputs.release == 'false' )
         run: make linux-x86_64
       - name: Build All
         id: build-all
         # We only build and package for all platforms for releases, to save
         # on workflow minutes and artifact storage.
-        if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
+        if: ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
         run: make
       - name: Package All
         id: package-all
@@ -146,7 +150,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
+    if: ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

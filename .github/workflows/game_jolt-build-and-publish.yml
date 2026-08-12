@@ -43,13 +43,13 @@ jobs:
     name: Get Release Tag
     runs-on: ubuntu-latest
     steps:
-      name: Get Release Tag
-      run: |
-        if [ -n "${{ inputs.tag }}" ]; then
-          echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
-        else
-          echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-        fi
+      - name: Get Release Tag
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
   build-game_jolt:
     # Build using custom export templates with encryption key, except macOS.
     name: Build non-macOS for Game Jolt

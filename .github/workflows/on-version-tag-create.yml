@@ -37,7 +37,7 @@ name: Create Releases
 on:
   push:
     tags:
-      - "*"
+      - "v*.*.*" # Not as thorough as the checks we use later, but we can at least save on some actions minutes
 permissions:
   contents: write
 jobs:

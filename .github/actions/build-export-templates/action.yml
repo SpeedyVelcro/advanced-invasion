@@ -173,7 +173,7 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
       run: |
         git init
-        git remote add origin git@github.com:godotengine/godot.git
+        git remote add origin https://github.com/godotengine/godot.git
         git fetch
         git reset origin/${{ inputs.version }}
         git checkout -t origin/${{ inputs.version }}

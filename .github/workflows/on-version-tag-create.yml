@@ -163,9 +163,6 @@ jobs:
   # workflows (it's a defense against recursion) so we need to call the release
   # pipelines directly
   general-release:
-    # Usually won't be called if the main release was created through the UI, instead
-    # the workflow will trigger via the release. This manual trigger is here in
-    # case the tag is created with git push --tags for instance.
     name: "Call General Release Workflow"
     needs: create-releases
     if: ${{ needs.create-releases.outputs.created-main-release == 'true' }}

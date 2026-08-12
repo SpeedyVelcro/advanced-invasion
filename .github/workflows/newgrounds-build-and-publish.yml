@@ -71,7 +71,7 @@ jobs:
       - name: Build Export Templates (web)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7-stable"
+          version: "4.7.1-stable"
           platform: "web"
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}

@@ -47,8 +47,11 @@ jobs:
   get-tag:
     name: Get Release Tag
     runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.get-tag.outputs.tag }}
     steps:
       - name: Get Release Tag
+        id: get-tag
         run: |
           if [ -n "${{ inputs.tag }}" ]; then
             echo "Tag will be: ${{ inputs.tag }}"

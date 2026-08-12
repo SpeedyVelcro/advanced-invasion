@@ -31,7 +31,17 @@ on:
       - "*"
   release:
     types: [published]
-
+  workflow_call:
+    inputs:
+      tag:
+        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
+        required: true
+        type: string
+      release:
+        desccription: "Whether this workflow call is for a release (the release must already exist for the given tag)"
+        required: false
+        default: "true"
+        type: string
 env:
   GODOT_VERSION: "4.7.1-stable"
 
@@ -39,8 +49,20 @@ permissions:
   contents: write
 
 jobs:
+  get-tag:
+    name: Get Tag (version or other ref name)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Release Tag
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          fi
   build:
     name: Build All
+    needs: get-tag
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -59,7 +81,7 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
-          sed -i 's/\(config\/version="\).*\("\)/\1${{ github.ref_name }}\2/' project.godot
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
         if: github.event_name != 'release'
         run: make linux-x86_64
@@ -80,7 +102,7 @@ jobs:
             cp -r build/${build}/* zip_root # Needs -r because macOS' .app files are actually folders.
             rm -f zip_root/.gitkeep
             (cd zip_root && zip -r \
-              "../advanced-invasion-${build}-${{ github.ref_name }}.zip" \
+              "../advanced-invasion-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
               ./*)
             rm -rf zip_root
           done
@@ -90,7 +112,7 @@ jobs:
             cp -r build/${build}/* zip_root # Needs -r because macOS' .app files are actually folders.
             rm -f zip_root/.gitkeep
             (cd zip_root && tar -czf \
-              "../advanced-invasion-${tarbuild}-${{ github.ref_name }}.tar.gz" \
+              "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
               ./*)
             rm -rf zip_root
           done
@@ -99,7 +121,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: builds
-          path: advanced-invasion-*-${{ github.ref_name }}.*
+          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
   # test:
   #   name: Run Tests
   #   runs-on: ubuntu-latest
@@ -117,9 +139,9 @@ jobs:
   #         publish-report: false # true causes failure due to read-only permission
   publish:
     name: Publish release
-    needs: [build]
+    needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8
@@ -132,8 +154,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload \
-            "${{ github.ref_name }}" \
-            advanced-invasion-*-${{ github.ref_name }}.* \
+            "${{ needs.get-tag.outputs.tag }}" \
+            advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -142,7 +164,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release edit \
-            "${{ github.ref_name }}" \
+            "${{ needs.get-tag.outputs.tag }}" \
             --repo "${{ github.repository }}" \
-            --notes-file release-notes/$(if [ -f release-notes/${{ github.ref_name }}.md ]; then echo "${{ github.ref_name }}.md"; else echo "latest.md"; fi)
+            --notes-file release-notes/$(if [ -f release-notes/${{ needs.get-tag.outputs.tag }}.md ]; then echo "${{ needs.get-tag.outputs.tag }}.md"; else echo "latest.md"; fi)
 

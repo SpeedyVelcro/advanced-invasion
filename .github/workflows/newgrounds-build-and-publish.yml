@@ -34,6 +34,11 @@ on:
         description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
         required: true
         type: string
+      release:
+        desccription: "Whether this workflow call is for a release (the release must already exist for the given tag)"
+        required: false
+        default: "true"
+        type: string
 env:
   GODOT_VERSION: "4.7.1-stable"
 permissions:
@@ -94,6 +99,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build-newgrounds]
     runs-on: ubuntu-latest
+    if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

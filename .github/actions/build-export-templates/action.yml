@@ -84,10 +84,9 @@ runs:
         echo "working-directory=${dir}" >> $GITHUB_OUTPUT
     - name: Restore Cached Export Templates
       id: cache-export-templates-restore
-      working-directory: ${{ steps.working-directory.outputs.working-directory }}
       uses: actions/cache/restore@v6
       with:
-        path: bin
+        path: ${{ steps.working-directory.outputs.working-directory }}/bin
         key: ${{ steps.cache-key.outputs.cache-key }}
     - name: Install Dependencies (Linux -> Linux)
       shell: bash
@@ -165,11 +164,19 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}
       with:
         version: 4.0.23 # Docs currently recommend 4.0.0+: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_web.html#requirements
-    - uses: actions/checkout@v7
+    # We use a run step rather than actions/checkout because actions/checkout
+    # doesn't let us checkout the repo to a directory outside $GITHUB_WORKSPACE
+    # Luckily, being a public repo, we don't need to faff about with tokens.
+    - name: Checkout Godot Repo
+      shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
-      with:
-        repository: godotengine/godot
-        ref: ${{ inputs.version }}
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
+      run: |
+        git init
+        git remote add origin git@github.com:godotengine/godot.git
+        git fetch
+        git reset origin/${{ inputs.version }}
+        git checkout -t origin/${{ inputs.version }}
     - name: Build Templates
       id: build
       shell: bash
@@ -209,7 +216,7 @@ runs:
       id: cache-export-templates-save
       uses: actions/cache/save@v6
       with:
-        path: bin
+        path: ${{ steps.working-directory.outputs.working-directory }}/bin
         key: ${{ steps.cache-key.outputs.cache-key }}
     - name: Rename Export Templates
       if: ${{ inputs.rename == 'true' }}

@@ -188,19 +188,19 @@ runs:
         [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \
           && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
         targets=()
-        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+="release"
-        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+="debug"
+        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+=("release")
+        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+=("debug")
         arches=()
         if [ -n "${{ inputs.arch }}" ]; then
-          arches+=""
+          arches+=("")
         elif [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ]; then
-          arches+="arm64"
-          arches+="x86_64"
+          arches+=("arm64")
+          arches+=("x86_64")
         else
-          arches+="${{ inputs.arch }}"
+          arches+=("${{ inputs.arch }}")
         fi
-        for arch in ${arches[@]}; do
-          for target in ${targets[@]}; do
+        for arch in "${arches[@]}"; do
+          for target in "${targets[@]}"; do
             last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" )
             generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && "${last_iteration}" == "true" && printf %s "true" )
             scons \

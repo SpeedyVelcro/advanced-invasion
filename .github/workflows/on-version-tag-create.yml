@@ -136,7 +136,7 @@ jobs:
         run: |
           gh release create \
             "${{ steps.identify-tag.outputs.newgrounds-tag }}" \
-            --title "$${{ steps.identify-tag.outputs.newgrounds-tag }}" \
+            --title "${{ steps.identify-tag.outputs.newgrounds-tag }}" \
             --latest=false \
             --verify-tag \
             --repo "${{ github.repository }}" \
@@ -152,7 +152,7 @@ jobs:
         run: |
           gh release create \
             "${{ steps.identify-tag.outputs.game_jolt-tag }}" \
-            --title "$${{ steps.identify-tag.outputs.game_jolt-tag }}" \
+            --title "${{ steps.identify-tag.outputs.game_jolt-tag }}" \
             --latest=false \
             --verify-tag \
             --repo "${{ github.repository }}" \

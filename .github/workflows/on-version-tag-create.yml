@@ -114,6 +114,7 @@ jobs:
       - name: Create Main Release
         id: main-release
         if: steps.identify-tag.outputs.is-main == 'true'
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -123,12 +124,13 @@ jobs:
             --latest \
             --verify-tag \
             --repo "${{ github.repository }}" \
-            || exit 0
+            || exit 1
           echo "Created release"
           echo "created=true" >> $GITHUB_OUTPUT
       - name: Create Newgrounds Release
         id: newgrounds-release
         if: steps.identify-tag.outputs.is-main == 'true' || steps.identify-tag.outputs.is-newgrounds == 'true'
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -137,12 +139,13 @@ jobs:
             --title "$${{ steps.identify-tag.outputs.newgrounds-tag }}" \
             --verify-tag \
             --repo "${{ github.repository }}" \
-            || exit 0
+            || exit 1
           echo "Created release"
           echo "created=true" >> $GITHUB_OUTPUT
       - name: Create Game Jolt Release
         id: game_jolt-release
         if: steps.identify-tag.outputs.is-main == 'true' || steps.identify-tag.outputs.is-game_jolt == 'true'
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -151,7 +154,7 @@ jobs:
             --title "$${{ steps.identify-tag.outputs.game_jolt-tag }}" \
             --verify-tag \
             --repo "${{ github.repository }}" \
-            || exit 0
+            || exit 1
           echo "Created release"
           echo "created=true" >> $GITHUB_OUTPUT
   # Creating releases (or indeed doing anything) via workflows does not trigger other

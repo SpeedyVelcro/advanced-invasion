@@ -102,7 +102,7 @@ runs:
     - name: Install Dependencies (Linux -> Linux)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
-      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' }}
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' && inputs.arch != 'x86_32' }}
       run: |
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_linuxbsd.html#distro-specific-one-liners
         sudo apt-get update

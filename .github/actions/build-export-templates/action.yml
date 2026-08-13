@@ -186,7 +186,7 @@ runs:
         clone_dir=$(mktemp -d -p ${{ runner.temp }})
         git clone https://github.com/godotengine/godot.git "${clone_dir}"
         (cd "${clone_dir}" && git checkout ${{ inputs.version }})
-        cp -r "${clone_dir}/*" ./
+        cp -r "${clone_dir}"/* ./
     - name: Build Templates
       id: build
       shell: bash

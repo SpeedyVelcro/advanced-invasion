@@ -187,7 +187,7 @@ runs:
       run: |
         brew install scons
         ./misc/scripts/install_vulkan_sdk_macos.sh
-        python misc/scripts/install-accesskit.py
+        python misc/scripts/install_accesskit.py
         python misc/scripts/install_angle.py
     - name: Install Dependencies (Linux -> Web) (Except Emscripten)
       shell: bash

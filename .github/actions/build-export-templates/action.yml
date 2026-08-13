@@ -216,8 +216,12 @@ runs:
           echo "For arch ${arch}"
           for target in "${targets[@]}"; do
             echo "For target ${target}"
+            last_iteration="false"
             last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" )
+            echo "Last iteration check: ${last_iteration}"
+            generate_bundle="false"
             generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && [ "${last_iteration}" == "true" ] && printf %s "true" )
+            echo "Generate bundle check: ${generate_bundle}"
             echo "Compiling export template..."
             scons \
               platform=${{ inputs.platform }} \

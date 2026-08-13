@@ -68,6 +68,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
+      - name: Install Godot Engine
+        uses: "./.github/actions/install-godot"
+        with:
+          version: "4.7.1-stable"
+          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+          platform: "linux.x86_64"
       - name: Build Export Templates (web)
         uses: "./.github/actions/build-export-templates"
         with:

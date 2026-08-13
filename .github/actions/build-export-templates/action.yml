@@ -65,8 +65,7 @@ runs:
       id: cache-key
       shell: bash
       run: |
-        builder=""
-        builder="${builder}+${{ runner.os }}"
+        builder="${{ runner.os }}"
         builder="${builder}+${{ inputs.version }}"
         builder="${builder}+${{ inputs.arch }}"
         builder="${builder}+${{ inputs.target }}"

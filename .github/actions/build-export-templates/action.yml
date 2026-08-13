@@ -132,6 +132,8 @@ runs:
         sudo dpkg --add-architecture i386
         sudo apt-get update
         sudo apt-get install -y \
+          gcc-multilib \
+          g++-multilib \
           build-essential:i386 \
           pkg-config:i386 \
           libxcursor-dev:i386 \

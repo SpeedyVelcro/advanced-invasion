@@ -97,7 +97,6 @@ runs:
         sudo apt-get update
         sudo apt-get install -y \
           build-essential \
-          scons \
           pkg-config \
           libx11-dev \
           libxcursor-dev \
@@ -109,7 +108,11 @@ runs:
           libudev-dev \
           libxi-dev \
           libxrandr-dev \
-          libwayland-dev
+          libwayland-dev \
+          pipx # pipx manages PATH for us safely when installing scons
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
     - name: Configure Dependencies (Linux -> Linux x86_32)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' && inputs.arch == 'x86_32' }}
       shell: bash
@@ -119,7 +122,6 @@ runs:
         sudo apt-get update
         sudo apt-get install -y \
           build-essential:i386 \
-          scons \
           pkg-config:i386 \
           libxcursor-dev:i386 \
           libxinerama-dev:i386 \
@@ -130,7 +132,11 @@ runs:
           libudev-dev:i386 \
           libxi-dev:i386 \
           libxrandr-dev:i386 \
-          libwayland-dev:i386
+          libwayland-dev:i386 \
+          pipx # pipx manages PATH for us safely when installing scons
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
     - name: Install Dependencies (Linux -> Windows x86)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && startsWith(inputs.arch, 'x86') }}
       shell: bash
@@ -139,8 +145,11 @@ runs:
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
         sudo apt-get update
         sudo apt-get install -y \
-          scons \
-          mingw-w64
+          mingw-w64 \
+          pipx # pipx manages PATH for us safely when installing scons
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
     - name: Install Dependencies (Linux -> Windows arm64)
       id: linux-to-windows-arm64-dependencies
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'arm64' }}
@@ -148,8 +157,11 @@ runs:
       run: |
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
         sudo apt-get update
-        sudo apt-get install -y scons
-        # Don't clutter the working directory
+        sudo apt-get install -y pipx # pipx manages PATH for us safely when installing scons
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
+        # Don't clutter the working directory while installing llvm-mingw
         dir=$(mktemp -d -p ${{ runner.temp }})
         cd ${dir}
         wget "https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-msvcrt-ubuntu-22.04-x86_64.tar.xz"
@@ -169,7 +181,10 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}
       run: |
         sudo apt-get update
-        sudo apt-get install -y scons
+        sudo apt-get install -y pipx # pipx manages PATH for us safely when installing scons
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
     - name: Set Up Emscripten Dependency (Linux -> Web)
       uses: emscripten-core/setup-emsdk@v15
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}

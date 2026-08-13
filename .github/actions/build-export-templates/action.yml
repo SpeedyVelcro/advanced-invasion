@@ -74,7 +74,7 @@ runs:
         # SHA-256 used to kill two birds with one stone here
         # 1. Protect the encryption key (cache keys are not secure).
         # 2. Keep cache key length below GitHub's limit.
-        echo "cache-key=$(echo -n "${builder}" | sha256sum )" >> $GITHUB_OUTPUT
+        echo "cache-key=$( echo -n "${builder}" | sha256sum | cut -f 1 -d " " )" >> $GITHUB_OUTPUT
     - name: Make working directory
       id: working-directory
       shell: bash

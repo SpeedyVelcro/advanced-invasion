@@ -62,7 +62,7 @@ jobs:
           fi
   build-game_jolt:
     # Build using custom export templates with encryption key, except macOS.
-    name: Build non-macOS for Game Jolt
+    name: Build for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04
     if: endsWith( needs.get-tag.outputs.tag, '-gj' )

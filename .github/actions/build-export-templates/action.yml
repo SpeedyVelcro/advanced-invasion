@@ -87,6 +87,18 @@ runs:
       with:
         path: ${{ steps.working-directory.outputs.working-directory }}/bin
         key: ${{ steps.cache-key.outputs.cache-key }}
+    # We use a run step rather than actions/checkout because actions/checkout
+    # doesn't let us checkout the repo to a directory outside $GITHUB_WORKSPACE
+    # Luckily, being a public repo, we don't need to faff about with tokens.
+    - name: Checkout Godot Repo
+      shell: bash
+      working-directory: ${{ steps.working-directory.outputs.working-directory }}
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
+      run: |
+        clone_dir=$(mktemp -d -p ${{ runner.temp }})
+        git clone https://github.com/godotengine/godot.git "${clone_dir}"
+        (cd "${clone_dir}" && git checkout ${{ inputs.version }})
+        cp -r "${clone_dir}"/* ./
     - name: Install Dependencies (Linux -> Linux)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
@@ -174,6 +186,9 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
+        ./misc/scripts/misc/scripts/install_vulkan_sdk_macos.sh
+        python misc/scripts/install-accesskit.py
+        python misc/scripts/install_angle.py
     - name: Install Dependencies (Linux -> Web) (Except Emscripten)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
@@ -189,18 +204,6 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'web' }}
       with:
         version: 4.0.23 # Docs currently recommend 4.0.0+: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_web.html#requirements
-    # We use a run step rather than actions/checkout because actions/checkout
-    # doesn't let us checkout the repo to a directory outside $GITHUB_WORKSPACE
-    # Luckily, being a public repo, we don't need to faff about with tokens.
-    - name: Checkout Godot Repo
-      shell: bash
-      working-directory: ${{ steps.working-directory.outputs.working-directory }}
-      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
-      run: |
-        clone_dir=$(mktemp -d -p ${{ runner.temp }})
-        git clone https://github.com/godotengine/godot.git "${clone_dir}"
-        (cd "${clone_dir}" && git checkout ${{ inputs.version }})
-        cp -r "${clone_dir}"/* ./
     - name: Build Templates
       id: build
       shell: bash

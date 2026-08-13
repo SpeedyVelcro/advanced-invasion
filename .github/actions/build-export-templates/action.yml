@@ -258,29 +258,29 @@ runs:
         if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
         # Linux
         if [ "${{ inputs.platform }}" == "linux"]; then
-          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64 || true
-          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_64 linux_debug.x86_64 || true
-          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_32 linux_release.x86_32 || true
-          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_32 linux_debug.x86_32 || true
-          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.arm64 linux_release.arm64 || true
-          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.arm64 linux_debug.arm64 || true
+          [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64 || true
+          [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_64 linux_debug.x86_64 || true
+          [ "${arch}" == "x86_32" ] && [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_32 linux_release.x86_32 || true
+          [ "${arch}" == "x86_32" ] && [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_32 linux_debug.x86_32 || true
+          [ "${arch}" == "arm64" ] && [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.arm64 linux_release.arm64 || true
+          [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.arm64 linux_debug.arm64 || true
         fi
         # macOS
         [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && mv godot_macos.zip macos.zip || true
         # Windows
         if [ "${{ inputs.platform }}" == "windows"]; then
-          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.exe windows_release_x86_64.exe || true
-          [ "${arch}" == "x86_64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.console.exe windows_release_x86_64_console.exe || true
-          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.exe windows_debug_x86_64.exe || true
-          [ "${arch}" == "x86_64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.console.exe windows_debug_x86_64_console.exe || true
-          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.exe windows_release_x86_32.exe || true
-          [ "${arch}" == "x86_32" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.console.exe windows_release_x86_32_console.exe || true
-          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.exe windows_debug_x86_32.exe || true
-          [ "${arch}" == "x86_32" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.console.exe windows_debug_x86_32_console.exe || true
-          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.exe windows_release_arm64.exe || true
-          [ "${arch}" == "arm64" ] $$ [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.console.exe windows_release_arm64_console.exe || true
-          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.exe windows_debug_arm64.exe || true
-          [ "${arch}" == "arm64" ] $$ [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.console.exe windows_debug_arm64_console.exe || true
+          [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.exe windows_release_x86_64.exe || true
+          [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.console.exe windows_release_x86_64_console.exe || true
+          [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.exe windows_debug_x86_64.exe || true
+          [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.console.exe windows_debug_x86_64_console.exe || true
+          [ "${arch}" == "x86_32" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.exe windows_release_x86_32.exe || true
+          [ "${arch}" == "x86_32" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_32.console.exe windows_release_x86_32_console.exe || true
+          [ "${arch}" == "x86_32" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.exe windows_debug_x86_32.exe || true
+          [ "${arch}" == "x86_32" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_32.console.exe windows_debug_x86_32_console.exe || true
+          [ "${arch}" == "arm64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.exe windows_release_arm64.exe || true
+          [ "${arch}" == "arm64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.arm64.console.exe windows_release_arm64_console.exe || true
+          [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.exe windows_debug_arm64.exe || true
+          [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.console.exe windows_debug_arm64_console.exe || true
         fi
         # Web
         if [ "${{ inputs.platform }}" == "web"]; then

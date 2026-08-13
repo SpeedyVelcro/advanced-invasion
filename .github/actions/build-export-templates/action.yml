@@ -198,9 +198,12 @@ runs:
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption-key }}"
         [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \
           && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
+        echo "Enumerating targets..."
         targets=()
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+=("release")
         ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+=("debug")
+        echo "Targets: ${targets[@]}"
+        echo "Enumerating arches..."
         arches=()
         if [ -n "${{ inputs.arch }}" ]; then
           arches+=("")
@@ -210,10 +213,14 @@ runs:
         else
           arches+=("${{ inputs.arch }}")
         fi
+        echo "Arches: ${arches[@]}"
         for arch in "${arches[@]}"; do
+          echo "For arch ${arch}"
           for target in "${targets[@]}"; do
+            echo "For target ${target}"
             last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" )
             generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && [ "${last_iteration}" == "true" ] && printf %s "true" )
+            echo "Compiling export template..."
             scons \
               platform=${{ inputs.platform }} \
               $( [[ -n "${arch}" ]] && printf %s "arch=${arch}" ) \
@@ -221,9 +228,12 @@ runs:
               $( [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] && printf %s "use_llvm=yes" ) \
               production=yes \
               $( [ "${generate_bundle}" == "true" ] && printf %s "generate_bundle=yes" )
+            echo "Export template compiled!"
           done
         done
+        echo "All export templates compiled. Outputting output directory..."
         echo "output-directory=$(pwd)/bin" >> $GITHUB_OUTPUT
+        echo "Done!"
     - name: Save Export Templates to Cache
       id: cache-export-templates-save
       uses: actions/cache/save@v6

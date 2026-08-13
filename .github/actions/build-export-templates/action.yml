@@ -200,8 +200,8 @@ runs:
           && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
         echo "Enumerating targets..."
         targets=()
-        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+=("release")
-        ( [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+=("debug")
+        ( [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+=("release")
+        ( [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+=("debug")
         echo "Targets: ${targets[@]}"
         echo "Enumerating arches..."
         arches=()

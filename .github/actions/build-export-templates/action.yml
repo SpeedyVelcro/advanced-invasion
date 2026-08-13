@@ -194,8 +194,8 @@ runs:
       run: |
         brew install scons
         ./misc/scripts/install_vulkan_sdk_macos.sh
-        python misc/scripts/install_accesskit.py
-        python misc/scripts/install_angle.py
+        (cd misc/scripts && python install_accesskit.py)
+        (cd misc/scripts && python install_angle.py)
     - name: Install Dependencies (Linux -> Web) (Except Emscripten)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}

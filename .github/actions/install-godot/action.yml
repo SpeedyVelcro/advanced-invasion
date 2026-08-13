@@ -74,7 +74,7 @@ runs:
         BIN_DIR=${{ runner.temp }}/godot-bin
         mkdir -p $BIN_DIR
         if [ "${{ inputs.platform }}" == "macos.universal" ]; then
-          mv Godot.app/Contents/MacOS/Godot $BIN_DIR godot
+          mv Godot.app/Contents/MacOS/Godot $BIN_DIR/godot
         else
           mv ${{ env.GODOT_FILE }} $BIN_DIR/godot
         fi

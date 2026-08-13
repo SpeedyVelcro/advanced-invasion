@@ -73,6 +73,7 @@ runs:
         builder="${builder}+${{ inputs.version }}"
         builder="${builder}+${{ inputs.arch }}"
         builder="${builder}+${{ inputs.target }}"
+        builder="${builder}+${{ inputs.threads }}"
         builder="${builder}+${{ inputs.encryption-key }}"
         builder="${builder}+export-templates"
         # SHA-256 used to kill two birds with one stone here

@@ -50,11 +50,13 @@ runs:
       if: steps.cache-godot-restore.outputs.cache-hit != 'true'
       shell: "bash"
       env:
-        GODOT_ZIP: "Godot_v${{ inputs.version }}_${{ inputs.platform }}.zip" # Does not work with mono builds as they use an underscore instead of a dot in the zip filenames
+        GODOT_ZIP: "Godot_v${{ inputs.version }}_${{ inputs.platform }}.zip"
       run: |
         curl -LO "https://github.com/godotengine/godot/releases/download/${{ inputs.version }}/${{ env.GODOT_ZIP }}"
         if [[ -n "${{ inputs.sha_256 }}" ]] && ! (echo "${{ inputs.sha_256 }} ${{ env.GODOT_ZIP }}" | sha256sum -c); then
-            exit 1
+            # We do not pipe into sha256sum as this command may be run on macOS, which doesn't seem to support that
+            echo "${{ inputs.sha_256 }} ${{ env.GODOT_ZIP }}" > godot-checksums
+            if ! (sha256sum -c godot-checksums); then exit 1; fi
         fi
         unzip ${{ env.GODOT_ZIP }}
         rm ${{ env.GODOT_ZIP }}

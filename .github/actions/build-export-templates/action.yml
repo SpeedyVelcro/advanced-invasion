@@ -186,7 +186,7 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
-        ./misc/scripts/misc/scripts/install_vulkan_sdk_macos.sh
+        ./misc/scripts/install_vulkan_sdk_macos.sh
         python misc/scripts/install-accesskit.py
         python misc/scripts/install_angle.py
     - name: Install Dependencies (Linux -> Web) (Except Emscripten)

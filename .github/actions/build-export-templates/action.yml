@@ -183,12 +183,10 @@ runs:
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
       run: |
-        git init -q
-        git remote add origin https://github.com/godotengine/godot.git
-        git fetch -q
-        git fetch -q --tags --all
-        git reset -q ${{ inputs.version }}
-        git checkout -q ${{ inputs.version }}
+        clone_dir=$(mktemp -d -p ${{ runner.temp }})
+        git clone https://github.com/godotengine/godot.git "${clone_dir}"
+        (cd "${clone_dir}" && git checkout ${{ inputs.version }})
+        cp -r "${clone_dir}/*" ./
     - name: Build Templates
       id: build
       shell: bash

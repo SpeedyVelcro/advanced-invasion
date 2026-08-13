@@ -42,6 +42,10 @@ inputs:
     description: "Release or debug template. If not provided, both will be compiled. Valid values: 'release', 'debug'"
     required: false
     default: ''
+  threads:
+    description: "Threads support for web template. Valid values: 'true', 'false'"
+    required: false
+    default: 'false'
   encryption-key:
     description: "Encryption key to embed in the export template. If this is left empty, the export template will not support encryption."
     required: false
@@ -245,6 +249,7 @@ runs:
               $( [[ -n "${arch}" ]] && printf %s "arch=${arch}" || true ) \
               target=template_${target} \
               $( [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] && printf %s "use_llvm=yes" || true ) \
+              $( [ "${{ inputs.platform }}" == "web" ] && [ "${{ inputs.threads }}" == 'false' ] && printf %s "threads=no" || true ) \
               production=yes \
               $( [ "${generate_bundle}" == "true" ] && printf %s "generate_bundle=yes" || true )
             echo "Export template compiled!"
@@ -303,8 +308,10 @@ runs:
         fi
         # Web
         if [ "${{ inputs.platform }}" == "web"]; then
-          [ "${release}" == true ] && mv godot.web.template_release.wasm32.zip web_release.zip || true
-          [ "${debug}" == true ] && mv godot.web.template_release.wasm32.zip web_debug.zip || true
+          [ "${release}" == true ] && mv godot.web.template_release.wasm32*.zip \
+            "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_release.zip" || true
+          [ "${debug}" == true ] && mv godot.web.template_debug.wasm32*.zip  \
+            "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_debug.zip" || true
         fi
     - name: Install Export Templates
       shell: bash

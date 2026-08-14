@@ -242,7 +242,7 @@ runs:
         echo "Targets: ${targets[@]}"
         echo "Enumerating arches..."
         arches=()
-        if [ -n "${{ inputs.arch }}" ]; then
+        if [ -z "${{ inputs.arch }}" ]; then
           arches+=("")
         elif [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ]; then
           arches+=("arm64")

@@ -130,8 +130,9 @@ jobs:
         uses: actions/checkout@v7
       - name: Compile Release Notes
         run: |
-          notes_file=$(if [ -f release-notes/${{ needs.get-tag.outputs.tag }}.md ]; then echo "${{ needs.get-tag.outputs.tag }}.md"; else echo "latest.md"; fi)
-          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${{ needs.get-tag.outputs.tag }}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${{ needs.get-tag.outputs.tag }})" > release-notes.md
+          version_without_postfix=$( echo "${{ needs.get-tag.outputs.tag }}" | sed 's/-.*$//' )
+          notes_file=$(if [ -f release-notes/${version_without_postfix}.md ]; then echo "release-notes/${version_without_postfix}.md"; else echo "release-notes/latest.md"; fi)
+          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${version_without_postfix}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${version_without_postfix})" > release-notes.md
           echo "\n" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes

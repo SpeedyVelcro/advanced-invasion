@@ -321,7 +321,7 @@ runs:
         if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ]; then release="true"; else release="false"; fi
         if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
         # Linux
-        if [ "${{ inputs.platform }}" == "linux" ]; then
+        if [ "${{ inputs.platform }}" == "linuxbsd" ]; then
           if [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ]; then mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64; fi
           if [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ]; then mv godot.linuxbsd.template_debug.x86_64 linux_debug.x86_64; fi
           if [ "${arch}" == "x86_32" ] && [ "${release}" == "true" ]; then mv godot.linuxbsd.template_release.x86_32 linux_release.x86_32; fi

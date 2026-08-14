@@ -191,7 +191,7 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build project
-        run: make game_jolt-except-macos
+        run: make game_jolt-linux-arm64
       - name: Package All
         id: package-all
         run: |

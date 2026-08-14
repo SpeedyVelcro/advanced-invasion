@@ -83,8 +83,9 @@ if [ -e .godot/export_credentials.cfg  ]; then
         # 2) file does exist but doesn't have the header
 
         echo "Inserting header and script_encryption_key line..."
-        # \n just in case there is no newline at the end. No-one cares if we end up with excessive whitespace.
-        echo "\n$header" >> .godot/export_credentials.cfg
+        # Extra line just in case there is no newline at the end. No-one cares if we end up with excessive whitespace.
+        echo "" >> .godot/export_credentials.cfg
+        echo "$header" >> .godot/export_credentials.cfg
         echo $expected_line >> .godot/export_credentials.cfg
     fi
 else

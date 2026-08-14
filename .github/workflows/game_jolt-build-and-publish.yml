@@ -141,7 +141,7 @@ jobs:
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           if [ "${{ runner.os }}" == "MacOS" ]; then
-            sed -i '' 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+            sed -i '' -e 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
           else
             sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
           fi

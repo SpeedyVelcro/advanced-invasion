@@ -76,7 +76,7 @@ jobs:
           [ is_main == "true" ] && echo "Main version"
           [ is_game_jolt == "true" ] && echo "Game Jolt"
           [ is_newgrounds == "true" ] && echo "Newgrounds"
-          echo "\n"
+          echo ""
           echo "Tags will be:"
           echo "Main tag: ${main_tag}"
           echo "Newgrounds tag: ${newgrounds_tag}"

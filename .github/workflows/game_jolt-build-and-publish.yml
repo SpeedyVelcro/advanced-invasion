@@ -264,7 +264,7 @@ jobs:
           version_without_postfix=$( echo "${{ needs.get-tag.outputs.tag }}" | sed 's/-.*$//' )
           notes_file=$(if [ -f release-notes/${version_without_postfix}.md ]; then echo "release-notes/${version_without_postfix}.md"; else echo "release-notes/latest.md"; fi)
           echo "This release comprises the Game Jolt builds, which you would typically obtain through the game's Game Jolt page. There is no reason to use these if you are not a Game Jolt user. Instead, see the main release: [${version_without_postfix}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${version_without_postfix})" > release-notes.md
-          echo "\n" >> release-notes.md
+          echo "" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes
         env:

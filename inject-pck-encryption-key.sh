@@ -38,7 +38,7 @@ expected_line="script_encryption_key=\"$2\""
 name_pattern='^"?'$1'"?$' # Whole name, because sometimes names contain other names (e.g. game_jolt-web contains web), and possibly quoted in the cfg file
 
 # NB: $1 and $2 used here are awk fields, not the bash parameters.
-header=$(awk -v name_pattern="$name_pattern" -F "=" \
+header=$(gawk -v name_pattern="$name_pattern" -F "=" \
     '/^\[preset\.[0-9]+\]$/ {header=$0} \
     $1 == "name" && $2 ~ name_pattern {printf "%s", header}' \
     export_presets.cfg)
@@ -53,18 +53,18 @@ if [ -e .godot/export_credentials.cfg  ]; then
     if grep -q "$header" .godot/export_credentials.cfg; then
         # 4) file does exist and has the header and a (likely incorrect or empty) script_encryption_key
         # (called for both cases 3 and 4, but that's fine because this awk command does nothing for case 3 anyway)
-        awk -i inplace -v expected_line="$expected_line" -v correct_header="$header" \
+        gawk -i inplace -v expected_line="$expected_line" -v correct_header="$header" \
             '/^\[.*\]$/ {header=$0} \
             { if(header == correct_header) sub(/script_encryption_key=".*"/,expected_line) } \
             { print }' \
             .godot/export_credentials.cfg
 
-        if awk -v expected_line="$expected_line" -v correct_header="$header" \
+        if gawk -v expected_line="$expected_line" -v correct_header="$header" \
                 '/^\[.*\]$/ {header=$0} \
                 header == correct_header && $0 == expected_line { exit 1 }' \
                 .godot/export_credentials.cfg; then
             # 3) file does exist and has the header, but doesn't have script_encryption_key
-            awk -i inplace -v line_to_insert="$expected_line" -v under_header="$header" \
+            gawk -i inplace -v line_to_insert="$expected_line" -v under_header="$header" \
                 '{ print } \
                 $0 == under_header { print line_to_insert }' \
                 .godot/export_credentials.cfg

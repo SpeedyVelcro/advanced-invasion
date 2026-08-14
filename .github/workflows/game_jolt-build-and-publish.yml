@@ -206,6 +206,7 @@ jobs:
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Keys
         run: |
+          brew install gawk
           ./inject-pck-encryption-key.sh game_jolt-linux-x86_64 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-linux-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-linux-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}

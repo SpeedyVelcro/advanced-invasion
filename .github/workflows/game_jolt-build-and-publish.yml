@@ -140,7 +140,11 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
-          sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+          if [ "${{ runner.os }}" == "MacOS" ]; then
+            sed -i '' 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+          else
+            sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+          fi
       - name: Build project
         run: make game_jolt-except-macos
       - name: Package All

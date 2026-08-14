@@ -273,6 +273,11 @@ runs:
         done
         echo "All export templates compiled. Outputting output directory..."
         echo "output-directory=$(pwd)/bin" >> $GITHUB_OUTPUT
+        # We don't want to cache this. They're a lot of megabytes!
+        echo "Clearing build_deps folder"
+        rm -rf ./bin/build_deps
+        echo "Clearing obj folder"
+        rm -rf ./bin/obj
         echo "Done!"
     - name: Save Export Templates to Cache
       id: cache-export-templates-save

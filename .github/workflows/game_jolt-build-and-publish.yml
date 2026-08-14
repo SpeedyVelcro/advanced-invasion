@@ -140,13 +140,6 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
-          if [ "${{ runner.os }}" == "MacOS" ]; then
-            # Trying to adapt the command for macOS was too complicated to figure out completely, so I'm installing GNU sed instead.
-            echo "Running on macOS. Replacing BSD sed with GNU sed to avoid errors."
-            brew install gnu-sed
-            # See https://formulae.brew.sh/formula/gnu-sed
-            PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
-          fi
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build project
         run: make game_jolt-except-macos
@@ -205,6 +198,11 @@ jobs:
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          # Trying to adapt the command for macOS was too complicated to figure out completely, so I'm just installing GNU sed instead.
+          echo "Running on macOS. Replacing BSD sed with GNU sed to avoid errors."
+          brew install gnu-sed
+          # See https://formulae.brew.sh/formula/gnu-sed
+          PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Keys
         run: |

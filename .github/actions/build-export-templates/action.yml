@@ -77,7 +77,6 @@ runs:
         builder="${builder}+${{ inputs.target }}"
         builder="${builder}+${{ inputs.threads }}"
         builder="${builder}+${{ inputs.encryption-key }}"
-        builder="${builder}+export-templates"
         # SHA-256 used to kill two birds with one stone here
         # 1. Protect the encryption key (cache keys are not secure).
         # 2. Keep cache key length below GitHub's limit.

@@ -308,6 +308,8 @@ runs:
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       run: |
         cd bin
+        echo "bin contents before renaming:"
+        ls -lA
         # If inputs.arch is not supplied we will need to infer the arch compiled for from the current arch of the system
         if [ -n "${{ inputs.arch }}" ]; then
           if [ "$(uname -m)" == "x86_64" ]; then arch="x86_64"; fi
@@ -351,6 +353,8 @@ runs:
           if [ "${debug}" == "true" ]; then mv godot.web.template_debug.wasm32*.zip  \
             "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_debug.zip"; fi
         fi
+        echo "bin contents after renaming:"
+        ls -lA
     - name: Install Export Templates
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}

@@ -129,6 +129,7 @@ runs:
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons
+        python misc/scripts/install_accesskit.py
     - name: Configure Dependencies (Linux -> Linux x86_32)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'linuxbsd' && inputs.arch == 'x86_32' }}
       shell: bash
@@ -156,6 +157,7 @@ runs:
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons
+        python misc/scripts/install_accesskit.py
     - name: Install Dependencies (Linux -> Windows x86)
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && startsWith(inputs.arch, 'x86') }}
       shell: bash
@@ -169,6 +171,9 @@ runs:
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons
+        python misc/scripts/install_accesskit.py
+        python misc/scripts/install_winrt.py
+        python misc/scripts/install_d3d12_sdk_windows.py
     - name: Install Dependencies (Linux -> Windows arm64)
       id: linux-to-windows-arm64-dependencies
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'arm64' }}
@@ -180,6 +185,9 @@ runs:
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons
+        python misc/scripts/install_accesskit.py
+        python misc/scripts/install_winrt.py
+        python misc/scripts/install_d3d12_sdk_windows.py
         # Don't clutter the working directory while installing llvm-mingw
         dir=$(mktemp -d -p ${{ runner.temp }})
         cd ${dir}

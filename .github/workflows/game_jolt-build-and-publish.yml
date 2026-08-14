@@ -106,7 +106,6 @@ jobs:
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Keys
         run: |
-          brew install gawk
           ./inject-pck-encryption-key.sh game_jolt-linux-x86_64 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-linux-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-web ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -189,7 +188,6 @@ jobs:
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Keys
         run: |
-          brew install gawk
           ./inject-pck-encryption-key.sh game_jolt-windows-x86_64 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-windows-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-windows-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -253,7 +251,6 @@ jobs:
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Inject PCK Encryption Keys
         run: |
-          brew install gawk
           ./inject-pck-encryption-key.sh game_jolt-linux-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}
       - name: Build project
         run: make game_jolt-linux-arm64

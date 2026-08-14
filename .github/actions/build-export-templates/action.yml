@@ -390,6 +390,6 @@ runs:
         cp -fR ./bin/* "${target_dir}/"
         echo "Done."
         echo "Resulting target directory contents:"
-        ls -lA ${target_dir}
+        ls -lA "${target_dir}"
 
 

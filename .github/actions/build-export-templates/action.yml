@@ -234,8 +234,9 @@ runs:
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' }}
       run: |
         export SCRIPT_AES256_ENCRYPTION_KEY="${{ inputs.encryption-key }}"
-        [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ] \
-          && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
+        if [ "${{ inputs.platform }}" == "windows" ] && [ "${{ inputs.arch }}" == "arm64" ]; then
+          export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
+        fi
         echo "Enumerating targets..."
         targets=()
         if [ -z "${{ inputs.target }}" ]; then

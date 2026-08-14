@@ -311,15 +311,15 @@ runs:
         echo "bin contents before renaming:"
         ls -lA
         # If inputs.arch is not supplied we will need to infer the arch compiled for from the current arch of the system
-        if [ -n "${{ inputs.arch }}" ]; then
+        if [ -z "${{ inputs.arch }}" ]; then
           if [ "$(uname -m)" == "x86_64" ]; then arch="x86_64"; fi
           if [ "$(uname -m)" == "i386" ]; then arch="x86_32"; fi
           if [ "$(uname -m)" == "arm64" ]; then arch="arm64"; fi
         else
           arch="${{ inputs.arch }}"
         fi
-        if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ]; then release="true"; else release="false"; fi
-        if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
+        if [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ]; then release="true"; else release="false"; fi
+        if [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
         # Linux
         if [ "${{ inputs.platform }}" == "linuxbsd" ]; then
           if [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ]; then mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64; fi

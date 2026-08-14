@@ -173,8 +173,7 @@ jobs:
           name: game_jolt-builds
           path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
   build-game_jolt-arm64:
-    # Build using custom export templates with encryption key, except macOS.
-    name: Build for Game Jolt
+    name: Build Linux arm64 for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04-arm
     if: endsWith( needs.get-tag.outputs.tag, '-gj' )

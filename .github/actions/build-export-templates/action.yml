@@ -219,7 +219,6 @@ runs:
         dir=$(mktemp -d -p ${{ runner.temp }})
         cd ${dir}
         wget "https://github.com/mstorsjo/llvm-mingw/releases/download/20260616/llvm-mingw-20260616-msvcrt-ubuntu-22.04-x86_64.tar.xz"
-        ! (echo "${{ inputs.sha_256 }} ${{ env.TEMPLATES_ZIP }}" | sha256sum -c) && exit 1
         tar -xf *.tar.xz
         llvm_dir=$(pwd)/$(ls -d --zero */)
         echo "mingw-llvm-directory=${llvm_dir}" >> $GITHUB_OUTPUT

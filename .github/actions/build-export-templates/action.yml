@@ -346,9 +346,9 @@ runs:
         fi
         # Web
         if [ "${{ inputs.platform }}" == "web" ]; then
-          if [ "${release}" == true ]; then mv godot.web.template_release.wasm32*.zip \
+          if [ "${release}" == "true" ]; then mv godot.web.template_release.wasm32*.zip \
             "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_release.zip"; fi
-          if [ "${debug}" == true ]; then mv godot.web.template_debug.wasm32*.zip  \
+          if [ "${debug}" == "true" ]; then mv godot.web.template_debug.wasm32*.zip  \
             "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_debug.zip"; fi
         fi
     - name: Install Export Templates

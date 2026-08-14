@@ -64,7 +64,9 @@ runs:
       id: cache-godot-save
       uses: actions/cache/save@v6
       with:
-        path: Godot_v${{ inputs.version }}_${{ inputs.platform }}
+        path: |
+          Godot_v${{ inputs.version }}_${{ inputs.platform }}
+          Godot.app
         key: ${{ steps.cache-godot-restore.outputs.cache-primary-key }}
     - name: Move Godot and Add to PATH
       shell: "bash"

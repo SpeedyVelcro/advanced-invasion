@@ -174,6 +174,8 @@ runs:
         sudo apt-get install -y \
           mingw-w64 \
           pipx # pipx manages PATH for us safely when installing scons
+        sudo update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix
+        sudo update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons

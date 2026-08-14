@@ -61,7 +61,6 @@ jobs:
             echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
           fi
   build-game_jolt:
-    # Build using custom export templates with encryption key, except macOS.
     name: Build for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04
@@ -93,6 +92,64 @@ jobs:
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
+      - name: Build Export Templates (Web)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "web"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+      - name: Build project
+        run: make game_jolt-linux-x86_64 game_jolt-linux-x86_32 game_jolt-web
+      - name: Package All
+        id: package-all
+        run: |
+          # TODO: Combine tarball and zip steps into one for loop
+          BUILDS=('linux-x86_64' 'linux-x86_32' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
+          for build in "${BUILDS[@]}"; do
+            mkdir -p zip_root
+            cp -r build/game_jolt/${build}/* zip_root
+            rm -f zip_root/.gitkeep
+            (cd zip_root && zip -r \
+              "../advanced-invasion-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
+              ./*)
+            rm -rf zip_root
+          done
+          TARBUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64')
+          for tarbuild in "${TARBUILDS[@]}"; do
+            mkdir -p zip_root
+            cp -r build/game_jolt/${build}/* zip_root
+            rm -f zip_root/.gitkeep
+            (cd zip_root && tar -czf \
+              "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
+              ./*)
+            rm -rf zip_root
+          done
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: game_jolt-builds
+          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
+  build-game_jolt-windows:
+    name: Build Windows for Game Jolt
+    needs: get-tag
+    # Newer GCC (so newer ubuntu) required for winRT
+    runs-on: ubuntu-latest
+    if: endsWith( needs.get-tag.outputs.tag, '-gj' )
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Install Godot Engine
+        uses: "./.github/actions/install-godot"
+        with:
+          version: "4.7.1-stable"
+          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+          platform: "linux.x86_64"
       - name: Build Export Templates (Windows x86_64)
         uses: "./.github/actions/build-export-templates"
         with:
@@ -120,25 +177,17 @@ jobs:
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
-      - name: Build Export Templates (Web)
-        uses: "./.github/actions/build-export-templates"
-        with:
-          version: "4.7.1-stable"
-          platform: "web"
-          target: "release"
-          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
-          install: "true"
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build project
-        run: make game_jolt-linux-x86_64 game_jolt-linux-x86_32 game_jolt-windows-x86_64 game_jolt-windows-x86_32 game_jolt-windows-arm64 game_jolt-web
+        run: make game_jolt-windows-x86_64 game_jolt-windows-x86_32 game_jolt-windows-arm64
       - name: Package All
         id: package-all
         run: |
           # TODO: Combine tarball and zip steps into one for loop
-          BUILDS=('linux-x86_64' 'linux-x86_32' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
+          BUILDS=('windows-x86_64' 'windows-x86_32' 'windows-arm64')
           for build in "${BUILDS[@]}"; do
             mkdir -p zip_root
             cp -r build/game_jolt/${build}/* zip_root
@@ -183,7 +232,8 @@ jobs:
           version: "4.7.1-stable"
           platform: "linuxbsd"
           arch: "arm64"
-          target: "release"
+          # Having trouble detecting export templates so lets try with both release and debug
+          # target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
       - name: Inject Version Number

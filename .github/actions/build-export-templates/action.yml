@@ -251,11 +251,14 @@ runs:
           arches+=("${{ inputs.arch }}")
         fi
         echo "Arches: ${arches[@]}"
+        # We will need to get the last elements the old way because we might be running on macOS.
+        last_arch=${arches[${#arches[@]} - 1]}
+        last_target=${targets[${#targets[@]} - 1]}
         for arch in "${arches[@]}"; do
           echo "For arch ${arch}"
           for target in "${targets[@]}"; do
             echo "For target ${target}"
-            last_iteration=$( [ "${arch}" == "${arches[-1]}" ] && [ "${target}" == "${targets[-1]}" ] && printf %s "true" || printf %s "false" )
+            last_iteration=$( [ "${arch}" == "${last_arch}" ] && [ "${target}" == "${last_target}" ] && printf %s "true" || printf %s "false" )
             echo "Last iteration check: ${last_iteration}"
             generate_bundle=$( [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && [ "${last_iteration}" == "true" ] && printf %s "true" || printf %s "false" )
             echo "Generate bundle check: ${generate_bundle}"

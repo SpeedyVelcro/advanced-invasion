@@ -78,4 +78,7 @@ runs:
         else
           mv ${{ env.GODOT_FILE }} $BIN_DIR/godot
         fi
+        if [ "${{ runner.os }}" == "MacOS" ]; then
+          sudo codesign --sign - --force --preserve-metadata=entitlements,requirements,flags,runtime $BIN_DIR/godot
+        fi
         echo "$BIN_DIR" >> "$GITHUB_PATH" # Documented at https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#adding-a-system-path

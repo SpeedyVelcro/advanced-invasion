@@ -204,6 +204,7 @@ runs:
       id: linux-to-windows-arm64-dependencies
       if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'arm64' }}
       shell: bash
+      working-directory: ${{ steps.working-directory.outputs.working-directory }}
       run: |
         # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
         sudo apt-get update

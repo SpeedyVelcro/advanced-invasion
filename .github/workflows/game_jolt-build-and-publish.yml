@@ -115,7 +115,7 @@ jobs:
         id: package-all
         run: |
           # TODO: Combine tarball and zip steps into one for loop
-          BUILDS=('linux-x86_64' 'linux-x86_32' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
+          BUILDS=('linux-x86_64' 'linux-x86_32' 'web')
           for build in "${BUILDS[@]}"; do
             mkdir -p zip_root
             cp -r build/game_jolt/${build}/* zip_root

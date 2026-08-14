@@ -164,8 +164,8 @@ runs:
         pipx ensurepath
         pipx install scons
         python misc/scripts/install_accesskit.py
-    - name: Install Dependencies (Linux -> Windows x86)
-      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && startsWith(inputs.arch, 'x86') }}
+    - name: Install Dependencies (Linux -> Windows x86_64)
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'x86_64' }}
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
       run: |
@@ -176,6 +176,24 @@ runs:
           pipx # pipx manages PATH for us safely when installing scons
         sudo update-alternatives --set x86_64-w64-mingw32-gcc /usr/bin/x86_64-w64-mingw32-gcc-posix
         sudo update-alternatives --set x86_64-w64-mingw32-g++ /usr/bin/x86_64-w64-mingw32-g++-posix
+        # ubuntu's scons is not new enough, so install through pip instead.
+        pipx ensurepath
+        pipx install scons
+        python misc/scripts/install_accesskit.py
+        python misc/scripts/install_winrt.py
+        python misc/scripts/install_d3d12_sdk_windows.py
+    - name: Install Dependencies (Linux -> Windows x86_32)
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'Linux' && inputs.platform == 'windows' && inputs.arch == 'x86_32' }}
+      shell: bash
+      working-directory: ${{ steps.working-directory.outputs.working-directory }}
+      run: |
+        # See: https://docs.godotengine.org/en/stable/engine_details/development/compiling/compiling_for_windows.html#cross-compiling-for-windows-from-other-operating-systems
+        sudo apt-get update
+        sudo apt-get install -y \
+          mingw-w64 \
+          pipx # pipx manages PATH for us safely when installing scons
+        sudo update-alternatives --set i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix
+        sudo update-alternatives --set i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix
         # ubuntu's scons is not new enough, so install through pip instead.
         pipx ensurepath
         pipx install scons

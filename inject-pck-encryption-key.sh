@@ -55,7 +55,7 @@ echo "Header corresponding to ${1}: ${header}"
 # This tangle of if statements deals with all of them.
 if [ -e .godot/export_credentials.cfg  ]; then
     echo "Credentials file already exists."
-    if grep -q "$header" .godot/export_credentials.cfg; then
+    if grep -Fq "$header" .godot/export_credentials.cfg; then
         echo "Found header ${header} in credentials file."
         # 4) file does exist and has the header and a (likely incorrect or empty) script_encryption_key
         # (called for both cases 3 and 4, but that's fine because this awk command does nothing for case 3 anyway)

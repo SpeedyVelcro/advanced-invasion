@@ -44,7 +44,7 @@ encrypted-except-macos: newgrounds game_jolt-except-macos
 encrypted-macos: game_jolt-macos-universal
 
 newgrounds:
-	$(GODOT_PATH) --headless --export-release web "build/newgrounds/index.html"
+	$(GODOT_PATH) --headless --export-release newgrounds "build/newgrounds/index.html"
 
 game_jolt: game_jolt-except-macos game_jolt-macos-universal
 

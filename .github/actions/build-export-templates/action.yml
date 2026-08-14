@@ -357,9 +357,10 @@ runs:
         regex_version_only="^[0-9]+\.[0-9]+(\.[0-9]+)?$"
         regex_release="^[0-9]+\.[0-9]+(\.[0-9]+)?-[a-zA-Z]+[0-9]*$"
         # Empty check
-        [ -z "${{ inputs.version }}" ] \
-          && echo "Cannot install export templates as version input is empty." \
-          && exit 1 || true
+        if [ -z "${{ inputs.version }}" ]; then
+          echo "Cannot install export templates as version input is empty."
+          exit 1
+        fi
         # Set folder name
         if [[ "${{ inputs.version }}" =~ $regex_version_only ]]; then
           # TODO: idk if this is the right behaviour

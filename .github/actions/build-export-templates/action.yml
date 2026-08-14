@@ -69,8 +69,10 @@ runs:
       id: cache-key
       shell: bash
       run: |
-        builder="${{ runner.os }}"
+        builder="export-templates"
+        builder="${builder}+${{ runner.os }}"
         builder="${builder}+${{ inputs.version }}"
+        builder="${builder}+${{ inputs.platform }}"
         builder="${builder}+${{ inputs.arch }}"
         builder="${builder}+${{ inputs.target }}"
         builder="${builder}+${{ inputs.threads }}"
@@ -352,6 +354,6 @@ runs:
         fi
         # Install
         mkdir -p $HOME/.local/share/godot/export_templates/${folder}
-        cp -fr ${{ steps.build.outputs.output-directory }}/* $HOME/.local/share/godot/export_templates/${folder}/
+        cp -fr ./bin/* $HOME/.local/share/godot/export_templates/${folder}/
 
 

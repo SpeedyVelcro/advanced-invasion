@@ -382,7 +382,8 @@ runs:
         fi
         echo "Copying files to ${target_dir} ..."
         mkdir -p "${target_dir}"
-        cp -fr ./bin/* "${target_dir}/"
+        # Use -R flag (not -r) for more reliable copying on mac
+        cp -fR ./bin/* "${target_dir}/"
         echo "Done."
         echo "Resulting target directory contents:"
         ls -lA ${target_dir}

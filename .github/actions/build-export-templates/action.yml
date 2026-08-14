@@ -205,7 +205,7 @@ runs:
     - name: Install Dependencies (macOS -> macOS)
       shell: bash
       working-directory: ${{ steps.working-directory.outputs.working-directory }}
-      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'MacOS' && inputs.platform == 'macos' }}
+      if: ${{ steps.cache-export-templates-restore.outputs.cache-hit != 'true' && runner.os == 'macOS' && inputs.platform == 'macos' }}
       run: |
         brew install scons
         ./misc/scripts/install_vulkan_sdk_macos.sh

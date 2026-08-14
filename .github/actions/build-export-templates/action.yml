@@ -376,11 +376,15 @@ runs:
         fi
         # Install
         if [ "${{ runner.os }}" == "macOS" ]; then
-          mkdir -p $HOME/Library/Application\ Support/Godot/export_templates/${folder}
-          cp -fr ./bin/* $HOME/Library/Application\ Support/Godot/export_templates/${folder}/
+          target_dir="$HOME/Library/Application Support/Godot/export_templates/${folder}"
         else
-          mkdir -p $HOME/.local/share/godot/export_templates/${folder}
-          cp -fr ./bin/* $HOME/.local/share/godot/export_templates/${folder}/
+          target_dir="$HOME/.local/share/godot/export_templates/${folder}"
         fi
+        echo "Copying files to ${target_dir} ..."
+        mkdir -p "${target_dir}"
+        cp -fr ./bin/* "${target_dir}/"
+        echo "Done."
+        echo "Resulting target directory contents:"
+        ls -lA ${target_dir}
 
 

@@ -311,6 +311,10 @@ runs:
         rm -rf ./bin/build_deps
         echo "Clearing obj folder"
         rm -rf ./bin/obj
+        echo "Clearing D3D12 DLLs (if they exist)"
+        # I don't think these are needed (and am not sure if they are even allowed to be distributed), pretty sure the templates rely on the system install of directX anyway
+        rm -f ./bin/D3D12Core.dll
+        rm -f ./bin/d3d12SDKLayers.dll
         echo "Remaining contents of bin directory:"
         ls -lA ./bin
         echo "Done!"

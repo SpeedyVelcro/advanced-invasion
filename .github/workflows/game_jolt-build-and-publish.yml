@@ -93,15 +93,6 @@ jobs:
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
-      - name: Build Export Templates (Linux arm64)
-        uses: "./.github/actions/build-export-templates"
-        with:
-          version: "4.7.1-stable"
-          platform: "linuxbsd"
-          arch: "arm64"
-          target: "release"
-          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
-          install: "true"
       - name: Build Export Templates (Windows x86_64)
         uses: "./.github/actions/build-export-templates"
         with:

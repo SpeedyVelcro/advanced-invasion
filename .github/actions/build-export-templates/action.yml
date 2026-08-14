@@ -84,7 +84,12 @@ runs:
       id: working-directory
       shell: bash
       run: |
-        dir=$(mktemp -d -p ${{ runner.temp }})
+        # Filepaths have to be consistent across runs to get a cache hit, so we
+        # can't just use mktemp for a unique folder name. Instead, we'll use
+        # the cache key as it will always be unique and consistent for a given
+        # export template.
+        dir="${{ runner.temp }}/${{ steps.cache-key.outputs.cache-key }}"
+        mkdir -p "$dir"
         echo "working-directory=${dir}" >> $GITHUB_OUTPUT
     - name: Restore Cached Export Templates
       id: cache-export-templates-restore

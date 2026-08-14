@@ -283,7 +283,7 @@ runs:
         if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ]; then release="true"; else release="false"; fi
         if [ -n "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ]; then debug="true"; else debug="false"; fi
         # Linux
-        if [ "${{ inputs.platform }}" == "linux"]; then
+        if [ "${{ inputs.platform }}" == "linux" ]; then
           [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_64 linux_release.x86_64 || true
           [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ] && mv godot.linuxbsd.template_debug.x86_64 linux_debug.x86_64 || true
           [ "${arch}" == "x86_32" ] && [ "${release}" == "true" ] && mv godot.linuxbsd.template_release.x86_32 linux_release.x86_32 || true
@@ -294,7 +294,7 @@ runs:
         # macOS
         [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ] && mv godot_macos.zip macos.zip || true
         # Windows
-        if [ "${{ inputs.platform }}" == "windows"]; then
+        if [ "${{ inputs.platform }}" == "windows" ]; then
           [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.exe windows_release_x86_64.exe || true
           [ "${arch}" == "x86_64" ] && [ "${release}" == "true" ] && mv godot.windows.template_release.x86_64.console.exe windows_release_x86_64_console.exe || true
           [ "${arch}" == "x86_64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.x86_64.exe windows_debug_x86_64.exe || true
@@ -309,7 +309,7 @@ runs:
           [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ] && mv godot.windows.template_debug.arm64.console.exe windows_debug_arm64_console.exe || true
         fi
         # Web
-        if [ "${{ inputs.platform }}" == "web"]; then
+        if [ "${{ inputs.platform }}" == "web" ]; then
           [ "${release}" == true ] && mv godot.web.template_release.wasm32*.zip \
             "web"$( [ "${{ inputs.threads }}" == "false" ] && printf %s "_nothreads" || true )"_release.zip" || true
           [ "${debug}" == true ] && mv godot.web.template_debug.wasm32*.zip  \

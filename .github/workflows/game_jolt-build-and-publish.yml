@@ -142,12 +142,12 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build project
-        run: make game_jolt-except-macos
+        run: make game_jolt-linux-x86_64 game_jolt-linux-x86_32 game_jolt-windows-x86_64 game_jolt-windows-x86_32 game_jolt-windows-arm64 game_jolt-web
       - name: Package All
         id: package-all
         run: |
           # TODO: Combine tarball and zip steps into one for loop
-          BUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
+          BUILDS=('linux-x86_64' 'linux-x86_32' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'web')
           for build in "${BUILDS[@]}"; do
             mkdir -p zip_root
             cp -r build/game_jolt/${build}/* zip_root
@@ -171,6 +171,51 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: game_jolt-builds
+          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
+  build-game_jolt-arm64:
+    # Build using custom export templates with encryption key, except macOS.
+    name: Build for Game Jolt
+    needs: get-tag
+    runs-on: ubuntu-22.04-arm
+    if: endsWith( needs.get-tag.outputs.tag, '-gj' )
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Install Godot Engine
+        uses: "./.github/actions/install-godot"
+        with:
+          version: "4.7.1-stable"
+          sha_256: "8f527179cd4ae58b402fa265fe817dc505e5b6b14574f309efe57113be562ac1"
+          platform: "linux.arm64"
+      - name: Build Export Templates (Linux arm64)
+        uses: "./.github/actions/build-export-templates"
+        with:
+          version: "4.7.1-stable"
+          platform: "linuxbsd"
+          arch: "arm64"
+          target: "release"
+          encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
+          install: "true"
+      - name: Inject Version Number
+        run: |
+          grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
+          sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
+      - name: Build project
+        run: make game_jolt-except-macos
+      - name: Package All
+        id: package-all
+        run: |
+          mkdir -p zip_root
+          cp -r build/game_jolt/linux-arm64/* zip_root
+          rm -f zip_root/.gitkeep
+          (cd zip_root && zip -r \
+              "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
+              ./*)
+          rm -rf zip_root
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: game_jolt-arm64-builds
           path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
   build-game_jolt-macos:
     name: Build macOS for Game Jolt
@@ -234,7 +279,7 @@ jobs:
   publish:
     name: Publish Game Jolt Release
     runs-on: ubuntu-latest
-    needs: [get-tag, build-game_jolt, build-game_jolt-macos]
+    needs: [get-tag, build-game_jolt, build-game_jolt-arm64, build-game_jolt-macos]
     if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
     steps:
       - name: Download Non-macOS Builds
@@ -247,6 +292,12 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: game_jolt-macos-builds
+          skip-decompress: false
+          merge-multiple: true
+      - name: Download arm64 builds
+        uses: actions/download-artifact@v8
+        with:
+          name: game_jolt-arm64-builds
           skip-decompress: false
           merge-multiple: true
       - name: Release artifacts

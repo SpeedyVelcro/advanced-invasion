@@ -232,8 +232,7 @@ jobs:
           version: "4.7.1-stable"
           platform: "linuxbsd"
           arch: "arm64"
-          # Having trouble detecting export templates so lets try with both release and debug
-          # target: "release"
+          target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
       - name: Inject Version Number

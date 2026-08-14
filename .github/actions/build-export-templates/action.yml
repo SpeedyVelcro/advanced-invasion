@@ -375,7 +375,12 @@ runs:
           exit 1
         fi
         # Install
-        mkdir -p $HOME/.local/share/godot/export_templates/${folder}
-        cp -fr ./bin/* $HOME/.local/share/godot/export_templates/${folder}/
+        if [ "${{ runner.os }}" == "macOS" ]; then
+          mkdir -p $HOME/Library/Application\ Support/Godot/export_templates/${folder}
+          cp -fr ./bin/* $HOME/Library/Application\ Support/Godot/export_templates/${folder}/
+        else
+          mkdir -p $HOME/.local/share/godot/export_templates/${folder}
+          cp -fr ./bin/* $HOME/.local/share/godot/export_templates/${folder}/
+        fi
 
 

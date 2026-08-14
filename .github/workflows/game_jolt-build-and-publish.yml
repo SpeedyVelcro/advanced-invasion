@@ -192,7 +192,6 @@ jobs:
           version: "4.7.1-stable"
           platform: "macos"
           arch: "universal"
-          target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
           install: "true"
       - name: Inject Version Number

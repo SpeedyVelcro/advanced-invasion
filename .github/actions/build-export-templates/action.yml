@@ -39,7 +39,7 @@ inputs:
     description: "Target architecture for the export template. If this is not provided, the arch parameter will not be passed to SCons. A value of 'universal' should only be used for the macOS platform, and will bundle 64-bit and arm64 architectures into a single Universal 2 bundle similar to the official templates. Valid values: 'x86_64', 'x86_32', 'arm64', 'universal'"
     required: false
   target:
-    description: "Release or debug template. If not provided, both will be compiled. Valid values: 'release', 'debug'"
+    description: "Release or debug template. If not provided, both will be compiled. Has no effect if platform='macos' and arch='universal' because the universal bundle contains both release and debug templates. Valid values: '', 'release', 'debug'"
     required: false
     default: ''
   threads:
@@ -209,6 +209,7 @@ runs:
       run: |
         brew install scons
         ./misc/scripts/install_vulkan_sdk_macos.sh
+        # Not sure why but on mac we need to cd to the folder before running these or it errors
         (cd misc/scripts && python install_accesskit.py)
         (cd misc/scripts && python install_angle.py)
     - name: Install Dependencies (Linux -> Web) (Except Emscripten)
@@ -237,8 +238,16 @@ runs:
           && export MINGW_PREFIX="${{ steps.linux-to-windows-arm64-dependencies.outputs.mingw-llvm-directory }}"
         echo "Enumerating targets..."
         targets=()
-        ( [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "release" ] ) && targets+=("release")
-        ( [ -z "${{ inputs.target }}" ] || [ "${{ inputs.target }}" == "debug" ] ) && targets+=("debug")
+        if [ -z "${{ inputs.target }}" ]; then
+          targets+=("release")
+          targets+=("debug")
+        elif [ "${{ inputs.platform }}" == "macos" ] && [ "${{ inputs.arch }}" == "universal" ]; then
+          # macOS universal is one bundle for both release and debug.
+          targets+=("release")
+          targets+=("debug")
+        else
+          targets+=("${{ inputs.target }}")
+        fi
         echo "Targets: ${targets[@]}"
         echo "Enumerating arches..."
         arches=()

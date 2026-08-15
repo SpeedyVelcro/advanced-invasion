@@ -169,7 +169,7 @@ jobs:
     uses: $/.github/workflows/build-and-publish.yml
     with:
       tag: ${{ needs.create-releases.outputs.main-tag }}
-      release: "true"
+      release: true
     secrets: inherit
   newgrounds-release:
     name: "Call Newgrounds Release Workflow"
@@ -178,7 +178,7 @@ jobs:
     uses: $/.github/workflows/newgrounds-build-and-publish.yml
     with:
       tag: ${{ needs.create-releases.outputs.newgrounds-tag }}
-      release: "true"
+      release: true
     secrets: inherit
   game_jolt-release:
     name: "Call Game Jolt Release Workflow"
@@ -187,5 +187,5 @@ jobs:
     uses: $/.github/workflows/game_jolt-build-and-publish.yml
     with:
       tag: ${{ needs.create-releases.outputs.game_jolt-tag }}
-      release: "true"
+      release: true
     secrets: inherit

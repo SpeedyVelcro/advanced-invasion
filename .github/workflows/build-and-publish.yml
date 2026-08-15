@@ -77,7 +77,8 @@ jobs:
             echo "Tag will be: ${{ github.ref_name }}"
             tag="${{ github.ref_name }}"
           fi
-          if [[ "${tag}" =~ '^v[0-9]+[.][0-9]+[.][0-9]+$' ]]; then
+          main_version_regex='^v[0-9]+[.][0-9]+[.][0-9]+$'
+          if [[ "${tag}" =~ $main_version_regex ]]; then
             echo "Tag is a main release."
             echo "is-main='true'" >> $GITHUB_OUTPUT
           fi

@@ -34,25 +34,17 @@ on:
   workflow_call:
     inputs:
       tag:
-        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
-        required: true
-        type: string
-      release:
-        description: "Whether this workflow call is for a release (the release must already exist for the given tag)."
+        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix). If provided, the build will be published on the release with the same tag (release must already exist)."
         required: false
-        default: false
-        type: boolean
+        type: string
+        default: ""
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
-        required: true
-        type: string
-      release:
-        description: "Whether this workflow call is for a release (the release must already exist for the given tag)."
+        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix). If provided, the build will be published on the release with the same tag (release must already exist)."
         required: false
-        default: false
-        type: boolean
+        type: string
+        default: ""
 env:
   GODOT_VERSION: "4.7.1-stable"
 
@@ -106,13 +98,13 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
-        if: ${{ ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( ( github.event_name != 'workflow_call' && github.event_name != 'workflow_dispatch' ) || inputs.release == false ) }}
+        if: ${{ ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( ( github.event_name != 'workflow_call' && github.event_name != 'workflow_dispatch' ) || inputs.tag == '' ) }}
         run: make linux-x86_64
       - name: Build All
         id: build-all
         # We only build and package for all platforms for releases, to save
         # on workflow minutes and artifact storage.
-        if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.release == true ) }}
+        if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.tag != '' ) }}
         run: make
       - name: Package All
         id: package-all
@@ -165,7 +157,7 @@ jobs:
     needs: [get-tag, build]
     runs-on: ubuntu-latest
     # github.events.inputs, unlike the inputs context, does not preserve boolean type. See https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#providing-inputs
-    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == 'true' ) }}
+    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

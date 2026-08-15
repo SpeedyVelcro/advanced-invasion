@@ -77,21 +77,21 @@ jobs:
         with:
           name: builds
           path: ${{ env.GAME_SLUG }}-linux-x86_64-ci.*
-test:
-  name: Run Tests
-  runs-on: ubuntu-latest
-  # Remove this line if/when tests are added to the repo
-  if: false
-  steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v7
-    - name: Run gdUnit4 Tests
-      uses: MikeSchulze/gdUnit4-action@v1
-      with:
-      godot-version: "4.7.1"
-      godot-status: "stable"
-      paths: |
-        res://test
-      version: "v6.1.3"
-      publish-report: false # true causes failure due to read-only permission
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    # Remove this line if/when tests are added to the repo
+    if: false
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7
+      - name: Run gdUnit4 Tests
+        uses: MikeSchulze/gdUnit4-action@v1
+        with:
+        godot-version: "4.7.1"
+        godot-status: "stable"
+        paths: |
+          res://test
+        version: "v6.1.3"
+        publish-report: false # true causes failure due to read-only permission
 

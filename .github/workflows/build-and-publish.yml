@@ -164,7 +164,8 @@ jobs:
     name: Publish release
     needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == true ) }}
+    # github.events.inputs, unlike the inputs context, does not preserve boolean type. See https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#providing-inputs
+    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == 'true' ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

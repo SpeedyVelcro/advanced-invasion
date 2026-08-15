@@ -35,9 +35,20 @@ on:
         required: true
         type: string
       release:
-        description: "Whether this workflow call is for a release (the release must already exist for the given tag)"
+        description: "Whether this workflow call is for a release (the release must already exist for the given tag). Valid values: 'true', 'false'"
         required: false
-        default: "true"
+        default: "false"
+        type: string
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag name of release, as displayed on GitHub (i.e. no ref/tags/ prefix.)"
+        required: true
+        type: string
+      release:
+        description: "Whether this workflow call is for a release (the release must already exist for the given tag) Valid values: 'true', 'false'"
+        required: false
+        default: "false"
         type: string
 env:
   GODOT_VERSION: "4.7.1-stable"
@@ -110,7 +121,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build-newgrounds]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' ) }}
+    if: ${{ github.event_name == 'release' || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.release == 'true' ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

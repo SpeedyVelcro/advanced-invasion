@@ -198,8 +198,6 @@ jobs:
         run: |
           BUILDS=('windows-x86_64' 'windows-x86_32' 'windows-arm64')
           for build in "${BUILDS[@]}"; do
-            echo "Contents of ${build} build folder:"
-            ls -lA build/game_jolt/${build}/*
             mkdir -p zip_root
             cp -r build/game_jolt/${build}/* zip_root
             rm -f zip_root/.gitkeep
@@ -208,8 +206,6 @@ jobs:
               ./*)
             rm -rf zip_root
           done
-          echo "Resulting archives:"
-          ls -lA *.zip
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:

@@ -320,7 +320,6 @@ jobs:
     name: Publish Game Jolt Release
     runs-on: ubuntu-latest
     needs: [get-tag, build-game_jolt, build-game_jolt-arm64, build-game_jolt-windows, build-game_jolt-macos]
-    # github.events.inputs, unlike the inputs context, does not preserve boolean type. See https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#providing-inputs
     if: ${{ github.event_name == 'release' || ( (github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}
     steps:
       - name: Download Builds

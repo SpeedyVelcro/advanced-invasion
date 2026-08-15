@@ -18,6 +18,23 @@ play it, I recommend downloading/playing it on Newgrounds, Game Jolt or itch.
 
 You can alternatively create your own export preset.
 
+## Release Process
+The pipeline will automatically create releases and tags when you push
+a main version tag to the repository. A main version tag is a tag in
+the form `vX.X.X`, with no extra information appended.
+
+GitHub does not provide a way to create tags through the UI without
+creating a release. Creating a release triggers the pipeline to build
+and package the game for that release, but it won't trigger tagging and
+making releases for the Newgrounds and Game Jolt builds.
+
+To reliably create all releases, checkout the repository and run the
+following, replacing `vX.X.X` with your intended version:
+```bash
+git tag vX.X.X
+git push origin tag v0.0.0
+```
+
 ## License
 Please see `LICENSE.md`. The following is just a summary.
 

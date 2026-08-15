@@ -40,6 +40,9 @@ NewgroundsIntegration="*res://AutoLoad/NewgroundsIntegration/NewgroundsIntegrati
 GameJoltIntegration="*res://AutoLoad/GameJoltIntegration/GameJoltIntegration.tscn"
 AchievementService="*uid://cl58nbrkylxrq"
 AchievementOverlayAutoload="*uid://bxv641h4ur7l3"
+GameJolt="*uid://dwwwfqrm86umu"
+NG="*uid://cx0lbddb6da4w"
+NGCloudSave="*uid://b7g1k2gu4cpve"
 
 [display]
 
@@ -52,11 +55,23 @@ window/vsync/vsync_mode=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sv_achievements/plugin.cfg", "res://addons/sv_jukebox/plugin.cfg", "res://addons/sv_options_menu/plugin.cfg")
+enabled=PackedStringArray("res://addons/gamejolt/plugin.cfg", "res://addons/newgrounds/plugin.cfg", "res://addons/sv_achievements/plugin.cfg", "res://addons/sv_jukebox/plugin.cfg", "res://addons/sv_options_menu/plugin.cfg")
+
+[game_jolt]
+
+config/global/private_key=""
+config/debug/enabled=false
+config/debug/user_name=""
+config/debug/user_token=""
+config/global/game_id="604867"
 
 [global]
 
 thread=false
+
+[global_group]
+
+CloudSave="Newgrounds Cloudsave"
 
 [gui]
 
@@ -164,6 +179,12 @@ locale/translations=PackedStringArray("res://Locale/Dialogue.en.translation")
 [locale]
 
 translations=PackedStringArray("res://Locale/Dialogue.en.translation")
+
+[newgrounds.io]
+
+opened_getting_started_page=true
+auto_init=false
+imported_medals_location="res://NewgroundsAddonImportedMedals"
 
 [rendering]
 

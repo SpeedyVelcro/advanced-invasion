@@ -160,7 +160,7 @@ jobs:
     needs: get-tag
     # Newer GCC (so newer ubuntu) required for winRT
     runs-on: ubuntu-latest
-    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -230,7 +230,7 @@ jobs:
     name: Build Linux arm64 for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04-arm
-    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -280,7 +280,7 @@ jobs:
     name: Build macOS for Game Jolt
     needs: get-tag
     runs-on: macos-latest
-    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7

@@ -79,7 +79,7 @@ jobs:
     name: Build for Newgrounds
     runs-on: ubuntu-latest
     needs: get-tag
-    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-ng' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-ng' ) ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7

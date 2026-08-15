@@ -35,6 +35,11 @@ on:
         required: false
         type: string
         default: ""
+      invoked:
+        description: "DO NOT USE! This input's default value is used to identify workflow calls and dispatches. This is the only way to check for workflow calls, because called workflows inherit their event from the caller."
+        required: false
+        type: boolean
+        default: true
   workflow_dispatch:
     inputs:
       tag:
@@ -42,8 +47,15 @@ on:
         required: false
         type: string
         default: ""
+      invoked:
+        description: "DO NOT USE! This input's default value is used to identify workflow calls and dispatches. This is the only way to check for workflow calls, because called workflows inherit their event from the caller."
+        required: false
+        type: boolean
+        default: true
 env:
-  GODOT_VERSION: "4.7.1-stable"
+  GODOT_VERSION: "4.7.1"
+  GODOT_STREAM: "stable"
+  GAME_SLUG: "advanced-invasion"
 permissions:
   contents: write
 jobs:
@@ -67,20 +79,20 @@ jobs:
     name: Build for Newgrounds
     runs-on: ubuntu-latest
     needs: get-tag
-    if: ${{ endsWith( needs.get-tag.outputs.tag, '-ng' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-ng' ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
           platform: "linux.x86_64"
       - name: Build Export Templates (web)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "web"
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -101,27 +113,20 @@ jobs:
           cp -r build/newgrounds/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-              "../advanced-invasion-web-${{ needs.get-tag.outputs.tag }}.zip" \
+              "../${{ env.GAME_SLUG }}-web-${{ needs.get-tag.outputs.tag }}.zip" \
               ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: newgrounds-builds
-          path: advanced-invasion-web-${{ needs.get-tag.outputs.tag }}.zip
+          path: ${{ env.GAME_SLUG }}-web-${{ needs.get-tag.outputs.tag }}.zip
   publish:
     name: Publish release
     needs: [get-tag, build-newgrounds]
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'release' || ( inputs.invoked && inputs.tag != '' ) }}
     steps:
-      - name: Test step
-        run: |
-          echo "${{ github.event_name }}"
-          echo "${{ needs.get-tag.outputs.is-main }}"
-          echo "${{ github.event.inputs.tag }}"
-          echo "${{ inputs.tag }}"
-          echo "${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}"
-          exit 1
       - name: Download Builds
         uses: actions/download-artifact@v8
         with:
@@ -134,7 +139,7 @@ jobs:
         run: |
           gh release upload \
             "${{ needs.get-tag.outputs.tag }}" \
-            advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.* \
+            ${{ env.GAME_SLUG }}-*-${{ needs.get-tag.outputs.tag }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -142,7 +147,7 @@ jobs:
         run: |
           version_without_postfix=$( echo "${{ needs.get-tag.outputs.tag }}" | sed 's/-.*$//' )
           notes_file=$(if [ -f release-notes/${version_without_postfix}.md ]; then echo "release-notes/${version_without_postfix}.md"; else echo "release-notes/latest.md"; fi)
-          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${version_without_postfix}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${version_without_postfix})" > release-notes.md
+          echo "This release is the Newgrounds build, which would you would typically be playing when you visit the game's page on Newgrounds. There is no reason to download this here. Instead, if you are a Newgrounds user, visit the game's page on Newgrounds. Or, if you are not a Newgrounds user, see the main release: [${version_without_postfix}](https://github.com/${{ github.repository }}/releases/tag/${version_without_postfix})" > release-notes.md
           echo "" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes

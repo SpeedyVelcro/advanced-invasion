@@ -35,6 +35,11 @@ on:
         required: false
         type: string
         default: ""
+      invoked:
+        description: "DO NOT USE! This input's default value is used to identify workflow calls and dispatches. This is the only way to check for workflow calls, because called workflows inherit their event from the caller."
+        required: false
+        type: boolean
+        default: true
   workflow_dispatch:
     inputs:
       tag:
@@ -42,8 +47,15 @@ on:
         required: false
         type: string
         default: ""
+      invoked:
+        description: "DO NOT USE! This input's default value is used to identify workflow calls and dispatches. This is the only way to check for workflow calls, because called workflows inherit their event from the caller."
+        required: false
+        type: boolean
+        default: true
 env:
-  GODOT_VERSION: "4.7.1-stable"
+  GODOT_VERSION: "4.7.1"
+  GODOT_STREAM: "stable"
+  GAME_SLUG: "advanced-invasion"
 permissions:
   contents: write
 jobs:
@@ -67,20 +79,20 @@ jobs:
     name: Build for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04
-    if: ${{ endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
           platform: "linux.x86_64"
       - name: Build Export Templates (Linux x86_64)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "linuxbsd"
           arch: "x86_64"
           target: "release"
@@ -89,7 +101,7 @@ jobs:
       - name: Build Export Templates (Linux x86_32)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "linuxbsd"
           arch: "x86_32"
           target: "release"
@@ -98,7 +110,7 @@ jobs:
       - name: Build Export Templates (Web)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "web"
           target: "release"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -124,7 +136,7 @@ jobs:
             cp -r build/game_jolt/${build}/* zip_root
             rm -f zip_root/.gitkeep
             (cd zip_root && zip -r \
-              "../advanced-invasion-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
+              "../${{ env.GAME_SLUG }}-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
               ./*)
             rm -rf zip_root
           done
@@ -134,7 +146,7 @@ jobs:
             cp -r build/game_jolt/${build}/* zip_root
             rm -f zip_root/.gitkeep
             (cd zip_root && tar -czf \
-              "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
+              "../${{ env.GAME_SLUG }}-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
               ./*)
             rm -rf zip_root
           done
@@ -142,26 +154,26 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: game_jolt-builds
-          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
+          path: ${{ env.GAME_SLUG }}-*-${{ needs.get-tag.outputs.tag }}.*
   build-game_jolt-windows:
     name: Build Windows for Game Jolt
     needs: get-tag
     # Newer GCC (so newer ubuntu) required for winRT
     runs-on: ubuntu-latest
-    if: ${{ endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
           platform: "linux.x86_64"
       - name: Build Export Templates (Windows x86_64)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "windows"
           arch: "x86_64"
           target: "release"
@@ -170,7 +182,7 @@ jobs:
       - name: Build Export Templates (Windows x86_32)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "windows"
           arch: "x86_32"
           target: "release"
@@ -179,7 +191,7 @@ jobs:
       - name: Build Export Templates (Windows arm64)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "windows"
           arch: "arm64"
           target: "release"
@@ -205,7 +217,7 @@ jobs:
             cp -r build/game_jolt/${build}/* zip_root
             rm -f zip_root/.gitkeep
             (cd zip_root && zip -r \
-              "../advanced-invasion-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
+              "../${{ env.GAME_SLUG }}-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
               ./*)
             rm -rf zip_root
           done
@@ -213,25 +225,25 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: game_jolt-windows-builds
-          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
+          path: ${{ env.GAME_SLUG }}-*-${{ needs.get-tag.outputs.tag }}.*
   build-game_jolt-arm64:
     name: Build Linux arm64 for Game Jolt
     needs: get-tag
     runs-on: ubuntu-22.04-arm
-    if: ${{ endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           sha_256: "8f527179cd4ae58b402fa265fe817dc505e5b6b14574f309efe57113be562ac1"
           platform: "linux.arm64"
       - name: Build Export Templates (Linux arm64)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "linuxbsd"
           arch: "arm64"
           target: "release"
@@ -253,35 +265,35 @@ jobs:
           cp -r build/game_jolt/linux-arm64/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-            "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
+            "../${{ env.GAME_SLUG }}-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
             ./*)
           (cd zip_root && tar -czf \
-            "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.tar.gz" \
+            "../${{ env.GAME_SLUG }}-linux-arm64-${{ needs.get-tag.outputs.tag }}.tar.gz" \
             ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: game_jolt-arm64-builds
-          path: advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.*
+          path: ${{ env.GAME_SLUG }}-*-${{ needs.get-tag.outputs.tag }}.*
   build-game_jolt-macos:
     name: Build macOS for Game Jolt
     needs: get-tag
     runs-on: macos-latest
-    if: ${{ endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
+    if: ${{ inputs.invoked || ( github.event_name == 'release' && needs.get-tag.outputs.is-main && endsWith( needs.get-tag.outputs.tag, '-gj' ) }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           sha_256: "897cb7f9799796c717ae75f31446aed883dc92b1d6c3b33d893cc7843fff2fa9"
           platform: "macos.universal"
       - name: Build Export Templates (macOS Universal)
         uses: "./.github/actions/build-export-templates"
         with:
-          version: "4.7.1-stable"
+          version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
           platform: "macos"
           arch: "universal"
           encryption-key: ${{ secrets.PCK_ENCRYPTION_KEY }}
@@ -308,27 +320,20 @@ jobs:
           cp -r build/game_jolt/macos-universal/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-            "../advanced-invasion-macos-universal-${{ needs.get-tag.outputs.tag }}.zip" \
+            "../${{ env.GAME_SLUG }}-macos-universal-${{ needs.get-tag.outputs.tag }}.zip" \
             ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
         with:
           name: game_jolt-macos-builds
-          path: advanced-invasion-macos-universal-${{ needs.get-tag.outputs.tag }}.zip
+          path: ${{ env.GAME_SLUG }}-macos-universal-${{ needs.get-tag.outputs.tag }}.zip
   publish:
     name: Publish Game Jolt Release
     runs-on: ubuntu-latest
     needs: [get-tag, build-game_jolt, build-game_jolt-arm64, build-game_jolt-windows, build-game_jolt-macos]
+    if: ${{ github.event_name == 'release' || ( inputs.invoked && inputs.tag != '' ) }}
     steps:
-      - name: Test step
-        run: |
-          echo "${{ github.event_name }}"
-          echo "${{ needs.get-tag.outputs.is-main }}"
-          echo "${{ github.event.inputs.tag }}"
-          echo "${{ inputs.tag }}"
-          echo "${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}"
-          exit 1
       - name: Download Builds
         uses: actions/download-artifact@v8
         with:
@@ -359,7 +364,7 @@ jobs:
         run: |
           gh release upload \
             "${{ needs.get-tag.outputs.tag }}" \
-            advanced-invasion-*-${{ needs.get-tag.outputs.tag }}.* \
+            ${{ env.GAME_SLUG }}-*-${{ needs.get-tag.outputs.tag }}.* \
             --repo "${{ github.repository }}"
       - name: Checkout Repo
         uses: actions/checkout@v7
@@ -367,7 +372,7 @@ jobs:
         run: |
           version_without_postfix=$( echo "${{ needs.get-tag.outputs.tag }}" | sed 's/-.*$//' )
           notes_file=$(if [ -f release-notes/${version_without_postfix}.md ]; then echo "release-notes/${version_without_postfix}.md"; else echo "release-notes/latest.md"; fi)
-          echo "This release comprises the Game Jolt builds, which you would typically obtain through the game's Game Jolt page. There is no reason to use these if you are not a Game Jolt user. Instead, see the main release: [${version_without_postfix}](https://github.com/SpeedyVelcro/advanced-invasion/releases/tag/${version_without_postfix})" > release-notes.md
+          echo "This release comprises the Game Jolt builds, which you would typically obtain through the game's Game Jolt page. There is no reason to use these if you are not a Game Jolt user. Instead, see the main release: [${version_without_postfix}](https://github.com/${{ github.repository }}/releases/tag/${version_without_postfix})" > release-notes.md
           echo "" >> release-notes.md
           cat $notes_file >> release-notes.md
       - name: Copy Release Notes

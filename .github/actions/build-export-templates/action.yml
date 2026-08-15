@@ -364,10 +364,11 @@ runs:
           if [ "${arch}" == "x86_32" ] && [ "${debug}" == "true" ]; then mv godot.windows.template_debug.x86_32.exe windows_debug_x86_32.exe; fi
           if [ "${arch}" == "x86_32" ] && [ "${debug}" == "true" ]; then mv godot.windows.template_debug.x86_32.console.exe windows_debug_x86_32_console.exe; fi
           # arm64 builds have .llvm after the arm64. Use a wildcard glob in case I change this in future
-          if [ "${arch}" == "arm64" ] && [ "${release}" == "true" ]; then mv godot.windows.template_release.arm64*.exe windows_release_arm64.exe; fi
+          # NB: This does mean that the console builds need to be moved first so that the glob doesn't pick up multiple files
           if [ "${arch}" == "arm64" ] && [ "${release}" == "true" ]; then mv godot.windows.template_release.arm64*.console.exe windows_release_arm64_console.exe; fi
-          if [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ]; then mv godot.windows.template_debug.arm64*.exe windows_debug_arm64.exe; fi
+          if [ "${arch}" == "arm64" ] && [ "${release}" == "true" ]; then mv godot.windows.template_release.arm64*.exe windows_release_arm64.exe; fi
           if [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ]; then mv godot.windows.template_debug.arm64*.console.exe windows_debug_arm64_console.exe; fi
+          if [ "${arch}" == "arm64" ] && [ "${debug}" == "true" ]; then mv godot.windows.template_debug.arm64*.exe windows_debug_arm64.exe; fi
         fi
         # Web
         if [ "${{ inputs.platform }}" == "web" ]; then

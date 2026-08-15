@@ -192,7 +192,7 @@ jobs:
           ./inject-pck-encryption-key.sh game_jolt-windows-x86_32 ${{ secrets.PCK_ENCRYPTION_KEY }}
           ./inject-pck-encryption-key.sh game_jolt-windows-arm64 ${{ secrets.PCK_ENCRYPTION_KEY }}
       - name: Build project
-        run: make game_jolt-windows-x86_64 game_jolt-windows-x86_64 game_jolt-windows-arm64
+        run: make game_jolt-windows-x86_64 game_jolt-windows-x86_32 game_jolt-windows-arm64
       - name: Package All
         id: package-all
         run: |

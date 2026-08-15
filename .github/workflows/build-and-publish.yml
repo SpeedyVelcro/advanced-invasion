@@ -125,7 +125,7 @@ jobs:
           TARBUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64')
           for tarbuild in "${TARBUILDS[@]}"; do
             mkdir -p zip_root
-            cp -r build/${build}/* zip_root # Needs -r because macOS' .app files are actually folders.
+            cp -r build/${tarbuild}/* zip_root # Needs -r because macOS' .app files are actually folders.
             rm -f zip_root/.gitkeep
             (cd zip_root && tar -czf \
               "../${{ env.GAME_SLUG }}-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \

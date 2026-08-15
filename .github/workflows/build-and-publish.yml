@@ -61,15 +61,16 @@ jobs:
         run: |
           if [ -n "${{ inputs.tag }}" ]; then
             echo "Tag will be: ${{ inputs.tag }}"
-            echo "tag=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+            tag="${{ inputs.tag }}"
           else
             echo "Tag will be: ${{ github.ref_name }}"
-            echo "tag=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-            if [[ "${{ github.ref_name }}" =~ '^v[0-9]+\.[0-9]+\.[0-9]+$' ]]; then
-              echo "Tag is not a main release."
-              echo "is-main='true'" >> $GITHUB_OUTPUT
-            fi
+            tag="${{ github.ref_name }}"
           fi
+          if [[ "${tag}" =~ '^v[0-9]+[.][0-9]+[.][0-9]+$' ]]; then
+            echo "Tag is a main release."
+            echo "is-main='true'" >> $GITHUB_OUTPUT
+          fi
+          echo "tag=${tag}" >> $GITHUB_OUTPUT
   build:
     name: Build All
     needs: get-tag

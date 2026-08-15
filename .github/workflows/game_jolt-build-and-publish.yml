@@ -253,7 +253,7 @@ jobs:
             "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
             ./*)
           (cd zip_root && tar -czf \
-            "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
+            "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.tar.gz" \
             ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
@@ -319,7 +319,7 @@ jobs:
     needs: [get-tag, build-game_jolt, build-game_jolt-arm64, build-game_jolt-windows, build-game_jolt-macos]
     if: github.event_name == 'release' || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
     steps:
-      - name: Download Non-macOS Builds
+      - name: Download Builds
         uses: actions/download-artifact@v8
         with:
           name: game_jolt-builds
@@ -335,6 +335,12 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: game_jolt-arm64-builds
+          skip-decompress: false
+          merge-multiple: true
+      - name: Download Windows builds
+        uses: actions/download-artifact@v8
+        with:
+          name: game_jolt-windows-builds
           skip-decompress: false
           merge-multiple: true
       - name: Release artifacts

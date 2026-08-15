@@ -156,8 +156,15 @@ jobs:
     name: Publish release
     needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}
     steps:
+      - name: Test step
+        run: |
+          echo "${{ github.event_name }}"
+          echo "${{ needs.get-tag.outputs.is-main }}"
+          echo "${{ github.event.inputs.tag }}"
+          echo "${{ inputs.tag }}"
+          echo "${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.tag != '' ) }}"
+          exit 1
       - name: Download Builds
         uses: actions/download-artifact@v8
         with:

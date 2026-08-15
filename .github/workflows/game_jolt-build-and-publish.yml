@@ -125,7 +125,7 @@ jobs:
               ./*)
             rm -rf zip_root
           done
-          TARBUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64')
+          TARBUILDS=('linux-x86_64' 'linux-x86_32')
           for tarbuild in "${TARBUILDS[@]}"; do
             mkdir -p zip_root
             cp -r build/game_jolt/${build}/* zip_root
@@ -196,7 +196,6 @@ jobs:
       - name: Package All
         id: package-all
         run: |
-          # TODO: Combine tarball and zip steps into one for loop
           BUILDS=('windows-x86_64' 'windows-x86_32' 'windows-arm64')
           for build in "${BUILDS[@]}"; do
             mkdir -p zip_root
@@ -204,16 +203,6 @@ jobs:
             rm -f zip_root/.gitkeep
             (cd zip_root && zip -r \
               "../advanced-invasion-${build}-${{ needs.get-tag.outputs.tag }}.zip" \
-              ./*)
-            rm -rf zip_root
-          done
-          TARBUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64')
-          for tarbuild in "${TARBUILDS[@]}"; do
-            mkdir -p zip_root
-            cp -r build/game_jolt/${build}/* zip_root
-            rm -f zip_root/.gitkeep
-            (cd zip_root && tar -czf \
-              "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
               ./*)
             rm -rf zip_root
           done
@@ -261,8 +250,11 @@ jobs:
           cp -r build/game_jolt/linux-arm64/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-              "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
-              ./*)
+            "../advanced-invasion-linux-arm64-${{ needs.get-tag.outputs.tag }}.zip" \
+            ./*)
+          (cd zip_root && tar -czf \
+            "../advanced-invasion-${tarbuild}-${{ needs.get-tag.outputs.tag }}.tar.gz" \
+            ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7
@@ -313,8 +305,8 @@ jobs:
           cp -r build/game_jolt/macos-universal/* zip_root
           rm -f zip_root/.gitkeep
           (cd zip_root && zip -r \
-              "../advanced-invasion-macos-universal-${{ needs.get-tag.outputs.tag }}.zip" \
-              ./*)
+            "../advanced-invasion-macos-universal-${{ needs.get-tag.outputs.tag }}.zip" \
+            ./*)
           rm -rf zip_root
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v7

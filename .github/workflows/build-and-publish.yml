@@ -94,17 +94,17 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
-        if: ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( github.event_name != 'workflow_call' || inputs.release == 'false' )
+        if: ${{ ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( github.event_name != 'workflow_call' || inputs.release == 'false' ) }}
         run: make linux-x86_64
       - name: Build All
         id: build-all
         # We only build and package for all platforms for releases, to save
         # on workflow minutes and artifact storage.
-        if: ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
+        if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' ) }}
         run: make
       - name: Package All
         id: package-all
-        if: steps.build-all.outcome == 'success'
+        if: ${{ steps.build-all.outcome == 'success' }}
         run: |
           # TODO: Combine tarball and zip steps into one for loop
           BUILDS=('linux-x86_64' 'linux-x86_32' 'linux-arm64' 'windows-x86_64' 'windows-x86_32' 'windows-arm64' 'macos-universal' 'web')
@@ -152,7 +152,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' )
+    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( github.event_name == 'workflow_call' && inputs.release == 'true' ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

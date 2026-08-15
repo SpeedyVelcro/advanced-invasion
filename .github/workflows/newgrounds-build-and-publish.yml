@@ -121,7 +121,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build-newgrounds]
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'release' || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.release == true ) }}
+    if: ${{ github.event_name == 'release' || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == true ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

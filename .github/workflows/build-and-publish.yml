@@ -106,13 +106,13 @@ jobs:
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work
           sed -i 's/\(config\/version="\).*\("\)/\1${{ needs.get-tag.outputs.tag }}\2/' project.godot
       - name: Build Any Platform # This step is just to verify there are no build errors.
-        if: ${{ ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( ( github.event_name != 'workflow_call' && github.event_name != 'workflow_dispatch' ) || inputs.release == false ) }}
+        if: ${{ ( github.event_name != 'release' || needs.get-tag.outputs.is-main != 'true' ) && ( ( github.event_name != 'workflow_call' && github.event_name != 'workflow_dispatch' ) || github.event.inputs.release == false ) }}
         run: make linux-x86_64
       - name: Build All
         id: build-all
         # We only build and package for all platforms for releases, to save
         # on workflow minutes and artifact storage.
-        if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.release == true ) }}
+        if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == true ) }}
         run: make
       - name: Package All
         id: package-all
@@ -164,7 +164,7 @@ jobs:
     name: Publish release
     needs: [get-tag, build]
     runs-on: ubuntu-latest
-    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && inputs.release == true ) }}
+    if: ${{ ( github.event_name == 'release' && needs.get-tag.outputs.is-main == 'true' ) || ( ( github.event_name == 'workflow_call' || github.event_name == 'workflow_dispatch' ) && github.event.inputs.release == true ) }}
     steps:
       - name: Download Builds
         uses: actions/download-artifact@v8

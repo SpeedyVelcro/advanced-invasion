@@ -88,8 +88,8 @@ jobs:
       - name: Run gdUnit4 Tests
         uses: MikeSchulze/gdUnit4-action@v1
         with:
-        godot-version: "4.7.1"
-        godot-status: "stable"
+          godot-version: "4.7.1"
+          godot-status: "stable"
         paths: |
           res://test
         version: "v6.1.3"

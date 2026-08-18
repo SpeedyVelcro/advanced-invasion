@@ -16,13 +16,14 @@ signal back
 func _ready():
 	GameJoltIntegration.connect("session_open", Callable(self, "_on_GameJoltIntegration_session_open"))
 	GameJoltIntegration.connect("session_open_fail", Callable(self, "_on_GameJoltIntegration_session_open_fail"))
+	
+	if OS.has_feature("web"):
+		auto_login_button.disabled = true
 
 @warning_ignore("native_method_override") # TODO: rename
 func show():
 	set_visible(true)
 	fail_label.set_visible(false)
-	if OS.has_feature("web"):
-		auto_login_button.disabled = true
 	if GameJoltIntegration.is_integration_enabled():
 		show_logout()
 	else:

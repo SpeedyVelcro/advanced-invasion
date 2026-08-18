@@ -1,243 +1,200 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene format=3 uid="uid://rjgppe3bqk43"]
 
-[ext_resource path="res://GUI/Integration/GameJoltMenu/GameJoltMenu.gd" type="Script" id=1]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=2]
-[ext_resource path="res://Font/Hack/HackHeader.tres" type="FontFile" id=3]
+[ext_resource type="Script" uid="uid://d1mi2qh2tfmbi" path="res://GUI/Integration/GameJoltMenu/GameJoltMenu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
+[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="3"]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id="1"]
 resource_name = "login_fail"
 length = 1.5
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("FailLabel:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 1.5 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("FailLabel:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.5, 1.5 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[node name="GameJoltMenu" type="Control"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_von7g"]
+_data = {
+&"login_fail": SubResource("1")
+}
+
+[node name="GameJoltMenu" type="Control" unique_id=802987025]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=641327840]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
-offset_left = 440.0
-offset_top = 200.0
-offset_right = 840.0
-offset_bottom = 520.0
-custom_minimum_size = Vector2( 400, 320 )
-theme = ExtResource( 2 )
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1110790137]
+custom_minimum_size = Vector2(400, 320)
+layout_mode = 2
+theme = ExtResource("2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=365137165]
+layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_right = 360.0
-offset_bottom = 33.0
-theme_override_fonts/font = ExtResource( 3 )
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1148544071]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Game Jolt"
-align = 1
+horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 37.0
-offset_right = 360.0
-offset_bottom = 37.0
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=896216795]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 
-[node name="InstructionsLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 41.0
-offset_right = 360.0
-offset_bottom = 79.0
+[node name="InstructionsLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=818636784]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
 size_flags_vertical = 3
 text = "You are playing the Game Jolt version! Please log in to unlock trophies."
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 83.0
-offset_right = 360.0
-offset_bottom = 83.0
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1245737812]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="Login" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 87.0
-offset_right = 360.0
-offset_bottom = 151.0
-custom_minimum_size = Vector2( 0, 64 )
+[node name="Login" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=499177931]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/Login"]
-offset_right = 360.0
-offset_bottom = 30.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/Login" unique_id=818811796]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="UsernameLineEdit" type="LineEdit" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer"]
-offset_right = 207.0
-offset_bottom = 30.0
+[node name="UsernameLineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer" unique_id=392255087]
+layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Username"
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer"]
-offset_left = 211.0
-offset_right = 219.0
-offset_bottom = 30.0
-custom_minimum_size = Vector2( 8, 0 )
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer" unique_id=1790215833]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
 
-[node name="TokenLineEdit" type="LineEdit" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer"]
-offset_left = 223.0
-offset_right = 360.0
-offset_bottom = 30.0
+[node name="TokenLineEdit" type="LineEdit" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer" unique_id=1595964366]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.66
-secret = true
 placeholder_text = "Token"
+secret = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/Login"]
-offset_top = 34.0
-offset_right = 360.0
-offset_bottom = 64.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/Login" unique_id=1740780621]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LoginButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2"]
-offset_right = 70.0
-offset_bottom = 30.0
+[node name="LoginButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2" unique_id=1092071815]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 text = "Log In"
 
-[node name="AutoLoginButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2"]
-offset_left = 74.0
-offset_right = 215.0
-offset_bottom = 30.0
+[node name="AutoLoginButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2" unique_id=1341816539]
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Log In (Auto)"
 
-[node name="Control" type="Control" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2"]
-offset_left = 219.0
-offset_right = 360.0
-offset_bottom = 30.0
+[node name="Control" type="Control" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2" unique_id=650112736]
+layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FailLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control"]
+[node name="FailLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control" unique_id=1371775114]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_colors/font_color = Color( 1, 0, 0, 1 )
-theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Login Fail"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+vertical_alignment = 1
 
-[node name="LoginFailAnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/Control"]
-anims/login_fail = SubResource( 1 )
+[node name="LoginFailAnimationPlayer" type="AnimationPlayer" parent="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control" unique_id=1765822881]
+libraries/ = SubResource("AnimationLibrary_von7g")
 
-[node name="Logout" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="Logout" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=131108809]
 visible = false
-offset_top = 183.0
-offset_right = 360.0
-offset_bottom = 247.0
-custom_minimum_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/Logout"]
-offset_right = 360.0
-offset_bottom = 30.0
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/Logout" unique_id=1906051060]
+layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color( 0, 1, 0, 1 )
-theme_override_colors/font_shadow_color = Color( 0, 0, 0, 1 )
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Login Successful"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LogoutButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/Logout"]
-offset_left = 148.0
-offset_top = 34.0
-offset_right = 212.0
-offset_bottom = 64.0
-custom_minimum_size = Vector2( 64, 0 )
+[node name="LogoutButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/Logout" unique_id=1595266806]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Log Out"
 
-[node name="ReferenceRect3" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 155.0
-offset_right = 360.0
-offset_bottom = 155.0
+[node name="ReferenceRect3" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1057159216]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="InstructionsLabel2" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 159.0
-offset_right = 360.0
-offset_bottom = 197.0
+[node name="InstructionsLabel2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1490232423]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
 size_flags_vertical = 3
 text = "If you choose to skip this step you can always log in through the options menu."
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="ReferenceRect4" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 201.0
-offset_right = 360.0
-offset_bottom = 201.0
+[node name="ReferenceRect4" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=892584623]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
 
-[node name="InstructionsLabel3" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 205.0
-offset_right = 360.0
-offset_bottom = 243.0
+[node name="InstructionsLabel3" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=15973349]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
 size_flags_vertical = 3
 text = "In the browser version, you can hit \"Log In (Auto)\" without having to enter your details."
-align = 1
-valign = 1
-autowrap = true
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="ReferenceRect5" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 247.0
-offset_right = 360.0
-offset_bottom = 247.0
+[node name="ReferenceRect5" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1424666205]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
 
-[node name="ContinueButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
-offset_left = 132.0
-offset_top = 251.0
-offset_right = 228.0
-offset_bottom = 279.0
-custom_minimum_size = Vector2( 96, 28 )
+[node name="ContinueButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1361917396]
+custom_minimum_size = Vector2(96, 28)
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Skip"
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/LoginButton" to="." method="_on_LoginButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Login/HBoxContainer2/AutoLoginButton" to="." method="_on_AutoLoginButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Logout/LogoutButton" to="." method="_on_LogoutButton_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/LoginButton" to="." method="_on_LoginButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/AutoLoginButton" to="." method="_on_AutoLoginButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Logout/LogoutButton" to="." method="_on_LogoutButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

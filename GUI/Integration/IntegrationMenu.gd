@@ -23,7 +23,7 @@ func show(instant = true):
 	# Chose which integration menu to show
 	if OS.has_feature("newgrounds"):
 		newgrounds_menu.show()
-	elif OS.has_feature("gamejolt"):
+	elif OS.has_feature("game_jolt"):
 		game_jolt_menu.show()
 	else:
 		push_error("Tried to show integration menu when OS has no integration features.")

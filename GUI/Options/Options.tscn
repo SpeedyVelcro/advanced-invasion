@@ -6,9 +6,9 @@
 [ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://pkttw81dcu53" path="res://addons/sv_options_menu/ui/ui_scaling_settings_ui/ui_scaling_settings_ui.tscn" id="6_0wyyh"]
 [ext_resource type="PackedScene" uid="uid://cg3sk7atw1rs3" path="res://addons/sv_options_menu/ui/window_settings_ui/window_settings_ui.tscn" id="6_n4ojn"]
-[ext_resource type="PackedScene" path="res://GUI/Integration/IntegrationMenu.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://ce7jhvm3ntqcg" path="res://GUI/Integration/IntegrationMenu.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://cdbcshvsjv1lc" path="res://addons/sv_options_menu/ui/vsync_settings_ui/vsync_settings_ui.tscn" id="7_kajbp"]
-[ext_resource type="PackedScene" path="res://GUI/Options/General/IntegrationSettings.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://ccm60r1qcabm1" path="res://GUI/Options/General/IntegrationSettings.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://i6168hsfkqt" path="res://addons/sv_options_menu/ui/volume_settings_ui/volume_settings_ui.tscn" id="8_0wyyh"]
 [ext_resource type="PackedScene" uid="uid://dtor8bby8jyrj" path="res://addons/sv_options_menu/ui/input_map_settings_ui/input_map_settings_ui.tscn" id="10_p4cta"]
 
@@ -234,7 +234,9 @@ layout_mode = 2
 
 [node name="IntegrationMenu" parent="." unique_id=1255975001 instance=ExtResource("7")]
 visible = false
-anchors_preset = 0
+layout_mode = 1
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="activated" from="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer/IntegrationSettings" to="." method="_on_IntegrationSettings_activated"]
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

@@ -18,8 +18,6 @@ func login(username : String, token : String):
 	GameJolt.set_user_name(username)
 	GameJolt.set_user_token(token)
 	GameJolt.users_auth()
-	# TODO: move to signal connection
-	GameJolt.sessions_open()
 
 
 func login_auto():

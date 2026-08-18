@@ -4,6 +4,8 @@ extends Node
 
 var integration_enabled = false: get = is_integration_enabled, set = set_integration_enabled
 
+var _failed_pings: int = 0
+
 signal session_open
 signal session_open_fail
 signal session_closed
@@ -51,20 +53,28 @@ func _on_game_jolt_sessions_open_completed(response: Dictionary) -> void:
 	set_integration_enabled(true)
 	session_open.emit()
 	ping_timer.start(30.0)
+	_failed_pings = 0
 
 
 # Signal Connection
 func _on_game_jolt_sessions_ping_completed(response: Dictionary) -> void:
 	var success := _is_success(response)
 	
-	if not success:
-		var message := _get_message(response)
-		push_error("Session is now closed beccause pinging Game Jolt failed. Message: %s" % message)
-		return
+	if success:
+		return # Nothing wrong, continue on as usual.
 	
-	set_integration_enabled(false)
-	session_closed.emit()
-	ping_timer.stop()
+	var message := _get_message(response)
+	push_warning("Failed Game Jolt ping. Message: %s" % message)
+	_failed_pings += 1
+	
+	# 4 failed pings is 120 seconds, which is the timeout for Game Jolt sessions.
+	# See: https://gamejolt.com/game-api/doc/sessions/ping
+	if _failed_pings >= 4:
+		# Can assume session is closed now (we don't need to close it ourself
+		# as Game Jolt times it out itself).
+		set_integration_enabled(false)
+		session_closed.emit()
+		ping_timer.stop()
 
 
 # Signal Connection

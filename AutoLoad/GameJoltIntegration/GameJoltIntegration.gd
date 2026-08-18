@@ -95,7 +95,17 @@ func _on_game_jolt_users_auth_completed(response: Dictionary) -> void:
 
 
 func _is_success(response: Dictionary) -> bool:
-	return response.has("success") and (response["success"] == "true" or response["success"] == true)
+	if not response.has("success"):
+		return false
+	
+	if response["success"] is String:
+		return response["success"] == "true"
+	
+	if response["success"] is bool:
+		return response["success"]
+	
+	push_error("Unrecognised type for success field in Game Jolt API response")
+	return false
 
 
 func _get_message(response: Dictionary) -> String:

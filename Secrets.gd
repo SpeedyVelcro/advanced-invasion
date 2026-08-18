@@ -18,7 +18,7 @@ extends Object
 ## operations easier for automatic secret injection. To inject secrets before
 ## compile time in an automated way, it is recommended to use the [code]sed[/code]
 ## command. For example:
-## [code]sed -i 's/replace_me_newgrounds_app_id/12345:abcdefgh/ Secrets.gd'[/code]
+## [code]sed -i 's/replace_me_newgrounds_app_id/12345:aBCdEfgH/ Secrets.gd'[/code]
 ##
 ## Note that this is not a silver-bullet and secrets can still be extracted
 ## from encrypted PCKs with a small amount of effort. Thus, this is best

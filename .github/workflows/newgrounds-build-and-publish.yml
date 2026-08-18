@@ -83,6 +83,11 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v7
+      - name: Inject Secrets
+        uses: "./.github/actions/inject-newgrounds-secrets"
+        with:
+          app-id: ${{ secrets.NEWGROUNDS_APP_ID }}
+          aes-128-encryption-key: ${{ secrets.NEWGROUNDS_AES_128_ENCRYPTION_KEY }}
       - name: Install Godot Engine
         uses: "./.github/actions/install-godot"
         with:

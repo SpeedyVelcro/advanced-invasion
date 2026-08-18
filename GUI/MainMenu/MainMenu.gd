@@ -65,7 +65,7 @@ func _input(event):
 				# it's the same for these three types of input events.
 			if event_condition and not any_key_grace:
 				fade_start_menu = true
-				if OS.has_feature("newgrounds") or OS.has_feature("gamejolt"):
+				if OS.has_feature("newgrounds") or OS.has_feature("game_jolt"):
 					change_state(STATE_INTEGRATION)
 				else:
 					change_state(STATE_START)

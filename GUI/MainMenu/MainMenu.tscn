@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://ua0i15te18ho" path="res://Art/Character/Militia/MilitiaRight.png" id="14"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="15"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://GUI/Integration/IntegrationMenu.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://ce7jhvm3ntqcg" path="res://GUI/Integration/IntegrationMenu.tscn" id="17"]
 [ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
@@ -257,8 +257,6 @@ one_shot = true
 
 [node name="IntegrationMenu" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1811649685 instance=ExtResource("17")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
 grow_horizontal = 2
 grow_vertical = 2
 

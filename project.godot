@@ -199,6 +199,10 @@ batching/precision/uv_contract=true
 
 general/achievements="uid://cf6sahjleo1jb"
 general/completion_save_file_path="user://achievements.json"
+sync/enable_sync.newgrounds=true
+sync/enable_sync.game_jolt=true
+sync/achievement_api.newgrounds=2
+sync/achievement_api.game_jolt=3
 
 [sv_jukebox]
 

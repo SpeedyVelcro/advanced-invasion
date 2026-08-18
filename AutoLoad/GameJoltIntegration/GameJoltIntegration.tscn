@@ -1,13 +1,11 @@
 [gd_scene format=3 uid="uid://cjdxuubn1ftat"]
 
 [ext_resource type="Script" uid="uid://dix0015bs7jit" path="res://AutoLoad/GameJoltIntegration/GameJoltIntegration.gd" id="2"]
-[ext_resource type="Script" uid="uid://cfvyqmg2krkdt" path="res://AutoLoad/GameJoltIntegration/GameJoltSecret.gd" id="3"]
 
 [node name="GameJoltIntegration" type="Node" unique_id=1797462144]
 script = ExtResource("2")
 
 [node name="PingTimer" type="Timer" parent="." unique_id=123765092]
-wait_time = 60.0
+wait_time = 30.0
 
-[node name="GameJoltSecret" type="Node" parent="." unique_id=839063994]
-script = ExtResource("3")
+[connection signal="timeout" from="PingTimer" to="." method="_on_ping_timer_timeout"]

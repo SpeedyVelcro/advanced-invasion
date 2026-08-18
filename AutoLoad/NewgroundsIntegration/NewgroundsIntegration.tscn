@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://cr8mel50g46qg"]
 
 [ext_resource type="Script" uid="uid://biu8issh3rhbh" path="res://AutoLoad/NewgroundsIntegration/NewgroundsIntegration.gd" id="2"]
-[ext_resource type="Script" uid="uid://d1yff07sxfy33" path="res://AutoLoad/NewgroundsIntegration/NewgroundsSecret.gd" id="3"]
 
 [node name="NewgroundsIntegration" type="Node" unique_id=774064534]
 script = ExtResource("2")
-
-[node name="NewgroundsSecret" type="Node" parent="." unique_id=781828626]
-script = ExtResource("3")

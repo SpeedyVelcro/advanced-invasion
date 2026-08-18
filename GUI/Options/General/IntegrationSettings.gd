@@ -16,7 +16,7 @@ signal activated
 
 func _ready():
 	# Update availability
-	integration_available = OS.has_feature("newgrounds") or OS.has_feature("gamejolt")
+	integration_available = OS.has_feature("newgrounds") or OS.has_feature("game_jolt")
 	available_container.set_visible(integration_available)
 	unavailable_container.set_visible(not integration_available)
 	# Connect signals
@@ -33,7 +33,7 @@ func _ready():
 	# Set platform label
 	if OS.has_feature("newgrounds"):
 		platform_label.set_text(NEWGROUNDS_TEXT)
-	elif OS.has_feature("gamejolt"):
+	elif OS.has_feature("game_jolt"):
 		platform_label.set_text(GAME_JOLT_TEXT)
 
 func _on_ChangeButton_pressed():

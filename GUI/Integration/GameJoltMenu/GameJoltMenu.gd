@@ -17,7 +17,7 @@ func _ready():
 	GameJoltIntegration.connect("session_open", Callable(self, "_on_GameJoltIntegration_session_open"))
 	GameJoltIntegration.connect("session_open_fail", Callable(self, "_on_GameJoltIntegration_session_open_fail"))
 	
-	if OS.has_feature("web"):
+	if not OS.has_feature("web"):
 		auto_login_button.disabled = true
 
 @warning_ignore("native_method_override") # TODO: rename

@@ -7,6 +7,7 @@ extends Control
 @onready var fail_label = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control/FailLabel
 @onready var login_fail_animation_player = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control/LoginFailAnimationPlayer
 @onready var continue_button = $CenterContainer/PanelContainer/VBoxContainer/ContinueButton
+@onready var auto_login_button = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/AutoLoginButton
 const CONTINUE_BUTTON_TEXT = "Continue"
 const SKIP_BUTTON_TEXT = "Skip"
 
@@ -20,6 +21,8 @@ func _ready():
 func show():
 	set_visible(true)
 	fail_label.set_visible(false)
+	if OS.has_feature("web"):
+		auto_login_button.disabled = true
 	if GameJoltIntegration.is_integration_enabled():
 		show_logout()
 	else:

@@ -5,6 +5,10 @@ var first_scene_path = "res://GUI/MainMenu/MainMenu.tscn"
 func _ready():
 	Migrator.migrate_all()
 	
+	if OS.has_feature("web"):
+		var config := OptionsConfigProvider.get_config()
+		config.manage_resolution = false
+	
 	OptionsLifecycle.start_up()
 	
 	# Workaround because default UI scale doesn't calculate correctly when calculated

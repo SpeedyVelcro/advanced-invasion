@@ -8,6 +8,7 @@ func _ready():
 	if OS.has_feature("web"):
 		var config := OptionsConfigProvider.get_config()
 		config.manage_resolution = false
+		get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 	
 	OptionsLifecycle.start_up()
 	

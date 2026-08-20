@@ -7,7 +7,14 @@ func _ready():
 	
 	if OS.has_feature("web"):
 		var config := OptionsConfigProvider.get_config()
+		
 		config.manage_resolution = false
+		config.manage_window_mode = false
+		config.manage_screen = false
+		
+		# On web we always just use the canvas size as the resolution, so no
+		# need for scaling. Users who need more granular display settings are
+		# advised to use the desktop version.
 		get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
 	
 	OptionsLifecycle.start_up()

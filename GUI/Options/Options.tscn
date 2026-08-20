@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdbcshvsjv1lc" path="res://addons/sv_options_menu/ui/vsync_settings_ui/vsync_settings_ui.tscn" id="7_kajbp"]
 [ext_resource type="PackedScene" uid="uid://ccm60r1qcabm1" path="res://GUI/Options/General/IntegrationSettings.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://i6168hsfkqt" path="res://addons/sv_options_menu/ui/volume_settings_ui/volume_settings_ui.tscn" id="8_0wyyh"]
+[ext_resource type="PackedScene" uid="uid://kqsvfwggiki0" path="res://GUI/Options/Video/FullscreenToggle.tscn" id="8_p4cta"]
 [ext_resource type="PackedScene" uid="uid://dtor8bby8jyrj" path="res://addons/sv_options_menu/ui/input_map_settings_ui/input_map_settings_ui.tscn" id="10_p4cta"]
 
 [node name="Options" type="Control" unique_id=1723425161]
@@ -132,6 +133,9 @@ size_flags_horizontal = 0
 historical_standards_selectable = true
 steam_hardware_survey_selectable = true
 minimum_selectable_resolution = Vector2i(960, 720)
+
+[node name="FullscreenToggle" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1618244207 instance=ExtResource("8_p4cta")]
+layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1786921241]
 layout_mode = 2

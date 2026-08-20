@@ -9,13 +9,24 @@ extends Node
 var _options: GameOptions
 var _options_config: OptionsConfig
 
+var _started := false
 
 # Override
 func _ready() -> void:
+	if OptionsConfigProvider.get_config().auto_start:
+		start()
+
+
+func start() -> void:
+	if _started:
+		push_error("Attempted to start UI Scale Limiter twice.")
+	
 	_configure()
 	
 	OptionsProvider.local_options_changed.connect(_on_options_provider_local_options_changed)
 	OptionsConfigProvider.config_changed.connect(_on_options_config_provider_config_changed)
+	
+	_started = true
 
 
 ## Updates the UI scale, clamping it under the cap if it is now out of bounds.

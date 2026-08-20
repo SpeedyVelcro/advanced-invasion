@@ -37,6 +37,8 @@ func start_up() -> void:
 	OptionsProvider.set_bindings(OptionsRepository.new(options_config.bindings_file_path).load_options())
 	OptionsProvider.set_bindings_cloud_backup(OptionsRepository.new(options_config.bindings_cloud_backup_file_path).load_options())
 	
+	UIScaleLimiter.start()
+	
 	ManagedOptionsSynchronizer.apply()
 	
 	_started = true

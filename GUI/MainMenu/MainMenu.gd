@@ -153,7 +153,7 @@ func _on_StartGUI_quit():
 	SVJukebox.save_unlocks()
 	AchievementService.save_progress()
 	
-	if OS.get_name() == "HTML5":
+	if OS.has_feature("web"):
 		fade_start_menu = true
 		change_state(STATE_PROMPT)
 	else:

@@ -44,7 +44,8 @@ static func apply_window_settings(window_mode: DisplayServer.WindowMode, resolut
 ## been set.
 static func get_current_resolution() -> Vector2i:
 	var window := _get_window()
-	var using_content_size := window.content_scale_size.x > 0 or window.content_scale_size.y > 0
+	var using_content_size := (window.content_scale_size.x > 0 or window.content_scale_size.y > 0) \
+		and window.content_scale_mode != Window.CONTENT_SCALE_MODE_DISABLED
 	
 	if using_content_size:
 		return window.content_scale_size

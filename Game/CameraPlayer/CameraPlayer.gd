@@ -129,7 +129,9 @@ func _input(event):
 
 func _on_viewport_size_changed():
 	var window = get_window()
-	var viewport_size = window.content_scale_size if window.content_scale_size.x > 0 and window.content_scale_size.y > 0 else window.size
+	var using_content_scale: bool = (window.content_scale_size.x > 0 or window.content_scale_size.y > 0) \
+		and window.content_scale_mode != Window.CONTENT_SCALE_MODE_DISABLED
+	var viewport_size = window.content_scale_size if using_content_scale else window.size
 	# End any currently running tweens
 	if _current_tween != null and _current_tween.is_valid():
 		_current_tween.kill()

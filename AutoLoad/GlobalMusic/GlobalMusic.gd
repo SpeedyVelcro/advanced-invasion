@@ -58,4 +58,4 @@ func get_current_music_id():
 ##
 ## @deprecated: No alternative yet but I intend to implement an alternative in SVJukebox soon.
 func is_playing():
-	return SVJukebox._current_id.is_empty() # TODO: new upstream method to do this
+	return not SVJukebox._current_id.is_empty() # TODO: new upstream method to do this

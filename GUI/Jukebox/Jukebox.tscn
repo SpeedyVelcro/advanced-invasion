@@ -162,7 +162,6 @@ size_flags_horizontal = 3
 
 [node name="DownloadAlbumButton" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=745012040 node_paths=PackedStringArray("ui_controller") instance=ExtResource("14_sfeo8")]
 layout_mode = 2
-text = "Download"
 ui_controller = NodePath("../../../../../SVJukeboxUIController")
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/BackButton" to="." method="_on_BackButton_pressed"]

@@ -1,4 +1,5 @@
 - Migrated engine version to Godot 4.7.
+- Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to
   achievement system under the hood.

@@ -186,6 +186,10 @@ opened_getting_started_page=true
 auto_init=false
 imported_medals_location="res://NewgroundsAddonImportedMedals"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

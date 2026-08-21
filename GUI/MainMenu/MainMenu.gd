@@ -178,13 +178,21 @@ func _on_Extras_back():
 	change_state(STATE_START)
 
 func _on_Jukebox_back():
-	change_state(STATE_EXTRAS)
+	change_state(STATE_START)
 
 func _on_AchievementsMenu_back():
-	change_state(STATE_EXTRAS)
+	change_state(STATE_START)
 
 func _on_Options_back():
 	change_state(STATE_START)
 
 func _on_IntegrationMenu_back():
 	change_state(STATE_START)
+
+
+func _on_start_gui_achievements() -> void:
+	change_state(STATE_ACHIEVEMENTS)
+
+
+func _on_start_gui_jukebox() -> void:
+	change_state(STATE_JUKEBOX)

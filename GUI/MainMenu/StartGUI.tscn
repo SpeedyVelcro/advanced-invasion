@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://cox5o0vav75g5" path="res://GUI/MainMenu/StartGUI.gd" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
+[ext_resource type="FontFile" path="res://Font/Hack/HackTitle.tres" id="3_kpea7"]
+[ext_resource type="Texture2D" uid="uid://b8isw5eck1f01" path="res://Art/Icons/X.svg" id="4_vevcm"]
+[ext_resource type="Texture2D" uid="uid://ch1vdm4ttr24a" path="res://Art/Icons/Bluesky.svg" id="5_polj7"]
+[ext_resource type="Texture2D" uid="uid://cw2uqm62deod5" path="res://Art/Icons/Mastodon.svg" id="6_2e4bt"]
+[ext_resource type="Texture2D" uid="uid://2bdr7wu0itqt" path="res://Art/Icons/Threads.svg" id="7_20ffp"]
+[ext_resource type="Texture2D" uid="uid://biwnjfobgctio" path="res://Art/Icons/Tumblr.svg" id="8_tjeyt"]
+[ext_resource type="Texture2D" uid="uid://bnhncbrhaw7wy" path="res://Art/Icons/Instagram.svg" id="8_vevcm"]
+[ext_resource type="Texture2D" uid="uid://3bvtykd1p84v" path="res://Art/Icons/YouTube.svg" id="9_kg4sx"]
+[ext_resource type="Texture2D" uid="uid://dtlmqq7i6rl4s" path="res://Art/Icons/SpeedyVelcroColor.png" id="10_ch0ks"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yfss4"]
+font = ExtResource("3_kpea7")
+font_size = 38
 
 [sub_resource type="Animation" id="1"]
 resource_name = "hide"
@@ -70,8 +83,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1")
-load_button_path = NodePath("CenterContainer/Panel/VBoxContainer/Load")
+load_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Load")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=2131754688]
 layout_mode = 0
@@ -82,90 +97,189 @@ offset_top = 1.0
 offset_right = 2.0
 offset_bottom = 1.0
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1794120001]
-custom_minimum_size = Vector2(150, 260)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=60496784]
+custom_minimum_size = Vector2(500, 260)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=1609859927]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1609859927]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 0
 alignment = 1
 
-[node name="NewGame" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=745754791]
-custom_minimum_size = Vector2(0, 32)
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1157108049]
 layout_mode = 2
-size_flags_horizontal = 7
-size_flags_vertical = 6
-theme = ExtResource("2")
-text = "New Game"
+text = "Advanced Invasion"
+label_settings = SubResource("LabelSettings_yfss4")
+horizontal_alignment = 1
 
-[node name="Load" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1041853732]
+[node name="ReferenceRect4" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=753189136]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=642511669]
+custom_minimum_size = Vector2(300, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="NewGame" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=745754791]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+theme = ExtResource("2")
+text = "New Game"
+
+[node name="Load" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1041853732]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
 theme = ExtResource("2")
 disabled = true
 text = "Continue"
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer" unique_id=165678372]
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1402207102]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="Extras" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1707873863]
-custom_minimum_size = Vector2(0, 32)
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=165678372]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-theme = ExtResource("2")
-text = "Extras"
 
-[node name="Options" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=551453576]
-custom_minimum_size = Vector2(0, 32)
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1927167622]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Achievements" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" unique_id=1426609685]
+layout_mode = 2
+text = "Achievements"
+
+[node name="Jukebox" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" unique_id=1803823991]
+layout_mode = 2
+text = "Jukebox"
+
+[node name="Options" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" unique_id=551453576]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource("2")
 text = "Options"
 
-[node name="HSeparator2" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer" unique_id=1619723422]
-layout_mode = 2
-
-[node name="About" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1439913860]
-custom_minimum_size = Vector2(0, 32)
+[node name="About" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/GridContainer" unique_id=1439913860]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource("2")
 text = "About"
 
-[node name="Quit" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1641472136]
-custom_minimum_size = Vector2(0, 32)
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=132253474]
+layout_mode = 2
+
+[node name="ReferenceRect6" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1424931016]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=790996913]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=941792574]
+layout_mode = 2
+
+[node name="WebsiteButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=924663577]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 20
+icon = ExtResource("10_ch0ks")
+icon_alignment = 1
+expand_icon = true
+
+[node name="XButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=1054623939]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("4_vevcm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="BlueSkyButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=333276665]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("5_polj7")
+icon_alignment = 1
+expand_icon = true
+
+[node name="MastodonButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=649372082]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("6_2e4bt")
+icon_alignment = 1
+expand_icon = true
+
+[node name="InstagramButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=197717505]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("8_vevcm")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ThreadsButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=224149513]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("7_20ffp")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TumblrButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=2144315506]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 10
+icon = ExtResource("8_tjeyt")
+icon_alignment = 1
+expand_icon = true
+
+[node name="YouTubeButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=1625042957]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_constants/icon_max_width = 16
+icon = ExtResource("9_kg4sx")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=108918425]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+
+[node name="Quit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1641472136]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
 theme = ExtResource("2")
 text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=240434017]
 libraries/ = SubResource("AnimationLibrary_01a0y")
 
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Load" to="." method="_on_Load_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Extras" to="." method="_on_Extras_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/About" to="." method="_on_About_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GridContainer/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GridContainer/Jukebox" to="." method="_on_jukebox_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GridContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/GridContainer/About" to="." method="_on_About_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/WebsiteButton" to="." method="_on_website_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/XButton" to="." method="_on_x_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/BlueSkyButton" to="." method="_on_blue_sky_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/MastodonButton" to="." method="_on_mastodon_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/InstagramButton" to="." method="_on_instagram_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/ThreadsButton" to="." method="_on_threads_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TumblrButton" to="." method="_on_tumblr_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer/YouTubeButton" to="." method="_on_youtube_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

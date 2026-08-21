@@ -33,6 +33,11 @@ the public domain using [UNLICENSE](https://unlicense.org/). You do not
 need to worry about these as those files do not require attribution, and
 UNLICENSE is compatible with the main repository license.
 
+Note that several logos in `Art/Icons` are copyrighted or trademarked
+logos of social media platforms or other types of website. These are
+used in the game as links to pages on those websites as is typical for
+social media icons.
+
 ## Main Respository License
 Copyright (c) SpeedyVelcro 2021-2026
 

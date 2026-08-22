@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://c4ub7ekaomtov"]
 
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="1"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="2"]
 [ext_resource type="Script" uid="uid://dakqg2m0diule" path="res://GUI/Options/Options.gd" id="3"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://pkttw81dcu53" path="res://addons/sv_options_menu/ui/ui_scaling_settings_ui/ui_scaling_settings_ui.tscn" id="6_0wyyh"]
 [ext_resource type="PackedScene" uid="uid://cg3sk7atw1rs3" path="res://addons/sv_options_menu/ui/window_settings_ui/window_settings_ui.tscn" id="6_n4ojn"]
 [ext_resource type="PackedScene" uid="uid://ce7jhvm3ntqcg" path="res://GUI/Integration/IntegrationMenu.tscn" id="7"]
@@ -27,23 +25,16 @@ layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1894816885]
+[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1205596535]
 custom_minimum_size = Vector2(450, 400)
 layout_mode = 2
 theme = ExtResource("1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=945103412]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=894578185]
-custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=547484225]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
 text = "Options"
 horizontal_alignment = 1
 
@@ -61,43 +52,50 @@ current_tab = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General" unique_id=505891003]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General" unique_id=150066461]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1265530589]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer" unique_id=480283951]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer" unique_id=505891003]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1265530589]
+layout_mode = 2
 text = "Third-Party Integration"
 horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1726446225]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1726446225]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="IntegrationSettings" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1691956210 instance=ExtResource("8")]
+[node name="IntegrationSettings" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1691956210 instance=ExtResource("8")]
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=784569990]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=784569990]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1433132650]
+[node name="Label2" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1433132650]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
 text = "UI"
 horizontal_alignment = 1
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1931238243]
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1931238243]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="UIScalingSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer" unique_id=1158959838 instance=ExtResource("6_0wyyh")]
+[node name="UIScalingSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1158959838 instance=ExtResource("6_0wyyh")]
 layout_mode = 2
 allow_custom_value = true
 dropdown_increments = 0.5
@@ -107,48 +105,57 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video" unique_id=440740756]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video" unique_id=1165147238]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=357381999]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer" unique_id=1625488264]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer" unique_id=440740756]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=357381999]
+layout_mode = 2
 text = "Display"
 horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=396773962]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=396773962]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="WindowSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1430727212 instance=ExtResource("6_n4ojn")]
+[node name="WindowSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1430727212 instance=ExtResource("6_n4ojn")]
 layout_mode = 2
 size_flags_horizontal = 0
 historical_standards_selectable = true
 steam_hardware_survey_selectable = true
 minimum_selectable_resolution = Vector2i(960, 720)
 
-[node name="FullscreenToggle" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1618244207 instance=ExtResource("8_p4cta")]
+[node name="FullscreenToggle" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1618244207 instance=ExtResource("8_p4cta")]
+visible = false
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1786921241]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1786921241]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer" unique_id=1775726428]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1775726428]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer/GridContainer" unique_id=1543645377]
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1543645377]
 layout_mode = 2
 text = "VSync"
 
-[node name="VsyncSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer/GridContainer" unique_id=1092695597 instance=ExtResource("7_kajbp")]
+[node name="VsyncSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer/GridContainer" unique_id=1092695597 instance=ExtResource("7_kajbp")]
 layout_mode = 2
 
 [node name="Sound" type="Control" parent="CenterContainer/Panel/VBoxContainer/TabContainer" unique_id=708592741]
@@ -156,27 +163,35 @@ visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound" unique_id=820526124]
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound" unique_id=551880368]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/VBoxContainer" unique_id=966215803]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer" unique_id=1943506000]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer" unique_id=820526124]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer/VBoxContainer" unique_id=966215803]
+layout_mode = 2
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/VBoxContainer" unique_id=410333473]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer/VBoxContainer" unique_id=410333473]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="VolumeSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/VBoxContainer" unique_id=1616413023 instance=ExtResource("8_0wyyh")]
+[node name="VolumeSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1616413023 instance=ExtResource("8_0wyyh")]
 layout_mode = 2
 
 [node name="Controls" type="Control" parent="CenterContainer/Panel/VBoxContainer/TabContainer" unique_id=1203344544]
@@ -186,31 +201,33 @@ metadata/_tab_index = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls" unique_id=1434040051]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer" unique_id=406288771]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer" unique_id=1570990856]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer" unique_id=406288771]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" unique_id=640170225]
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer/VBoxContainer" unique_id=640170225]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4")
 text = "Controls"
 horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" unique_id=958169728]
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer/VBoxContainer" unique_id=958169728]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="InputMapSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/VBoxContainer" unique_id=1515047317 instance=ExtResource("10_p4cta")]
+[node name="InputMapSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1515047317 instance=ExtResource("10_p4cta")]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=695440802]
@@ -242,6 +259,6 @@ layout_mode = 1
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="activated" from="CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer/IntegrationSettings" to="." method="_on_IntegrationSettings_activated"]
+[connection signal="activated" from="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/IntegrationSettings" to="." method="_on_IntegrationSettings_activated"]
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="back" from="IntegrationMenu" to="." method="_on_IntegrationMenu_back"]

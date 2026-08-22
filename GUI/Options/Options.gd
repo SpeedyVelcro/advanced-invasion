@@ -1,11 +1,11 @@
 extends Control
 
 @onready var integration_menu = $IntegrationMenu
-@onready var integration_settings = $CenterContainer/Panel/VBoxContainer/TabContainer/General/VBoxContainer/IntegrationSettings
+@onready var integration_settings = $CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/IntegrationSettings
 @onready var tab_container = $CenterContainer/Panel/VBoxContainer/TabContainer
 @onready var options_menu_container = $CenterContainer/Panel
-@onready var window_settings_ui = $CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer/WindowSettingsUI
-@onready var fullscreen_toggle_control = $CenterContainer/Panel/VBoxContainer/TabContainer/Video/VBoxContainer/FullscreenToggle
+@onready var window_settings_ui = $CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer/WindowSettingsUI
+@onready var fullscreen_toggle_control = $CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer/FullscreenToggle
 var showing = false
 
 signal back

@@ -78,17 +78,17 @@ func _ready() -> void:
 	_update_slider()
 	_populate_menu_button()
 	
+	if not custom_min_and_max:
+		_slider.min_value = _options_config.ui_minimum_scale
+		_calculate_auto_max_value()
+		get_window().size_changed.connect(_on_window_size_changed) # In case we are not managing resolution
+	
 	if _options_config.manage_ui_scaling:
 		_set_internal_ui_scale_from_variant(_options.get_option(_options_config.ui_scale_option_path))
 	
 	if _options_config.manage_ui_scaling or not custom_min_and_max:
 		# Need to listen to UI scaling or resolution
 		_options.option_modified.connect(_on_options_option_modified)
-	
-	if not custom_min_and_max:
-		_slider.min_value = _options_config.ui_minimum_scale
-		_calculate_auto_max_value()
-		get_window().size_changed.connect(_on_window_size_changed) # In case we are not managing resolution
 
 
 ## Update the arrow icon used for the underlying [MenuButton]. This grabs the

@@ -31,10 +31,7 @@ func _process(_delta):
 func show():
 	visible = true
 	showing = true
-	# If there's not integrations skip general tab because it has nothing on it
-	# TODO: Remove this once more stuff is added to General.
-	if not integration_settings.is_integration_available():
-		tab_container.set_current_tab(0)
+	tab_container.set_current_tab(0)
 
 
 @warning_ignore("native_method_override") # TODO: rename

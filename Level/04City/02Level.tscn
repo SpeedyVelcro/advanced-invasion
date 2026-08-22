@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cquwb1atsxqla" path="res://Tile/City/CityWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://dtdvl3xlpn2e4" path="res://Art/Tile/City/CityBackLayer1.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
@@ -11,7 +11,7 @@
 [ext_resource type="TileSet" uid="uid://7iqpkc7wqe1u" path="res://Tile/City/CityColumn.tres" id="9"]
 [ext_resource type="Texture2D" uid="uid://cg74gxx212s3g" path="res://Art/Creep/Guardian/GuardianLeftOff.png" id="10"]
 [ext_resource type="Script" uid="uid://st2ieereaald" path="res://Level/04City/02Level.gd" id="11"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/Guardian/Guardian.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="12"]
 [ext_resource type="Texture2D" uid="uid://cmin17tpccdya" path="res://Art/Creep/Guardian/GuardianLeftEyes.png" id="13"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="14"]
 [ext_resource type="AudioStream" uid="uid://cypfqclwtg8rl" path="res://Sound/Machine/LowVoltSpark2.wav" id="15"]
@@ -157,6 +157,7 @@ limit_right = 1408
 limit_bottom = 768
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="9" unique_id=1072806080]
 position = Vector2(-64, 600)
@@ -180,7 +181,6 @@ shape = SubResource("6")
 
 [node name="FirstGuardian" parent="." index="12" unique_id=649092539 instance=ExtResource("12")]
 position = Vector2(568, 688)
-start_direction = 0
 
 [node name="GuardianLeftOffSprite" type="Sprite2D" parent="." index="13" unique_id=2062983715]
 position = Vector2(568, 688)

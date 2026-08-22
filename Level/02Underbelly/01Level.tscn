@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://btaag33nireql" path="res://Art/Tile/Underbelly/UnderbellyBack.png" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="8"]
@@ -375,6 +375,7 @@ limit_right = 5836
 limit_bottom = 1408
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="VirusBlocker" type="StaticBody2D" parent="." index="6" unique_id=2076866926]
 position = Vector2(4720, 848)
@@ -385,8 +386,8 @@ collision_mask = 4
 shape = SubResource("20")
 
 [node name="Teal" type="Sprite2D" parent="." index="7" unique_id=1376404090]
-position = Vector2(5351.52, 400)
-texture = ExtResource("8")
+position = Vector2(4824, 400)
+texture = ExtResource("12")
 
 [node name="TutorialiseArea" type="Area2D" parent="." index="8" unique_id=506707304]
 position = Vector2(4376, 664)

@@ -49,4 +49,5 @@ func end_cutscene():
 	GlobalMusic.play("petra")
 	player.set_input_locked(false)
 	camera_player.set_position(Vector2(0, 0))
+	camera_player.input_enabled = true
 	set_cutscene_active(false)

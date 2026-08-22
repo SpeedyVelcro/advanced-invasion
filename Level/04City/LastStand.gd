@@ -183,6 +183,7 @@ func start_battle():
 		player_camera.zoom_out()
 	player_camera.set_position(CAMERA_BATTLE_POSITION)
 	player.set_input_locked(false)
+	player_camera.input_enabled = true
 	teal.start()
 	teal_cutscene_sprite.set_visible(false)
 	get_tree().connect("node_added", Callable(self, "_on_tree_node_added"))

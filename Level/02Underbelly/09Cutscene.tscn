@@ -533,6 +533,7 @@ limit_bottom = 10000
 limit_smoothed = true
 drag_vertical_enabled = false
 editor_draw_limits = true
+input_enabled = false
 
 [node name="Teal" type="Sprite2D" parent="." index="6" unique_id=1431468559]
 position = Vector2(584, 784)

@@ -2,6 +2,7 @@ extends Level
 
 @export var dialogue_1: Array[Dialogue] = []
 @export var dialogue_2: Array[Dialogue] = []
+@onready var player_camera = $Player/CameraPlayer
 @onready var player = $Player
 @onready var animation_player = $AnimationPlayer
 @onready var yellow_cutscene = $YellowCutscene
@@ -12,6 +13,8 @@ func _ready():
 	DialogueManager.connect("end_broadcast_signal", Callable(self, "_on_DialogueManager_end_broadcast"))
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("cutscene_1")
+	player_camera.input_enabled = false
+	
 
 func _on_DialogueManager_end_broadcast(message):
 	match message:
@@ -38,6 +41,7 @@ func end_cutscene():
 	yellow_cutscene.set_visible(false)
 	player.set_input_locked(false)
 	set_cutscene_active(false)
+	player_camera.input_enabled = true
 
 func _on_cutscene_skip():
 	animation_player.play("cutscene_2")

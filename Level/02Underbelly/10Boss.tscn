@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://btaag33nireql" path="res://Art/Tile/Underbelly/UnderbellyBack.png" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="7"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="8"]
@@ -397,6 +397,7 @@ limit_right = 800
 limit_bottom = 896
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="6" unique_id=634804711]
 position = Vector2(-192, 784)
@@ -437,7 +438,7 @@ condition = 0
 start_enabled = false
 
 [node name="Green" type="Sprite2D" parent="." index="13" unique_id=541732679]
-position = Vector2(632, 272)
+position = Vector2(664, 272)
 texture = ExtResource("12")
 
 [node name="SquareVirus" parent="." index="14" unique_id=797650353 instance=ExtResource("14")]

@@ -23,6 +23,7 @@ func _on_BossStartArea_body_entered(_body):
 	# Guaranteed this is player due to collision mask
 	boss_start_area.set_deferred("monitoring", false)
 	player.set_input_locked(true)
+	player_camera.input_enabled = false
 	# Breaker goes off and background disappears
 	breaker_audio_stream_player.play()
 	background_layer_1.set_visible(false)
@@ -42,6 +43,7 @@ func _on_DialogueManager_end_broadcast(message):
 	match message:
 		"dialogue_1":
 			player.set_input_locked(false)
+			player_camera.input_enabled = true
 			player_camera.set_position(Vector2(0, 0))
 			wizard_chase.start()
 			GlobalMusic.play("brash_no_intro")
@@ -52,8 +54,10 @@ func _on_RedButton_pressed():
 	wizard_chase.end()
 	player_camera.set_global_position(wizard_chase.global_position)
 	player.set_input_locked(true)
+	player_camera.input_enabled = false
 
 func _on_WizardChase_ended():
 	player_camera.set_position(Vector2(0, 0))
 	player.set_input_locked(false)
+	player_camera.input_enabled = true
 	animation_player.play("background_fade_in")

@@ -77,7 +77,6 @@ position = Vector2(0, 0.5)
 shape = SubResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=114728973]
-visible = false
 sprite_frames = ExtResource("2")
 animation = &"left"
 

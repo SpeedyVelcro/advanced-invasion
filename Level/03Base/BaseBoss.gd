@@ -32,6 +32,7 @@ func _on_ActivateArea_body_entered(_body):
 	activate_area.set_deferred("monitoring", false)
 	wizard.fly_in()
 	player.set_input_locked(true)
+	camera_player.input_enabled = false
 	DialogueManager.queue_dialogue(dialogue_1)
 	camera_player.zoom_in(true)
 
@@ -41,6 +42,7 @@ func _on_DialogueManager_finished():
 			wizard.start()
 			GlobalMusic.play("brash")
 			player.set_input_locked(false)
+			camera_player.input_enabled = true
 			animation_player.play("start")
 			button_left.set_depressed(false)
 			button_right.set_depressed(false)
@@ -54,6 +56,7 @@ func _on_DialogueManager_finished():
 			camera_player.drag_vertical_enabled = true
 			camera_player.position = Vector2(0, 0)
 			player.set_input_locked(false)
+			camera_player.input_enabled = true
 			wizard.escape()
 			barrier_right.disable()
 
@@ -81,6 +84,7 @@ func _on_WizardFight_death():
 	button_left.set_depressed(true)
 	button_right.set_depressed(true)
 	player.set_input_locked(true)
+	camera_player.input_enabled = false
 	camera_player.drag_vertical_enabled = false
 	camera_player.global_position.x = wizard.global_position.x
 	camera_player.position.y = TALK_CAMERA_Y

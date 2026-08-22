@@ -21,16 +21,17 @@ func _ready():
 	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
 	animation_player.play("reset")
 
-func _on_OofArea_body_entered(body):
+func _on_OofArea_body_entered(_body):
 	# Mask ensures this is player
 	DialogueManager.queue_dialogue(dialogue_start, "dialogue_start")
 	oof_area.set_deferred("monitoring", false)
 
-func _on_TutorialiseArea_body_entered(body):
+func _on_TutorialiseArea_body_entered(_body):
 	# Mask ensures this is player
 	player.set_input_locked(true)
 	DialogueManager.queue_dialogue(dialogue_1, "dialogue_1")
 	player_camera.global_position = teal_position.global_position
+	player_camera.input_enabled = false
 	tutorialise_area.set_deferred("monitoring", false)
 	animation_player.play("dialogue_1")
 	GlobalMusic.stop(4.0)
@@ -56,6 +57,7 @@ func _on_DialogueManager_end_broadcast(message):
 		"dialogue_1":
 			player_camera.position = Vector2(0, 0)
 			player.set_input_locked(false)
+			player_camera.input_enabled = true
 		"dialogue_2":
 			GlobalMusic.play("anxiety")
 			timer.start(0.5)
@@ -63,13 +65,16 @@ func _on_DialogueManager_end_broadcast(message):
 		"dialogue_start":
 			GlobalMusic.play("firefly")
 			player.set_input_locked(false)
+			player_camera.input_enabled = true
 
 func _on_VirusPawn_death():
 	player.set_input_locked(true)
 	DialogueManager.queue_dialogue(dialogue_2, "dialogue_2")
 	player_camera.global_position = teal_character.global_position
 	animation_player.play("dialogue_2")
+	player_camera.input_enabled = false
 
 func _on_Timer_timeout():
 	player.set_input_locked(false)
 	player_camera.position = Vector2(0, 0)
+	player_camera.input_enabled = true

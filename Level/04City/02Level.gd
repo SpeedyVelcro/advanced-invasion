@@ -34,5 +34,6 @@ func _on_DialogueManager_end_broadcast(message):
 			first_guardian.set_visible(true)
 			camera_player.set_position(Vector2(0, 0))
 			player.set_input_locked(false)
+			camera_player.input_enabled = true
 			guardian_off_sprite.set_visible(false)
 			guardian_eyes_sprite.set_visible(false)

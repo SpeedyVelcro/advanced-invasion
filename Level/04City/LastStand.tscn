@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cquwb1atsxqla" path="res://Tile/City/CityWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://dtdvl3xlpn2e4" path="res://Art/Tile/City/CityBackLayer1.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b7qiaesh5unig" path="res://Art/Creep/VirusPawn/VirusPawnRight.png" id="25"]
 [ext_resource type="Texture2D" uid="uid://btp0poxrl7ll" path="res://Art/Creep/VirusPawn/VirusPawnLeft.png" id="26"]
 [ext_resource type="PackedScene" uid="uid://bjoy05uwtg22l" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" id="27"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/LastStand/TealLastStand/TealLastStand.tscn" id="28"]
+[ext_resource type="PackedScene" uid="uid://dus43bf0mjek" path="res://Entity/Boss/LastStand/TealLastStand/TealLastStand.tscn" id="28"]
 [ext_resource type="AudioStream" uid="uid://c8x024d35bxtm" path="res://Sound/Weapon/LightRetroGun.wav" id="29"]
 
 [sub_resource type="Resource" id="1"]
@@ -878,6 +878,7 @@ limit_right = 2464
 limit_bottom = 64
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="PlayerBlocker" type="StaticBody2D" parent="." index="11" unique_id=81339620]
 position = Vector2(1176, -136)

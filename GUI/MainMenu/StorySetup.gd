@@ -1,9 +1,9 @@
 extends Control
 
-@export var casual_button_path: NodePath
-@onready var casual_button = get_node(casual_button_path)
-@export var normal_button_path: NodePath
-@onready var normal_button = get_node(normal_button_path)
+@export var standard_button_path: NodePath
+@onready var standard_button = get_node(standard_button_path)
+@export var hardcore_button_path: NodePath
+@onready var hardcore_button = get_node(hardcore_button_path)
 @export var description_label_path: NodePath
 @onready var description_label = get_node(description_label_path)
 @export var back_button_path: NodePath
@@ -13,31 +13,31 @@ extends Control
 
 var locked = false
 
-const TEXT_CASUAL = "You can take three hits before you die. Best for casual gamers."
-const TEXT_NORMAL = "You will die in one hit. The way Advanced Invasion was designed to be played."
+const TEXT_STANDARD = "You can take three hits in each level before you die."
+const TEXT_HARDCORE = "You will die in one hit. Punishing, but the way it was designed to be played."
 const START_LEVEL = "res://Level/01Invasion/01Cutscene.tscn"
 
 signal back
 
 func _ready():
-	normal_button.set_pressed(true)
-	description_label.set_text(TEXT_NORMAL)
+	standard_button.set_pressed(true)
+	description_label.set_text(TEXT_STANDARD)
 
 @warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
-	normal_button.set_pressed(true)
-	description_label.set_text(TEXT_NORMAL)
+	hardcore_button.set_pressed(true)
+	description_label.set_text(TEXT_HARDCORE)
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 
-func _on_CasualButton_pressed():
-	description_label.set_text(TEXT_CASUAL)
+func _on_StandardButton_pressed():
+	description_label.set_text(TEXT_STANDARD)
 
-func _on_NormalButton_pressed():
-	description_label.set_text(TEXT_NORMAL)
+func _on_HardcoreButton_pressed():
+	description_label.set_text(TEXT_HARDCORE)
 
 func _on_BackButton_pressed():
 	if not locked:
@@ -47,17 +47,16 @@ func _on_PlayButton_pressed():
 	if not locked:
 		# Set up StoryStatus
 		StoryStatus.reset()
-		if casual_button.is_pressed():
+		if standard_button.is_pressed():
 			StoryStatus.change_difficulty(0, true)
 		else:
 			StoryStatus.change_difficulty(1, true)
 		# Get ready to start the game
-		# TODO: play fancy sound effect like Spiral Knights does
-		GlobalMusic.stop(3.0)
+		GlobalMusic.stop(2.0)
 		locked = true
-		$Timer.start(2.5)
-		normal_button.set_disabled(true)
-		casual_button.set_disabled(true)
+		$Timer.start(1.0)
+		hardcore_button.set_disabled(true)
+		standard_button.set_disabled(true)
 		play_button.set_disabled(true)
 		back_button.set_disabled(true)
 		

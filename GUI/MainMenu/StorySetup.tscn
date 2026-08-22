@@ -16,8 +16,6 @@ offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3")
-casual_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/CasualButton")
-normal_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/NormalButton")
 description_label_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/Description")
 back_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/BackButton")
 play_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PlayButton")
@@ -50,17 +48,17 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="CasualButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=872541441]
+[node name="StandardButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=872541441]
 layout_mode = 2
 theme = ExtResource("2")
 button_group = SubResource("ButtonGroup_n4y2n")
-text = "Casual"
+text = "Standard"
 
-[node name="NormalButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1232077581]
+[node name="HardcoreButton" type="CheckBox" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1232077581]
 layout_mode = 2
 theme = ExtResource("2")
 button_group = SubResource("ButtonGroup_n4y2n")
-text = "Normal"
+text = "Hardcore"
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=948975223]
 custom_minimum_size = Vector2(0, 8)
@@ -100,8 +98,8 @@ text = "Play"
 [node name="Timer" type="Timer" parent="." unique_id=819620268]
 one_shot = true
 
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/CasualButton" to="." method="_on_CasualButton_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/NormalButton" to="." method="_on_NormalButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/StandardButton" to="." method="_on_StandardButton_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HardcoreButton" to="." method="_on_HardcoreButton_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

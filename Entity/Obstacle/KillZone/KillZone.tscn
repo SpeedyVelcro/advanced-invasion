@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=3 uid="uid://kp57c6xn74dr"]
 
-[ext_resource path="res://Entity/Obstacle/KillZone/KillZone.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://jnmf1dp1ipvo" path="res://Entity/Obstacle/KillZone/KillZone.gd" id="1"]
 
-[node name="KillZone" type="Area2D"]
+[node name="KillZone" type="Area2D" unique_id=1066184880]
 collision_layer = 524288
 collision_mask = 2
-script = ExtResource( 1 )
+script = ExtResource("1")
+
 [connection signal="body_entered" from="." to="." method="_on_LevelEnd_body_entered"]

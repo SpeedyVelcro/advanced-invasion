@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cquwb1atsxqla" path="res://Tile/City/CityWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://dtdvl3xlpn2e4" path="res://Art/Tile/City/CityBackLayer1.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/RedBarrier.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/BlueBarrier.tscn" id="13"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://jlcla8o7ctny" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
@@ -405,11 +405,15 @@ position = Vector2(-224, 400)
 [node name="Guardian5" parent="." index="71" unique_id=1411477826 instance=ExtResource("20")]
 position = Vector2(544, 400)
 
-[node name="KillZone" parent="." index="72" unique_id=273370970 instance=ExtResource("14")]
+[node name="KillZone" parent="." index="72" unique_id=273370970 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("14")]
 position = Vector2(160, 1040)
+respawn_marker = NodePath("../RespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=505136904]
 shape = SubResource("4")
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="73" unique_id=378104830]
+position = Vector2(-544, 624)
 
 [connection signal="activated_signal" from="MovingPlatform" to="MovingPlatform2" method="set_activated" binds= [true]]
 [connection signal="activated_signal" from="MovingPlatform" to="MovingPlatform3" method="set_activated" binds= [true]]

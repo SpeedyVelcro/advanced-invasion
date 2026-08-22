@@ -1,7 +1,9 @@
+class_name Player
 extends CharacterBody2D
 
 signal death
 signal health_changed(new_value)
+signal hit_taken(killing_blow: bool)
 
 @export_enum("Left", "Right") var start_direction
 var gravity_enabled = true
@@ -154,8 +156,10 @@ func hit(knockback, damage, ignore_invincibility = false, knockback_ignores_invi
 		if (not hit_invincibility) or ignore_invincibility:
 			$HitPlayer.play("hit") # Animation changes hit_invincibility property
 			if lives_enabled and damage != -1:
+				hit_taken.emit(false if health > 1 else true)
 				set_health(get_health() - damage)
 			elif damage != 0:
+				hit_taken.emit(true)
 				die()
 		if (not hit_invincibility) or knockback_ignores_invincibility:
 			if (knockback.length_squared() > 0):

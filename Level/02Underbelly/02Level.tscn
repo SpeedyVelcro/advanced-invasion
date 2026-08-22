@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
+[ext_resource type="Script" uid="uid://dnx3fi6c8ne4e" path="res://Level/02Underbelly/02_level.gd" id="2_ps2qf"]
 [ext_resource type="Texture2D" uid="uid://btaag33nireql" path="res://Art/Tile/Underbelly/UnderbellyBack.png" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
@@ -23,7 +24,13 @@ size = Vector2(128, 224)
 [sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(96, 144)
 
-[node name="Level" unique_id=1436132356 instance=ExtResource("1")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfss4"]
+size = Vector2(512, 64)
+
+[node name="Level" unique_id=1436132356 node_paths=PackedStringArray("respawn_marker", "pit_area") instance=ExtResource("1")]
+script = ExtResource("2_ps2qf")
+respawn_marker = NodePath("RespawnMarker2D")
+pit_area = NodePath("Area2D")
 play_music_on_start = true
 music_id = "anxiety"
 
@@ -229,3 +236,16 @@ level_path = "res://Level/02Underbelly/03Level.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1958139689]
 shape = SubResource("3")
+
+[node name="Area2D" type="Area2D" parent="." index="49" unique_id=2069608959]
+position = Vector2(2523, 855)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=1804624262]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="50" unique_id=1382537059]
+position = Vector2(2304, 720)
+
+[connection signal="hit_taken" from="Player" to="." method="_on_player_hit_taken"]

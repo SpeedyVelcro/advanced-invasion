@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="10"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -57,8 +57,9 @@ limit_bottom = 960
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="KillZone" parent="." index="6" unique_id=2049539610 instance=ExtResource("8")]
+[node name="KillZone" parent="." index="6" unique_id=2049539610 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("8")]
 position = Vector2(1056, 1040)
+respawn_marker = NodePath("../RespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=229820115]
 shape = SubResource("1")
@@ -120,3 +121,6 @@ shape = SubResource("4")
 
 [node name="VirusPawn9" parent="." index="20" unique_id=267016740 instance=ExtResource("7")]
 position = Vector2(496, 848)
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="21" unique_id=855943750]
+position = Vector2(776, 816)

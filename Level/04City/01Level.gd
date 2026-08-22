@@ -2,7 +2,6 @@ extends Level
 
 @onready var animation_player = $AnimationPlayer
 @onready var camera_player = $Player/CameraPlayer
-@onready var player = $Player
 @onready var button_blocker = $ButtonBlocker
 var button_freed = false
 @export var dialogue_1: Array[Dialogue] = []

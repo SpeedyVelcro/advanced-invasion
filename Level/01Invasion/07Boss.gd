@@ -14,7 +14,6 @@ const CREEP_CULLABLE_HEIGHT = 96
 @onready var right_spawn_timer = $RightSpawnTimer
 @onready var creep_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
 @onready var barrier = $Barrier
-@onready var player = $Player
 
 func _ready():
 	super()

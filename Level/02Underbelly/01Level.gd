@@ -4,7 +4,6 @@ extends Level
 @export var dialogue_1: Array[Dialogue] = []
 @export var dialogue_2: Array[Dialogue] = []
 
-@onready var player = $Player
 @onready var player_camera = $Player/CameraPlayer
 @onready var teal_character = $Teal
 @onready var umbrella_camera_position = $UmbrellaCameraPosition

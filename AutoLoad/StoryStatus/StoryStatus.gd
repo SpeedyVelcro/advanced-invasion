@@ -3,8 +3,8 @@
 extends Node
 
 var current_level = ""
-var lives_enabled = false
-var difficulty_id = 1 # 0 is casual, 1 is normal
+var lives_enabled = true
+var difficulty_id = 1 # 0 is standard, 1 is hardcore
 var lowest_difficulty_id = 1
 const SAVE_FILE_PATH = "user://player-status.json"
 

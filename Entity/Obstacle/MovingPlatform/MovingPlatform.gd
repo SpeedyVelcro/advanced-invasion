@@ -1,3 +1,4 @@
+class_name MovingPlatform
 extends CharacterBody2D
 
 @export var activated = false: get = is_activated, set = set_activated
@@ -89,6 +90,33 @@ func set_activated(value : bool):
 
 func is_activated()->bool:
 	return activated
+
+## Resets the platform's state and position. Generally used on long moving-platform
+## levels when the player falls into a pit and gets respawned at the beginning.
+func reset() -> void:
+	reset_to_global_position(get_parent().to_global(start_position))
+
+
+## As [method reset], but resets to a given position instead of the starting
+## position.
+func reset_to_global_position(p_global_position: Vector2) -> void:
+	set_activated(false)
+	global_position = p_global_position
+	reset_physics_interpolation()
+	forward = true
+
+
+## Returns true if the platform is moving forward, and false if the platform is
+## returning to its starting position. If the platform is waiting or idle, this
+## method will return the direction the platform is about to move.
+func is_moving_forward() -> bool:
+	match state:
+		STATE_FORWARD:
+			return true
+		STATE_REVERSE:
+			return false
+		_:
+			return forward
 
 func _on_IdleTimer_timeout():
 	if state == STATE_IDLE:

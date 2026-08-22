@@ -5,7 +5,6 @@ extends Level
 @onready var guardian_eyes_sprite = $GuardianLeftEyesSprite
 @onready var camera_player = $Player/CameraPlayer
 @onready var animation_player = $AnimationPlayer
-@onready var player = $Player
 @onready var robot_audio_stream = $RobotAudioStreamPlayer2D
 
 @export var dialogue_1: Array[Dialogue] = []

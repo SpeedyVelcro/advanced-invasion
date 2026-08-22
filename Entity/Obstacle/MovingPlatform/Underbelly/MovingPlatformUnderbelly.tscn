@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1s8cuiq4b6br"]
 
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/MovingPlatformBase.tscn" id="1"]
-[ext_resource type="TileSet" path="res://Tile/Underbelly/UnderbellyWall.tres" id="2"]
+[ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(87.5, 6)

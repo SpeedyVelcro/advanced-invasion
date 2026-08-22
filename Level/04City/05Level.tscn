@@ -2,16 +2,17 @@
 
 [ext_resource type="TileSet" uid="uid://cquwb1atsxqla" path="res://Tile/City/CityWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
+[ext_resource type="Script" uid="uid://b4u3gkve444r7" path="res://Level/04City/05_level.gd" id="2_fueda"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://dtdvl3xlpn2e4" path="res://Art/Tile/City/CityBackLayer1.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://cbx8kdllu1j0h" path="res://Art/Tile/City/CityBackLayer2.png" id="8"]
 [ext_resource type="TileSet" uid="uid://7iqpkc7wqe1u" path="res://Tile/City/CityColumn.tres" id="9"]
 [ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="12"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://jlcla8o7ctny" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/AncientBarrier.tscn" id="19"]
@@ -29,7 +30,22 @@ size = Vector2(224, 368)
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(6496, 576)
 
-[node name="Level" unique_id=505310251 instance=ExtResource("2")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfss4"]
+size = Vector2(128, 512)
+
+[node name="Level" unique_id=505310251 node_paths=PackedStringArray("kill_zone", "moving_platform", "respawn_marker", "respawn_marker_2", "respawn_marker_3", "respawn_marker_4", "respawn_marker_5", "platform_reset_marker", "platform_reset_marker_2", "platform_reset_marker_3", "platform_reset_marker_4") instance=ExtResource("2")]
+script = ExtResource("2_fueda")
+kill_zone = NodePath("KillZone")
+moving_platform = NodePath("MovingPlatform")
+respawn_marker = NodePath("RespawnMarker2D")
+respawn_marker_2 = NodePath("RespawnMarker2D2")
+respawn_marker_3 = NodePath("RespawnMarker2D3")
+respawn_marker_4 = NodePath("RespawnMarker2D4")
+respawn_marker_5 = NodePath("RespawnMarker2D5")
+platform_reset_marker = NodePath("PlatformResetMarker2D")
+platform_reset_marker_2 = NodePath("PlatformResetMarker2D2")
+platform_reset_marker_3 = NodePath("PlatformRespawnMarker2D3")
+platform_reset_marker_4 = NodePath("PlatformRespawnMarker2D4")
 play_music_on_start = true
 music_id = "petra"
 
@@ -153,8 +169,9 @@ level_path = "res://Level/04City/06Level.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0" unique_id=462046679]
 shape = SubResource("3")
 
-[node name="KillZone" parent="." index="16" unique_id=525005013 instance=ExtResource("14")]
+[node name="KillZone" parent="." index="16" unique_id=525005013 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("14")]
 position = Vector2(2448, 1176)
+respawn_marker = NodePath("../RespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=1537022266]
 shape = SubResource("4")
@@ -301,3 +318,68 @@ position = Vector2(3568, 432)
 
 [node name="Guardian13" parent="." index="61" unique_id=1484759210 instance=ExtResource("20")]
 position = Vector2(4016, 432)
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="62" unique_id=1463486550]
+position = Vector2(-512, 624)
+
+[node name="RespawnMarker2D2" type="Marker2D" parent="." index="63" unique_id=1829848639]
+position = Vector2(448, 496)
+
+[node name="PlatformResetMarker2D" type="Marker2D" parent="." index="64" unique_id=1870826991]
+position = Vector2(672, 672)
+
+[node name="RespawnMarker2D3" type="Marker2D" parent="." index="65" unique_id=110959475]
+position = Vector2(2128, 560)
+
+[node name="PlatformResetMarker2D2" type="Marker2D" parent="." index="66" unique_id=1872808992]
+position = Vector2(2240, 672)
+
+[node name="RespawnMarker2D4" type="Marker2D" parent="." index="67" unique_id=726498736]
+position = Vector2(2896, 592)
+
+[node name="PlatformRespawnMarker2D3" type="Marker2D" parent="." index="68" unique_id=558583723]
+position = Vector2(2976, 672)
+
+[node name="RespawnMarker2D5" type="Marker2D" parent="." index="69" unique_id=1013542677]
+position = Vector2(4208, 560)
+
+[node name="PlatformRespawnMarker2D4" type="Marker2D" parent="." index="70" unique_id=539676859]
+position = Vector2(4288, 672)
+
+[node name="CheckpointArea2D" type="Area2D" parent="." index="71" unique_id=1557143764]
+position = Vector2(641.0464, 448.34973)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea2D" index="0" unique_id=1227884831]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="CheckpointArea2D2" type="Area2D" parent="." index="72" unique_id=2122582612]
+position = Vector2(2160, 456)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea2D2" index="0" unique_id=1389054812]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="CheckpointArea2D3" type="Area2D" parent="." index="73" unique_id=52097314]
+position = Vector2(2944, 464)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea2D3" index="0" unique_id=408515640]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="CheckpointArea2D4" type="Area2D" parent="." index="74" unique_id=1699322960]
+position = Vector2(4256, 488)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointArea2D4" index="0" unique_id=264474249]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[connection signal="body_entered" from="KillZone" to="." method="_on_kill_zone_body_entered"]
+[connection signal="body_entered" from="CheckpointArea2D" to="." method="_on_checkpoint_area_2d_body_entered"]
+[connection signal="body_entered" from="CheckpointArea2D2" to="." method="_on_checkpoint_area_2d_2_body_entered"]
+[connection signal="body_entered" from="CheckpointArea2D3" to="." method="_on_checkpoint_area_2d_3_body_entered"]
+[connection signal="body_entered" from="CheckpointArea2D4" to="." method="_on_checkpoint_area_2d_4_body_entered"]

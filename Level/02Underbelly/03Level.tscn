@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="1"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="2"]
+[ext_resource type="Script" uid="uid://c7r1l1qik6ouy" path="res://Level/02Underbelly/03_level.gd" id="2_s8yf0"]
 [ext_resource type="Texture2D" uid="uid://btaag33nireql" path="res://Art/Tile/Underbelly/UnderbellyBack.png" id="3"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn" id="8"]
@@ -24,7 +25,14 @@ size = Vector2(32, 20)
 [sub_resource type="RectangleShape2D" id="3"]
 size = Vector2(128, 160)
 
-[node name="Level" unique_id=683304081 instance=ExtResource("1")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfss4"]
+size = Vector2(1800, 64)
+
+[node name="Level" unique_id=683304081 node_paths=PackedStringArray("respawn_marker", "pit_area", "moving_platform") instance=ExtResource("1")]
+script = ExtResource("2_s8yf0")
+respawn_marker = NodePath("RespawnMarker2D")
+pit_area = NodePath("PitArea2D")
+moving_platform = NodePath("MovingPlatform")
 play_music_on_start = true
 music_id = "anxiety"
 
@@ -482,3 +490,16 @@ position = Vector2(2448, 528)
 
 [node name="VirusPawn19" parent="." index="118" unique_id=1698306782 instance=ExtResource("8")]
 position = Vector2(2640, 528)
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="119" unique_id=346659746]
+position = Vector2(1919.6611, 560.54266)
+
+[node name="PitArea2D" type="Area2D" parent="." index="120" unique_id=1131332120]
+position = Vector2(2808, 696)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PitArea2D" index="0" unique_id=896717938]
+shape = SubResource("RectangleShape2D_yfss4")
+
+[connection signal="hit_taken" from="Player" to="." method="_on_player_hit_taken"]

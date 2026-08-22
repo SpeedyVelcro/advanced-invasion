@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://cquwb1atsxqla" path="res://Tile/City/CityWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="Texture2D" uid="uid://dtdvl3xlpn2e4" path="res://Art/Tile/City/CityBackLayer1.png" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="Script" uid="uid://ela0rxnathwa" path="res://Entity/Utility/scrollBackground/ScrollParallaxLayer.gd" id="7"]
@@ -13,8 +13,8 @@
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/RedBarrier.tscn" id="11"]
 [ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="12"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/BlueBarrier.tscn" id="13"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://jlcla8o7ctny" path="res://Entity/Obstacle/MovingPlatform/City/MovingPlatformCity.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/BlueButton.tscn" id="18"]
@@ -300,63 +300,69 @@ speed = 45.0
 [node name="Marker2D" type="Marker2D" parent="MovingPlatform" index="4" unique_id=671307477]
 position = Vector2(0, 224)
 
-[node name="KillZone" parent="." index="45" unique_id=1532776298 instance=ExtResource("14")]
+[node name="DontPickUpRespawnMarker" type="Node2D" parent="MovingPlatform" index="5" unique_id=1312693743]
+
+[node name="KillZone" parent="." index="45" unique_id=1532776298 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("14")]
 position = Vector2(2048, 1088)
+respawn_marker = NodePath("../RespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=784478286]
 shape = SubResource("4")
 
-[node name="BlueButton" parent="." index="46" unique_id=827658988 instance=ExtResource("18")]
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="46" unique_id=1718214150]
+position = Vector2(2448, 752)
+
+[node name="BlueButton" parent="." index="47" unique_id=827658988 instance=ExtResource("18")]
 position = Vector2(1936, 576)
 
-[node name="BlueButton2" parent="." index="47" unique_id=572110137 instance=ExtResource("18")]
+[node name="BlueButton2" parent="." index="48" unique_id=572110137 instance=ExtResource("18")]
 position = Vector2(2160, 576)
 
-[node name="Barrier" parent="." index="48" unique_id=1184543521 instance=ExtResource("19")]
+[node name="Barrier" parent="." index="49" unique_id=1184543521 instance=ExtResource("19")]
 position = Vector2(2368, 576)
 
-[node name="BlueBarrier" parent="." index="49" unique_id=1473900298 instance=ExtResource("13")]
+[node name="BlueBarrier" parent="." index="50" unique_id=1473900298 instance=ExtResource("13")]
 position = Vector2(2320, 256)
 
-[node name="BlueBarrier2" parent="." index="50" unique_id=58350982 instance=ExtResource("13")]
+[node name="BlueBarrier2" parent="." index="51" unique_id=58350982 instance=ExtResource("13")]
 position = Vector2(272, 288)
 
-[node name="BlueBarrier3" parent="." index="51" unique_id=1814228103 instance=ExtResource("13")]
+[node name="BlueBarrier3" parent="." index="52" unique_id=1814228103 instance=ExtResource("13")]
 position = Vector2(272, 128)
 
-[node name="BlueBarrier4" parent="." index="52" unique_id=895610746 instance=ExtResource("13")]
+[node name="BlueBarrier4" parent="." index="53" unique_id=895610746 instance=ExtResource("13")]
 position = Vector2(736, 24)
 rotation = 1.57079
 
-[node name="Guardian13" parent="." index="53" unique_id=161895538 instance=ExtResource("12")]
+[node name="Guardian13" parent="." index="54" unique_id=161895538 instance=ExtResource("12")]
 position = Vector2(192, 272)
 
-[node name="Guardian14" parent="." index="54" unique_id=418543649 instance=ExtResource("12")]
+[node name="Guardian14" parent="." index="55" unique_id=418543649 instance=ExtResource("12")]
 position = Vector2(-40, 272)
 start_direction = 1
 
-[node name="Guardian15" parent="." index="55" unique_id=104399461 instance=ExtResource("12")]
+[node name="Guardian15" parent="." index="56" unique_id=104399461 instance=ExtResource("12")]
 position = Vector2(32, 112)
 
-[node name="Guardian16" parent="." index="56" unique_id=2121693958 instance=ExtResource("12")]
+[node name="Guardian16" parent="." index="57" unique_id=2121693958 instance=ExtResource("12")]
 position = Vector2(752, -8)
 
-[node name="Guardian17" parent="." index="57" unique_id=157477765 instance=ExtResource("12")]
+[node name="Guardian17" parent="." index="58" unique_id=157477765 instance=ExtResource("12")]
 position = Vector2(2392, 272)
 start_direction = 1
 
-[node name="Guardian18" parent="." index="58" unique_id=1884370550 instance=ExtResource("12")]
+[node name="Guardian18" parent="." index="59" unique_id=1884370550 instance=ExtResource("12")]
 position = Vector2(2808, 176)
 
-[node name="Guardian19" parent="." index="59" unique_id=1148214809 instance=ExtResource("12")]
+[node name="Guardian19" parent="." index="60" unique_id=1148214809 instance=ExtResource("12")]
 position = Vector2(1576, 560)
 
-[node name="Guardian20" parent="." index="60" unique_id=1515605967 instance=ExtResource("12")]
+[node name="Guardian20" parent="." index="61" unique_id=1515605967 instance=ExtResource("12")]
 position = Vector2(2208, 784)
 
-[node name="Guardian21" parent="." index="61" unique_id=1832293053 instance=ExtResource("12")]
+[node name="Guardian21" parent="." index="62" unique_id=1832293053 instance=ExtResource("12")]
 position = Vector2(1616, 784)
 start_direction = 1
 
-[node name="Guardian22" parent="." index="62" unique_id=1910414740 instance=ExtResource("12")]
+[node name="Guardian22" parent="." index="63" unique_id=1910414740 instance=ExtResource("12")]
 position = Vector2(1864, 784)

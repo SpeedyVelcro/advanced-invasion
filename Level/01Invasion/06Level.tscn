@@ -3,13 +3,13 @@
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
 [ext_resource type="Texture2D" uid="uid://6khmet1gcdbm" path="res://Art/Decor/Screen/NormalScreen/NormalScreenAlertWarning.png" id="8"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
 [ext_resource type="SpriteFrames" path="res://Entity/Decor/Screen/BigScreenSpriteFrames.tres" id="12"]
 
@@ -62,8 +62,9 @@ limit_bottom = 832
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="KillZone" parent="." index="6" unique_id=1913625885 instance=ExtResource("5")]
+[node name="KillZone" parent="." index="6" unique_id=1913625885 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("5")]
 position = Vector2(1816, 912)
+respawn_marker = NodePath("../RespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=1504989729]
 shape = SubResource("1")
@@ -169,3 +170,6 @@ level_path = "res://Level/01Invasion/07Boss.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0" unique_id=604959778]
 shape = SubResource("4")
+
+[node name="RespawnMarker2D" type="Marker2D" parent="." index="28" unique_id=679735611]
+position = Vector2(1008, 720)

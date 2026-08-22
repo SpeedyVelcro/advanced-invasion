@@ -8,12 +8,15 @@ extends Node2D
 @export var music_id = ""
 @onready var hud = get_node("LevelHUD")
 
+var player: Player
+
 func _ready():
 	if checkpoint:
 		StoryStatus.set_current_level(scene_file_path)
 		StoryStatus.save()
-	var players = get_tree().get_nodes_in_group("player")
-	for player in players:
+	var player_nodes = get_tree().get_nodes_in_group("player")
+	for player_node in player_nodes:
+		player = player_node
 		connect_player(player)
 	$LevelHUD.set_lives_enabled(StoryStatus.get_lives_enabled())
 	$PauseMenu.set_cutscene_mode(cutscene_active)

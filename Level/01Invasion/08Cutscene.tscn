@@ -153,6 +153,7 @@ limit_right = 1152
 limit_bottom = 0
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="CutsceneChaperone" type="Node" parent="." index="6" unique_id=1145647786]
 script = ExtResource("5")

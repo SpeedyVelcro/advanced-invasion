@@ -186,6 +186,7 @@ limit_right = 1920
 limit_bottom = 768
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="18" unique_id=39070262]
 libraries/ = SubResource("AnimationLibrary_galya")

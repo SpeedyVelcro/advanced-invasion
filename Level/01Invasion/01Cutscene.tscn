@@ -633,6 +633,7 @@ layer_0/tile_data = PackedInt32Array(-196615, 131075, 2, -196614, 131075, 2, -26
 
 [node name="CameraPlayer" parent="." index="5" unique_id=337385548 instance=ExtResource("9")]
 position = Vector2(0, 32)
+input_enabled = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=435773993]
 libraries/ = SubResource("AnimationLibrary_0pxfv")

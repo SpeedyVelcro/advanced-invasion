@@ -1091,6 +1091,7 @@ limit_right = 3000
 limit_bottom = 3000
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="Yellow" type="Sprite2D" parent="." index="7" unique_id=268637433]
 position = Vector2(-120, -48)

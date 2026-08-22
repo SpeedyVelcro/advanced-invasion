@@ -26,7 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://cc3t1m7usoq4g" path="res://Sound/Weapon/GrenadePin1.wav" id="24"]
 [ext_resource type="AudioStream" uid="uid://cgrrlc8fttfgs" path="res://Sound/Destruction/Pop.wav" id="25"]
 [ext_resource type="AudioStream" uid="uid://ti1cfpg1dxht" path="res://Sound/Ambient/RingingEars.wav" id="26"]
-[ext_resource type="PackedScene" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" id="27"]
+[ext_resource type="PackedScene" uid="uid://bjoy05uwtg22l" path="res://Entity/Boss/LastStand/LastStandHUD/LastStandHUD.tscn" id="27"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="28"]
 [ext_resource type="Texture2D" uid="uid://dy83skorkxj2o" path="res://Art/Player/PlayerLeft.png" id="29"]
 [ext_resource type="Texture2D" uid="uid://bugkaanysdpcd" path="res://Art/Character/AntiVirusSoldier/AntiVirusSoldierRight.png" id="30"]
@@ -1427,6 +1427,7 @@ limit_right = 2496
 limit_bottom = 64
 limit_smoothed = true
 editor_draw_limits = true
+input_enabled = false
 
 [node name="VirusBlocker" type="StaticBody2D" parent="." index="12" unique_id=950941735]
 position = Vector2(-1512, 592)

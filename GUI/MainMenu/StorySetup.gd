@@ -26,7 +26,7 @@ func _ready():
 @warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
-	hardcore_button.set_pressed(true)
+	standard_button.set_pressed(true)
 	description_label.set_text(TEXT_HARDCORE)
 
 @warning_ignore("native_method_override") # TODO: rename

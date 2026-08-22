@@ -27,6 +27,12 @@ description = "Copyright © SpeedyVelcro 2021
 Licensed under CC BY 4.0 ([url]https://new.creativecommons.org/licenses/by/4.0/[/url])"
 metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
+[sub_resource type="Resource" id="Resource_n4y2n"]
+script = ExtResource("4_w3b1a")
+title = "Social Media Icons"
+description = "The social media icons on the main menu are the property and/or trademarks of their respective companies. They are used here in a descriptive capacity for links to profiles or accounts on those platforms."
+metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
+
 [sub_resource type="Resource" id="Resource_4tpc5"]
 script = ExtResource("4_w3b1a")
 title = "alarm5.WAV"
@@ -226,7 +232,7 @@ metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
 [sub_resource type="Resource" id="Resource_ofs8c"]
 script = ExtResource("1_gvi5b")
-entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_ta2p3"), SubResource("Resource_6coi1"), SubResource("Resource_4tpc5"), SubResource("Resource_bynhv"), SubResource("Resource_kcaka"), SubResource("Resource_08m04"), SubResource("Resource_ouesk"), SubResource("Resource_wphf0"), SubResource("Resource_0ssle"), SubResource("Resource_ymrlx"), SubResource("Resource_3qbhe"), SubResource("Resource_xha78"), SubResource("Resource_ye328"), SubResource("Resource_sjh0f"), SubResource("Resource_cpx1t"), SubResource("Resource_go6pb"), SubResource("Resource_om2rl"), SubResource("Resource_8blry"), SubResource("Resource_h1nj3"), SubResource("Resource_7pxv3"), SubResource("Resource_2kkm8"), SubResource("Resource_1jmgv"), SubResource("Resource_l4uvm"), SubResource("Resource_lvro7"), SubResource("Resource_sicfn")])
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_ta2p3"), SubResource("Resource_6coi1"), SubResource("Resource_n4y2n"), SubResource("Resource_4tpc5"), SubResource("Resource_bynhv"), SubResource("Resource_kcaka"), SubResource("Resource_08m04"), SubResource("Resource_ouesk"), SubResource("Resource_wphf0"), SubResource("Resource_0ssle"), SubResource("Resource_ymrlx"), SubResource("Resource_3qbhe"), SubResource("Resource_xha78"), SubResource("Resource_ye328"), SubResource("Resource_sjh0f"), SubResource("Resource_cpx1t"), SubResource("Resource_go6pb"), SubResource("Resource_om2rl"), SubResource("Resource_8blry"), SubResource("Resource_h1nj3"), SubResource("Resource_7pxv3"), SubResource("Resource_2kkm8"), SubResource("Resource_1jmgv"), SubResource("Resource_l4uvm"), SubResource("Resource_lvro7"), SubResource("Resource_sicfn")])
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
 
 [sub_resource type="Resource" id="Resource_c6sps"]
@@ -256,7 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
 metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
-[sub_resource type="Resource" id="Resource_n4y2n"]
+[sub_resource type="Resource" id="Resource_w3b1a"]
 script = ExtResource("4_w3b1a")
 title = "SV Options Menu"
 description = "Copyright © 2026 SpeedyVelcro
@@ -470,7 +476,7 @@ metadata/_custom_type_script = "uid://bjgnxatvg3ldr"
 
 [sub_resource type="Resource" id="Resource_acjvw"]
 script = ExtResource("1_gvi5b")
-entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_c6sps"), SubResource("Resource_n47ni"), SubResource("Resource_n4y2n"), SubResource("Resource_o7vgm"), SubResource("Resource_jq33r"), SubResource("Resource_toqiw"), SubResource("Resource_n3myw"), SubResource("Resource_my5uh"), SubResource("Resource_djuto")])
+entries = Array[ExtResource("3_58d4w")]([SubResource("Resource_c6sps"), SubResource("Resource_n47ni"), SubResource("Resource_w3b1a"), SubResource("Resource_o7vgm"), SubResource("Resource_jq33r"), SubResource("Resource_toqiw"), SubResource("Resource_n3myw"), SubResource("Resource_my5uh"), SubResource("Resource_djuto")])
 metadata/_custom_type_script = "uid://n7jauopw8y1o"
 
 [sub_resource type="Resource" id="Resource_ln031"]

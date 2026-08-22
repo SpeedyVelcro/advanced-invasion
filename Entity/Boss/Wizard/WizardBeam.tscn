@@ -474,7 +474,7 @@ color_ramp = SubResource("1")
 target_position = Vector2(0, 1080)
 
 [node name="HurtArea" type="Area2D" parent="." unique_id=361305372]
-collision_layer = 524288
+collision_layer = 525312
 collision_mask = 2
 monitoring = false
 monitorable = false

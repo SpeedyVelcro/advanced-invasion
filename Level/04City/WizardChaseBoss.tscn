@@ -13,7 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dq051d0mp30r1" path="res://Sound/Machine/BreakerSwitch.wav" id="11"]
 [ext_resource type="PackedScene" uid="uid://igeg8g7u7kq0" path="res://Entity/Boss/Wizard/WizardChase/WizardChase.tscn" id="12"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="13"]
-[ext_resource type="PackedScene" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://kp57c6xn74dr" path="res://Entity/Obstacle/KillZone/KillZone.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="16"]
 [ext_resource type="Script" uid="uid://dnvnwlqt86wpv" path="res://Entity/Utility/scrollBackground/ParallaxParallaxBackground.gd" id="17"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d3d8ddic6amtu" path="res://Entity/Creep/Guardian/Guardian.tscn" id="20"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/Barrier/Variants/RedBarrier.tscn" id="21"]
 [ext_resource type="PackedScene" path="res://Entity/Obstacle/PushButton/Variants/RedButton.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://nskc8xp8wyja" path="res://Level/04City/WizardChaseCheckpoint.tscn" id="23_51oal"]
 
 [sub_resource type="Resource" id="1"]
 script = ExtResource("13")
@@ -106,6 +107,18 @@ tracks/3/keys = {
 _data = {
 &"background_fade_in": SubResource("8")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2reb"]
+size = Vector2(32, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51oal"]
+size = Vector2(96, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7k47"]
+size = Vector2(96, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otjwf"]
+size = Vector2(96, 128)
 
 [node name="Level" unique_id=540856455 instance=ExtResource("2")]
 script = ExtResource("10")
@@ -436,8 +449,9 @@ level_path = "res://Level/04City/08Level.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0" unique_id=2033744381]
 shape = SubResource("4")
 
-[node name="KillZone" parent="." index="45" unique_id=518110790 instance=ExtResource("14")]
+[node name="KillZone" parent="." index="45" unique_id=518110790 node_paths=PackedStringArray("respawn_marker") instance=ExtResource("14")]
 position = Vector2(3344, 1096)
+respawn_marker = NodePath("../FirstRespawnMarker2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone" index="0" unique_id=789295747]
 shape = SubResource("5")
@@ -626,8 +640,301 @@ libraries/ = SubResource("AnimationLibrary_2x36l")
 [node name="Guardian19" parent="." index="99" unique_id=1794898168 instance=ExtResource("20")]
 position = Vector2(7456, 304)
 
+[node name="FirstRespawnMarker2D" type="Marker2D" parent="." index="100" unique_id=1262614631]
+position = Vector2(-528, 624)
+
+[node name="WizardChaseCheckpoint" parent="." index="101" unique_id=1844836626 node_paths=PackedStringArray("kill_zone", "next_checkpoint") instance=ExtResource("23_51oal")]
+position = Vector2(728, 496)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint2")
+
+[node name="WizardChaseCheckpoint2" parent="." index="102" unique_id=985966800 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(944, 560)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint3")
+
+[node name="WizardChaseCheckpoint3" parent="." index="103" unique_id=97900776 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1072, 560)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint4")
+
+[node name="WizardChaseCheckpoint4" parent="." index="104" unique_id=308853565 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1280, 624)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint5")
+
+[node name="WizardChaseCheckpoint5" parent="." index="105" unique_id=1910334041 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1488, 624)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint6")
+
+[node name="WizardChaseCheckpoint6" parent="." index="106" unique_id=198737890 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1616, 592)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint7")
+
+[node name="WizardChaseCheckpoint7" parent="." index="107" unique_id=1925884725 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1728, 592)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint8")
+
+[node name="WizardChaseCheckpoint8" parent="." index="108" unique_id=1884863418 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1824, 592)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint9")
+
+[node name="WizardChaseCheckpoint9" parent="." index="109" unique_id=1364258702 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(1920, 592)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint10")
+
+[node name="WizardChaseCheckpoint10" parent="." index="110" unique_id=77786947 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2032, 592)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint11")
+
+[node name="WizardChaseCheckpoint11" parent="." index="111" unique_id=456352070 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2160, 560)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint12")
+
+[node name="WizardChaseCheckpoint12" parent="." index="112" unique_id=1125128267 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2288, 560)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint13")
+
+[node name="WizardChaseCheckpoint13" parent="." index="113" unique_id=1420204989 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2416, 624)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint14")
+
+[node name="CheckpointArea2D" parent="WizardChaseCheckpoint13" index="0" unique_id=1723854646]
+position = Vector2(0, -112)
+
+[node name="CollisionShape2D" parent="WizardChaseCheckpoint13/CheckpointArea2D" index="0" unique_id=273261160]
+shape = SubResource("RectangleShape2D_j2reb")
+
+[node name="WizardChaseCheckpoint14" parent="." index="114" unique_id=1042149720 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2576, 464)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint15")
+
+[node name="WizardChaseCheckpoint15" parent="." index="115" unique_id=1507699777 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2672, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint16")
+
+[node name="WizardChaseCheckpoint16" parent="." index="116" unique_id=1473576584 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(2896, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint17")
+
+[node name="WizardChaseCheckpoint17" parent="." index="117" unique_id=328289601 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3056, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint18")
+
+[node name="WizardChaseCheckpoint18" parent="." index="118" unique_id=1154159512 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3288, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint19")
+
+[node name="WizardChaseCheckpoint19" parent="." index="119" unique_id=777813362 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3472, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint20")
+
+[node name="WizardChaseCheckpoint20" parent="." index="120" unique_id=883232827 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3664, 240)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint21")
+
+[node name="WizardChaseCheckpoint21" parent="." index="121" unique_id=472848835 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3824, 176)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint22")
+
+[node name="WizardChaseCheckpoint22" parent="." index="122" unique_id=45559269 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4016, 144)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint23")
+
+[node name="WizardChaseCheckpoint23" parent="." index="123" unique_id=288685164 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4176, 176)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint24")
+
+[node name="WizardChaseCheckpoint24" parent="." index="124" unique_id=1570006208 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4336, 176)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint25")
+
+[node name="WizardChaseCheckpoint25" parent="." index="125" unique_id=1505407805 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4336, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint26")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint25" index="1" unique_id=1494271173]
+position = Vector2(104, -112)
+
+[node name="CollisionShape2D" parent="WizardChaseCheckpoint25/WizardDisableArea2D" index="0" unique_id=710634899]
+shape = SubResource("RectangleShape2D_51oal")
+
+[node name="WizardChaseCheckpoint26" parent="." index="126" unique_id=563281077 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4176, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint27")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint26" index="1" unique_id=1494271173]
+position = Vector2(0, -48)
+
+[node name="CollisionShape2D" parent="WizardChaseCheckpoint26/WizardDisableArea2D" index="0" unique_id=710634899]
+shape = SubResource("RectangleShape2D_w7k47")
+
+[node name="WizardChaseCheckpoint27" parent="." index="127" unique_id=977364541 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3952, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint28")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint27" index="1" unique_id=1494271173]
+position = Vector2(0, -48)
+
+[node name="CollisionShape2D" parent="WizardChaseCheckpoint27/WizardDisableArea2D" index="0" unique_id=710634899]
+shape = SubResource("RectangleShape2D_otjwf")
+
+[node name="WizardChaseCheckpoint28" parent="." index="128" unique_id=549039278 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(3888, 464)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint29")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint28" index="1" unique_id=1494271173]
+position = Vector2(-32, 64)
+
+[node name="WizardChaseCheckpoint29" parent="." index="129" unique_id=1148930755 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4192, 496)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint30")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint29" index="1" unique_id=1494271173]
+position = Vector2(0, 144)
+
+[node name="WizardChaseCheckpoint30" parent="." index="130" unique_id=922498095 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(4432, 528)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint31")
+
+[node name="WizardDisableArea2D" parent="WizardChaseCheckpoint30" index="1" unique_id=1494271173]
+position = Vector2(24, 176)
+
+[node name="WizardChaseCheckpoint31" parent="." index="131" unique_id=1039314592 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5040, 528)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint32")
+
+[node name="WizardChaseCheckpoint32" parent="." index="132" unique_id=1162589422 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5152, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint33")
+
+[node name="WizardChaseCheckpoint33" parent="." index="133" unique_id=1477561929 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5264, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint34")
+
+[node name="WizardChaseCheckpoint34" parent="." index="134" unique_id=1417465873 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5392, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint35")
+
+[node name="WizardChaseCheckpoint35" parent="." index="135" unique_id=349903210 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5520, 432)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint36")
+
+[node name="WizardChaseCheckpoint36" parent="." index="136" unique_id=342008459 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5648, 400)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint37")
+
+[node name="WizardChaseCheckpoint37" parent="." index="137" unique_id=1385937755 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5776, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint38")
+
+[node name="WizardChaseCheckpoint38" parent="." index="138" unique_id=581376676 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(5904, 336)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint39")
+
+[node name="WizardChaseCheckpoint39" parent="." index="139" unique_id=799172448 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6032, 304)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint40")
+
+[node name="WizardChaseCheckpoint40" parent="." index="140" unique_id=1053177024 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6224, 304)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint41")
+
+[node name="WizardChaseCheckpoint41" parent="." index="141" unique_id=1146988354 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6448, 304)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint42")
+
+[node name="WizardChaseCheckpoint42" parent="." index="142" unique_id=1101524828 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6576, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint43")
+
+[node name="WizardChaseCheckpoint43" parent="." index="143" unique_id=1786788726 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6704, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint44")
+
+[node name="WizardChaseCheckpoint44" parent="." index="144" unique_id=715845014 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6832, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint45")
+
+[node name="WizardChaseCheckpoint45" parent="." index="145" unique_id=15292371 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(6960, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint46")
+
+[node name="WizardChaseCheckpoint46" parent="." index="146" unique_id=1769319685 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(7088, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint47")
+
+[node name="WizardChaseCheckpoint47" parent="." index="147" unique_id=1501359185 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(7216, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint48")
+
+[node name="WizardChaseCheckpoint48" parent="." index="148" unique_id=279677863 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(7344, 368)
+kill_zone = NodePath("../KillZone")
+next_checkpoint = NodePath("../WizardChaseCheckpoint49")
+
+[node name="WizardChaseCheckpoint49" parent="." index="149" unique_id=1821226375 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(7408, 304)
+kill_zone = NodePath("../KillZone")
+
+[node name="WizardChaseCheckpoint50" parent="." index="150" unique_id=1570831477 node_paths=PackedStringArray("kill_zone") instance=ExtResource("23_51oal")]
+position = Vector2(7664, 272)
+kill_zone = NodePath("../KillZone")
+
 [connection signal="body_entered" from="BossStartArea" to="." method="_on_BossStartArea_body_entered"]
 [connection signal="timeout" from="BossStartTimer" to="." method="_on_BossStartTimer_timeout"]
 [connection signal="appeared" from="Path2D/WizardChase" to="." method="_on_WizardChase_appeared"]
 [connection signal="ended" from="Path2D/WizardChase" to="." method="_on_WizardChase_ended"]
 [connection signal="pressed" from="RedButton" to="." method="_on_RedButton_pressed"]
+[connection signal="respawned" from="WizardChaseCheckpoint30" to="." method="_on_wizard_chase_checkpoint_30_respawned"]
+
+[editable path="WizardChaseCheckpoint13"]
+[editable path="WizardChaseCheckpoint25"]
+[editable path="WizardChaseCheckpoint26"]
+[editable path="WizardChaseCheckpoint27"]
+[editable path="WizardChaseCheckpoint28"]
+[editable path="WizardChaseCheckpoint29"]
+[editable path="WizardChaseCheckpoint30"]

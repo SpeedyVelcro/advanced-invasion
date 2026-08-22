@@ -181,7 +181,7 @@ rotation = -3.14159
 libraries/ = SubResource("AnimationLibrary_l5quy")
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1366811335]
-collision_layer = 2148007936
+collision_layer = 2148008448
 collision_mask = 2
 monitoring = false
 monitorable = false

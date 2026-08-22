@@ -3,7 +3,6 @@ extends Level
 @export var dialogue_1: Array[Dialogue] = []
 
 @onready var boss_start_area = $BossStartArea
-@onready var player = $Player
 @onready var player_camera = $Player/CameraPlayer
 @onready var breaker_audio_stream_player = $BreakerAudioStreamPlayer
 @onready var boss_start_timer = $BossStartTimer
@@ -13,6 +12,7 @@ const BOSS_START_DELAY = 2.0
 @onready var background_layer_2 = $ParallaxBackground/ParallaxLayer2
 @onready var blocking_barrier = $RedBarrier
 @onready var animation_player = $AnimationPlayer
+@onready var moving_platform = $MovingPlatform
 
 func _ready():
 	super()
@@ -61,3 +61,7 @@ func _on_WizardChase_ended():
 	player.set_input_locked(false)
 	player_camera.input_enabled = true
 	animation_player.play("background_fade_in")
+
+
+func _on_wizard_chase_checkpoint_30_respawned() -> void:
+	moving_platform.reset()

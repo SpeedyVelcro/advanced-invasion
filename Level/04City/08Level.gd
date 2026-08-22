@@ -4,7 +4,6 @@ extends Level
 
 @onready var explosion_area = $ExplosionArea
 @onready var animation_player = $AnimationPlayer
-@onready var player = $Player
 @onready var player_camera = $Player/CameraPlayer
 const QUAKE_KNOCKBACK = Vector2(300, -250)
 

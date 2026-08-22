@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dco5wqs2fs4cv"]
 
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="1"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://3frhprt6v3o6" path="res://addons/sv_achievements/ui/achievement_list_ui/achievement_list_ui.tscn" id="4_3w0gg"]
 [ext_resource type="StyleBox" uid="uid://cevtkws71fgla" path="res://GUI/Themes/AchievementBorder.tres" id="5_bbgsw"]
@@ -12,6 +12,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1055878453]
@@ -35,8 +37,8 @@ offset_bottom = -20.0
 
 [node name="MenuTitle" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1501527471]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1")
 text = "Achievements"
+label_settings = ExtResource("1")
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=1321021413]

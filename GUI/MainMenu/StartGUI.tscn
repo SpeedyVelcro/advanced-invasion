@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cox5o0vav75g5" path="res://GUI/MainMenu/StartGUI.gd" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackTitle.tres" id="3_kpea7"]
+[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="3_vevcm"]
 [ext_resource type="Texture2D" uid="uid://b8isw5eck1f01" path="res://Art/Icons/X.svg" id="4_vevcm"]
 [ext_resource type="Texture2D" uid="uid://ch1vdm4ttr24a" path="res://Art/Icons/Bluesky.svg" id="5_polj7"]
 [ext_resource type="Texture2D" uid="uid://cw2uqm62deod5" path="res://Art/Icons/Mastodon.svg" id="6_2e4bt"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dtlmqq7i6rl4s" path="res://Art/Icons/SpeedyVelcroColor.png" id="10_ch0ks"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yfss4"]
-font = ExtResource("3_kpea7")
+font = ExtResource("3_vevcm")
 font_size = 38
 
 [sub_resource type="Animation" id="1"]

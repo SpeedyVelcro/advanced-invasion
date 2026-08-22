@@ -2,26 +2,14 @@
 
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="1"]
 [ext_resource type="Script" uid="uid://bnw37uccuuryk" path="res://GUI/MainMenu/AboutMenu.gd" id="1_tgd3o"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="2"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="2"]
 [ext_resource type="Script" uid="uid://bgpc0iy24r0jj" path="res://addons/sv_about_menu/ui/buttons_selector.gd" id="4_ofs8c"]
 [ext_resource type="Script" uid="uid://b37gjky5xxyvp" path="res://addons/sv_about_menu/ui/selected_title_label.gd" id="5_acjvw"]
-[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="5_ofs8c"]
 [ext_resource type="StyleBox" uid="uid://bl75kpk4e8x03" path="res://GUI/Themes/MenuGrooveStylebox.tres" id="5_ulvfq"]
+[ext_resource type="LabelSettings" uid="uid://b7mmnpvvl43b3" path="res://Font/Hack/HackSmallHeader.tres" id="6_mamg1"]
 [ext_resource type="Script" uid="uid://bg46ajnerbf57" path="res://addons/sv_about_menu/ui/selected_description_label.gd" id="6_ulvfq"]
 [ext_resource type="Script" uid="uid://ctfwwsw3uisos" path="res://addons/sv_about_menu/ui/ui_controller.gd" id="7_mamg1"]
 [ext_resource type="Resource" uid="uid://cjh7riqk4gamu" path="res://About/GameInfo.tres" id="8_u3ycd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_n4y2n"]
-font = ExtResource("5_ofs8c")
-font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_gk03p"]
-font = ExtResource("5_ofs8c")
-font_size = 24
-
-[sub_resource type="LabelSettings" id="LabelSettings_ooua1"]
-font = ExtResource("5_ofs8c")
-font_size = 20
 
 [node name="AboutMenu" type="Control" unique_id=1513642922]
 layout_mode = 3
@@ -53,9 +41,8 @@ offset_bottom = -20.0
 
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=1874230514]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
 text = "About"
-label_settings = SubResource("LabelSettings_n4y2n")
+label_settings = ExtResource("2")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=720133481]
@@ -77,7 +64,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_ofs8c")
 ui_controller = NodePath("../../../../../../SVAboutUIController")
-section_title_label_settings = SubResource("LabelSettings_gk03p")
+section_title_label_settings = ExtResource("6_mamg1")
 metadata/_custom_type_script = "uid://bgpc0iy24r0jj"
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer" unique_id=29769818]
@@ -91,7 +78,7 @@ size_flags_horizontal = 3
 [node name="SVAboutSelectedTitleLabel" type="Label" parent="CenterContainer/Panel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1205746814 node_paths=PackedStringArray("ui_controller")]
 custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_ooua1")
+label_settings = ExtResource("6_mamg1")
 autowrap_mode = 3
 script = ExtResource("5_acjvw")
 ui_controller = NodePath("../../../../../../SVAboutUIController")

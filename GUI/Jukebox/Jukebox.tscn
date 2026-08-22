@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://g4hx2iqhrajh"]
 
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="1"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="1"]
 [ext_resource type="Script" uid="uid://fjpidxpcjgbo" path="res://addons/sv_jukebox/ui_controller/ui_controller.gd" id="2_tqbjq"]
+[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="4_c42l4"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="5"]
 [ext_resource type="PackedScene" uid="uid://fsot1vh4mmw0" path="res://addons/sv_jukebox/ui/play_all_button/play_all_button.tscn" id="5_ocueo"]
 [ext_resource type="Script" uid="uid://b6pbdrermcb6" path="res://GUI/Jukebox/Jukebox.gd" id="6"]
@@ -11,10 +12,38 @@
 [ext_resource type="PackedScene" uid="uid://8ep2u88yr68m" path="res://addons/sv_jukebox/ui/info/selected_liner_notes/selected_liner_notes.tscn" id="9_bliyb"]
 [ext_resource type="StyleBox" uid="uid://bl75kpk4e8x03" path="res://GUI/Themes/MenuGrooveStylebox.tres" id="9_ocueo"]
 [ext_resource type="PackedScene" uid="uid://fe0fxs0lyk1a" path="res://addons/sv_jukebox/ui/info/currently_playing_title/currently_playing_title.tscn" id="10_m477u"]
+[ext_resource type="LabelSettings" uid="uid://b7mmnpvvl43b3" path="res://Font/Hack/HackSmallHeader.tres" id="10_nk4mp"]
 [ext_resource type="PackedScene" uid="uid://dia8o3sgcsxka" path="res://addons/sv_jukebox/ui/media_player_controls/time_label/time_label.tscn" id="11_038yf"]
 [ext_resource type="PackedScene" uid="uid://i2onovq88kp6" path="res://addons/sv_jukebox/ui/media_player_controls/seek_bar/seek_bar.tscn" id="12_pss8n"]
 [ext_resource type="PackedScene" uid="uid://cgnlb85whisev" path="res://addons/sv_jukebox/ui/media_player_controls/media_player_buttons/media_player_buttons.tscn" id="13_c0m34"]
 [ext_resource type="PackedScene" uid="uid://cxkio4e0gvbaa" path="res://addons/sv_jukebox/ui/download_album_button/download_album_button.tscn" id="14_sfeo8"]
+
+[sub_resource type="FontFile" id="FontFile_nk4mp"]
+fallbacks = Array[Font]([ExtResource("4_c42l4")])
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
 
 [node name="Jukebox" type="Control" unique_id=1641617514]
 layout_mode = 3
@@ -46,8 +75,9 @@ layout_mode = 2
 
 [node name="JukeboxTitle" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1819456265]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1")
+theme_override_fonts/font = SubResource("FontFile_nk4mp")
 text = "Jukebox"
+label_settings = ExtResource("1")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=151592394]
@@ -104,6 +134,7 @@ size_flags_horizontal = 3
 
 [node name="SelectedTrackTitle" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=571218577 node_paths=PackedStringArray("ui_controller") instance=ExtResource("8_gr00i")]
 layout_mode = 2
+label_settings = ExtResource("10_nk4mp")
 ui_controller = NodePath("../../../../../../SVJukeboxUIController")
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=855643695]

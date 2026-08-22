@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="2_uo4ih"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsBoldItalic.tres" id="3"]
 [ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="3_o1hcd"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackTitle.tres" id="4"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsItalic.tres" id="5"]
 [ext_resource type="FontFile" path="res://Font/NotoSans/Credits/NotoSansCreditsBold.tres" id="6"]
 [ext_resource type="AudioStream" uid="uid://dq051d0mp30r1" path="res://Sound/Machine/BreakerSwitch.wav" id="7"]
@@ -32,7 +31,9 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="UIScalingSubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=222961463]
+handle_input_locally = false
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 script = ExtResource("2_uo4ih")
 metadata/_custom_type_script = "uid://q556kuuqjbtq"
 
@@ -51,7 +52,6 @@ size_flags_horizontal = 3
 [node name="TitleLabel" type="Label" parent="SubViewportContainer/UIScalingSubViewport/VBoxContainer" unique_id=937284658]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4")
 text = "Advanced Invasion"
 label_settings = SubResource("LabelSettings_n4y2n")
 horizontal_alignment = 1

@@ -10,6 +10,7 @@ extends Node
 @onready var skip_cutscene_button = get_node(skip_cutscene_button_path)
 @export var options_path: NodePath
 @onready var options = get_node(options_path)
+@export var achievements_menu: Control
 
 var in_a_deeper_menu = false
 var pause_enabled = true
@@ -78,3 +79,15 @@ func set_pause_enabled(value):
 
 func is_pause_enabled():
 	return pause_enabled
+
+
+func _on_Achievements_pressed() -> void:
+	in_a_deeper_menu = true
+	gui.set_visible(false)
+	achievements_menu.show()
+
+
+func _on_achievements_menu_back() -> void:
+	in_a_deeper_menu = false
+	gui.set_visible(true)
+	achievements_menu.hide()

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://53fw81hg38d2"]
 
-[ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
 [ext_resource type="Script" uid="uid://ll65nvb3lscg" path="res://GUI/MainMenu/StorySetup.gd" id="3"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="3_kyv0i"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_n4y2n"]
 
@@ -42,8 +42,8 @@ size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2134637250]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1")
 text = "Difficulty"
+label_settings = ExtResource("3_kyv0i")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1991876905]

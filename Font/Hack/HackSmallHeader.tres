@@ -1,7 +1,7 @@
-[gd_resource type="FontFile" load_steps=2 format=2]
+[gd_resource type="LabelSettings" format=3 uid="uid://b7mmnpvvl43b3"]
 
-[ext_resource path="res://Font/Hack/Hack-Regular.ttf" type="FontFile" id=1]
+[ext_resource type="FontFile" uid="uid://cuw4x3c2ikql3" path="res://Font/Hack/Hack-Regular.ttf" id="1"]
 
 [resource]
-size = 20
-font_data = ExtResource( 1 )
+font = ExtResource("1")
+font_size = 20

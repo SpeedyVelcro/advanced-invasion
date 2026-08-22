@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://c8leqe6da3kq4"]
 
 [ext_resource type="Script" uid="uid://jmxl20xippch" path="res://GUI/PauseMenu/PauseMenu.gd" id="1"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackSmallHeader.tres" id="2"]
 [ext_resource type="Script" uid="uid://q556kuuqjbtq" path="res://addons/sv_options_menu/ui/ui_scaling_sub_viewport/ui_scaling_sub_viewport.gd" id="2_1qfkk"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="3"]
 [ext_resource type="PackedScene" uid="uid://c4ub7ekaomtov" path="res://GUI/Options/Options.tscn" id="4"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="4_pv0b3"]
+[ext_resource type="PackedScene" uid="uid://dco5wqs2fs4cv" path="res://GUI/AchievementsMenu/AchievementsMenu.tscn" id="6_17pbj"]
 
-[node name="PauseMenu" type="Node" unique_id=33591457]
+[node name="PauseMenu" type="Node" unique_id=33591457 node_paths=PackedStringArray("achievements_menu")]
 process_mode = 3
 script = ExtResource("1")
 gui_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI")
 color_rect_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/ColorRect")
-restart_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart")
-skip_cutscene_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene")
+restart_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer/Restart")
+skip_cutscene_button_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer/SkipCutscene")
 options_path = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options")
+achievements_menu = NodePath("CanvasLayer/SubViewportContainer/UIScalingSubViewport/AchievementsMenu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2127206328]
 layer = 96
@@ -47,55 +49,55 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI" unique_id=1853355586]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MainPanel" type="Panel" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer" unique_id=1796566326]
-custom_minimum_size = Vector2(160, 240)
+[node name="MainPanelContainer" type="PanelContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer" unique_id=456632545]
+custom_minimum_size = Vector2(360, 240)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel" unique_id=148331977]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer" unique_id=148331977]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1797747218]
+[node name="Label" type="Label" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=1797747218]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2")
 text = "Paused"
+label_settings = ExtResource("4_pv0b3")
 horizontal_alignment = 1
 clip_text = true
 
-[node name="Resume" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=251711633]
+[node name="Resume" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=251711633]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 text = "Resume"
 
-[node name="Restart" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1520766692]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=1545211009]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=1927820203]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer" unique_id=1520766692]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Restart Level"
 
-[node name="SkipCutscene" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=1424572599]
+[node name="SkipCutscene" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer" unique_id=1424572599]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -103,28 +105,42 @@ size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Skip Cutscene"
 
-[node name="Options" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=148015002]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=1512328056]
+layout_mode = 2
+
+[node name="Options" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer2" unique_id=148015002]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 text = "Options"
 
-[node name="Quit" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer" unique_id=642692917]
+[node name="Achievements" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer2" unique_id=771529505]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Achievements"
+
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=779506329]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer" unique_id=642692917]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-text = "Main Menu"
+text = "Quit to Menu"
 
 [node name="Options" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=176105212 instance=ExtResource("4")]
 visible = false
-grow_horizontal = 2
-grow_vertical = 2
 
-[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
-[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/SkipCutscene" to="." method="_on_SkipCutscene_pressed"]
-[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanel/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[node name="AchievementsMenu" parent="CanvasLayer/SubViewportContainer/UIScalingSubViewport" unique_id=1982085894 instance=ExtResource("6_17pbj")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer/SkipCutscene" to="." method="_on_SkipCutscene_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer2/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/HBoxContainer2/Achievements" to="." method="_on_Achievements_pressed"]
+[connection signal="pressed" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/PauseMenuGUI/CenterContainer/MainPanelContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
 [connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/Options" to="." method="_on_Options_back"]
+[connection signal="back" from="CanvasLayer/SubViewportContainer/UIScalingSubViewport/AchievementsMenu" to="." method="_on_achievements_menu_back"]

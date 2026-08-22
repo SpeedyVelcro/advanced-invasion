@@ -11,5 +11,6 @@
 - Made changes to player camera zoom handling, including restoring
   broken functionality allowing you to zoom in and out with the mouse
   wheel.
+- Improve UI styling
 - Simplified display settings on the web platform (resolution now
   automatically adjusts to the size of the ccanvas on web).

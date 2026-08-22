@@ -249,10 +249,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=1513594417]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
 [node name="IntegrationMenu" parent="." unique_id=1255975001 instance=ExtResource("7")]
 visible = false
 layout_mode = 1

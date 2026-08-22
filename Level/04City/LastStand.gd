@@ -111,6 +111,7 @@ func spawn_left():
 	var virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_left)
+	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.RIGHT)
 
 func spawn_shield_left():
@@ -119,6 +120,7 @@ func spawn_shield_left():
 	var virus = virus_shield_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_left)
+	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.RIGHT)
 
 func spawn_right():
@@ -126,6 +128,7 @@ func spawn_right():
 	var virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_right)
+	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.LEFT)
 
 func spawn_shield_right():
@@ -133,6 +136,7 @@ func spawn_shield_right():
 	var virus = virus_shield_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_right)
+	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.LEFT)
 
 func _on_VirusSpawnTimerLeft_timeout():

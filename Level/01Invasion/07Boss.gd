@@ -60,6 +60,7 @@ func spawn_left():
 	var creep = creep_resource.instantiate()
 	add_child(creep)
 	creep.set_global_position(creep_spawn_left.get_global_position())
+	creep.reset_physics_interpolation()
 	creep.set_direction(Vector2.RIGHT)
 
 func spawn_right():
@@ -68,6 +69,7 @@ func spawn_right():
 	var creep = creep_resource.instantiate()
 	add_child(creep)
 	creep.set_global_position(creep_spawn_right.get_global_position())
+	creep.reset_physics_interpolation()
 	creep.set_direction(Vector2.LEFT)
 
 func _on_LeftSpawnTimer_timeout():

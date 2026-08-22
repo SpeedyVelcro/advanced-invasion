@@ -34,6 +34,7 @@ func fire_gun():
 	var bullet = bullet_resource.instantiate()
 	get_parent().add_child(bullet)
 	bullet.set_global_position(physical_node.global_position + BULLET_SPAWN_POS)
+	bullet.reset_physics_interpolation()
 	bullet.set_linear_velocity(BULLET_SPEED * Vector2.LEFT)
 
 func _on_Area2D_body_entered(body):

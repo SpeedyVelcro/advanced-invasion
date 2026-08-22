@@ -248,6 +248,7 @@ func _on_StateTimer_timeout():
 				var new_creep = creep_resource.instantiate()
 				get_parent().add_child(new_creep)
 				new_creep.set_global_position(portal.get_global_position())
+				new_creep.reset_physics_interpolation()
 				if rng.randf() > 0.5:
 					new_creep.set_direction(Vector2.RIGHT)
 				else:
@@ -277,6 +278,7 @@ func attack_spin():
 		var new_bullet = bullet_resource.instantiate()
 		get_parent().add_child(new_bullet)
 		new_bullet.set_global_position(start_pos)
+		new_bullet.reset_physics_interpolation()
 		new_bullet.apply_central_impulse(spd)
 	# Update bullet direction for next spin
 	attack_spin_fire_direction += ATTACK_SPIN_FIRE_ROTATION

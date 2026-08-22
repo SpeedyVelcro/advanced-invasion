@@ -1,110 +1,116 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene format=3 uid="uid://dus43bf0mjek"]
 
-[ext_resource path="res://Entity/Boss/LastStand/TealLastStand/TealLastStand.gd" type="Script" id=1]
-[ext_resource path="res://Art/Character/Teal/TealLeft.png" type="Texture2D" id=2]
-[ext_resource path="res://Sound/Weapon/LightRetroGun.wav" type="AudioStream" id=3]
+[ext_resource type="Script" uid="uid://cfi4rnf1y76tm" path="res://Entity/Boss/LastStand/TealLastStand/TealLastStand.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://c8x024d35bxtm" path="res://Sound/Weapon/LightRetroGun.wav" id="3"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 16 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(16, 32)
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Physical/Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.8 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -40, 0 ) ]
+"values": [Vector2(0, 0), Vector2(-40, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Physical/Sprite2D:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0.0 ]
+"values": [0.0]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Physical/Sprite2D:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ false, true, false, true, false, true, false, true, false ]
+"values": [false, true, false, true, false, true, false, true, false]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("Physical/Sprite2D:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0, 0.4, 0.8 ),
-"transitions": PackedFloat32Array( 0.34151, 2, 1 ),
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.34151, 2, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -32 ), Vector2( 0, 0 ) ]
+"values": [Vector2(0, 0), Vector2(0, -32), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 14.0
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Physical:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.4, 7, 7.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.4, 7, 7.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -32, 0 ), Vector2( -32, 0 ), Vector2( 0, 0 ) ]
+"values": [Vector2(0, 0), Vector2(-32, 0), Vector2(-32, 0), Vector2(0, 0)]
 }
 
-[node name="TealLastStand" type="Node2D"]
-position = Vector2( 1968, -16 )
-script = ExtResource( 1 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wibpl"]
+_data = {
+&"death": SubResource("2"),
+&"movement": SubResource("3")
+}
 
-[node name="Physical" type="Node2D" parent="."]
+[node name="TealLastStand" type="Node2D" unique_id=771771445]
+position = Vector2(1968, -16)
+script = ExtResource("1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Physical"]
+[node name="Physical" type="Node2D" parent="." unique_id=904503085]
+
+[node name="Sprite2D" type="Sprite2D" parent="Physical" unique_id=387745185]
 visible = false
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 
-[node name="Area2D" type="Area2D" parent="Physical"]
-monitoring = false
+[node name="Area2D" type="Area2D" parent="Physical" unique_id=1474004958]
 collision_layer = 524288
 collision_mask = 4
+monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Physical/Area2D"]
-shape = SubResource( 1 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physical/Area2D" unique_id=1700884118]
+shape = SubResource("1")
 
-[node name="RayCast2D" type="RayCast2D" parent="Physical"]
-target_position = Vector2( -200, 0 )
+[node name="RayCast2D" type="RayCast2D" parent="Physical" unique_id=706538324]
+target_position = Vector2(-200, 0)
 collision_mask = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/death = SubResource( 2 )
-anims/movement = SubResource( 3 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1850106494]
+libraries/ = SubResource("AnimationLibrary_wibpl")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1937617303]
 one_shot = true
 
-[node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+[node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=881667427]
+stream = ExtResource("3")
 volume_db = 2.0
-bus = "Effects"
+bus = &"Effects"
+
 [connection signal="body_entered" from="Physical/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -51,6 +51,7 @@ func spawn_viruses():
 		var new_creep = creep_resource.instantiate()
 		add_child(new_creep)
 		new_creep.set_global_position(pos)
+		new_creep.reset_physics_interpolation()
 		if rng.randf() > 0.5:
 			new_creep.set_direction(Vector2.RIGHT)
 		else:

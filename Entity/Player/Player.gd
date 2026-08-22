@@ -78,13 +78,12 @@ func _process(delta):
 		gun_audio_player.play()
 		var bul = bullet_resource.instantiate()
 		get_parent().add_child(bul)
-		# TODO: set bullet position
 		bul.set_global_position(get_global_position())
 		if facing.x > 0:
 			bul.position += BULLET_ORIGIN_RIGHT
 		else:
 			bul.position += BULLET_ORIGIN_RIGHT * -1
-		# TODO: set bullet velocity
+		bul.reset_physics_interpolation()
 		bul.apply_central_impulse(facing * bullet_speed)
 
 func _physics_process(delta):

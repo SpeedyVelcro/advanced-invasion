@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c4ub7ekaomtov"]
 
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="1"]
+[ext_resource type="LabelSettings" uid="uid://dh2tdc7nwhngc" path="res://Font/Hack/HackHeader.tres" id="2"]
 [ext_resource type="Script" uid="uid://dakqg2m0diule" path="res://GUI/Options/Options.gd" id="3"]
+[ext_resource type="LabelSettings" uid="uid://b7mmnpvvl43b3" path="res://Font/Hack/HackSmallHeader.tres" id="4"]
 [ext_resource type="PackedScene" uid="uid://pkttw81dcu53" path="res://addons/sv_options_menu/ui/ui_scaling_settings_ui/ui_scaling_settings_ui.tscn" id="6_0wyyh"]
 [ext_resource type="PackedScene" uid="uid://cg3sk7atw1rs3" path="res://addons/sv_options_menu/ui/window_settings_ui/window_settings_ui.tscn" id="6_n4ojn"]
 [ext_resource type="PackedScene" uid="uid://ce7jhvm3ntqcg" path="res://GUI/Integration/IntegrationMenu.tscn" id="7"]
@@ -36,6 +38,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=547484225]
 layout_mode = 2
 text = "Options"
+label_settings = ExtResource("2")
 horizontal_alignment = 1
 
 [node name="ReferenceRect3" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=2117032935]
@@ -74,6 +77,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1265530589]
 layout_mode = 2
 text = "Third-Party Integration"
+label_settings = ExtResource("4")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1726446225]
@@ -89,14 +93,24 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1433132650]
 layout_mode = 2
 text = "UI"
+label_settings = ExtResource("4")
 horizontal_alignment = 1
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1931238243]
 custom_minimum_size = Vector2(0, 5)
 layout_mode = 2
 
-[node name="UIScalingSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1158959838 instance=ExtResource("6_0wyyh")]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer" unique_id=1062622728]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1694220783]
+layout_mode = 2
+text = "Scale"
+
+[node name="UIScalingSettingsUI" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1158959838 instance=ExtResource("6_0wyyh")]
+layout_mode = 2
+size_flags_horizontal = 3
 allow_custom_value = true
 dropdown_increments = 0.5
 
@@ -127,6 +141,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=357381999]
 layout_mode = 2
 text = "Display"
+label_settings = ExtResource("4")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer/MarginContainer/VBoxContainer" unique_id=396773962]
@@ -185,6 +200,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer/VBoxContainer" unique_id=966215803]
 layout_mode = 2
 text = "Volume"
+label_settings = ExtResource("4")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer/MarginContainer/VBoxContainer" unique_id=410333473]
@@ -221,6 +237,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer/VBoxContainer" unique_id=640170225]
 layout_mode = 2
 text = "Controls"
+label_settings = ExtResource("4")
 horizontal_alignment = 1
 
 [node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer/MarginContainer/VBoxContainer" unique_id=958169728]

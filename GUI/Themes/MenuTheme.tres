@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dn22sbj0lqlqb" path="res://GUI/Themes/Icons/RadioChecked.svg" id="2_rhlgk"]
 [ext_resource type="Texture2D" uid="uid://cwkgv7g4qyewi" path="res://GUI/Themes/Icons/RadioUnchecked.svg" id="3_wk1kx"]
 [ext_resource type="Texture2D" uid="uid://cph1u63d3aqrt" path="res://GUI/Themes/Icons/CheckboxUnchecked.svg" id="4_bt02r"]
+[ext_resource type="Texture2D" uid="uid://blebbl5bbl3h7" path="res://GUI/Themes/Icons/HSliderGrabber.svg" id="5_wk1kx"]
+[ext_resource type="Texture2D" uid="uid://cvtuhr87c0x0j" path="res://GUI/Themes/Icons/HSliderGrabberHighlight.svg" id="6_bt02r"]
+[ext_resource type="Texture2D" uid="uid://2o334w28i3wk" path="res://GUI/Themes/Icons/HSliderGrabberDisabled.svg" id="6_mx056"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 bg_color = Color(0.176471, 0.176471, 0.25098, 0.396078)
@@ -318,9 +321,9 @@ CheckButton/styles/normal = SubResource("StyleBoxEmpty_rgskd")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_qpkem")
 HSeparator/constants/separation = 4
 HSeparator/styles/separator = SubResource("6")
-HSlider/icons/grabber = null
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = null
+HSlider/icons/grabber = ExtResource("5_wk1kx")
+HSlider/icons/grabber_disabled = ExtResource("6_mx056")
+HSlider/icons/grabber_highlight = ExtResource("6_bt02r")
 HSlider/icons/tick = null
 HSlider/styles/grabber_area = SubResource("7")
 HSlider/styles/grabber_area_highlight = SubResource("8")

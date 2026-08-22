@@ -167,6 +167,7 @@ ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
 
 [node name="SeekBar" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1416280595 node_paths=PackedStringArray("ui_controller") instance=ExtResource("12_pss8n")]
 layout_mode = 2
+size_flags_vertical = 4
 ui_controller = NodePath("../../../../../../../SVJukeboxUIController")
 
 [node name="TimeLabel2" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=570919794 node_paths=PackedStringArray("ui_controller") instance=ExtResource("11_038yf")]

@@ -27,6 +27,7 @@ func _on_WakeArea_body_entered(_body):
 	# NB: This is one-shot
 	# We know it's the player due to collision mask
 	landing_timer.start(START_DELAY)
+	player_camera.input_enabled = false
 	player_camera.set_limit(SIDE_LEFT, 0)
 	player_camera.set_global_position(giant.get_global_position())
 	player.set_input_locked(true)
@@ -37,6 +38,7 @@ func _on_LandingTimer_timeout():
 
 func _on_Giant_awake():
 	player_camera.set_position(Vector2(0, 0))
+	player_camera.input_enabled = true
 	player.set_input_locked(false)
 
 func _on_StopMusicArea_body_entered(_body):

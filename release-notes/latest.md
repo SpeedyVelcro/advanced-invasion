@@ -1,4 +1,6 @@
 - Migrated engine version to Godot 4.7.
+- Difficulty settings have been renamed. Casual is now Standard, and
+  Normal is now Hardcore.
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

@@ -16,3 +16,6 @@
 - Improve UI styling
 - Simplified display settings on the web platform (resolution now
   automatically adjusts to the size of the ccanvas on web).
+- Overhauled about menu. Third-party license information is now
+  clearer, more thorough, and separated from the credits.
+

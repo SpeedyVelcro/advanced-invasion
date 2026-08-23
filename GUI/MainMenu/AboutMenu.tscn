@@ -94,6 +94,7 @@ context_menu_enabled = true
 selection_enabled = true
 script = ExtResource("6_ulvfq")
 ui_controller = NodePath("../../../../../../SVAboutUIController")
+open_links = true
 metadata/_custom_type_script = "uid://bg46ajnerbf57"
 
 [node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=1989025306]

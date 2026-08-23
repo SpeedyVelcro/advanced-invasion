@@ -9,12 +9,18 @@ extends RichTextLabel
 ## required for sharing state between nodes.
 @export var ui_controller: SVAboutUIController:
 	set(value):
-		_disconnect_signals()
+		_disconnect_ui_controller_signal()
 		ui_controller = value
-		_connect_signals()
+		_connect_ui_controller_signal()
 		_update_text()
 	get:
 		return ui_controller
+
+
+## When this is [code]true[/code], clickable links will open in the browser. (technically
+## this uses [method OS.shell_open] so you should only set it to [code]true[/code]
+## if you trust the label's contents.)
+@export var open_links := false
 
 var _readied := false
 
@@ -22,6 +28,8 @@ var _readied := false
 func _ready() -> void:
 	_readied = true
 	_update_text()
+	
+	meta_clicked.connect(_on_meta_clicked)
 
 
 func _update_text() -> void:
@@ -47,7 +55,16 @@ func _on_ui_controller_selection_changed(to: SVAboutEntry) -> void:
 	_update_text()
 
 
-func _connect_signals() -> void:
+# Signal connection
+func _on_meta_clicked(meta: Variant) -> void:
+	if meta is not String:
+		return
+	
+	if open_links:
+		OS.shell_open(meta)
+
+
+func _connect_ui_controller_signal() -> void:
 	if ui_controller == null:
 		return
 	
@@ -55,7 +72,7 @@ func _connect_signals() -> void:
 		ui_controller.selection_changed.connect(_on_ui_controller_selection_changed)
 
 
-func _disconnect_signals() -> void:
+func _disconnect_ui_controller_signal() -> void:
 	if ui_controller == null:
 		return
 	
@@ -65,4 +82,7 @@ func _disconnect_signals() -> void:
 
 # Override
 func _exit_tree() -> void:
-	_disconnect_signals()
+	_disconnect_ui_controller_signal()
+	
+	if meta_clicked.is_connected(_on_meta_clicked):
+		meta_clicked.disconnect(_on_meta_clicked)

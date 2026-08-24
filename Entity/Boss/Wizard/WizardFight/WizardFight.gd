@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var right_beam = $RightBeam
 @onready var portal_animation_player = $PortalAnimationPlayer
 @onready var creep_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn")
+@onready var creep_resource_easy = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
 @onready var bullet_resource = preload("res://Entity/Boss/Wizard/WizardBullet.tscn")
 @onready var rng = RandomNumberGenerator.new()
 @onready var woosh_audio_player = $WooshAudioStreamPlayer2D
@@ -41,6 +42,7 @@ const ATTACK_SPIN_TIME = 1.0 # seconds to complete one attack spin
 const IDLE_TIME = 1.0 # Time between attacks
 const MAX_HEALTH = 70.0
 const ATTACK_LASER_CHARGE_TIME = 3.0
+const ATTACK_LASER_CHARGE_TIME_EASY = 3.5
 const ATTACK_LASER_TIME = 6.0
 const ATTACK_SPAWN_TIME = 1.5
 const ATTACK_SPAWN_NUMBER = 3 # Number of viruses to spawn
@@ -67,6 +69,14 @@ var attack_pattern_index = 0
 signal health_changed(health, max_health)
 signal death
 signal death_animation_ended
+
+
+func _get_attack_laser_charge_time() -> float:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return ATTACK_LASER_CHARGE_TIME_EASY
+	else:
+		return ATTACK_LASER_CHARGE_TIME
+
 
 func _ready():
 	rng.randomize()
@@ -115,7 +125,7 @@ func _on_state_enter(p_state = state):
 			patrol_enabled = true
 			patrol_graphics_enabled = true
 			middle_beam.charge()
-			state_timer.start(ATTACK_LASER_CHARGE_TIME)
+			state_timer.start(_get_attack_laser_charge_time())
 		STATE_ATTACK_SPAWNER:
 			patrol_enabled = true
 			patrol_graphics_enabled = true
@@ -125,6 +135,8 @@ func _on_state_enter(p_state = state):
 			patrol_enabled = true
 			patrol_graphics_enabled = true
 			animation_player.play("double_beam")
+			if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+				animation_player.speed_scale = 0.75
 			left_beam.activate()
 			right_beam.activate()
 		STATE_DEATH:
@@ -202,6 +214,7 @@ func _on_state_exit(p_state = state):
 			animation_player.stop(KEEP_STATE)
 			left_beam.deactivate()
 			right_beam.deactivate()
+			animation_player.speed_scale = 1.0
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
@@ -246,7 +259,11 @@ func _on_StateTimer_timeout():
 				change_state(STATE_IDLE)
 		STATE_ATTACK_SPAWNER:
 			if attack_spawns_left >= 1:
-				var new_creep = creep_resource.instantiate()
+				var new_creep
+				if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+					new_creep = creep_resource_easy.instantiate()
+				else:
+					new_creep = creep_resource.instantiate()
 				get_parent().add_child(new_creep)
 				new_creep.set_global_position(portal.get_global_position())
 				new_creep.reset_physics_interpolation()

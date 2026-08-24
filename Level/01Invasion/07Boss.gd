@@ -2,7 +2,9 @@ extends Level
 
 const START_DELAY = 0.2
 const CREEP_SPAWN_TIME_SHORT = 1.5
+const CREEP_SPAWN_TIME_SHORT_EASY = 2.5
 const CREEP_SPAWN_TIME = 6.0
+const CREEP_SPAWN_TIME_EASY = 8.0
 const MAX_CREEPS = 30
 const CREEP_CULLABLE_HEIGHT = 96
 @onready var landing_timer = $LandingTimer
@@ -18,9 +20,12 @@ const CREEP_CULLABLE_HEIGHT = 96
 func _ready():
 	super()
 	
-	#._ready() # Don't need to do this, happens automatically for inbuilt functions
-	left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
-	right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
+	else:
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
 
 func _on_WakeArea_body_entered(_body):
 	# NB: This is one-shot
@@ -44,16 +49,28 @@ func _on_StopMusicArea_body_entered(_body):
 	GlobalMusic.stop(9.0)
 
 func _on_SpawnAreaLeft_body_entered(_body):
-	left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT_EASY)
+	else:
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
 
 func _on_SpawnAreaLeft_body_exited(_body):
-	left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
+	else:
+		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
 
 func _on_SpawnAreaRight_body_entered(_body):
-	right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT_EASY)
+	else:
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
 
 func _on_SpawnAreaRight_body_exited(_body):
-	right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
+	else:
+		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
 
 func spawn_left():
 	# MUST USE call_deferred()

@@ -198,7 +198,8 @@ func _on_state_exit(p_state = state):
 		STATE_ATTACK_DUAL:
 			patrol_enabled = false
 			patrol_graphics_enabled = false
-			animation_player.stop()
+			const KEEP_STATE := true
+			animation_player.stop(KEEP_STATE)
 			left_beam.deactivate()
 			right_beam.deactivate()
 

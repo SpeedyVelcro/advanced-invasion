@@ -292,11 +292,11 @@ z_index = -1
 
 [node name="LeftBeam" parent="." unique_id=845511854 instance=ExtResource("3")]
 z_index = -1
-rotation = 1.5708
+rotation = 1.5707964
 
 [node name="RightBeam" parent="." unique_id=531262680 instance=ExtResource("3")]
 z_index = -1
-rotation = -1.5708
+rotation = -1.5707964
 
 [node name="Portal" parent="." unique_id=1214159201 instance=ExtResource("4")]
 position = Vector2(0, 72)

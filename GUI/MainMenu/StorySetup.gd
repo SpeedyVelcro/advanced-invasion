@@ -14,7 +14,7 @@ extends Control
 var locked = false
 
 const TEXT_STANDARD = "You can take three hits in each level before you die."
-const TEXT_HARDCORE = "You will die in one hit. Punishing, but the way it was designed to be played."
+const TEXT_HARDCORE = "You will die in one hit. Boss battles are also made significantly more challenging. Punishing, but the way it was designed to be played."
 const START_LEVEL = "res://Level/01Invasion/01Cutscene.tscn"
 
 signal back

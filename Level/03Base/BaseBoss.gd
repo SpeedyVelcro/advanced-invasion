@@ -4,7 +4,6 @@ extends Level
 @export var dialogue_2: Array[Dialogue] = []
 @onready var activate_area = $ActivateArea
 @onready var wizard = $WizardFight
-@onready var player = $Player
 @onready var camera_player = $Player/CameraPlayer
 #onready var camera_original_margin_top = camera_player.drag_margin_top
 #onready var camera_original_margin_bottom = camera_player.drag_margin_bottom

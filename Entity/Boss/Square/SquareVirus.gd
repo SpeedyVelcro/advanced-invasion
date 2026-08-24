@@ -32,15 +32,19 @@ const STAGE_THRESHOLD = [66.0, 33.0]
 const MINIMUM_SKIP_DAMAGE = 10.0
 const SEEK_SPEED = 5.0
 const SEEK_ACCELERATION = [500.0, 650.0, 950.0]
+const SEEK_ACCELERATION_EASY = [400.0, 500.0, 600.0]
 const DRAG = 150.0
 const SEEK_DECELERATION = [600.0, 1000.0, 1700.0]
+const SEEK_DECELERATION_EASY = [480.0, 600.0, 800.0]
 const SEEK_BUFFER = 32.0
 const FALL_ACCELERATION = 700.0
+const FALL_ACCELERATION_EASY = 600.0
 const SEEK_MIN_TIME = 0.2
 const SEEK_MAX_TIME = 2.5
 const UP_DIRECTION = Vector2(0, -1)
 const VULNERABLE_START_TIME = 0.25
 const VULNERABLE_END_TIME = 4.0
+const VULNERABLE_END_TIME_EASY = 8.0
 const MAX_HEALTH = 100.0
 const MAX_DROP = [2, 3, 4]
 const HANG_BACK_HEIGHT = 360.0 # Relative height
@@ -59,6 +63,35 @@ var height_tween: Tween
 signal health_changed(health, max_health)
 signal hang_back
 signal death
+
+
+func _get_seek_acceleration() -> float:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return SEEK_ACCELERATION_EASY[stage]
+	else:
+		return SEEK_ACCELERATION[stage]
+
+
+func _get_seek_deceleration() -> float:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return SEEK_DECELERATION_EASY[stage]
+	else:
+		return SEEK_DECELERATION[stage]
+
+
+func _get_fall_acceleration() -> float:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return FALL_ACCELERATION_EASY
+	else:
+		return FALL_ACCELERATION
+
+
+func _get_vulnerable_end_time() -> float:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return VULNERABLE_END_TIME_EASY
+	else:
+		return VULNERABLE_END_TIME
+
 
 func _ready():
 	set_shield_active(shield_active) # update particles
@@ -147,13 +180,13 @@ func _physics_process(delta):
 			var x_difference = player.global_position.x - global_position.x
 			if abs(x_difference) >= SEEK_BUFFER:
 				# Accelerate towards playerr
-				velocity.x += SEEK_ACCELERATION[stage] * sign(x_difference) * delta
+				velocity.x += _get_seek_acceleration() * sign(x_difference) * delta
 			else:
 				# Close - decelerate
-				if abs(velocity.x) <= abs(SEEK_DECELERATION[stage] * delta):
+				if abs(velocity.x) <= abs(_get_seek_deceleration() * delta):
 					velocity.x = 0
 				else:
-					velocity.x -= SEEK_DECELERATION[stage] * sign(velocity.x) * delta
+					velocity.x -= _get_seek_deceleration() * sign(velocity.x) * delta
 			if velocity.x > 0:
 				animated_sprite.play("right")
 			elif velocity.x < 0:
@@ -171,7 +204,7 @@ func _physics_process(delta):
 		STATE_DROP:
 			# No drag because the downward movement needs to be identical
 			# to the upwards movement
-			velocity.y += FALL_ACCELERATION * delta # Moving down; down direction is acceleration
+			velocity.y += _get_fall_acceleration() * delta # Moving down; down direction is acceleration
 			current_fall_speed = velocity.y
 			set_velocity(velocity)
 			set_up_direction(UP_DIRECTION)
@@ -185,7 +218,7 @@ func _physics_process(delta):
 					change_state(STATE_VULNERABLE)
 		STATE_BOUNCE:
 			# Decelerate by acceleration value so we end up in the same place.
-			velocity.y += FALL_ACCELERATION * delta# Moving up; Down direction is deceleration
+			velocity.y += _get_fall_acceleration() * delta# Moving up; Down direction is deceleration
 			if velocity.y >= 0:
 				# Set our height just to avoid small errors accumulating
 				position.y = seek_height

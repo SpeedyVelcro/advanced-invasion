@@ -17,6 +17,14 @@ var cutscene_stage = 0
 var rng = RandomNumberGenerator.new()
 var remaining_viruses = 0
 
+
+func _get_creep_spawn_locations() -> Array:
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		return [creep_spawn_location.front(), creep_spawn_location.back()]
+	else:
+		return creep_spawn_location
+
+
 func _ready():
 	super()
 	
@@ -48,7 +56,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			boss.start()
 
 func spawn_viruses():
-	for pos in creep_spawn_location:
+	for pos in _get_creep_spawn_locations():
 		var new_creep = creep_resource.instantiate()
 		add_child(new_creep)
 		new_creep.set_global_position(pos)
@@ -61,7 +69,10 @@ func spawn_viruses():
 		new_creep.connect("death", Callable(self, "_on_creep_death"))
 
 func _on_SquareVirus_hang_back():
-	animation_player.play("spawn_virus")
+	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+		animation_player.play("spawn_virus_easy")
+	else:
+		animation_player.play("spawn_virus")
 
 func _on_creep_death():
 	remaining_viruses -= 1

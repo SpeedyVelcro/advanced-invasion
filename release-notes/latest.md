@@ -1,6 +1,9 @@
 - Migrated engine version to Godot 4.7.
 - Difficulty settings have been renamed. Casual is now Standard, and
   Normal is now Hardcore.
+- Boss battles have been made easier on standard difficulty. Difficulty
+  descriptions have been updated to reflect this (though it's phrased
+  as hardcore being harder).
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

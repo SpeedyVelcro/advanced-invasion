@@ -51,7 +51,7 @@ func _physics_process(delta):
 		STATE_FOLLOWING:
 			# Calculate speed
 			var spd
-			if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+			if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 				spd = FOLLOW_SPEED_EASY
 			else:
 				spd = FOLLOW_SPEED

@@ -49,25 +49,25 @@ func _on_StopMusicArea_body_entered(_body):
 	GlobalMusic.stop(9.0)
 
 func _on_SpawnAreaLeft_body_entered(_body):
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT_EASY)
 	else:
 		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
 
 func _on_SpawnAreaLeft_body_exited(_body):
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
 	else:
 		left_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)
 
 func _on_SpawnAreaRight_body_entered(_body):
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT_EASY)
 	else:
 		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_SHORT)
 
 func _on_SpawnAreaRight_body_exited(_body):
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME_EASY)
 	else:
 		right_spawn_timer.set_wait_time(CREEP_SPAWN_TIME)

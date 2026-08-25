@@ -66,28 +66,28 @@ signal death
 
 
 func _get_seek_acceleration() -> float:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return SEEK_ACCELERATION_EASY[stage]
 	else:
 		return SEEK_ACCELERATION[stage]
 
 
 func _get_seek_deceleration() -> float:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return SEEK_DECELERATION_EASY[stage]
 	else:
 		return SEEK_DECELERATION[stage]
 
 
 func _get_fall_acceleration() -> float:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return FALL_ACCELERATION_EASY
 	else:
 		return FALL_ACCELERATION
 
 
 func _get_vulnerable_end_time() -> float:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return VULNERABLE_END_TIME_EASY
 	else:
 		return VULNERABLE_END_TIME

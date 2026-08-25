@@ -18,10 +18,13 @@ const NEXT_LEVEL = "res://Level/04City/10Cutscene.tscn"
 @onready var virus_shield_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
 const INITIAL_SPAWN_TIME = 0.4
 const PEAK_SPAWN_TIME = 0.27
+const PEAK_SPAWN_TIME_EASY = 0.3
 const END_SPAWN_TIME = 0.6
 const SHIELD_SPAWN_TIME = 0.5 # Both time before and after shield spawn, to give a buffer zone
 const INITIAL_VIRUS_PER_SHIELD = 10
+const INITIAL_VIRUS_PER_SHIELD_EASY = 12
 const END_VIRUS_PER_SHIELD = 6
+const END_VIRUS_PER_SHIELD_EASY = 8
 var virus_per_shield = INITIAL_VIRUS_PER_SHIELD
 var viruses_until_shield = virus_per_shield
 var spawn_time = INITIAL_SPAWN_TIME
@@ -48,6 +51,10 @@ const CAMERA_BATTLE_POSITION = Vector2(-64, 0)
 
 func _ready():
 	super()
+	
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
+		virus_per_shield = INITIAL_VIRUS_PER_SHIELD_EASY
+		viruses_until_shield = virus_per_shield
 	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
 	animation_player.play("cutscene_1")
@@ -92,18 +99,27 @@ func update_spawn_time():
 	# Starts at INITIAL_SPAWN_TIME
 	# as we approach PEAK_VIRUSES_LEFT we also approach PEAK_SPAWN_TIME (which is at a minimum)
 	# Then as we approach - viruses left from there we approach END_SPAWN_TIME
+	var peak_spawn_time = PEAK_SPAWN_TIME_EASY \
+			if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD \
+			else PEAK_SPAWN_TIME
 	var progress_through_phase
 	if viruses_left < PEAK_VIRUSES_LEFT:
 		progress_through_phase = (float(PEAK_VIRUSES_LEFT) - float(viruses_left)) / float(PEAK_VIRUSES_LEFT)
-		spawn_time = lerp(PEAK_SPAWN_TIME, END_SPAWN_TIME, progress_through_phase)
+		spawn_time = lerp(peak_spawn_time, END_SPAWN_TIME, progress_through_phase)
 	else:
 		progress_through_phase = (float(VIRUS_TOTAL) - float(viruses_left)) / (float(VIRUS_TOTAL) - float(PEAK_VIRUSES_LEFT))
-		spawn_time = lerp(INITIAL_SPAWN_TIME, PEAK_SPAWN_TIME, progress_through_phase)
-	assert(spawn_time >= PEAK_SPAWN_TIME)
+		spawn_time = lerp(INITIAL_SPAWN_TIME, peak_spawn_time, progress_through_phase)
+	assert(spawn_time >= peak_spawn_time)
 	# Also update viruses per shield
 	progress_through_phase = (float(VIRUS_TOTAL) - float(viruses_left)) / float(VIRUS_TOTAL)
-	virus_per_shield = lerp(INITIAL_VIRUS_PER_SHIELD, END_VIRUS_PER_SHIELD, progress_through_phase)
-	assert(virus_per_shield >= END_VIRUS_PER_SHIELD)
+	var initial_virus_per_shield = INITIAL_VIRUS_PER_SHIELD_EASY \
+			if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD \
+			else INITIAL_VIRUS_PER_SHIELD
+	var end_virus_per_shield = END_VIRUS_PER_SHIELD_EASY \
+			if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD \
+			else END_VIRUS_PER_SHIELD
+	virus_per_shield = lerp(initial_virus_per_shield, end_virus_per_shield, progress_through_phase)
+	assert(virus_per_shield >= end_virus_per_shield)
 
 func spawn_left():
 	viruses_left -= 1

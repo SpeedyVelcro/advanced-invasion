@@ -72,7 +72,7 @@ signal death_animation_ended
 
 
 func _get_attack_laser_charge_time() -> float:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return ATTACK_LASER_CHARGE_TIME_EASY
 	else:
 		return ATTACK_LASER_CHARGE_TIME
@@ -135,7 +135,7 @@ func _on_state_enter(p_state = state):
 			patrol_enabled = true
 			patrol_graphics_enabled = true
 			animation_player.play("double_beam")
-			if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+			if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 				animation_player.speed_scale = 0.75
 			left_beam.activate()
 			right_beam.activate()
@@ -260,7 +260,7 @@ func _on_StateTimer_timeout():
 		STATE_ATTACK_SPAWNER:
 			if attack_spawns_left >= 1:
 				var new_creep
-				if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+				if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 					new_creep = creep_resource_easy.instantiate()
 				else:
 					new_creep = creep_resource.instantiate()

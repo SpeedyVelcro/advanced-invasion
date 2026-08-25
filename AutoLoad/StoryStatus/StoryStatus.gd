@@ -4,9 +4,15 @@ extends Node
 
 var current_level = ""
 var lives_enabled = true
-var difficulty_id = 1 # 0 is standard, 1 is hardcore
-var lowest_difficulty_id = 1
+var difficulty_id = Difficulty.STANDARD
+## Lowest difficulty that was set on this save file.
+var lowest_difficulty_id = Difficulty.STANDARD
 const SAVE_FILE_PATH = "user://player-status.json"
+
+enum Difficulty {
+	STANDARD = 0,
+	HARDCORE = 1
+}
 
 func _ready():
 	$CanvasLayer/ColorRect.set_visible(false)
@@ -14,8 +20,8 @@ func _ready():
 func reset():
 	current_level = ""
 	lives_enabled = false
-	difficulty_id = 1 # Normal
-	lowest_difficulty_id = 1
+	difficulty_id = Difficulty.STANDARD
+	lowest_difficulty_id = Difficulty.STANDARD
 
 # Save and load
 func save_file_exists():
@@ -81,16 +87,16 @@ func safe_set(property : String, dictionary : Dictionary, key : String, type : i
 
 func change_difficulty(id : int, override_lowest = false):
 	if id < 0 or id > 1:
-		print("Tried changing to invalid difficulty " + str(id) + ". Changing to default of 1 instead.")
-		change_difficulty(1, override_lowest)
+		print("Tried changing to invalid difficulty " + str(id) + ". Changing to default of 0 instead.")
+		change_difficulty(0, override_lowest)
 		return
 	difficulty_id = id
 	if (difficulty_id < lowest_difficulty_id or override_lowest):
 		lowest_difficulty_id = difficulty_id
 	match(id):
-		0: # Casual
+		Difficulty.STANDARD: # Casual
 			lives_enabled = true
-		1: # Normal
+		Difficulty.HARDCORE: # Normal
 			lives_enabled = false
 
 # Getters and setters
@@ -109,5 +115,6 @@ func set_current_level(value):
 func get_difficulty_id():
 	return difficulty_id
 
+## Gets the lowest difficulty that was set on this save file.
 func get_lowest_difficulty_id():
 	return lowest_difficulty_id

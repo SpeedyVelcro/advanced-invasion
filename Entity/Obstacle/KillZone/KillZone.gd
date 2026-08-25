@@ -11,7 +11,7 @@ func _on_LevelEnd_body_entered(body):
 	if body.get_name() != "Player":
 		return
 	
-	if respawn_marker:
+	if respawn_marker and StoryStatus.lives_enabled and body.health > 1:
 		body.hit(Vector2(0,0), 1)
 		body.global_position = respawn_marker.global_position
 	else:

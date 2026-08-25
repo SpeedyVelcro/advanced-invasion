@@ -19,7 +19,7 @@ var remaining_viruses = 0
 
 
 func _get_creep_spawn_locations() -> Array:
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		return [creep_spawn_location.front(), creep_spawn_location.back()]
 	else:
 		return creep_spawn_location
@@ -69,7 +69,7 @@ func spawn_viruses():
 		new_creep.connect("death", Callable(self, "_on_creep_death"))
 
 func _on_SquareVirus_hang_back():
-	if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+	if StoryStatus.get_difficulty_id() == StoryStatus.Difficulty.STANDARD:
 		animation_player.play("spawn_virus_easy")
 	else:
 		animation_player.play("spawn_virus")

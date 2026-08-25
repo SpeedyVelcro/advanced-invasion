@@ -6,7 +6,6 @@ extends Level
 @export var dialogue_4: Array[Dialogue] = []
 
 const NEXT_LEVEL = "res://Level/04City/10Cutscene.tscn"
-@onready var player = $Player
 @onready var player_camera = $Player/CameraPlayer
 @onready var animation_player = $AnimationPlayer
 @onready var virus_spawn_pos_left = $VirusSpawnPositionLeft.global_position

@@ -7,6 +7,7 @@ extends PathFollow2D
 @onready var beam_top = $BeamTop
 var player
 const FOLLOW_SPEED = 90.0
+const FOLLOW_SPEED_EASY = 75.0
 const DISTANT_SPEED_COEFFICIENT = 1.0
 const SPEED_UP_DISTANCE = 300.0 # For reference, half a camera is about 320
 const BODY_KNOCKBACK = Vector2(300, -250)
@@ -49,7 +50,11 @@ func _physics_process(delta):
 	match state:
 		STATE_FOLLOWING:
 			# Calculate speed
-			var spd = FOLLOW_SPEED
+			var spd
+			if StoryStatus.get_difficulty_id() == StoryStatus.get_lowest_difficulty_id():
+				spd = FOLLOW_SPEED_EASY
+			else:
+				spd = FOLLOW_SPEED
 			var distance = abs(player.global_position.x - global_position.x)
 			var distance_over = max(0.0, distance - SPEED_UP_DISTANCE)
 			spd += distance_over * DISTANT_SPEED_COEFFICIENT

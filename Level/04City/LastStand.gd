@@ -224,9 +224,14 @@ func cutscene_skip():
 	animation_player.seek(animation_player.get_current_animation_length(), true)
 	animation_player.play("cutscene_3")
 	animation_player.seek(animation_player.get_current_animation_length(), true)
+	player.reset_physics_interpolation()
 	DialogueManager.cancel_dialogue()
 	for creep in get_tree().get_nodes_in_group("creep"):
 		creep.free()
 	for bullet in get_tree().get_nodes_in_group("bullet"):
 		bullet.free()
+	# Player may have been inside the area where the viruses will spawn. We wait
+	# for the next physics frame before actually starting to avoid a collision
+	# when the viruses spawn.
+	await get_tree().physics_frame
 	start_battle()

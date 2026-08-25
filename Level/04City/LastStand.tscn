@@ -867,7 +867,7 @@ tile_set = ExtResource("3")
 format = 2
 
 [node name="Player" parent="." index="10" unique_id=1067785697 instance=ExtResource("4")]
-position = Vector2(1632, -16)
+position = Vector2(2008, -16)
 start_direction = 1
 input_locked = true
 
@@ -902,7 +902,7 @@ collision_layer = 128
 shape = SubResource("16")
 
 [node name="TealSprite" type="Sprite2D" parent="." index="14" unique_id=835732397]
-position = Vector2(2072, -16)
+position = Vector2(1960, -16)
 texture = ExtResource("13")
 
 [node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TealSprite" index="0" unique_id=1390097842]

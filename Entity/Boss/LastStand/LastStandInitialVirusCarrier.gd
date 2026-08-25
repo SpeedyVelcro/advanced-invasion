@@ -21,6 +21,7 @@ func replace_sprite_with_virus(sprite):
 	var virus = virus_resource.instantiate()
 	get_parent().add_child(virus)
 	virus.global_position = sprite.global_position
+	virus.reset_physics_interpolation()
 	sprite.free()
 	match start_direction:
 		0:

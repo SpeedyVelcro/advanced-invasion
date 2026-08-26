@@ -4,6 +4,12 @@
 - Boss battles have been made easier on standard difficulty. Difficulty
   descriptions have been updated to reflect this (though it's phrased
   as hardcore being harder).
+- The final battle now includes viruses with shields on top.
+- In the final battle, your ally now has to contend with
+  horizontally-shielded viruses as well. They are also able to react
+  intelligently to a few more situations. This should make the battle
+  feel a little more fair, and also give you an example of what to do
+  to win the battle.
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

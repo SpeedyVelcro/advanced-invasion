@@ -102,6 +102,7 @@ func _physics_process(delta):
 	previous_velocity = velocity
 	
 	# Movement
+	# TODO: Post-Godot-4-migration Speedy speaking: What the fuck is happening here
 	if snap_enabled:
 		set_velocity(velocity)
 		# TODOConverter3To4 looks that snap in Godot 4 is float, not vector like in Godot 3 - previous value `snap_vector`

@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="3"]
 [ext_resource type="Script" uid="uid://8w0qmit2wvnh" path="res://GUI/LevelHUD/Lives.gd" id="4"]
 [ext_resource type="Script" uid="uid://8uqye7l1u6hr" path="res://GUI/LevelHUD/BossHealth.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="6_0djgj"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "hide"
@@ -13,7 +14,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:offset_transform_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,7 +30,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:offset_transform_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -149,7 +150,9 @@ grow_vertical = 2
 
 [node name="UIScalingSubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=577248702]
 transparent_bg = true
+handle_input_locally = false
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 script = ExtResource("2_75ld1")
 metadata/_custom_type_script = "uid://q556kuuqjbtq"
 
@@ -158,21 +161,23 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = -1120.0
-offset_bottom = -688.0
 grow_horizontal = 2
 grow_vertical = 2
+offset_transform_enabled = true
 mouse_filter = 2
 script = ExtResource("4")
 
 [node name="Panel" type="Panel" parent="SubViewportContainer/UIScalingSubViewport/Lives" unique_id=1372003428]
 custom_minimum_size = Vector2(126, 52)
-layout_mode = 0
-offset_left = 10.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
 offset_top = 10.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = -10.0
+offset_bottom = 10.0
+grow_horizontal = 0
 theme = ExtResource("3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/UIScalingSubViewport/Lives/Panel" unique_id=790406998]
@@ -198,6 +203,52 @@ layout_mode = 2
 texture = ExtResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/UIScalingSubViewport/Lives" unique_id=1660511080]
+libraries/ = SubResource("AnimationLibrary_p57bw")
+
+[node name="LivesTeal" type="Control" parent="SubViewportContainer/UIScalingSubViewport" unique_id=2089074269]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+mouse_filter = 2
+script = ExtResource("4")
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal" unique_id=1285228753]
+custom_minimum_size = Vector2(126, 52)
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 10.0
+offset_bottom = 10.0
+theme = ExtResource("3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal/Panel" unique_id=1680361543]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal/Panel/HBoxContainer" unique_id=1717627483]
+layout_mode = 2
+texture = ExtResource("6_0djgj")
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal/Panel/HBoxContainer" unique_id=981965445]
+layout_mode = 2
+texture = ExtResource("6_0djgj")
+
+[node name="TextureRect3" type="TextureRect" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal/Panel/HBoxContainer" unique_id=63908671]
+layout_mode = 2
+texture = ExtResource("6_0djgj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/UIScalingSubViewport/LivesTeal" unique_id=1097376017]
 libraries/ = SubResource("AnimationLibrary_p57bw")
 
 [node name="BossHealth" type="Control" parent="SubViewportContainer/UIScalingSubViewport" unique_id=755040360]

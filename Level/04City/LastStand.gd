@@ -14,7 +14,9 @@ const NEXT_LEVEL = "res://Level/04City/10Cutscene.tscn"
 @onready var virus_spawn_timer_right = $VirusSpawnTimerRight
 @onready var shield_spawn_timer = $ShieldSpawnTimer
 @onready var last_stand_hud = $LastStandHUD
+@onready var air_timer = $AirTimer
 @onready var virus_resource = preload("res://Entity/Creep/VirusPawn/VirusPawn.tscn")
+@onready var virus_umbrella_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn")
 @onready var virus_shield_resource = preload("res://Entity/Creep/VirusPawn/Variants/VirusShieldPawn.tscn")
 const INITIAL_SPAWN_TIME = 0.4
 const PEAK_SPAWN_TIME = 0.27
@@ -27,12 +29,17 @@ const END_VIRUS_PER_SHIELD = 6
 const END_VIRUS_PER_SHIELD_EASY = 8
 var virus_per_shield = INITIAL_VIRUS_PER_SHIELD
 var viruses_until_shield = virus_per_shield
+var viruses_until_shield_on_left = virus_per_shield
 var spawn_time = INITIAL_SPAWN_TIME
-const VIRUS_TOTAL = 1000
+const VIRUS_TOTAL: int = 1000
 const PEAK_VIRUSES_LEFT = 400 # Number of viruses left at peak spawn rate
-var viruses_left = VIRUS_TOTAL
-var viruses_alive = VIRUS_TOTAL # Reset when battle actually starts to account for cutscene deaths
+var viruses_left: int = VIRUS_TOTAL
+var viruses_alive: int = VIRUS_TOTAL # Reset when battle actually starts to account for cutscene deaths
 var zoomed_in = false
+var umbrella_chance = 0.0
+var seconds_in_air = 0
+var counting_air_time = false
+
 @onready var cutscene_bullet = [
 	$CutsceneBullet1,
 	$CutsceneBullet2,
@@ -49,6 +56,8 @@ const CUTSCENE_BULLET_IMPULSE = [
 @onready var initial_virus_carrier_right = $InitialVirusCarrierRight
 const CAMERA_BATTLE_POSITION = Vector2(-64, 0)
 
+
+# Override
 func _ready():
 	super()
 	
@@ -60,6 +69,12 @@ func _ready():
 	animation_player.play("cutscene_1")
 	for bullet in cutscene_bullet:
 		bullet.set_visible(false)
+
+
+# Override
+func _process(_delta: float) -> void:
+	update_spawn_time()
+
 
 func _on_DialogueManager_end_broadcast(message):
 	match message:
@@ -106,9 +121,13 @@ func update_spawn_time():
 	if viruses_left < PEAK_VIRUSES_LEFT:
 		progress_through_phase = (float(PEAK_VIRUSES_LEFT) - float(viruses_left)) / float(PEAK_VIRUSES_LEFT)
 		spawn_time = lerp(peak_spawn_time, END_SPAWN_TIME, progress_through_phase)
+		umbrella_chance = 1.0
 	else:
 		progress_through_phase = (float(VIRUS_TOTAL) - float(viruses_left)) / (float(VIRUS_TOTAL) - float(PEAK_VIRUSES_LEFT))
 		spawn_time = lerp(INITIAL_SPAWN_TIME, peak_spawn_time, progress_through_phase)
+		umbrella_chance = lerp(0.05, 1.0, progress_through_phase)
+		if counting_air_time:
+			umbrella_chance += 0.025 * seconds_in_air
 	assert(spawn_time >= peak_spawn_time)
 	# Also update viruses per shield
 	progress_through_phase = (float(VIRUS_TOTAL) - float(viruses_left)) / float(VIRUS_TOTAL)
@@ -123,14 +142,17 @@ func update_spawn_time():
 
 func spawn_left():
 	viruses_left -= 1
-	var virus = virus_resource.instantiate()
+	var virus
+	if randf() <= umbrella_chance:
+		virus = virus_umbrella_resource.instantiate()
+	else:
+		virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_left)
 	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.RIGHT)
 
 func spawn_shield_left():
-	# NOTE: This should never be called because Teal would just die
 	viruses_left -= 1
 	var virus = virus_shield_resource.instantiate()
 	add_child(virus)
@@ -140,7 +162,11 @@ func spawn_shield_left():
 
 func spawn_right():
 	viruses_left -= 1
-	var virus = virus_resource.instantiate()
+	var virus
+	if randf() <= umbrella_chance:
+		virus = virus_umbrella_resource.instantiate()
+	else:
+		virus = virus_resource.instantiate()
 	add_child(virus)
 	virus.set_global_position(virus_spawn_pos_right)
 	virus.reset_physics_interpolation()
@@ -154,14 +180,33 @@ func spawn_shield_right():
 	virus.reset_physics_interpolation()
 	virus.set_direction(Vector2.LEFT)
 
+# TODO: take out shared code from this and right spawning
 func _on_VirusSpawnTimerLeft_timeout():
 	if viruses_left > 0:
-		spawn_left()
-		update_spawn_time()
-		virus_spawn_timer_left.start(spawn_time)
+		if viruses_until_shield_on_left > 0:
+			# Spawn normal virus
+			spawn_left()
+			viruses_until_shield_on_left -= 1
+			if viruses_until_shield_on_left > 0:
+				virus_spawn_timer_left.start(spawn_time)
+			else:
+				# Player should not be able to just hang around in the air, so we
+				# incrementally spawn less shield viruses the longer they are up there.
+				var skip_shield = counting_air_time and (randf() <=  ((seconds_in_air - 3) * 0.025))
+				if skip_shield:
+					virus_spawn_timer_left.start(spawn_time)
+					viruses_until_shield_on_left = virus_per_shield + 1
+				else:
+					var t = max(spawn_time, SHIELD_SPAWN_TIME)
+					virus_spawn_timer_left.start(t)
+		else:
+			# Spawn shield virus
+			spawn_shield_left()
+			viruses_until_shield_on_left = virus_per_shield
+			var t = max(spawn_time, SHIELD_SPAWN_TIME)
+			virus_spawn_timer_left.start(t)
 
 func _on_VirusSpawnTimerRight_timeout():
-	# TODO: Shield stuff as well
 	if viruses_left > 0:
 		if viruses_until_shield > 0:
 			# Spawn normal virus
@@ -170,8 +215,15 @@ func _on_VirusSpawnTimerRight_timeout():
 			if viruses_until_shield > 0:
 				virus_spawn_timer_right.start(spawn_time)
 			else:
-				var t = max(spawn_time, SHIELD_SPAWN_TIME)
-				virus_spawn_timer_right.start(t)
+				# Player should not be able to just hang around in the air, so we
+				# incrementally spawn less shield viruses the longer they are up there.
+				var skip_shield = counting_air_time and (randf() <=  ((seconds_in_air - 3) * 0.025))
+				if skip_shield:
+					virus_spawn_timer_right.start(spawn_time)
+					viruses_until_shield = virus_per_shield + 1
+				else:
+					var t = max(spawn_time, SHIELD_SPAWN_TIME)
+					virus_spawn_timer_right.start(t)
 		else:
 			# Spawn shield virus
 			spawn_shield_right()
@@ -201,14 +253,15 @@ func start_battle():
 	player_camera.input_enabled = true
 	teal.start()
 	teal_cutscene_sprite.set_visible(false)
+	teal.reset_physics_interpolation()
 	get_tree().connect("node_added", Callable(self, "_on_tree_node_added"))
 	viruses_alive = VIRUS_TOTAL
 	last_stand_hud.set_viruses_remaining(viruses_alive)
 	viruses_left -= initial_virus_carrier_left.start_viruses()
 	viruses_left -= initial_virus_carrier_right.start_viruses()
-	spawn_left()
+	spawn_shield_left()
 	spawn_shield_right()
-	virus_spawn_timer_left.start(spawn_time)
+	virus_spawn_timer_left.start(SHIELD_SPAWN_TIME)
 	virus_spawn_timer_right.start(SHIELD_SPAWN_TIME)
 	last_stand_hud.show()
 	set_cutscene_active(false)
@@ -235,3 +288,27 @@ func cutscene_skip():
 	# when the viruses spawn.
 	await get_tree().physics_frame
 	start_battle()
+
+
+func _on_air_area_2d_body_entered(body: Node2D) -> void:
+	if body is not Player:
+		return # Teal is also on the player layer
+	
+	counting_air_time = true
+	air_timer.start(1.0)
+
+
+func _on_air_area_2d_body_exited(body: Node2D) -> void:
+	if body is not Player:
+		return # Teal is also on the player layer
+	
+	counting_air_time = false
+	seconds_in_air = 0
+	air_timer.stop()
+
+
+func _on_air_timer_timeout() -> void:
+	if not counting_air_time:
+		return
+	
+	seconds_in_air += 1

@@ -1,3 +1,4 @@
+class_name LivesUI
 extends Control
 
 @onready var textures = [

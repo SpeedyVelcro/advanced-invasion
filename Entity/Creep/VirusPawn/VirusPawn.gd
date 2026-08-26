@@ -1,5 +1,5 @@
 # VirusPawn.gd
-
+class_name VirusPawn
 extends CharacterBody2D
 
 @export_enum("Left", "Right") var start_direction := 0
@@ -12,6 +12,7 @@ var snap_vector = Vector2(0, 2)
 var melee_knockback = Vector2(200, -150)
 var melee_damage = 1
 var ignore_player_contact = false
+var dead := false
 const MIN_WEAK_HEIGHT = -16 # Player must be higher than this relative y-position to damage
 		# Remember player origin is in middle and so is the virus'
 
@@ -133,6 +134,8 @@ func _on_IgnorePlayerTimer_timeout():
 	ignore_player_contact = false
 
 func die():
+	if dead:
+		return
 	death_scream_audio_player.play()
 	emit_signal("death")
 	$AnimatedSprite2D.set_animation("death")
@@ -142,6 +145,7 @@ func die():
 	set_shield_active(SHIELD_BACK, false)
 	set_shield_active(SHIELD_FRONT, false)
 	set_shield_active(SHIELD_TOP, false)
+	dead = true
 
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite2D.get_animation() == "death":

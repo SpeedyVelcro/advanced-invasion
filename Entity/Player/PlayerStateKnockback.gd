@@ -3,7 +3,7 @@
 extends PlayerState
 
 var velocity # Set by Player.gd, NOT reset every frame
-var drag_x = 10
+var drag_x = 600
 var dead = false
 
 func _on_state_enter():
@@ -11,9 +11,9 @@ func _on_state_enter():
 	disable_snap(false)
 	#print("entered knockback")
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	var velocity = get_velocity.call()
-	velocity.x -= drag_x * sign(velocity.x)
+	velocity.x -= drag_x * sign(velocity.x) * delta
 	set_velocity.call(velocity)
 	print(velocity.x)
 	if velocity.x > -6 and velocity.x < 6:

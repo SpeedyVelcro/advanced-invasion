@@ -757,6 +757,12 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.117904, 1)
 colors = PackedColorArray(0.666667, 0.556863, 0.454902, 0, 0.666667, 0.556863, 0.454902, 0.682353, 0.666667, 0.556863, 0.454902, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfss4"]
+size = Vector2(2056, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_318ov"]
+size = Vector2(20, 512)
+
 [node name="Level" unique_id=1108680991 instance=ExtResource("2")]
 script = ExtResource("10")
 dialogue_1 = Array[ExtResource("14")]([SubResource("1")])
@@ -766,6 +772,9 @@ dialogue_4 = Array[ExtResource("14")]([SubResource("7"), SubResource("8"), SubRe
 cutscene_active = true
 play_music_on_start = true
 music_id = "invasion"
+
+[node name="LevelHUD" parent="." index="1"]
+show_teal_lives = true
 
 [node name="LastStandHUD" parent="." index="2" unique_id=2057643716 instance=ExtResource("27")]
 
@@ -867,7 +876,7 @@ tile_set = ExtResource("3")
 format = 2
 
 [node name="Player" parent="." index="10" unique_id=1067785697 instance=ExtResource("4")]
-position = Vector2(2008, -16)
+position = Vector2(1632, -16)
 start_direction = 1
 input_locked = true
 
@@ -902,7 +911,7 @@ collision_layer = 128
 shape = SubResource("16")
 
 [node name="TealSprite" type="Sprite2D" parent="." index="14" unique_id=835732397]
-position = Vector2(1960, -16)
+position = Vector2(2072, -16)
 texture = ExtResource("13")
 
 [node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="TealSprite" index="0" unique_id=1390097842]
@@ -1119,6 +1128,8 @@ position = Vector2(1296, -16)
 position = Vector2(2680, -16)
 
 [node name="TealLastStand" parent="." index="32" unique_id=132895044 instance=ExtResource("28")]
+visible = false
+position = Vector2(1968, -16)
 
 [node name="VirusSpawnTimerLeft" type="Timer" parent="." index="33" unique_id=1074421342]
 one_shot = true
@@ -1128,7 +1139,38 @@ one_shot = true
 
 [node name="ShieldSpawnTimer" type="Timer" parent="." index="35" unique_id=1316060177]
 
+[node name="AirTimer" type="Timer" parent="." index="36" unique_id=404298541]
+
+[node name="AirArea2D" type="Area2D" parent="." index="37" unique_id=690929026]
+position = Vector2(1984, -168)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AirArea2D" index="0" unique_id=409712259]
+position = Vector2(-96, 0)
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="VirusBlockerRight" type="StaticBody2D" parent="." index="38" unique_id=475696170]
+position = Vector2(3216, -160)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirusBlockerRight" index="0" unique_id=1328809364]
+shape = SubResource("RectangleShape2D_318ov")
+
+[node name="VirusBlockerLeft" type="StaticBody2D" parent="." index="39" unique_id=2099656389]
+position = Vector2(752, -160)
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VirusBlockerLeft" index="0" unique_id=1898094365]
+shape = SubResource("RectangleShape2D_318ov")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="death" from="TealLastStand" to="." method="_on_TealLastStand_death"]
+[connection signal="health_changed" from="TealLastStand" to="LevelHUD" method="_on_teal_health_changed"]
 [connection signal="timeout" from="VirusSpawnTimerLeft" to="." method="_on_VirusSpawnTimerLeft_timeout"]
 [connection signal="timeout" from="VirusSpawnTimerRight" to="." method="_on_VirusSpawnTimerRight_timeout"]
+[connection signal="timeout" from="AirTimer" to="." method="_on_air_timer_timeout"]
+[connection signal="body_entered" from="AirArea2D" to="." method="_on_air_area_2d_body_entered"]
+[connection signal="body_exited" from="AirArea2D" to="." method="_on_air_area_2d_body_exited"]

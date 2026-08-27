@@ -10,6 +10,8 @@
   intelligently to a few more situations. This should make the battle
   feel a little more fair, and also give you an example of what to do
   to win the battle.
+- In the final battle, your ally now also has lives if you are playing
+  on standard.
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

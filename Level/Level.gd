@@ -1,15 +1,17 @@
 class_name Level
 extends Node2D
 
-@export var checkpoint = true
-@export var cutscene_active = false
+@export var checkpoint := true
+@export var cutscene_active := false
 
-@export var play_music_on_start = false
-@export var music_id = ""
-@onready var hud = get_node("LevelHUD")
+@export var play_music_on_start := false
+@export var music_id := ""
+@onready var hud: LevelHUD = get_node("LevelHUD")
 
 var player: Player
 
+
+# Override
 func _ready():
 	if checkpoint:
 		StoryStatus.set_current_level(scene_file_path)
@@ -31,24 +33,34 @@ func _ready():
 		else:
 			GlobalMusic.play(music_id)
 
+
 func connect_player(player_node):
 	player_node.connect("death", Callable(self, "_on_Player_death"))
 	player_node.connect("health_changed", Callable(hud, "_on_Player_health_changed"))
 
+
 func restart():
 	StoryStatus.load_game()
 
+
+# Signal connection
 func _on_Player_death():
 	restart()
 
+
+# Signal connection
 func _on_PauseMenu_restart():
 	restart()
 
+
+# Signal connection
 func _on_PauseMenu_skip_cutscene():
 	_on_cutscene_skip()
 
+
 func _on_cutscene_skip():
 	pass # OVERRIDE ME
+
 
 # Getters and setters
 func set_cutscene_active(value):
@@ -58,6 +70,7 @@ func set_cutscene_active(value):
 		$LevelHUD.hide()
 	else:
 		$LevelHUD.show()
+
 
 func is_cutscene_active():
 	return cutscene_active

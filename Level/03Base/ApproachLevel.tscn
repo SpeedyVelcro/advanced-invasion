@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bnjapbrd2happ" path="res://Tile/NormalTile/NormalWall.tres" id="1"]
 [ext_resource type="PackedScene" path="res://Level/Level.tscn" id="2"]
 [ext_resource type="TileSet" uid="uid://c0kmi72nuxs6a" path="res://Tile/NormalTile/NormalDecor.tres" id="3"]
-[ext_resource type="PackedScene" path="res://Entity/Player/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cxmda4gl6qn2s" path="res://Entity/Player/Player.tscn" id="4"]
 [ext_resource type="TileSet" uid="uid://b7v7eqrvsriw5" path="res://Tile/Underbelly/UnderbellyWall.tres" id="5"]
 [ext_resource type="PackedScene" uid="uid://c21ufj6ajia5g" path="res://Game/CameraPlayer/CameraPlayer.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://Entity/Utility/scrollBackground/ScrollBackground.tscn" id="7"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxuuxahiuhp1t" path="res://Entity/Creep/VirusPawn/VirusPawn.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://bh50kxbi5soqe" path="res://Entity/Obstacle/HeatBlock/HeatBlock.tscn" id="10"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://cwoeww2l7mp2m" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
 
 [sub_resource type="RectangleShape2D" id="1"]

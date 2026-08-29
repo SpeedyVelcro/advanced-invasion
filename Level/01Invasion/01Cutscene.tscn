@@ -19,11 +19,69 @@
 [ext_resource type="AudioStream" uid="uid://ba501eum4q8ud" path="res://Sound/Machine/ButtonHigher.wav" id="18"]
 [ext_resource type="Texture2D" uid="uid://crts4166jpl2e" path="res://Art/Character/MilitiaCommander/MilitiaCommanderLeft.png" id="19"]
 
+[sub_resource type="Resource" id="Resource_0pxfv"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_1"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_p6qeg"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_2"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_yrlm3"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_3"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_xshg8"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_4"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_mji15"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_5"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_hf853"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_6"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_s3jer"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_7"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_sh8wt"]
+script = ExtResource("7")
+character_name = "NAME_COMPUTER"
+character_color_id = "computer"
+bbcode = "DG_ZONE1_LVL1_PRE_8"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
 [sub_resource type="Resource" id="1"]
 script = ExtResource("7")
 character_name = "NAME_SOLDIER"
 character_color_id = "militia"
 bbcode = "DG_ZONE1_LV1_1"
+broadcast_enabled = true
+broadcast_message = "yell_commander"
 
 [sub_resource type="Resource" id="2"]
 script = ExtResource("7")
@@ -607,7 +665,7 @@ _data = {
 
 [node name="Level" unique_id=1274445669 instance=ExtResource("1")]
 script = ExtResource("5")
-dialogue_1 = Array[ExtResource("7")]([SubResource("1")])
+dialogue_1 = Array[ExtResource("7")]([SubResource("Resource_0pxfv"), SubResource("Resource_p6qeg"), SubResource("Resource_yrlm3"), SubResource("Resource_xshg8"), SubResource("Resource_mji15"), SubResource("Resource_hf853"), SubResource("Resource_s3jer"), SubResource("Resource_sh8wt"), SubResource("1")])
 dialogue_2 = Array[ExtResource("7")]([SubResource("2")])
 dialogue_3 = Array[ExtResource("7")]([SubResource("3"), SubResource("4"), SubResource("5")])
 dialogue_4 = Array[ExtResource("7")]([SubResource("6"), SubResource("7"), SubResource("8")])

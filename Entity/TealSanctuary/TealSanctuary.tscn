@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://m1yoqf8jlnhl"]
+
+[ext_resource type="Script" uid="uid://btvbb82owvbiv" path="res://Entity/TealSanctuary/TealSanctuary.gd" id="1_yvpp5"]
+[ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="2_8oe10"]
+[ext_resource type="AudioStream" uid="uid://c8x024d35bxtm" path="res://Sound/Weapon/LightRetroGun.wav" id="3_yvpp5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfss4"]
+size = Vector2(16, 31)
+
+[node name="TealSanctuary" type="CharacterBody2D" unique_id=1426294078]
+collision_layer = 2
+collision_mask = 261
+script = ExtResource("1_yvpp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=387745185]
+texture = ExtResource("2_8oe10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772044509]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_yfss4")
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1901573790]
+one_shot = true
+
+[node name="GunAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=929121998]
+stream = ExtResource("3_yvpp5")
+volume_db = 2.0
+bus = &"Effects"
+
+[node name="PitWallRayCast2D" type="RayCast2D" parent="." unique_id=108076498]
+position = Vector2(24, 0)
+target_position = Vector2(0, 64)
+
+[node name="PitHarmRayCast2D" type="RayCast2D" parent="." unique_id=839351976]
+position = Vector2(24, 0)
+target_position = Vector2(0, 96)
+collision_mask = 32
+
+[node name="WallRayCast2D" type="RayCast2D" parent="." unique_id=2010689183]
+target_position = Vector2(64, 0)
+
+[node name="CreepRayCast2D" type="RayCast2D" parent="." unique_id=684918158]
+target_position = Vector2(192, 0)
+collision_mask = 4
+
+[node name="StateTimer" type="Timer" parent="." unique_id=1885634449]
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

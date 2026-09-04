@@ -12,6 +12,8 @@
   to win the battle.
 - In the final battle, your ally now also has lives if you are playing
   on standard.
+- Overhauled several cutscenes, in particular dialogue, and adding
+  a new stretch of gameplay to one of them.
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

@@ -94,7 +94,7 @@ position = Vector2(1872, 768)
 
 [node name="LevelEnd" parent="." index="15" unique_id=1543900934 instance=ExtResource("11")]
 position = Vector2(2032, 744)
-level_path = "res://Level/02Underbelly/09Cutscene.tscn"
+level_path = "res://Level/02Underbelly/09Level.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd" index="0" unique_id=316285886]
 shape = SubResource("3")

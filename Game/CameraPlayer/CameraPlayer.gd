@@ -1,3 +1,4 @@
+class_name CameraPlayer
 extends Camera2D
 
 @export var input_enabled = true

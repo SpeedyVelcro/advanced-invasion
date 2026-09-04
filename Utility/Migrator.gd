@@ -20,6 +20,9 @@ static func migrate_all() -> void:
 	# Achievement migrations
 	migrate_achievements_to_sv_achievements() #v1.0.0 to next version
 	AchievementService.load_progress()
+	
+	# Story status migration
+	migrate_player_status_to_v1_1_0()
 
 
 static func migrate_options_to_sv_options() -> void:
@@ -280,6 +283,51 @@ static func migrate_achievements_to_sv_achievements() -> void:
 	var err := file.resize(file.get_position()) # Truncate manually, because we're open in READ_WRITE not just WRITE
 	if err != OK:
 		push_error("Error when truncating achievements file during achievement unlocks migration: %d" % err)
+		# Not much we can do here so just continue and close the file and hope for the best.
+	file.close()
+
+
+static func migrate_player_status_to_v1_1_0() -> void:
+	const FILENAME := "user://player-status.json"
+	
+	var file := FileAccess.open(FILENAME, FileAccess.READ_WRITE)
+	
+	if not file:
+		var file_error := FileAccess.get_open_error()
+		
+		if file_error == ERR_FILE_NOT_FOUND:
+			return # Nothing to migrate
+		
+		push_error("Cannot migrate player status file to v1.1.0 due to file access error %d" % file_error)
+		return
+	
+	var text := file.get_as_text()
+	
+	var json := JSON.new()
+	var json_error := json.parse(text)
+	
+	if json_error != OK:
+		push_error("Failed to migrate player status file to v1.1.0 due to JSON parse error %d" % json_error)
+		file.close()
+		return
+	
+	var data_received = json.data
+	
+	if data_received is not Dictionary:
+		push_error("Failed to migrate player status file to v1.0.0 due to parsed JSON not being a dictionary")
+		file.close()
+		return
+	
+	if data_received.has("current_level"):
+		if data_received["current_level"] == "res://Level/02Underbelly/09Cutscene.tscn":
+			data_received["current_level"] = "res://Level/02Underbelly/09Level.tscn"
+	
+	var new_json_string = JSON.stringify(data_received, "\t")
+	file.seek(0)
+	file.store_string(new_json_string)
+	var err := file.resize(file.get_position()) # Truncate manually, because we're open in READ_WRITE not just WRITE
+	if err != OK:
+		push_error("Error when truncating player status file during v1.1.0 migration: %d" % err)
 		# Not much we can do here so just continue and close the file and hope for the best.
 	file.close()
 

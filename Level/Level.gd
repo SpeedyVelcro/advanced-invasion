@@ -4,6 +4,8 @@ extends Node2D
 @export var checkpoint := true
 @export var cutscene_active := false
 
+## Plays music with [member music_id] on start. If the ID is an empty string,
+## this stops the music instead.
 @export var play_music_on_start := false
 @export var music_id := ""
 @onready var hud: LevelHUD = get_node("LevelHUD")

@@ -11,7 +11,7 @@ func _ready():
 	super()
 	
 	DialogueManager.end_broadcast_signal.connect(_on_DialogueManager_end_broadcast)
-	DialogueManager.connect("broadcast", Callable(self, "_on_DialogueManager_broadcast"))
+	DialogueManager.broadcast.connect(_on_DialogueManager_broadcast)
 	animation_player.play("cutscene_1")
 
 func _on_DialogueManager_end_broadcast(message):
@@ -30,6 +30,12 @@ func _on_DialogueManager_broadcast(message):
 	match message:
 		"green_thanks":
 			animation_player.play("green_thanks")
+		"green_wait":
+			animation_player.play("green_wait")
+		"teal_turn":
+			animation_player.play("teal_turn")
+		"teal_hop":
+			animation_player.play("teal_hop")
 
 func end():
 	SceneTransition.fade(NEXT_SCENE)

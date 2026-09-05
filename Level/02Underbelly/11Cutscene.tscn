@@ -13,96 +13,137 @@
 [ext_resource type="Texture2D" uid="uid://5u7eb3dncbb7" path="res://Art/Character/Green/GreenRight.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://cq2fg30f7u2yk" path="res://Art/Character/Teal/TealRight.png" id="12"]
 [ext_resource type="Script" uid="uid://d3b7yt55anqpn" path="res://AutoLoad/DialogueManager/Dialogue.gd" id="13"]
-[ext_resource type="Texture2D" uid="uid://dy83skorkxj2o" path="res://Art/Player/PlayerLeft.png" id="14"]
 
-[sub_resource type="Resource" id="1"]
+[sub_resource type="Resource" id="Resource_30mq2"]
 script = ExtResource("13")
 character_name = "NAME_LEADER"
 character_color_id = "militia"
 bbcode = "DG_ZONE2_LV11_1"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="2"]
+[sub_resource type="Resource" id="Resource_jmjca"]
 script = ExtResource("13")
 character_name = "NAME_LEADER"
 character_color_id = "militia"
 bbcode = "DG_ZONE2_LV11_2"
 broadcast_enabled = true
 broadcast_message = "green_thanks"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="3"]
+[sub_resource type="Resource" id="Resource_u7ubs"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_3"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="4"]
+[sub_resource type="Resource" id="Resource_2a23w"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_4"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="5"]
+[sub_resource type="Resource" id="Resource_mtymg"]
+script = ExtResource("13")
+character_name = "NAME_LEADER"
+character_color_id = "militia"
+bbcode = "DG_ZONE2_LV11_5"
+broadcast_enabled = true
+broadcast_message = "green_wait"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_jk5bd"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
-bbcode = "DG_ZONE2_LV11_5"
-
-[sub_resource type="Resource" id="6"]
-script = ExtResource("13")
-character_name = "NAME_YELLOW"
-character_color_id = "yellow"
 bbcode = "DG_ZONE2_LV11_6"
+broadcast_enabled = true
+broadcast_message = "teal_turn"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="7"]
+[sub_resource type="Resource" id="Resource_uxs8r"]
 script = ExtResource("13")
 character_name = "NAME_LEADER"
 character_color_id = "militia"
 bbcode = "DG_ZONE2_LV11_7"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="8"]
+[sub_resource type="Resource" id="Resource_tkxld"]
 script = ExtResource("13")
-character_name = "NAME_TEAL"
-character_color_id = "teal"
+character_name = "NAME_LEADER"
+character_color_id = "militia"
 bbcode = "DG_ZONE2_LV11_8"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="9"]
+[sub_resource type="Resource" id="Resource_i4vs1"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_9"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="10"]
+[sub_resource type="Resource" id="Resource_tgawk"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_10"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="11"]
+[sub_resource type="Resource" id="Resource_tmg32"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_11"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="12"]
+[sub_resource type="Resource" id="Resource_1shgq"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
 bbcode = "DG_ZONE2_LV11_12"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Resource" id="13"]
-script = ExtResource("13")
-character_name = "NAME_YELLOW"
-character_color_id = "yellow"
-bbcode = "DG_ZONE2_LV11_13"
-
-[sub_resource type="Resource" id="14"]
+[sub_resource type="Resource" id="Resource_ffg4x"]
 script = ExtResource("13")
 character_name = "NAME_TEAL"
 character_color_id = "teal"
-bbcode = "DG_ZONE2_LV11_14"
+bbcode = "DG_ZONE2_LV11_13"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
 
-[sub_resource type="Animation" id="15"]
-length = 2.3
+[sub_resource type="Resource" id="Resource_6yuw1"]
+script = ExtResource("13")
+character_name = "NAME_YELLOW"
+character_color_id = "yellow"
+bbcode = "DG_ZONE2_LV11_14"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_awjd1"]
+script = ExtResource("13")
+character_name = "NAME_TEAL"
+character_color_id = "teal"
+bbcode = "DG_ZONE2_LV11_15"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_wgn5l"]
+script = ExtResource("13")
+character_name = "NAME_TEAL"
+character_color_id = "teal"
+bbcode = "DG_ZONE2_LV11_16"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Resource" id="Resource_f7n4v"]
+script = ExtResource("13")
+character_name = "NAME_TEAL"
+character_color_id = "teal"
+bbcode = "DG_ZONE2_LV11_17"
+broadcast_enabled = true
+broadcast_message = "teal_hop"
+metadata/_custom_type_script = "uid://d3b7yt55anqpn"
+
+[sub_resource type="Animation" id="Animation_tmg32"]
+resource_name = "RESET"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,10 +151,10 @@ tracks/0/path = NodePath("Elevator/Yellow:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.3),
-"transitions": PackedFloat32Array(0.840896, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-760, -48), Vector2(-432, -48)]
+"values": [Vector2(-760, -48)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,10 +187,10 @@ tracks/3/path = NodePath("Green:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(528, 656), Vector2(528, 656), Vector2(480, 656)]
+"values": [Vector2(528, 656)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -170,10 +211,110 @@ tracks/5/path = NodePath("CameraPlayer:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.3),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 560)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Teal:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(584, 656)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Elevator/Yellow:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7")]
+}
+
+[sub_resource type="Animation" id="15"]
+resource_name = "cutscene_1"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elevator/Yellow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(0.840896, 1),
+"update": 0,
+"values": [Vector2(-760, -48), Vector2(-410, -48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teal:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Green:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Green:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.8333334, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(528, 656), Vector2(528, 656), Vector2(460, 656)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Elevator:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(800, 704)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraPlayer:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(128, 560), Vector2(320, 560)]
+"values": [Vector2(128, 560), Vector2(340, 560)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -229,106 +370,66 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Green:texture")
+tracks/2/path = NodePath("CameraPlayer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("9"), ExtResource("11")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CameraPlayer:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(320, 560), Vector2(560, 560)]
-}
-
-[sub_resource type="Animation" id="17"]
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Elevator/Yellow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-432, -48), Vector2(-24, -48)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Elevator/Yellow:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("7"), ExtResource("14")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Teal:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(656, 656), Vector2(840, 656)]
+"values": [Vector2(340, 560), Vector2(560, 560)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Teal:texture")
+tracks/3/path = NodePath("Elevator/Yellow:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("12"), ExtResource("5")]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-410, -48)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Green:texture")
+tracks/4/path = NodePath("Elevator/Yellow:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9"), ExtResource("11")]
+"values": [ExtResource("7")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CameraPlayer:position")
+tracks/5/path = NodePath("Green:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(560, 560), Vector2(648, 560)]
+"values": [Vector2(480, 656)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Green:texture")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11")]
 }
 
-[sub_resource type="Animation" id="18"]
-resource_name = "cutscene_4"
-length = 1.8
+[sub_resource type="Animation" id="17"]
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -336,10 +437,10 @@ tracks/0/path = NodePath("Teal:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.6),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(840, 656), Vector2(624, 656)]
+"values": [Vector2(636, 656), Vector2(540, 656)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -348,15 +449,140 @@ tracks/1/path = NodePath("Teal:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.7),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Green:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 656)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Green:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Elevator/Yellow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-410, -48)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Elevator/Yellow:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7")]
+}
+
+[sub_resource type="Animation" id="18"]
+resource_name = "cutscene_4"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Teal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(545, 656), Vector2(440, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teal:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Elevator/Yellow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-410, -48)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Elevator/Yellow:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Green:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 656), Vector2(500, 656), Vector2(516, 656), Vector2(516, 656), Vector2(500, 656)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Green:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("5"), ExtResource("12")]
+"values": [ExtResource("11"), ExtResource("9")]
 }
 
 [sub_resource type="Animation" id="19"]
 resource_name = "cutscene_5"
 length = 8.0
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -376,10 +602,10 @@ tracks/1/path = NodePath("Teal:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.1, 1.3, 2.1, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(624, 656), Vector2(-16, 656)]
+"values": [Vector2(440, 656), Vector2(440, 656), Vector2(456, 656), Vector2(456, 656), Vector2(-128, 656)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -388,10 +614,10 @@ tracks/2/path = NodePath("Green:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.6, 1.7, 1.8, 2.3, 6.6),
+"transitions": PackedFloat32Array(1, 0.5, 2, 1, 1, 1),
 "update": 0,
-"values": [Vector2(504, 656), Vector2(-112, 656)]
+"values": [Vector2(500, 656), Vector2(500, 656), Vector2(500, 640), Vector2(500, 656), Vector2(500, 656), Vector2(-84, 656)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -400,10 +626,10 @@ tracks/3/path = NodePath("Teal:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("5")]
+"values": [ExtResource("5"), ExtResource("12"), ExtResource("5")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -412,10 +638,10 @@ tracks/4/path = NodePath("Elevator/Yellow:texture")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14"), ExtResource("7")]
+"values": [ExtResource("7")]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -424,10 +650,10 @@ tracks/5/path = NodePath("Elevator/Yellow:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.10000001, 0.2, 0.5, 3.5),
+"transitions": PackedFloat32Array(0.5, 2, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-24, -48), Vector2(-24, -48), Vector2(0, -48)]
+"values": [Vector2(-410, -48), Vector2(-410, -64), Vector2(-410, -48), Vector2(-410, -48), Vector2(0, -48)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -436,10 +662,10 @@ tracks/6/path = NodePath("CameraPlayer:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.1, 6),
-"transitions": PackedFloat32Array(1, 1.7411, 1),
+"times": PackedFloat32Array(0, 0.5, 3.8, 8),
+"transitions": PackedFloat32Array(1, 1, 1.5, 1),
 "update": 0,
-"values": [Vector2(648, 560), Vector2(648, 560), Vector2(648, 184)]
+"values": [Vector2(560, 560), Vector2(560, 560), Vector2(640, 560), Vector2(640, 256)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -448,10 +674,10 @@ tracks/7/path = NodePath("Elevator:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.1, 6),
-"transitions": PackedFloat32Array(1, 1.7411, 1),
+"times": PackedFloat32Array(0, 3.8, 8),
+"transitions": PackedFloat32Array(1, 1.5, 1),
 "update": 0,
-"values": [Vector2(800, 704), Vector2(800, 704), Vector2(800, -144)]
+"values": [Vector2(800, 704), Vector2(800, 704), Vector2(800, 0)]
 }
 tracks/8/type = "method"
 tracks/8/imported = false
@@ -460,7 +686,7 @@ tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(4.7),
+"times": PackedFloat32Array(6.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -480,7 +706,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(480, 656), Vector2(504, 656)]
+"values": [Vector2(460, 656), Vector2(480, 656)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -495,22 +721,99 @@ tracks/1/keys = {
 "values": [ExtResource("11")]
 }
 
+[sub_resource type="Animation" id="Animation_1shgq"]
+resource_name = "green_wait"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Green:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(480, 656), Vector2(500, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Green:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11")]
+}
+
+[sub_resource type="Animation" id="Animation_qtdph"]
+resource_name = "teal_hop"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Teal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(440, 656), Vector2(440, 640), Vector2(440, 656)]
+}
+
+[sub_resource type="Animation" id="Animation_ffg4x"]
+resource_name = "teal_turn"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Teal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(656, 656), Vector2(636, 656)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Teal:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2a23w"]
 _data = {
+&"RESET": SubResource("Animation_tmg32"),
 &"cutscene_1": SubResource("15"),
 &"cutscene_2": SubResource("16"),
 &"cutscene_3": SubResource("17"),
 &"cutscene_4": SubResource("18"),
 &"cutscene_5": SubResource("19"),
-&"green_thanks": SubResource("20")
+&"green_thanks": SubResource("20"),
+&"green_wait": SubResource("Animation_1shgq"),
+&"teal_hop": SubResource("Animation_qtdph"),
+&"teal_turn": SubResource("Animation_ffg4x")
 }
 
 [node name="Level" unique_id=1173142425 instance=ExtResource("1")]
 script = ExtResource("8")
-dialogue_1 = Array[ExtResource("13")]([SubResource("1"), SubResource("2"), SubResource("3"), SubResource("4")])
-dialogue_2 = Array[ExtResource("13")]([SubResource("5"), SubResource("6")])
-dialogue_3 = Array[ExtResource("13")]([SubResource("7"), SubResource("8")])
-dialogue_4 = Array[ExtResource("13")]([SubResource("9"), SubResource("10"), SubResource("11"), SubResource("12"), SubResource("13"), SubResource("14")])
+dialogue_1 = Array[ExtResource("13")]([SubResource("Resource_30mq2"), SubResource("Resource_jmjca"), SubResource("Resource_u7ubs")])
+dialogue_2 = Array[ExtResource("13")]([SubResource("Resource_2a23w"), SubResource("Resource_mtymg"), SubResource("Resource_jk5bd"), SubResource("Resource_uxs8r"), SubResource("Resource_tkxld")])
+dialogue_3 = Array[ExtResource("13")]([SubResource("Resource_i4vs1"), SubResource("Resource_tgawk")])
+dialogue_4 = Array[ExtResource("13")]([SubResource("Resource_tmg32"), SubResource("Resource_1shgq"), SubResource("Resource_ffg4x"), SubResource("Resource_6yuw1"), SubResource("Resource_awjd1"), SubResource("Resource_wgn5l"), SubResource("Resource_f7n4v")])
 cutscene_active = true
 play_music_on_start = true
 music_id = "anxiety"
@@ -536,7 +839,7 @@ tile_set = ExtResource("4")
 format = 2
 
 [node name="CameraPlayer" parent="." index="5" unique_id=658121531 instance=ExtResource("6")]
-position = Vector2(648, 560)
+position = Vector2(128, 560)
 limit_left = -10000
 limit_top = -10000
 limit_right = 10000
@@ -550,11 +853,11 @@ input_enabled = false
 one_shot = true
 
 [node name="Green" type="Sprite2D" parent="." index="7" unique_id=1886291644]
-position = Vector2(504, 656)
+position = Vector2(528, 656)
 texture = ExtResource("9")
 
 [node name="Teal" type="Sprite2D" parent="." index="8" unique_id=797179324]
-position = Vector2(624, 656)
+position = Vector2(584, 656)
 texture = ExtResource("5")
 
 [node name="Elevator" type="TileMap" parent="." index="9" unique_id=169766006]
@@ -564,8 +867,8 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-2, 2, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, 65534, 2, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0)
 
 [node name="Yellow" type="Sprite2D" parent="Elevator" index="1" unique_id=396632070]
-position = Vector2(-24, -48)
-texture = ExtResource("14")
+position = Vector2(-760, -48)
+texture = ExtResource("7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10" unique_id=132703912]
 libraries/ = SubResource("AnimationLibrary_2a23w")

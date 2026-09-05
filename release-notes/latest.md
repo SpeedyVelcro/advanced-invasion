@@ -16,8 +16,8 @@
 - Overhauled the second meeting with your teal ally into a full level.
   Dialogue has been completely overhauled in this level and most of it
   is completely new.
-- Overhauled several cutscenes, in particular dialogue, and adding
-  a new stretch of gameplay to one of them.
+- Overhauled post-boss cutscene after the square virus boss with new
+  dialogue and different animation.
 - Fix jitter when player character moves.
 - Overhauled jukebox.
 - Made minor changes to achievement menu and popups, and major changes to

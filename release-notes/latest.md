@@ -12,6 +12,10 @@
   to win the battle.
 - In the final battle, your ally now also has lives if you are playing
   on standard.
+- Added extra expository dialogue before the first cutscene fades in.
+- Overhauled the second meeting with your teal ally into a full level.
+  Dialogue has been completely overhauled in this level and most of it
+  is completely new.
 - Overhauled several cutscenes, in particular dialogue, and adding
   a new stretch of gameplay to one of them.
 - Fix jitter when player character moves.

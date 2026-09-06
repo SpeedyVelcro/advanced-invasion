@@ -7,16 +7,16 @@ extends Control
 @onready var start_timer = $StartTimer
 @onready var music_start_timer = $MusicStartTimer
 @onready var start_sound_audio_player = $StartSoundAudioStreamPlayer
+@onready var ui_scaling_sub_viewport: UIScalingSubViewport = $SubViewportContainer/UIScalingSubViewport
 var credits_end = 999999
 const CREDITS_FILE = "res://About/Credits.txt"
 const SCROLL_SPEED = 40.0
 var credits_rolling = false
 const NEXT_SCENE = "res://GUI/MainMenu/MainMenu.tscn"
-@onready var viewport = get_tree().get_root()
 
 func _ready():
 	start_sound_audio_player.play()
-	title_label.custom_minimum_size.y = viewport.size.y
+	title_label.custom_minimum_size.y = ui_scaling_sub_viewport.size.y
 	display_text_file(CREDITS_FILE)
 	music_start_timer.start(2.0)
 	start_timer.start(2.0)

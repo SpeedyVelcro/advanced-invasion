@@ -188,12 +188,14 @@ func spawn_corpse():
 	corpse_top.global_position = global_position
 	corpse_top.set_angular_velocity(rng.randf_range(-torque_range, torque_range))
 	corpse_top.linear_velocity.x = rng.randf_range(-velocity_range, velocity_range)
+	corpse_top.reset_physics_interpolation()
 	# Bottom corpse
 	var corpse_bottom = corpse_bottom_resource.instantiate()
 	get_parent().add_child(corpse_bottom)
 	corpse_bottom.global_position = global_position
 	corpse_bottom.set_angular_velocity(rng.randf_range(-torque_range, torque_range))
 	corpse_bottom.linear_velocity.x = rng.randf_range(-velocity_range, velocity_range)
+	corpse_bottom.reset_physics_interpolation()
 
 func _on_Hitbox_attacked(damage, from_direction):
 	# Hitbox may block it but we check just in case player got exactly the right
@@ -245,6 +247,7 @@ func fire_gun(bullet_x_dir = 0):
 	var vel = BULLET_VELOCITY
 	vel.x *= bullet_x_dir
 	bullet.apply_central_impulse(vel)
+	bullet.reset_physics_interpolation()
 
 # Getters and setters
 func set_direction(dir : Vector2):

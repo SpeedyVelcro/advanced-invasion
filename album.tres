@@ -9,6 +9,9 @@ script = ExtResource("2_uocwd")
 id = "download"
 looping_stream_path = "uid://dyf74mdtrh8rg"
 title = "download"
+liner_notes = "This was written as a theme to play while the game loads e.g. on web, loosely inspired by the way Toontown used to have a very hyped-up music track playing over its installer. Sadly I never got around to learning how to customise the HTML shell that Godot uses to load the game. Still, I might revisit this idea in the future.
+
+I decided to lift a melody from anxiety that I had decided would be the \"main theme\" of the Advanced Invasion series. Sure, it's only used in two places in this game, but if I were to make sequels I would be able to gradually increase its usage until it becomes a recognisable mainstay of the series."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -17,6 +20,9 @@ script = ExtResource("2_uocwd")
 id = "invasion"
 looping_stream_path = "uid://cpan8gxo6j2nd"
 title = "invasion"
+liner_notes = "A \"hurry\" theme inspired by FFX and its approach of just using a ton of snare drums. I decided to use 5/4 for its kind of uneven feel. Kind of like each bar is getting interrupted. But then I got carried away because the rhythm I chose made it pretty easy to just randomly switch up the time signature as you go, making it even more chaotic.
+
+That little melody on the timpani kind of holds the whole thing together, like a beacon you can use to get your bearings in this chaotic soup of noises and time signature changes."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -25,6 +31,9 @@ script = ExtResource("2_uocwd")
 id = "meager"
 looping_stream_path = "uid://dgushva6f8oif"
 title = "meager"
+liner_notes = "This was written after brash as a theme for the much easier first boss of the game, incorporating the same driving ostinato but with a completely different tone. I like the idea of giving the first boss a different theme, making it a kind of \"tutorial\", like \"Yes, this game has boss battles\".
+
+The vibe I was aiming for was a very lumbering one for how slow and easy to dodge I was planning for the first boss to be. I lifted the trumpet motif from invasion since it takes place at the end of the same sequence. It's kind of a leitmotif for the viruses, or maybe specifically the viruses invading computers. Not sure which - I'll probably settle on it being one or the other if I use it further in sequels."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -33,6 +42,9 @@ script = ExtResource("2_uocwd")
 id = "firefly"
 looping_stream_path = "uid://q217yb7fmdsi"
 title = "firefly"
+liner_notes = "One of the only tracks written after creating the levels it was made for. The silence felt a bit awkward so I threw something together using the main character's anxious leitmotif from anxiety.
+
+I didn't put much effort into this and I'm a bit underwhelmed by how it turned out but it's probably better than silence."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -41,6 +53,7 @@ script = ExtResource("2_uocwd")
 id = "anxiety"
 looping_stream_path = "uid://bjo0jjdpd5lrd"
 title = "anxiety"
+liner_notes = "Kind of the poster child of this soundtrack. This track is for the most emblematic levels of the game, where you are platforming through large cavernous neon levels jumping on viruses' heads. Consequently, although it is primarily the yellow guy's theme, I also put a theme for the game in here too."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -49,6 +62,9 @@ script = ExtResource("2_uocwd")
 id = "sanctuary"
 looping_stream_path = "uid://b78ho6o58vcli"
 title = "sanctuary"
+liner_notes = "A more calm version of dynamite, written after the fact. The whole reason I have a scene where you meet up with the teal guy and talk for a bit is purely to give this track a place to be.
+
+In earlier versions that part of the game had very stilted dialogue and was super short so you didn't even get to hear most of the track, but I managed to improve the situation a bit for v1.1.0."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -57,6 +73,9 @@ script = ExtResource("2_uocwd")
 id = "brash"
 looping_stream_path = "uid://bgiu6mx3p42y0"
 title = "brash"
+liner_notes = "This is the main boss theme, particularly inspired by the copious Mega Man and Zelda MIDIs that devs on the Sandbox would use for their games.
+
+This is actually the track that I'm most proud of for this game. A very severe and aggressive melody gives way to something more heroic sounding as you progress through the battle (thanks to our best friend modal interchange (or maybe it was something else idk)), and then seamlessly returns to the original mood."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -65,6 +84,7 @@ script = ExtResource("2_uocwd")
 id = "militia"
 looping_stream_path = "uid://cpeuoxp3ith6e"
 title = "militia"
+liner_notes = "A theme for this computer's anti-virus. I envisioned these guys as a very ragtag group defending a computer in an already hostile environment, made even worse during the game. So this theme plays both on the main menu to represent the grim responsibility of keeping watch, and thereafter as a dirge to represent the catastrophe that has befallen them."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -73,6 +93,7 @@ script = ExtResource("2_uocwd")
 id = "deathbed"
 linear_stream_path = "uid://bqsokfmp3yv2r"
 title = "deathbed"
+liner_notes = "Basically a fanfare version of militia. RIP commander, you will be missed."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -81,6 +102,9 @@ script = ExtResource("2_uocwd")
 id = "petra"
 looping_stream_path = "uid://1fx4ivvnl23"
 title = "petra"
+liner_notes = "This is actually one of the first tracks I did for the game. The piano arpeggio had a very retro  feel to it - kind of reminded me of Windows XP even though on reflection it sounds nothing like any of its jingles or fanfares. But either way, that ended up informing the design of the final zone of the game.
+
+This is also the model example of the naming scheme for Advanced Invasion tracks. The track names are all single words, all in lowercase (as if a filename on a UNIX system), and they are all words that are several steps removed from the subject of the track - as if they were some kind of codename. Here, this is a track for an ancient part of the computer, so it is named \"petra\" after the ancient city. See if you can figure out the rest! (actually it's a bit of an imperfect process where I didn't really stick to my rules all the time, so that may be a little difficult)."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -89,6 +113,13 @@ script = ExtResource("2_uocwd")
 id = "dynamite"
 looping_stream_path = "uid://34nr33282sgj"
 title = "dynamite"
+liner_notes = "Another one of the first tracks I did - two characters facing off in their last stand against an onslaught of viruses.
+
+In this particular case, the music-first approach may have been a mistake since it led me to an incredibly poor design for the final boss that many people have rightfully complained about. Had I wished to spend any more time on the game I would have gone back to the drawing board and come up with a different concept for the final battle, but ultimately you have to finish development at some point so I left it as is.
+
+I did a piano sketch first of just the bass synth and the guitars and it sounded really cool and hyped up, but I couldn't figure out how to get the arrangement or instrumentation totally right. So having wasted a bunch of time fiddling about I eventually had to cut my losses and comrpomise on something that sounded good enough.
+
+Consequently, I don't really fully like how this track turned out. But still, it's a fun track and a nice send-off for the end of the game."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -97,6 +128,7 @@ script = ExtResource("2_uocwd")
 id = "favour"
 linear_stream_path = "uid://doj2uyk2mx7be"
 title = "favour"
+liner_notes = "A fanfare representing the anti-virus of a neighbouring computer. This is a melody that will absolutely be re-used in and become a mainstay of future installments if I ever make them."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -105,6 +137,9 @@ script = ExtResource("2_uocwd")
 id = "brash_fakeout"
 linear_stream_path = "uid://bfqfbvhbxb2ht"
 title = "brash (Fakeout Version)"
+liner_notes = "Welcome to side B! Here we have some weird oddities: minor variations of tracks for specific uses in-game. These aren't very listenable compared to side A, but I like showing my work so I still wanted to make everything available.
+
+This one is just the intro from brash but with a finisher on the end."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -113,6 +148,7 @@ script = ExtResource("2_uocwd")
 id = "brash_intro"
 linear_stream_path = "uid://bfyn7bxnbfy3a"
 title = "brash (Intro Only)"
+liner_notes = "The intro separated out from brash, for when you want a paused between the intro and the the rest of the track."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -121,6 +157,7 @@ script = ExtResource("2_uocwd")
 id = "brash_no_intro"
 looping_stream_path = "uid://buimlfp78y8xa"
 title = "brash (No Intro)"
+liner_notes = "brash sans intro. This is to be played after brash (Intro Only) once you've finished your pause."
 artists = Array[String](["SpeedyVelcro"])
 metadata/_custom_type_script = "uid://ctgnm5iymuhhy"
 
@@ -134,6 +171,20 @@ metadata/_custom_type_script = "uid://chvpucuf8rp7d"
 script = ExtResource("3_elk2l")
 discs = Array[ExtResource("1_67ixv")]([SubResource("Resource_pn6q1")])
 title = "Advanced Invasion OST"
-liner_notes = "These are all MIDIs rendered using Roland SoundCanvas VA with SC-88 Pro sounds (though the VST is a little buggy so I might be wrong about that.)"
+liner_notes = "I view this game as pretty much an album with a game attached, albeit an album of video game music. Most of the music was written first and that guided the development of the game.
+
+The primary inspiration is the collage-like nature of the music accompanying games uploaded to the YoYoGames Sandbox. As GameMaker had MIDI support, developers at the time would lift MIDI covers of video game music and put them directly into their game, resulting in a blend of extremely iconic - but highly disparate - tracks.
+
+Now of course everyone knows better. That, and we are abated by the ever-looming spectre of the Digital Millennium Copyright Act. Luckily, I know how to make my own music now, but I still wanted to capture the feel of those early days.
+
+My approach, therefore, was to use MIDI exclusively. Each track is a GS-compliant MIDI file written for and then rendered (via SC VA in this case) by an SC-88 Pro (followed by just a little bit of audio manipulation to get it looping). Working to a single sound set is limiting, sure, but it comes with its own charm. Indeed, it's one of my favourite mediums. But more importantly for that collage-like quality, it makes it easier to combine diverse instrumentation like orchestras and synths without sounding too incoherent.
+
+I chose the SC-88 Pro due to its shared lineage with the Microsoft GM Wavetable Synth that all our stolen MIDIs played on back on back in the day. The SC-55 is closer, to that sound, of course, but I felt an upgrade to the next generation was fitting. It's a little more \"advanced\" if you will (hehe).
+
+Regardless, I hope this soundtrack sounds like I just stole a bunch of MIDIs and put them into a game, because that's the sound I was going for (just without the actual stealing part). The use of a few shared motifs/melodies across the tracks hopefully then takes it just over the line into being a complete and self-contained work of art. Consistent, but inconsistent in equal measures.
+
+You be the judge.
+
+(By the way, I released all this music under Creative Commons. Please, use those terms to steal it and put it in your own games! Click \"Download Album\" for more details)"
 download_url = "https://speedyvelcro.com/music/advanced-invasion-ost/"
 metadata/_custom_type_script = "uid://c4mywst67rhre"

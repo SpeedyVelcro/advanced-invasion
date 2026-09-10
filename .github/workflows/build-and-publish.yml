@@ -53,7 +53,7 @@ on:
         type: boolean
         default: true
 env:
-  GODOT_VERSION: "4.7.1"
+  GODOT_VERSION: "4.7.2"
   GODOT_STREAM: "stable"
   GAME_SLUG: "advanced-invasion"
 permissions:

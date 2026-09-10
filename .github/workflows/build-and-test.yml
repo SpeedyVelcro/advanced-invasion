@@ -31,7 +31,7 @@ on:
       - "*"
   workflow_dispatch:
 env:
-  GODOT_VERSION: "4.7.1"
+  GODOT_VERSION: "4.7.2"
   GODOT_STREAM: "stable"
   GAME_SLUG: "advanced-invasion"
 jobs:
@@ -88,7 +88,7 @@ jobs:
       - name: Run gdUnit4 Tests
         uses: MikeSchulze/gdUnit4-action@v1
         with:
-          godot-version: "4.7.1"
+          godot-version: "4.7.2"
           godot-status: "stable"
           paths: |
             res://test

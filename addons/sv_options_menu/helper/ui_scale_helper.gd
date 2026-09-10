@@ -6,24 +6,30 @@ extends Object
 ## range of static helper methods.
 
 
-## Calculates the default UI scale based on [OptionsConfig] and the current
-## resolution (derived from main window size).
+## Calculates the default UI scale based on [OptionsConfig] and its resolution
+## settings.
 static func calculate_default_ui_scale(options_config: OptionsConfig) -> float:
 	if options_config.default_ui_scale > 0.0:
 		return options_config.default_ui_scale
 	
-	var ratio := calculate_ratio_to_reference_resolution(options_config)
-	return snap_to_valid_ui_scale(ratio, options_config)
+	if options_config.manage_resolution:
+		# Resolution won't have been applied yet, so can't get it directly from OptionsDisplayHelper.
+		var default_resolution := options_config.calculate_default_resolution()
+		var ratio := calculate_ratio_to_reference_resolution(options_config, default_resolution)
+		return snap_to_valid_ui_scale(ratio, options_config, default_resolution)
+	else:
+		var ratio := calculate_ratio_to_reference_resolution(options_config)
+		return snap_to_valid_ui_scale(ratio, options_config)
 
 
 ## Snaps the given UI scale according to options in options_config. Usually called
 ## when the resolution changes, but you should check [method is_ui_scale_in_bounds]
 ## first to make sure you don't pointlessly override custom UI scales that are
 ## still within bounds.
-static func snap_to_valid_ui_scale(ui_scale: float, options_config: OptionsConfig) -> float:
+static func snap_to_valid_ui_scale(ui_scale: float, options_config: OptionsConfig, resolution := Vector2i(0, 0)) -> float:
 	var snap_scales: Array[float] = options_config.ui_scaling_snap_values.duplicate_deep()
 	snap_scales.sort()
-	snap_scales = snap_scales.filter(func (s: float): return is_ui_scale_in_bounds(s, options_config))
+	snap_scales = snap_scales.filter(func (s: float): return is_ui_scale_in_bounds(s, options_config, resolution))
 	
 	if snap_scales.is_empty():
 		return ui_scale
@@ -59,15 +65,15 @@ static func snap_to_valid_ui_scale(ui_scale: float, options_config: OptionsConfi
 
 
 ## Checks if the given UI scale is within bounds set according to the minimum and
-## cap (which changes based on current resolution) based on [OptionsConfig].
-static func is_ui_scale_in_bounds(ui_scale: float, options_config: OptionsConfig) -> bool:
+## cap (which changes based on given or current resolution) based on [OptionsConfig].
+static func is_ui_scale_in_bounds(ui_scale: float, options_config: OptionsConfig, resolution := Vector2i(0, 0)) -> bool:
 	if ui_scale < options_config.ui_minimum_scale:
 		return false
 	
 	if not options_config.ui_scaling_auto_cap:
 		return true
 	
-	var cap := calculate_ui_scale_cap(options_config)
+	var cap := calculate_ui_scale_cap(options_config, resolution)
 	
 	return ui_scale <= cap
 
@@ -76,18 +82,20 @@ static func is_ui_scale_in_bounds(ui_scale: float, options_config: OptionsConfig
 ## [member OptionsConfig.ui_scaling_auto_cap] is true (note: this is not checked
 ## here, it is assumed you would only call this if you are applying the cap so
 ## it should be true anyway).
-static func calculate_ui_scale_cap(options_config: OptionsConfig) -> float:
-	var ratio := calculate_ratio_to_reference_resolution(options_config)
+static func calculate_ui_scale_cap(options_config: OptionsConfig, resolution := Vector2i(0, 0)) -> float:
+	var ratio := calculate_ratio_to_reference_resolution(options_config, resolution)
 	var calculated_cap := max(options_config.ui_minimum_scale, ratio)
 	# Add leeway
 	return calculated_cap * (1.0 + max(0.0, options_config.ui_scaling_auto_cap_leeway))
 
 
-## Returns the ratio between the current resolution and the reference resolution
-## (see [member OptionsConfig.ui_scaling_reference_resolution]). This is done
-## on the smallest dimension of the current resolution.
-static func calculate_ratio_to_reference_resolution(options_config: OptionsConfig) -> float:
-	var resolution := OptionsDisplayHelper.get_current_resolution()
+## Returns the ratio between the given resolution (or the current resolution
+## if none is provided) and the reference resolution (see
+## [member OptionsConfig.ui_scaling_reference_resolution]). This is done on the
+## smallest dimension of the given resolution.
+static func calculate_ratio_to_reference_resolution(options_config: OptionsConfig, resolution := Vector2i(0, 0)) -> float:
+	if resolution == Vector2i.ZERO:
+		resolution = OptionsDisplayHelper.get_current_resolution()
 	var smallest_dimension_is_y := resolution.y <= resolution.x
 	
 	var reference_resolution := options_config.get_reference_resolution()

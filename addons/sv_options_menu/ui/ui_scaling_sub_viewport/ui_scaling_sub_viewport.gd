@@ -44,6 +44,7 @@ var _options: GameOptions
 func _ready() -> void:
 	_options_config = OptionsConfigProvider.get_config()
 	_options = OptionsProvider.get_local_options()
+	
 	_connect_signals()
 	
 	_update()
@@ -60,6 +61,9 @@ func _set_ui_scale_from_variant(value: Variant) -> void:
 func _update() -> void:
 	_update_resolution()
 	
+	if not OptionsLifecycle.has_started():
+		return # Everything else depends on UI scale being set.
+	
 	if _options_config.manage_ui_scaling:
 		var option_value = _options.get_option(_options_config.ui_scale_option_path)
 		_set_ui_scale_from_variant(option_value)
@@ -74,6 +78,11 @@ func _update_resolution() -> void:
 func _update_scaling_properties() -> void:
 	size_2d_override = size / ui_scale
 	size_2d_override_stretch = true
+
+
+# Signal connection
+func _on_options_lifecycle_started() -> void:
+	_update()
 
 
 # Signal connection
@@ -111,6 +120,9 @@ func _on_window_size_changed() -> void:
 
 
 func _connect_signals() -> void:
+	if not OptionsLifecycle.started.is_connected(_on_options_lifecycle_started):
+		OptionsLifecycle.started.connect(_on_options_lifecycle_started)
+	
 	if not OptionsProvider.local_options_changed.is_connected(_on_options_provider_local_options_changed):
 		OptionsProvider.local_options_changed.connect(_on_options_provider_local_options_changed)
 	
@@ -123,6 +135,9 @@ func _connect_signals() -> void:
 func _disconnect_signals() -> void:
 	if OptionsProvider.local_options_changed.is_connected(_on_options_provider_local_options_changed):
 		OptionsProvider.local_options_changed.disconnect(_on_options_provider_local_options_changed)
+	
+	if OptionsLifecycle.started.is_connected(_on_options_lifecycle_started):
+		OptionsLifecycle.started.disconnect(_on_options_lifecycle_started)
 	
 	if get_window().size_changed.is_connected(_on_window_size_changed):
 		get_window().size_changed.disconnect(_on_window_size_changed)

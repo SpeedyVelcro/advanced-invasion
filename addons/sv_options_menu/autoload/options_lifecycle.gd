@@ -14,6 +14,10 @@ extends Node
 var _started := false
 
 
+## Emitted when startup is complete.
+signal started
+
+
 # Override
 func _ready():
 	var options_config = _load_options_config()
@@ -42,6 +46,12 @@ func start_up() -> void:
 	ManagedOptionsSynchronizer.apply()
 	
 	_started = true
+	started.emit()
+
+
+## Returns [code]true[/code] if startup has completed
+func has_started() -> bool:
+	return _started
 
 
 # Override

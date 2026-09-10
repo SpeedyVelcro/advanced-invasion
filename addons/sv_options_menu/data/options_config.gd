@@ -331,7 +331,7 @@ func get_default_options() -> GameOptions:
 		default_options.set_option(screen_option_path, DisplayServer.SCREEN_PRIMARY)
 	
 	if manage_resolution:
-		var res := calculate_default_resolution(DisplayServer.SCREEN_PRIMARY)
+		var res := calculate_default_resolution()
 		default_options.set_option(get_resolution_x_path(), res.x)
 		default_options.set_option(get_resolution_y_path(), res.y)
 	
@@ -384,7 +384,7 @@ func _audio_bus_to_volume_base_path(ref: AudioBusReference) -> Array:
 
 ## Calculates the default resolution if set to auto, otherwise returns the
 ## set default resolution.
-func calculate_default_resolution(for_display: int) -> Vector2i:
+func calculate_default_resolution(for_display: int = DisplayServer.SCREEN_PRIMARY) -> Vector2i:
 	if default_resolution_handling == DefaultResolutionHandling.STATIC:
 		if default_resolution.x > 0 and default_resolution.y > 0:
 			return default_resolution

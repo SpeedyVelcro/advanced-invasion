@@ -94,13 +94,13 @@ jobs:
         uses: "./.github/actions/install-godot"
         with:
           version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
-          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+          sha_256: "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
           platform: "linux.x86_64"
       - name: Install Export Templates
         uses: "./.github/actions/install-export-templates"
         with:
           version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
-          sha_256: "86409db6200b6f8fd3230989c2d2002851f3dd18acf11d7bdbafddf5a0dd0f72"
+          sha_256: "f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
       - name: Inject Version Number
         run: |
           grep 'config/version=".*"' project.godot || exit 1 # Need this in project.godot for injection to work

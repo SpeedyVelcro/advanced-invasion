@@ -92,7 +92,7 @@ jobs:
         uses: "./.github/actions/install-godot"
         with:
           version: ${{ env.GODOT_VERSION }}-${{ env.GODOT_STREAM }}
-          sha_256: "c7ff14fd28472c8d4f193043de30278dcf7e5241a1dcf7566b02e27addaa33ba"
+          sha_256: "cadd3204e728a35d3f13adb7fd0d7902636b79f6b95c40c265eb73b6c35329e4"
           platform: "linux.x86_64"
       - name: Build Export Templates (web)
         uses: "./.github/actions/build-export-templates"

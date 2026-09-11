@@ -1,4 +1,5 @@
 - Migrated engine version to Godot 4.7.2.
+- Added controller support to menus.
 - Difficulty settings have been renamed. Casual is now Standard, and
   Normal is now Hardcore.
 - Boss battles have been made easier on standard difficulty. Difficulty

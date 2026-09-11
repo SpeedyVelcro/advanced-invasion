@@ -24,7 +24,8 @@ func _ready() -> void:
 # Override
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") and showing:
-		go_back()
+		pass # We need UI cancel to exit sliders and such
+		# go_back()
 
 
 @warning_ignore("native_method_override") # TODO: rename
@@ -32,12 +33,17 @@ func show():
 	visible = true
 	showing = true
 	tab_container.set_current_tab(0)
+	if $CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/IntegrationSettings.is_integration_available():
+		UIFocusService.enter_focusable_ui($CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/IntegrationSettings/Available/ChangeButton)
+	else:
+		UIFocusService.enter_focusable_ui($CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/UIScalingSettingsUI/HSlider)
 
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
 	showing = false
+	UIFocusService.leave_focusable_ui()
 
 
 func _on_BackButton_pressed():

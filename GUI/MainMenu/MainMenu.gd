@@ -69,6 +69,7 @@ func _input(event):
 					change_state(STATE_INTEGRATION)
 				else:
 					change_state(STATE_START)
+				get_viewport().set_input_as_handled()
 
 func change_state(p_state):
 	_on_state_exit()

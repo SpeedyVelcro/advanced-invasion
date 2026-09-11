@@ -1,7 +1,7 @@
 extends Control
 
-@export var load_button_path: NodePath
-@onready var load_button = get_node(load_button_path)
+@onready var load_button: Button = $CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Load
+@onready var new_game_button: Button = $CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/NewGame
 
 var locked = false
 
@@ -15,6 +15,7 @@ signal quit
 
 func _ready():
 	load_button.set_disabled(not StoryStatus.save_file_exists())
+	set_process_input(true)
 
 func _on_NewGame_pressed():
 	if not locked:
@@ -44,6 +45,8 @@ func show(animate = false):
 		visible = true
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
 		locked = false
+	
+	UIFocusService.enter_focusable_ui(new_game_button if load_button.disabled else load_button)
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide(animate = false):
@@ -53,12 +56,15 @@ func hide(animate = false):
 	else:
 		visible = false
 		modulate = Color(1.0, 1.0, 1.0, 0.0)
+	
+	UIFocusService.leave_focusable_ui()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match(anim_name):
 		"show":
 			locked = false
+
 
 # Getters and setters
 func set_locked(value : bool):

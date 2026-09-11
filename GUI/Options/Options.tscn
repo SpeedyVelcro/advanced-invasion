@@ -62,6 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/General/ScrollContainer" unique_id=480283951]
@@ -126,6 +127,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Video/ScrollContainer" unique_id=1625488264]
@@ -185,6 +187,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Sound/ScrollContainer" unique_id=1943506000]
@@ -222,6 +225,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 horizontal_scroll_mode = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel/VBoxContainer/TabContainer/Controls/ScrollContainer" unique_id=1570990856]

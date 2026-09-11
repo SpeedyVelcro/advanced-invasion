@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://csw2vnqtfdh3l" path="res://GUI/Integration/NewgroundsMenu/NewgroundsMenu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="3"]
 
 [node name="NewgroundsMenu" type="Control" unique_id=2009536826]
 layout_mode = 3
@@ -30,7 +29,6 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=709189359]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
 text = "Newgrounds"
 horizontal_alignment = 1
 

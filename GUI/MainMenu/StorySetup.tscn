@@ -83,6 +83,7 @@ layout_mode = 2
 [node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=116031928]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+focus_neighbor_right = NodePath("../PlayButton")
 theme = ExtResource("2")
 text = "Back"
 
@@ -94,6 +95,7 @@ size_flags_vertical = 3
 [node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1371371510]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../BackButton")
 theme = ExtResource("2")
 text = "Play"
 

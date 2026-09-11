@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d1mi2qh2tfmbi" path="res://GUI/Integration/GameJoltMenu/GameJoltMenu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
-[ext_resource type="FontFile" path="res://Font/Hack/HackHeader.tres" id="3"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "login_fail"
@@ -63,7 +62,6 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1148544071]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3")
 text = "Game Jolt"
 horizontal_alignment = 1
 

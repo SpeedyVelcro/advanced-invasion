@@ -86,7 +86,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
-load_button_path = NodePath("CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Load")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=2131754688]
 layout_mode = 0
@@ -249,6 +248,7 @@ expand_icon = true
 [node name="YouTubeButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2/HBoxContainer" unique_id=1625042957]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+focus_neighbor_right = NodePath("../../Quit")
 theme_override_constants/icon_max_width = 16
 icon = ExtResource("9_kg4sx")
 icon_alignment = 1
@@ -261,6 +261,7 @@ size_flags_horizontal = 3
 [node name="Quit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1641472136]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../HBoxContainer/YouTubeButton")
 theme = ExtResource("2")
 text = "Quit"
 

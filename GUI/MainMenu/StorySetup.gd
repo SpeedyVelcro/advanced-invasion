@@ -28,10 +28,12 @@ func show():
 	visible = true
 	standard_button.set_pressed(true)
 	description_label.set_text(TEXT_STANDARD)
+	UIFocusService.enter_focusable_ui(standard_button)
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide():
 	visible = false
+	UIFocusService.leave_focusable_ui()
 
 func _on_StandardButton_pressed():
 	description_label.set_text(TEXT_STANDARD)
@@ -41,7 +43,20 @@ func _on_HardcoreButton_pressed():
 
 func _on_BackButton_pressed():
 	if not locked:
-		emit_signal("back")
+		go_back()
+
+
+func go_back() -> void:
+	emit_signal("back")
+
+
+# Override
+func _input(event: InputEvent) -> void:
+	if locked:
+		return
+	
+	if event.is_action("ui_cancel"):
+		go_back()
 
 func _on_PlayButton_pressed():
 	if not locked:

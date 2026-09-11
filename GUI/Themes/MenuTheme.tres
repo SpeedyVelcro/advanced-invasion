@@ -16,8 +16,6 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.117647, 0.109804, 0.172549, 1)
 
-[sub_resource type="StyleBoxEmpty" id="2"]
-
 [sub_resource type="StyleBoxFlat" id="3"]
 bg_color = Color(0.113725, 0, 0.572549, 0.439216)
 border_width_left = 2
@@ -299,7 +297,6 @@ Button/colors/font_color_pressed = Color(0.666667, 0.666667, 0.666667, 1)
 Button/constants/align_to_largest_stylebox = 1
 Button/fonts/font = null
 Button/styles/disabled = SubResource("1")
-Button/styles/focus = SubResource("2")
 Button/styles/hover = SubResource("3")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_4k40w")
 Button/styles/normal = SubResource("4")

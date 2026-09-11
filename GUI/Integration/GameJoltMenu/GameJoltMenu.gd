@@ -4,6 +4,7 @@ extends Control
 @onready var token_line_edit = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer/TokenLineEdit
 @onready var login_container = $CenterContainer/PanelContainer/VBoxContainer/Login
 @onready var logout_container = $CenterContainer/PanelContainer/VBoxContainer/Logout
+@onready var logout_button: Button = $CenterContainer/PanelContainer/VBoxContainer/Logout/LogoutButton
 @onready var fail_label = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control/FailLabel
 @onready var login_fail_animation_player = $CenterContainer/PanelContainer/VBoxContainer/Login/HBoxContainer2/Control/LoginFailAnimationPlayer
 @onready var continue_button = $CenterContainer/PanelContainer/VBoxContainer/ContinueButton
@@ -26,8 +27,10 @@ func show():
 	fail_label.set_visible(false)
 	if GameJoltIntegration.is_integration_enabled():
 		show_logout()
+		UIFocusService.enter_focusable_ui(username_line_edit)
 	else:
 		show_login()
+		UIFocusService.enter_focusable_ui(logout_button)
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide():
@@ -52,14 +55,31 @@ func _on_GameJoltIntegration_session_open_fail():
 	login_fail_animation_player.play("login_fail")
 
 func _on_ContinueButton_pressed():
+	go_back()
+
+
+func go_back() -> void:
 	emit_signal("back")
+
+
+# Override
+func _input(event: InputEvent) -> void:
+	if not visible:
+		return
+	
+	if event.is_action("ui_cancel"):
+		go_back()
 
 func show_login():
 	login_container.set_visible(true)
 	logout_container.set_visible(false)
 	continue_button.set_text(SKIP_BUTTON_TEXT)
+	UIFocusService.leave_focusable_ui()
+	UIFocusService.enter_focusable_ui(username_line_edit)
 
 func show_logout():
 	login_container.set_visible(false)
 	logout_container.set_visible(true)
 	continue_button.set_text(CONTINUE_BUTTON_TEXT)
+	UIFocusService.leave_focusable_ui()
+	UIFocusService.enter_focusable_ui(continue_button)

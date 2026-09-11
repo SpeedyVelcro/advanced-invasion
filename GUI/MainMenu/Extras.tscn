@@ -1,91 +1,69 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene format=3 uid="uid://cdf6alnmrghgr"]
 
-[ext_resource path="res://GUI/MainMenu/Extras.gd" type="Script" id=1]
-[ext_resource path="res://GUI/Themes/MenuTheme.tres" type="Theme" id=2]
-[ext_resource path="res://Font/Hack/HackHeader.tres" type="FontFile" id=3]
+[ext_resource type="Script" uid="uid://plp6xq8c24v3" path="res://GUI/MainMenu/Extras.gd" id="1"]
+[ext_resource type="Theme" uid="uid://n6fdrx4r7yqh" path="res://GUI/Themes/MenuTheme.tres" id="2"]
 
-[node name="Extras" type="Control"]
+[node name="Extras" type="Control" unique_id=1776761607]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("1")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1650283741]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
-offset_left = 490.0
-offset_top = 280.0
-offset_right = 790.0
-offset_bottom = 440.0
-custom_minimum_size = Vector2( 300, 160 )
-theme = ExtResource( 2 )
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=2051373688]
+custom_minimum_size = Vector2(300, 160)
+layout_mode = 2
+theme = ExtResource("2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=379035700]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = -20.0
 offset_bottom = -20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
-offset_right = 260.0
-offset_bottom = 33.0
-theme_override_fonts/font = ExtResource( 3 )
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=193031912]
+layout_mode = 2
 text = "Extras"
-align = 1
+horizontal_alignment = 1
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 37.0
-offset_right = 260.0
-offset_bottom = 40.0
+[node name="ReferenceRect" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=514834618]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 44.0
-offset_right = 260.0
-offset_bottom = 76.0
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/VBoxContainer" unique_id=1462480446]
+layout_mode = 2
 columns = 2
 
-[node name="JukeboxButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer"]
-offset_right = 128.0
-offset_bottom = 32.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="JukeboxButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer" unique_id=163311582]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Jukebox"
 
-[node name="AchievementsButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer"]
-offset_left = 132.0
-offset_right = 260.0
-offset_bottom = 32.0
-custom_minimum_size = Vector2( 0, 32 )
+[node name="AchievementsButton" type="Button" parent="CenterContainer/Panel/VBoxContainer/GridContainer" unique_id=990920128]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Achievements"
 
-[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer"]
-offset_top = 80.0
-offset_right = 260.0
-offset_bottom = 84.0
+[node name="ReferenceRect2" type="ReferenceRect" parent="CenterContainer/Panel/VBoxContainer" unique_id=1770325020]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
-offset_left = 82.0
-offset_top = 88.0
-offset_right = 178.0
-offset_bottom = 120.0
-custom_minimum_size = Vector2( 96, 32 )
+[node name="BackButton" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1383008752]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
+
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/GridContainer/JukeboxButton" to="." method="_on_JukeboxButton_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/GridContainer/AchievementsButton" to="." method="_on_AchievementsButton_pressed"]
 [connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

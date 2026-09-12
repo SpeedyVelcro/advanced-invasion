@@ -30,6 +30,7 @@ var harm_block_bounce_up = Vector2(0, -300)
 var harm_block_bounce_right = Vector2(200, 0)
 var harm_block_bounce_down = Vector2(0, 100)
 var hit_by_bullet_knockback = Vector2(200, -150)
+var fire_gun_queued := false
 @export var input_locked = false: get = is_input_locked, set = set_input_locked
 @export var gun_enabled = true: get = is_gun_enabled, set = set_gun_enabled
 @onready var gun_audio_player = $GunAudioStreamPlayer2D
@@ -76,7 +77,8 @@ func _process(delta):
 		facing = Vector2.LEFT
 	
 	# Fire bullet
-	if Input.is_action_just_pressed("attack") and (not input_locked) and gun_enabled:
+	if fire_gun_queued:
+		fire_gun_queued = false
 		gun_audio_player.play()
 		var bul = bullet_resource.instantiate()
 		get_parent().add_child(bul)
@@ -150,6 +152,14 @@ func _physics_process(delta):
 		velocity.y = harm_block_bounce_down.y
 		burn_audio_player.play()
 		hit(Vector2(0, 0), 1)
+
+
+# Override
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack") and (not input_locked) and gun_enabled:
+		fire_gun_queued = true
+		get_viewport().set_input_as_handled()
+
 
 func hit(knockback, damage, ignore_invincibility = false, knockback_ignores_invincibility = true):
 	# -1 is insta-kill

@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://cgbamqw7jq5ar" path="res://Level/02Underbelly/01Level.gd" id="11"]
 [ext_resource type="Texture2D" uid="uid://cnakytvbyy4mu" path="res://Art/Character/Teal/TealLeft.png" id="12"]
 [ext_resource type="PackedScene" uid="uid://clkxgpkaiosv7" path="res://Entity/Obstacle/Barrier/Barrier.tscn" id="13"]
-[ext_resource type="PackedScene" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://cwoeww2l7mp2m" path="res://Entity/Creep/VirusPawn/Variants/VirusUmbrellaPawn.tscn" id="14"]
 [ext_resource type="PackedScene" path="res://Game/LevelEnd/LevelEnd.tscn" id="15"]
 
 [sub_resource type="Resource" id="1"]

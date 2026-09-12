@@ -51,52 +51,63 @@ func _process(delta):
 				# get_total_character_count() in a call_deferred(). Should be considered
 				# for a refactor.
 			if dialogue_label.get_total_character_count() != 0:
-				if Input.is_action_just_pressed("ui_accept") and (not dialogue_queue[0].ignore_input):
-					# skip
-					dialogue_label.set_visible_characters(dialogue_label.get_total_character_count())
-					# End of typewriter process will detect this and change state to pause
-				else:
-					# continue adding characters
+				# continue adding characters
+				# Skip whitespace
+				# TODO: I'm about 90% sure this is redundant because we skip whitespace again below.
+				while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
+					var next_char_index = dialogue_label.get_visible_characters()
+					var next_char = dialogue_label.get_text()[next_char_index]
+					if next_char == " " or next_char == "\t":
+						dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
+					else:
+						break
+				
+				cumulative_delta += delta
+				var prev_chars = dialogue_label.get_visible_characters()
+				while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
+					var mult = get_speed_multiplier()
 					# Skip whitespace
-					# TODO: I'm about 90% sure this is redundant because we skip whitespace again below.
-					while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
-						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = dialogue_label.get_text()[next_char_index]
-						if next_char == " " or next_char == "\t":
-							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
-						else:
-							break
-					
-					cumulative_delta += delta
-					var prev_chars = dialogue_label.get_visible_characters()
-					while dialogue_label.get_visible_characters() < dialogue_label.get_total_character_count():
-						var mult = get_speed_multiplier()
-						# Skip whitespace
-						var next_char_index = dialogue_label.get_visible_characters()
-						var next_char = dialogue_label.get_text()[next_char_index]
-						if next_char == " " or next_char == "\t":
-							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
-						# Type through regular characters
-						elif cumulative_delta * typewriter_speed * mult > 1.0:
-							cumulative_delta -= 1.0 / (typewriter_speed * mult)
-							# Must use set_visible_characters() as this is overridden in DialogueLabel.gd
-							dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
-							# Update fullstop status
-							last_character_was_stop = stop_characters.has(next_char)
-						else:
-							break
-					if dialogue_label.get_visible_characters() > prev_chars:
-						play_voice_synth()
+					var next_char_index = dialogue_label.get_visible_characters()
+					var next_char = dialogue_label.get_text()[next_char_index]
+					if next_char == " " or next_char == "\t":
+						dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
+					# Type through regular characters
+					elif cumulative_delta * typewriter_speed * mult > 1.0:
+						cumulative_delta -= 1.0 / (typewriter_speed * mult)
+						# Must use set_visible_characters() as this is overridden in DialogueLabel.gd
+						dialogue_label.set_visible_characters(dialogue_label.get_visible_characters() + 1)
+						# Update fullstop status
+						last_character_was_stop = stop_characters.has(next_char)
+					else:
+						break
+				if dialogue_label.get_visible_characters() > prev_chars:
+					play_voice_synth()
 				if (dialogue_label.get_visible_characters() >= dialogue_label.get_total_character_count()):
 					#print("Advanced. Visible characters was " +
 					#		String(dialogue_label.get_visible_characters()) +
 					#		", total characters was " +
 					#		String(dialogue_label.get_total_character_count()))
 					change_state(STATE_PAUSE)
+
+
+func _input(event: InputEvent) -> void:
+	if state == STATE_IDLE:
+		return
+	
+	if dialogue_queue[0].ignore_input:
+		return
+	
+	match state:
+		STATE_TYPEWRITER:
+			if event.is_action_pressed("ui_accept"):
+				# Skip to end
+				dialogue_label.set_visible_characters(dialogue_label.get_total_character_count())
+				get_viewport().set_input_as_handled()
 		STATE_PAUSE:
-			if not dialogue_queue[0].ignore_input:
-				if Input.is_action_just_pressed("ui_accept"):
-					advance_dialogue()
+			if event.is_action_pressed("ui_accept"):
+				advance_dialogue()
+				get_viewport().set_input_as_handled()
+
 
 func get_speed_multiplier():
 	var mult = dialogue_label.get_speed_multiplier()

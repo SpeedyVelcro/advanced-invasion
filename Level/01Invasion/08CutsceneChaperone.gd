@@ -17,5 +17,5 @@ func _on_DialogueManager_finished():
 	$AnimationPlayer.play("cutscene_2")
 
 func end():
-	DialogueManager.cancel_dialogue()
+	DialogueManager.cancel_dialogue(true)
 	SceneTransition.fade(NEXT_SCENE)

@@ -62,6 +62,9 @@ collision_mask = 4
 target_position = Vector2(96, 0)
 collision_mask = 4
 
+[node name="StateTimer" type="Timer" parent="." unique_id=1629363422]
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
 [connection signal="timeout" from="InvincibilityFlashTimer" to="." method="_on_invincibility_flash_timer_timeout"]
 [connection signal="timeout" from="InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="timeout" from="StateTimer" to="." method="_on_state_timer_timeout"]

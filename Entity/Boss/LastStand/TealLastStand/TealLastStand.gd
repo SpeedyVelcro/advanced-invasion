@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var gun_audio_player = $GunAudioStreamPlayer2D
 @onready var invincibility_timer: Timer = $InvincibilityTimer
 @onready var invincibility_flash_timer: Timer = $InvincibilityFlashTimer
+@onready var state_timer: Timer = $StateTimer
 @onready var creep_detection_raycast: RayCast2D = $CreepDetectionRayCast2D
 @onready var behind_creep_detection_raycast: RayCast2D = $BehindCreepDetectionRayCast2D
 @onready var creep_detection_area: Area2D = $CreepDetectionArea2D
@@ -19,9 +20,9 @@ const BULLET_SPEED = 256
 const FIRING_RELOAD_MIN := 0.1
 ## Reload time during [enum State.FIRING] when viruses are beyond detection
 ## range.
-const FIRING_RELOAD_MAX := 0.5
-const FIRING_BOTH_WAYS_RELOAD := 0.1
-const CLEARING_RELOAD := 0.1
+const FIRING_RELOAD_MAX := 0.25
+const FIRING_BOTH_WAYS_RELOAD := 0.08
+const CLEARING_RELOAD := 0.08
 var clearing_shots_remaining := 0
 var bullet_resource = preload("res://Entity/Player/PlayerBullet/PlayerBullet.tscn")
 var left_sprite: Texture2D = preload("res://Art/Character/Teal/TealLeft.png")
@@ -174,12 +175,19 @@ func _physics_process(delta: float) -> void:
 	match state:
 		State.FIRING:
 			var creeps: Array[Node2D] = creep_detection_area.get_overlapping_bodies()
+			# Sort by descending distance to us so the closest creep is first and farthest creep is last
+			creeps.sort_custom(func(a, b): return true if a.global_position.x > b.global_position.x else false)
+			var is_first_creep := true
 			for creep in creeps:
 				if creep is not VirusPawn:
 					continue
 				if creep.is_shield_active(creep.SHIELD_FRONT):
-					clearing_to = creep
-					state = State.CLEARING
+					if is_first_creep:
+						jump_on(creep)
+					else:
+						clearing_to = creep
+						state = State.CLEARING
+				is_first_creep = false
 			if state == State.FIRING: # Only if we haven't changed state
 				if behind_creep_detection_raycast.is_colliding():
 					var creep = behind_creep_detection_raycast.get_collider()
@@ -225,7 +233,7 @@ func _physics_process(delta: float) -> void:
 			var distance: float = abs(global_position.x - original_global_position.x)
 			if moving and (distance <= 6):
 				moving = false
-			elif not moving and (distance > 10):
+			elif not moving and (distance > 10) and state_timer.is_stopped():
 				moving = true
 				if global_position.x > original_global_position.x:
 					facing = Vector2.LEFT
@@ -308,11 +316,16 @@ func _on_state_enter() -> void:
 			if (not reload_timer.is_stopped()) and reload_timer.time_left > FIRING_RELOAD_MIN:
 				reload_timer.start(FIRING_RELOAD_MIN)
 			moving = false
-			facing = Vector2.LEFT
+			if facing.x > 0.0:
+				# Move for a split second so turning looks more natural
+				facing = Vector2.LEFT
+				moving = true
+				state_timer.one_shot = true
+				state_timer.start(0.08)
 		State.FIRING_BOTH_WAYS:
 			if (not reload_timer.is_stopped()) and reload_timer.time_left > FIRING_BOTH_WAYS_RELOAD:
 				reload_timer.start(FIRING_BOTH_WAYS_RELOAD)
-			moving = false
+			moving = true
 		State.CLEARING:
 			if (not reload_timer.is_stopped()) and reload_timer.time_left > CLEARING_RELOAD:
 				reload_timer.start(CLEARING_RELOAD)
@@ -329,15 +342,21 @@ func _on_state_enter() -> void:
 			moving = true
 			if jumping_on:
 				facing = Vector2.RIGHT * sign(jumping_on.global_position.x - global_position.x)
-			jump_queued = true
+			# Wait a split second for jump so it looks more natural.
+			state_timer.one_shot = true
+			state_timer.start(0.16)
 		State.RETURNING:
-			moving = true
-			facing = Vector2.RIGHT
+			moving = false
+			# Wait a split second to start returning so it looks more natural
+			state_timer.one_shot = true
+			state_timer.start(0.08)
 		State.KNOCKBACK:
 			moving = false
 
 
 func _on_state_exit() -> void:
+	state_timer.stop()
+	
 	match state:
 		State.DISABLED:
 			process_mode = Node.PROCESS_MODE_INHERIT
@@ -359,16 +378,30 @@ func die():
 		emit_signal("death")
 		reload_timer.stop()
 
+
 # Signal connection
 func _on_reload_timer_timeout():
 	gun_loaded = true
 
 
+# Signal connection
 func _on_invincibility_flash_timer_timeout() -> void:
 	visible = not visible
 
 
+# Signal connection
 func _on_invincibility_timer_timeout() -> void:
 	hit_invincibility = false
 	visible = true
 	invincibility_flash_timer.stop()
+
+
+# Signal connection
+func _on_state_timer_timeout() -> void:
+	match state:
+		State.FIRING:
+			moving = false
+		State.JUMPING:
+			jump_queued = true
+		State.RETURNING:
+			pass # _physics_process checks if the timer is stopped so we don't need to do anything here

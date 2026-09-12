@@ -44,6 +44,9 @@ func _ready() -> void:
 	add_child(_focus_stealer)
 	_focus_stealer.visible = false
 	_focus_stealer.focus_mode = Control.FOCUS_ALL
+	# UIs may be unpaused (as in the main menu) or paused (as in the pause menu)
+	# so we need to handle both:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
 ## Start monitoring for whether focus should be grabbed for the given start

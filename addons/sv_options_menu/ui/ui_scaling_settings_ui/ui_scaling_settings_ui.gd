@@ -58,6 +58,8 @@ var _internal_ui_scale: float = 1.0:
 var _options: GameOptions
 var _options_config: OptionsConfig
 
+var _value_on_focus_enter: float = 1.0
+
 @onready var _slider: Slider = $HSlider
 @onready var _menu_button: MenuButton = $Control/MenuButton
 @onready var _line_edit: LineEdit = $Control/LineEdit
@@ -267,6 +269,20 @@ func _on_h_slider_drag_started() -> void:
 # Signal connection
 func _on_h_slider_drag_ended(value_changed: bool) -> void:
 	if not value_changed:
+		return
+	
+	_internal_ui_scale = _slider.value
+	_update_options()
+
+
+# Signal connection
+func _on_h_slider_focus_entered() -> void:
+	_value_on_focus_enter = _internal_ui_scale
+
+
+# Signal connection
+func _on_h_slider_focus_exited() -> void:
+	if _slider.value == _value_on_focus_enter:
 		return
 	
 	_internal_ui_scale = _slider.value

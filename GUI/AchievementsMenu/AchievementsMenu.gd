@@ -1,11 +1,13 @@
 extends Control
 
+@onready var achievement_list_ui: Control = $CenterContainer/Panel/VBoxContainer/ScrollContainer/AchievementListUI
+
 signal back
 
 @warning_ignore("native_method_override") # TODO: rename
 func show():
 	visible = true
-	# TODO: Select top achievement
+	UIFocusService.enter_focusable_ui(achievement_list_ui.get_first_achievement_control())
 
 @warning_ignore("native_method_override") # TODO: rename
 func hide():

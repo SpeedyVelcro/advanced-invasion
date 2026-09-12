@@ -16,7 +16,9 @@ const NEXT_SCENE = "res://GUI/MainMenu/MainMenu.tscn"
 
 func _ready():
 	start_sound_audio_player.play()
-	title_label.custom_minimum_size.y = ui_scaling_sub_viewport.size.y
+	title_label.custom_minimum_size.y = ui_scaling_sub_viewport.size_2d_override.y \
+			if ui_scaling_sub_viewport.size_2d_override.y != 0 \
+			else ui_scaling_sub_viewport.size.y
 	display_text_file(CREDITS_FILE)
 	music_start_timer.start(2.0)
 	start_timer.start(2.0)

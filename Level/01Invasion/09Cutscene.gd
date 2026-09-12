@@ -39,6 +39,8 @@ func spawn_virus():
 	virus_right.global_position = portal_right.global_position
 	virus_left.set_direction(Vector2.LEFT)
 	virus_right.set_direction(Vector2.RIGHT)
+	virus_left.reset_physics_interpolation()
+	virus_left.reset_physics_interpolation()
 
 func end():
 	SceneTransition.fade(NEXT_SCENE)

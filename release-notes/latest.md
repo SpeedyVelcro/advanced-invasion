@@ -36,4 +36,5 @@
   automatically adjusts to the size of the ccanvas on web).
 - Overhauled about menu. Third-party license information is now
   clearer, more thorough, and separated from the credits.
+- Fixed bullet firing when using spacebar to close dialogue
 

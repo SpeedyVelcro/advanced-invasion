@@ -220,15 +220,16 @@ func _physics_process(delta: float) -> void:
 		State.JUMPING:
 			if not is_instance_valid(jumping_on):
 				state = State.RETURNING
-			var distance: float = abs(global_position.x - jumping_on.global_position.x)
-			if moving and (distance <= 6):
-				moving = false
-			elif not moving and (distance > 10):
-				moving = true
-				if global_position.x > jumping_on.global_position.x:
-					facing = Vector2.LEFT
-				else:
-					facing = Vector2.RIGHT
+			else:
+				var distance: float = abs(global_position.x - jumping_on.global_position.x)
+				if moving and (distance <= 6):
+					moving = false
+				elif not moving and (distance > 10):
+					moving = true
+					if global_position.x > jumping_on.global_position.x:
+						facing = Vector2.LEFT
+					else:
+						facing = Vector2.RIGHT
 		State.RETURNING:
 			var distance: float = abs(global_position.x - original_global_position.x)
 			if moving and (distance <= 6):

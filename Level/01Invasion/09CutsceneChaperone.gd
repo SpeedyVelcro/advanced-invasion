@@ -38,12 +38,12 @@ func end():
 func spawn_virus():
 	var creep
 	creep = creep_resource.instantiate()
+	get_owner().add_child(creep)
 	creep.set_global_position(portal_left.get_global_position())
-	get_owner().add_child(creep)
+	creep.reset_physics_interpolation()
 	creep.set_direction(Vector2.LEFT)
-	creep.reset_physics_interpolation()
 	creep = creep_resource.instantiate()
-	creep.set_global_position(portal_right.get_global_position())
 	get_owner().add_child(creep)
-	creep.set_direction(Vector2.RIGHT)
+	creep.set_global_position(portal_right.get_global_position())
 	creep.reset_physics_interpolation()
+	creep.set_direction(Vector2.RIGHT)

@@ -44,5 +44,6 @@ runs:
           brew install gnu-sed
           command=gsed
         fi
-        ${command} -i 's/replace_me_newgrounds_app_id/${{ inputs.app-id }}/'
-        ${command} -i 's/replace_me_newgrounds_aes_128_encryption_key/${{ inputs.aes-128-encryption-key }}/'
+        ${command} -i 's/replace_me_newgrounds_app_id/${{ inputs.app-id }}/' Secrets.gd
+        ${command} -i 's/replace_me_newgrounds_aes_128_encryption_key/${{ inputs.aes-128-encryption-key }}/' Secrets.gd
+

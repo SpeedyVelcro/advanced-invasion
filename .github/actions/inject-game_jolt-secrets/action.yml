@@ -41,4 +41,5 @@ runs:
           brew install gnu-sed
           command=gsed
         fi
-        ${command} -i 's/replace_me_game_jolt_private_key/${{ inputs.private-key }}/'
+        ${command} -i 's/replace_me_game_jolt_private_key/${{ inputs.private-key }}/' Secrets.gd
+

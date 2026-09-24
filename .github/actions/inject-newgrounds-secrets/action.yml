@@ -45,5 +45,6 @@ runs:
           command=gsed
         fi
         ${command} -i 's/replace_me_newgrounds_app_id/${{ inputs.app-id }}/' Secrets.gd
-        ${command} -i 's/replace_me_newgrounds_aes_128_encryption_key/${{ inputs.aes-128-encryption-key }}/' Secrets.gd
+        # Newgrounds AES-128 encryption key is base64 encoded, so may include '/' or '+' characters.
+        ${command} -i 's|replace_me_newgrounds_aes_128_encryption_key|${{ inputs.aes-128-encryption-key }}|' Secrets.gd
 

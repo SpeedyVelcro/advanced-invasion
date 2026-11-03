@@ -12,6 +12,10 @@ The following directories have their own licenses:
 ```
 addons/gamejolt
 addons/newgrounds
+addons/sv_about_menu
+addons/sv_achievements
+addons/sv_jukebox
+addons/sv_options_menu
 Art
 Font/Hack
 Font/NotoSans

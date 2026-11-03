@@ -103,6 +103,7 @@ script = ExtResource("4_24d8f")
 auto_start = false
 manage_resolution = true
 manage_window_mode = true
+default_window_mode = 3
 manage_screen = true
 default_resolution_handling = 2
 auto_default_resolution = true

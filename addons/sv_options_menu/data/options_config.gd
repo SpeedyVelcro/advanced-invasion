@@ -27,6 +27,24 @@ enum DefaultResolutionHandling {
 	FORCE_ASPECT
 }
 
+## Default window mode on startup. Used for [member default_window_mode]. Offers
+## the same values as [enum DisplayServer.WindowMode], but also provides an
+## option to use the value set in [ProjectSettings] as the default.
+enum DefaultWindowMode {
+	## Uses the window mode set in [ProjectSettings].
+	PROJECT_SETTINGS = -1,
+	## See [enum DisplayServer.WindowMode].
+	WINDOWED = DisplayServer.WINDOW_MODE_WINDOWED,
+	## See [enum DisplayServer.WindowMode].
+	MINIMIZED = DisplayServer.WINDOW_MODE_MINIMIZED,
+	## See [enum DisplayServer.WindowMode].
+	MAXIMIZED = DisplayServer.WINDOW_MODE_MAXIMIZED,
+	## See [enum DisplayServer.WindowMode].
+	FULLSCREEN = DisplayServer.WINDOW_MODE_FULLSCREEN,
+	## See [enum DisplayServer.WindowMode].
+	EXCLUSIVE_FULLSCREEN = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+}
+
 ## Player-configured options will be saved to and loaded from the json file at
 ## this file path. If the file and/or directory structure doesn't exist at
 ## runtime, they will be created.
@@ -99,6 +117,13 @@ enum DefaultResolutionHandling {
 ## Path to store window mode in [GameOptions]. Used if [member manage_window_mode]
 ## is [code]true[/code].
 @export var window_mode_option_path: String = "display/window_mode"
+
+## Default setting for window mode if [member manage_window_mode] is true.
+## Primarily useful if you want the default setting to be different from the
+## mode for the splash screen, which by necessity always uses the value in
+## [ProjectSettings] instead. Set to a value of [enum DefaultWindowMode], which
+## itself is similar to [enum DisplayServer.WindowMode].
+@export var default_window_mode: DefaultWindowMode = DefaultWindowMode.PROJECT_SETTINGS
 
 ## Determines whether SV Options Menu manages the screen the game displays on.
 ## The default value will be the primary screen.
@@ -311,7 +336,9 @@ enum DefaultResolutionHandling {
 ## Both local and cloud options will appear on the returned object, as both
 ## local and cloud options are meant to use the same defaults as a fallback.
 func get_default_options() -> GameOptions:
-	var default_options: GameOptions = custom_default_options.duplicate_deep(Resource.DEEP_DUPLICATE_ALL) if custom_default_options != null else GameOptions.new()
+	var default_options: GameOptions = custom_default_options.duplicate_deep(Resource.DEEP_DUPLICATE_ALL) \
+			if custom_default_options != null \
+			else GameOptions.new()
 	
 	if manage_volume:
 		for bus: EditableBusConfig in editable_buses:
@@ -325,7 +352,9 @@ func get_default_options() -> GameOptions:
 		default_options.set_option(input_device_option_path, "Default") # See AudioServer.input_device
 	
 	if manage_window_mode:
-		default_options.set_option(window_mode_option_path, ProjectSettings.get_setting_with_override("display/window/size/mode"))
+		default_options.set_option(window_mode_option_path, ProjectSettings.get_setting_with_override("display/window/size/mode") \
+				if default_window_mode == DefaultWindowMode.PROJECT_SETTINGS \
+				else default_window_mode)
 	
 	if manage_screen:
 		default_options.set_option(screen_option_path, DisplayServer.SCREEN_PRIMARY)

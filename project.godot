@@ -46,6 +46,7 @@ GameJolt="*uid://dwwwfqrm86umu"
 NG="*uid://cx0lbddb6da4w"
 NGCloudSave="*uid://b7g1k2gu4cpve"
 UIFocusService="*uid://dfayiwpqa4mpe"
+GlyphProvider="*uid://bm7a1cqpsve0e"
 
 [display]
 
